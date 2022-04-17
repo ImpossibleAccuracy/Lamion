@@ -1,7 +1,7 @@
 
 export default {
   applicationName: 'Lamion',
-  baseApiUrl: 'http://127.0.0.1:8080/api',
+  baseApiUrl: location.origin + '/api',
   user: {
     password: {
       minLength: 6,
