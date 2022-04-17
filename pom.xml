@@ -12,7 +12,7 @@
     <groupId>com.app</groupId>
     <artifactId>lamion</artifactId>
 
-    <version>0.0.3</version>
+    <version>0.0.4</version>
     <name>Lamion</name>
     <description>Application for saving analytics of apps written in desktop/web for analysis.</description>
 

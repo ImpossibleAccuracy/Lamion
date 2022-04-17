@@ -4,7 +4,7 @@
 ## Быстрый старт
 Сначала, нужно скачать архив с Docker-образами по ссылке:
 ```
-https://drive.google.com/file/d/1MyCYLXhervB04QE_1oqJ6h8wkddTultE/view?usp=sharing
+https://drive.google.com/file/d/1nlF8_jkX5d-A-GnBHmGK58RWE6JhrUq9/view?usp=sharing
 ```
 
 После завершения скачивания, распакуйте архив и зайдите в папку Docker:
