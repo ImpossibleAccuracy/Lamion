@@ -1,4 +1,6 @@
-# lamion
+# Lamion
+
+Простой сервер с Vue для разработки Frontend-а.
 
 ## Project setup
 ```
