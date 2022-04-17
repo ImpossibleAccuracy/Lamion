@@ -1,0 +1,94 @@
+@import './theme.scss';
+
+.article {
+  padding: 12px 48px;
+
+  @media screen and (max-width: 618px) {
+    & {
+      padding: 0;
+    }
+  }
+}
+
+.article, .form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  @media screen and (max-width: 618px) {
+    & {
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+  }
+}
+
+.form {
+  .md-progress-bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+
+  .form-content {
+    @media screen and (max-width: 618px) {
+      & {
+        background-color: transparent;
+        box-shadow: none;
+      }
+    }
+  }
+
+  .md-title {
+    text-align: center;
+  }
+
+  .btn--submit {
+    width: 100%;
+    margin: 6px 0;
+  }
+
+  .text-divider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: .4rem 0;
+
+    .divider {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: calc(50% - 1px);
+      z-index: 2;
+    }
+
+    .text {
+      position: relative;
+      user-select: none;
+      padding: .4rem .8rem;
+      display: inline-block;
+      z-index: 3;
+      background-color: var(--md-theme-default-background, #fff);
+      
+      @media screen and (max-width: 618px) {
+        & {
+          background-color: $window-background;
+        }
+      }
+    }
+  }
+
+  .action {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .link {
+      text-transform: uppercase;
+    }
+  }
+}

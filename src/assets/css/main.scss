@@ -1,0 +1,94 @@
+
+$mobile-device-width: 800px;
+$tablet-device-width: 1024px;
+
+$content-spacing-desktop: 24px;
+$content-spacing-tablet: 12px;
+$content-spacing-mobile: 0;
+
+.article {
+  padding: 12px 48px;
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+  justify-content: center;
+
+  @media screen and (max-width: $tablet-device-width) {
+    & {
+      padding: 12px 0;
+    }
+  }
+
+  @media screen and (max-width: $mobile-device-width) {
+    & {
+      flex-direction: column-reverse;
+      padding: 0;
+    }
+  }
+
+  .content {
+    width: 100%;
+    height: auto !important;
+    min-height: 100%;
+    margin: 0 $content-spacing-desktop;
+    
+    @media screen and (max-width: $tablet-device-width) {
+      & {
+        margin: 0 $content-spacing-tablet;
+      }
+    }
+    @media screen and (max-width: $mobile-device-width) {
+      & {
+        margin: 0 $content-spacing-mobile;
+      }
+    }
+  }
+
+  .md-card {
+    .md-card-header {
+      .md-title {
+        margin-left: 24px;
+      }
+    }
+
+    .md-card-content {
+      .description {
+        font-size: 16px;
+        padding-bottom: 8px;
+      }
+    }
+
+    .md-card-expand {
+      .md-card-content {
+        @media screen and (max-width: 618px) {
+          & {
+            padding-left: 0;
+            padding-right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .md-card.chart {
+    position: sticky;
+    top: 12px;
+    width: 30%;
+    margin: 0 $content-spacing-desktop;
+
+    @media screen and (max-width: $tablet-device-width) {
+      & {
+        margin: 0 $content-spacing-tablet;
+      }
+    }
+
+    @media screen and (max-width: $mobile-device-width) {
+      & {
+        position: relative;
+        top: 0;
+        width: 100%;
+        margin: 0 $content-spacing-mobile;
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+@import "~vue-material/dist/theme/engine";
+@import './theme.scss';
+
+@include md-register-theme("default", (
+    primary: $primary,
+    secondary: $secondary,
+    window-background: $window-background,
+    on-window-background: $on-window-background,
+    accent: md-get-palette-color(red, 500)
+));
+
+@import "~vue-material/dist/theme/all";
