@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long> {
-    Event findByTitle(String title);
+    Event findByTitleAndApplicationId(String title, long appId);
     boolean existsByTitle(String title);
 }

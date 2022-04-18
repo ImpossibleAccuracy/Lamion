@@ -33,8 +33,8 @@ public class EventService {
         return analyticsRepository.findById(id).orElse(null);
     }
 
-    public Event findByTitle(String title) {
-        return repository.findByTitle(title);
+    public Event findByTitleAndApplicationId(String title, long appId) {
+        return repository.findByTitleAndApplicationId(title, appId);
     }
 
     public boolean exists(long id) {

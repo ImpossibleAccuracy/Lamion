@@ -31,7 +31,8 @@ public class MakeRequestController {
     public ResponseEntity makeRequest(@RequestBody MakeRequestForm form) {
         if (form.isValid()) {
             if (appService.exists(form.appId)) {
-                Event event = eventService.findByTitle(form.event);
+                Event event = eventService.findByTitleAndApplicationId(form.event, form.appId);
+
                 if (event == null) {
                     event = new Event();
                     event.setApplicationId(form.appId);
@@ -42,7 +43,7 @@ public class MakeRequestController {
                 Request request = new Request();
                 request.setEventId(event.getId());
                 request.setDevice(form.device);
-                requestService.create(request);
+                requestService.save(request);
 
                 return ResponseEntity.status(204).build();
             }

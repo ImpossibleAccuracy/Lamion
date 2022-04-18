@@ -20,7 +20,7 @@ public class RequestService {
         this.analyticsRepository = analyticsRepository;
     }
 
-    public Request create(Request request) {
+    public Request save(Request request) {
         return repository.save(request);
     }
 
