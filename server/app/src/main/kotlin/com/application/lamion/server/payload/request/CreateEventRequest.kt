@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
 
 data class CreateEventRequest(
-    @NotNull
-    @NotBlank
+    @field:NotNull
+    @field:NotBlank
     var title: String
 )

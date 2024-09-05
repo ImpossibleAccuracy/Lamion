@@ -5,14 +5,14 @@ import jakarta.validation.constraints.NotNull
 import jakarta.validation.constraints.Positive
 
 data class RequestCreationRequest(
-    @Positive
+    @field:Positive
     var appId: Int,
 
-    @NotNull
-    @NotBlank
+    @field:NotNull
+    @field:NotBlank
     var event: String,
 
-    @NotNull
-    @NotBlank
+    @field:NotNull
+    @field:NotBlank
     var device: String,
 )

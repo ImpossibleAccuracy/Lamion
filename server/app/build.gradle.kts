@@ -28,7 +28,6 @@ dependencies {
     implementation(libs.spring.starter.validation)
     implementation(libs.spring.starter.jpa)
     implementation(libs.spring.starter.security)
-    implementation(libs.spring.starter.validation)
     implementation(libs.spring.starter.actuator)
     developmentOnly(libs.spring.devtools)
 
