@@ -1,0 +1,38 @@
+name: Deploy to Dev server
+
+on:
+  push:
+    branches:
+      - "develop"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: "Check Dockerfile existence"
+        id: check_files
+        uses: andstor/file-existence-action@v3
+        with:
+          files: "server/Dockerfile"
+
+      - name: File exists
+        if: steps.check_files.outputs.files_exists == 'false'
+        run: |
+          echo "Not all files required for deployment are found in the repository"
+          exit 1
+
+      - name: Deploy dev
+        uses: JorgeLNJunior/render-deploy@v1.4.4
+        continue-on-error: true
+        with:
+          service_id: ${{ secrets.DEV_SERVICE_ID }}
+          api_key: ${{ secrets.API_KEY }}
+          wait_deploy: true
