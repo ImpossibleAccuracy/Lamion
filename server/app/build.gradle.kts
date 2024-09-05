@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.kotlin.spring)
     alias(libs.plugins.kotlin.jpa)
+    alias(libs.plugins.kotlin.allopen)
 }
 
 allOpen {
@@ -30,6 +31,9 @@ dependencies {
     implementation(libs.spring.starter.security)
     implementation(libs.spring.starter.actuator)
     developmentOnly(libs.spring.devtools)
+
+    implementation(libs.spring.swagger.ui)
+    implementation(libs.spring.swagger.api)
 
     implementation(libs.postgresql.connector)
     implementation(libs.bcrypt)

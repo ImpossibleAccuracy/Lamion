@@ -5,7 +5,6 @@ spring-swagger = "2.5.0"
 postgresql = "42.7.4"
 bcrypt = "0.10.2"
 auth0 = "4.4.0"
-jackson = "2.17.2"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
@@ -20,15 +19,13 @@ spring-starter-security = { module = "org.springframework.boot:spring-boot-start
 spring-starter-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator", version.ref = "spring" }
 spring-devtools = { module = "org.springframework.boot:spring-boot-devtools", version.ref = "spring" }
 
-#spring-swagger-ui = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "spring-swagger" }
-#spring-swagger-api = { module = "org.springdoc:springdoc-openapi-starter-webmvc-api", version.ref = "spring-swagger" }
+spring-swagger-ui = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "spring-swagger" }
+spring-swagger-api = { module = "org.springdoc:springdoc-openapi-starter-webmvc-api", version.ref = "spring-swagger" }
 
 postgresql-connector = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
 bcrypt = { module = "at.favre.lib:bcrypt", version.ref = "bcrypt" }
 auth0 = { module = "com.auth0:java-jwt", version.ref = "auth0" }
 
-jackson-module = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
-jackson-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
