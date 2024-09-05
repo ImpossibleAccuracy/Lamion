@@ -17,3 +17,16 @@ services:
       timeout: 5s
       retries: 5
       start_period: 10s
+  server:
+    depends_on:
+      database:
+        condition: service_healthy
+    build:
+      dockerfile: server/Dockerfile
+      context: .
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: "jdbc:postgresql://database:5432/$DATABASE_NAME"
