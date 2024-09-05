@@ -17,4 +17,5 @@ dependencyResolutionManagement {
     }
 }
 
-include(":server")
+include(":server:app")
+include(":server:security")

@@ -8,12 +8,15 @@ auth0 = "4.4.0"
 jackson = "2.17.2"
 
 [libraries]
-# LIBRARIES
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+
 spring-starter-boot = { module = "org.springframework.boot:spring-boot-starter", version.ref = "spring" }
 spring-starter-web = { module = "org.springframework.boot:spring-boot-starter-web", version.ref = "spring" }
 spring-starter-thymeleaf = { module = "org.springframework.boot:spring-boot-starter-thymeleaf", version.ref = "spring" }
 spring-starter-validation = { module = "org.springframework.boot:spring-boot-starter-validation", version.ref = "spring" }
 spring-starter-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa", version.ref = "spring" }
+spring-starter-security = { module = "org.springframework.boot:spring-boot-starter-security", version.ref = "spring" }
 spring-starter-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator", version.ref = "spring" }
 spring-devtools = { module = "org.springframework.boot:spring-boot-devtools", version.ref = "spring" }
 
@@ -29,4 +32,8 @@ jackson-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+
 spring-boot = { id = "org.springframework.boot", version.ref = "spring" }
+kotlin-allopen = { id = "org.jetbrains.kotlin.plugin.allopen", version.ref = "kotlin" }
+kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
+kotlin-jpa = { id = "org.jetbrains.kotlin.plugin.jpa", version.ref = "kotlin" }
