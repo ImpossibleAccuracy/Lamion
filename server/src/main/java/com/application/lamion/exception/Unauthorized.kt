@@ -1,15 +1,17 @@
-package com.application.lamion.exception;
+package com.application.lamion.exception
 
-public class Unauthorized {
-    public static final String DETAILS = "Unauthorized";
+class Unauthorized {
+    val details: String
 
-    public final String details;
-
-    public Unauthorized() {
-        details = DETAILS;
+    constructor() {
+        details = DETAILS
     }
 
-    public Unauthorized(String details) {
-        this.details = details;
+    constructor(details: String) {
+        this.details = details
+    }
+
+    companion object {
+        const val DETAILS: String = "Unauthorized"
     }
 }

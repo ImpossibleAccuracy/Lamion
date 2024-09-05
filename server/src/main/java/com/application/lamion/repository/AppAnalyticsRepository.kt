@@ -1,15 +1,12 @@
-package com.application.lamion.repository;
+package com.application.lamion.repository
 
-import com.application.lamion.model.App;
-import com.application.lamion.model.AppAnalytics;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
+import com.application.lamion.model.AppAnalytics
+import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.stereotype.Repository
 
 @Repository
-public interface AppAnalyticsRepository extends JpaRepository<AppAnalytics, Long> {
-    List<AppAnalytics> findAllByUserId(Long userId);
+interface AppAnalyticsRepository : JpaRepository<AppAnalytics?, Long?> {
+    fun findAllByUserId(userId: Long?): List<AppAnalytics?>?
 
-    AppAnalytics findFirstByTitleAndUserId(String title, long userId);
+    fun findFirstByTitleAndUserId(title: String?, userId: Long): AppAnalytics?
 }

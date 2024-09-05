@@ -1,5 +1,5 @@
 plugins {
-    java
+    alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.spring.boot)
 }
 
@@ -10,6 +10,7 @@ dependencies {
     implementation(libs.spring.starter.boot)
     implementation(libs.spring.starter.web)
     implementation(libs.spring.starter.thymeleaf)
+    implementation(libs.spring.starter.validation)
     implementation(libs.spring.starter.jpa)
     implementation(libs.spring.starter.actuator)
     developmentOnly(libs.spring.devtools)

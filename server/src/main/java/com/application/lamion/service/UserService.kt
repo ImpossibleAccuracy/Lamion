@@ -1,50 +1,41 @@
-package com.application.lamion.service;
+package com.application.lamion.service
 
-import com.application.lamion.model.User;
-import com.application.lamion.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
+import com.application.lamion.model.User
+import com.application.lamion.repository.UserRepository
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Service
 
 @Service
-public class UserService {
-    private final UserRepository repository;
-
-    @Autowired
-    public UserService(UserRepository repository) {
-        this.repository = repository;
+class UserService @Autowired constructor(private val repository: UserRepository) {
+    fun create(data: User): User {
+        return repository.save(data)
     }
 
-    public User create(User data) {
-        return repository.save(data);
+    fun get(): List<User?> {
+        return repository.findAll()
     }
 
-    public List<User> get() {
-        return repository.findAll();
+    fun find(id: Long): User? {
+        return repository.findById(id).orElse(null)
     }
 
-    public User find(long id) {
-        return repository.findById(id).orElse(null);
+    fun findByEmail(email: String?): User? {
+        return repository.findFirstByEmail(email)
     }
 
-    public User findByEmail(String email) {
-        return repository.findFirstByEmail(email);
+    fun exists(id: Long): Boolean {
+        return repository.existsById(id)
     }
 
-    public boolean exists(long id) {
-        return repository.existsById(id);
+    fun existsByEmail(email: String?): Boolean {
+        return repository.existsByEmail(email)
     }
 
-    public boolean existsByEmail(String email) {
-        return repository.existsByEmail(email);
+    fun update(data: User) {
+        repository.saveAndFlush(data)
     }
 
-    public void update(User data) {
-        repository.saveAndFlush(data);
-    }
-
-    public void delete(long id) {
-        repository.deleteById(id);
+    fun delete(id: Long) {
+        repository.deleteById(id)
     }
 }

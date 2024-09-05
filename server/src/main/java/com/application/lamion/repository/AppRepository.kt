@@ -1,14 +1,14 @@
-package com.application.lamion.repository;
+package com.application.lamion.repository
 
-import com.application.lamion.model.App;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import com.application.lamion.model.App
+import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.stereotype.Repository
 
 @Repository
-public interface AppRepository extends JpaRepository<App, Long> {
-    boolean existsByTitleAndUserId(String title, long userId);
+interface AppRepository : JpaRepository<App?, Long?> {
+    fun existsByTitleAndUserId(title: String?, userId: Long): Boolean
 
-    boolean existsByIdAndUserId(long id, long userId);
+    fun existsByIdAndUserId(id: Long, userId: Long): Boolean
 
-    long countByUserId(long userId);
+    fun countByUserId(userId: Long): Long
 }

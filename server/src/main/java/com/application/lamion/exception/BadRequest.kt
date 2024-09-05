@@ -1,15 +1,17 @@
-package com.application.lamion.exception;
+package com.application.lamion.exception
 
-public class BadRequest {
-    public static final String DETAILS = "Bad request";
+class BadRequest {
+    val details: String
 
-    public final String details;
-
-    public BadRequest() {
-        details = DETAILS;
+    constructor() {
+        details = DETAILS
     }
 
-    public BadRequest(String details) {
-        this.details = details;
+    constructor(details: String) {
+        this.details = details
+    }
+
+    companion object {
+        const val DETAILS: String = "Bad request"
     }
 }

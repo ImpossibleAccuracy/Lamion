@@ -1,56 +1,48 @@
-package com.application.lamion.service;
+package com.application.lamion.service
 
-import com.application.lamion.model.Event;
-import com.application.lamion.model.EventAnalytics;
-import com.application.lamion.repository.EventAnalyticsRepository;
-import com.application.lamion.repository.EventRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
+import com.application.lamion.model.Event
+import com.application.lamion.model.EventAnalytics
+import com.application.lamion.repository.EventAnalyticsRepository
+import com.application.lamion.repository.EventRepository
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Service
 
 @Service
-public class EventService {
-    private EventRepository repository;
-    private EventAnalyticsRepository analyticsRepository;
-
-    @Autowired
-    public EventService(EventRepository repository, EventAnalyticsRepository analyticsRepository) {
-        this.repository = repository;
-        this.analyticsRepository = analyticsRepository;
-    }
-
-    public Event create(Event data) {
-        return repository.save(data);
+class EventService @Autowired constructor(
+    private val repository: EventRepository,
+    private val analyticsRepository: EventAnalyticsRepository
+) {
+    fun create(data: Event): Event {
+        return repository.save(data)
     }
 
 
-    public List<EventAnalytics> findAllByApplicationId(long appId) {
-        return analyticsRepository.findAllByApplicationId(appId);
+    fun findAllByApplicationId(appId: Long): List<EventAnalytics?>? {
+        return analyticsRepository.findAllByApplicationId(appId)
     }
 
-    public EventAnalytics find(long id) {
-        return analyticsRepository.findById(id).orElse(null);
+    fun find(id: Long): EventAnalytics? {
+        return analyticsRepository.findById(id).orElse(null)
     }
 
-    public Event findByTitleAndApplicationId(String title, long appId) {
-        return repository.findByTitleAndApplicationId(title, appId);
+    fun findByTitleAndApplicationId(title: String?, appId: Long): Event? {
+        return repository.findByTitleAndApplicationId(title, appId)
     }
 
-    public boolean exists(long id) {
-        return repository.existsById(id);
+    fun exists(id: Long): Boolean {
+        return repository.existsById(id)
     }
 
-    public boolean existsByTitle(String title) {
-        return repository.existsByTitle(title);
+    fun existsByTitle(title: String?): Boolean {
+        return repository.existsByTitle(title)
     }
 
 
-    public void update(Event data) {
-        repository.save(data);
+    fun update(data: Event) {
+        repository.save(data)
     }
 
-    public void delete(long id) {
-        repository.deleteById(id);
+    fun delete(id: Long) {
+        repository.deleteById(id)
     }
 }

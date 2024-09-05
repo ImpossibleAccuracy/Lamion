@@ -1,48 +1,37 @@
-package com.application.lamion.util;
+package com.application.lamion.util
 
-import com.application.lamion.model.User;
-import com.application.lamion.service.UserService;
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTVerifier;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.JWTDecodeException;
-import com.auth0.jwt.interfaces.Claim;
-import com.auth0.jwt.interfaces.DecodedJWT;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import com.application.lamion.model.User
+import com.application.lamion.service.UserService
+import com.auth0.jwt.JWT
+import com.auth0.jwt.algorithms.Algorithm
+import com.auth0.jwt.exceptions.JWTDecodeException
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Component
 
 @Component
-public class TokenUtil {
-    private UserService service;
-
-    @Autowired
-    public TokenUtil(UserService service) {
-        this.service = service;
-    }
-
-    public String create(User user) {
+class TokenUtil @Autowired constructor(private val service: UserService) {
+    fun create(user: User): String {
         return JWT.create()
-                .withIssuer("auth0")
-                .withClaim(User.class.getSimpleName(), user.getEmail())
-                .sign(getAlgorithm());
+            .withIssuer("auth0")
+            .withClaim(User::class.java.simpleName, user.email)
+            .sign(algorithm)
     }
 
-    public User verify(String token) {
+    fun verify(token: String): User? {
         try {
-            JWTVerifier verifier = JWT.require(getAlgorithm())
-                    .withIssuer("auth0")
-                    .build(); //Reusable verifier instance
-            DecodedJWT jwt = verifier.verify(token);
-            Claim emailClaim = jwt.getClaim(User.class.getSimpleName());
+            val verifier = JWT.require(algorithm)
+                .withIssuer("auth0")
+                .build() //Reusable verifier instance
+            val jwt = verifier.verify(token)
+            val emailClaim = jwt.getClaim(User::class.java.simpleName)
 
-            String email = emailClaim.as(String.class);
-            return service.findByEmail(email);
-        } catch (JWTDecodeException e) {
-            return null;
+            val email = emailClaim.`as`(String::class.java)
+            return service.findByEmail(email)
+        } catch (e: JWTDecodeException) {
+            return null
         }
     }
 
-    private Algorithm getAlgorithm() {
-        return Algorithm.HMAC256("secret");
-    }
+    private val algorithm: Algorithm
+        get() = Algorithm.HMAC256("secret")
 }

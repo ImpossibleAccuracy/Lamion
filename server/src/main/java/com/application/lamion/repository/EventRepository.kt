@@ -1,13 +1,11 @@
-package com.application.lamion.repository;
+package com.application.lamion.repository
 
-import com.application.lamion.model.Event;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
+import com.application.lamion.model.Event
+import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.stereotype.Repository
 
 @Repository
-public interface EventRepository extends JpaRepository<Event, Long> {
-    Event findByTitleAndApplicationId(String title, long appId);
-    boolean existsByTitle(String title);
+interface EventRepository : JpaRepository<Event?, Long?> {
+    fun findByTitleAndApplicationId(title: String?, appId: Long): Event?
+    fun existsByTitle(title: String?): Boolean
 }

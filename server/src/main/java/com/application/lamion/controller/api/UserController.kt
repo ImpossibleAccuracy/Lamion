@@ -1,82 +1,78 @@
-package com.application.lamion.controller.api;
+package com.application.lamion.controller.api
 
-import com.application.lamion.exception.BadRequest;
-import com.application.lamion.exception.Unauthorized;
-import com.application.lamion.model.User;
-import com.application.lamion.model.responses.TokenResponse;
-import com.application.lamion.service.UserService;
-import com.application.lamion.util.Password;
-import com.application.lamion.util.TokenUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import com.application.lamion.exception.BadRequest
+import com.application.lamion.exception.Unauthorized
+import com.application.lamion.model.User
+import com.application.lamion.model.responses.TokenResponse
+import com.application.lamion.service.UserService
+import com.application.lamion.util.Password
+import com.application.lamion.util.TokenUtil
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.*
 
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
-public class UserController {
-    private static final String USER_NOT_FOUND = "User with such credentials does not exist.";
-    private static final String USER_ALREADY_EXIST = "User with such credentials already exist.";
-
-    private UserService userService;
-    private TokenUtil tokenUtil;
-
-    @Autowired
-    public UserController(UserService userService, TokenUtil tokenUtil) {
-        this.userService = userService;
-        this.tokenUtil = tokenUtil;
-    }
-
+class UserController @Autowired constructor(private val userService: UserService, private val tokenUtil: TokenUtil) {
     @GetMapping("/user")
-    public ResponseEntity profile(@RequestHeader("Authorization") String token) {
+    fun profile(@RequestHeader("Authorization") token: String?): ResponseEntity<*> {
         if (token == null) {
-            return ResponseEntity.status(401).body(new Unauthorized());
+            return ResponseEntity.status(401).body(Unauthorized())
         }
 
-        User user = tokenUtil.verify(token);
-        return ResponseEntity.ok(user);
+        val user = tokenUtil.verify(token)
+        return ResponseEntity.ok(user)
     }
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody LoginForm form) {
-        if (form.isEmpty()) {
+    fun login(@RequestBody form: LoginForm): ResponseEntity<*> {
+        if (form.isEmpty) {
             return ResponseEntity.badRequest().body(
-                    new BadRequest());
+                BadRequest()
+            )
         }
 
-        User user = userService.findByEmail(form.email);
+        val user = userService.findByEmail(form.email)
 
-        if (user != null && Password.verify(form.password, user.getPassword())) {
-            String token = tokenUtil.create(user);
-            return ResponseEntity.ok(new TokenResponse(user, token));
+        if (user != null && Password.verify(form.password!!, user.password)) {
+            val token = tokenUtil.create(user)
+            return ResponseEntity.ok(TokenResponse(user, token))
         } else {
             return ResponseEntity.badRequest().body(
-                    new BadRequest(USER_NOT_FOUND));
+                BadRequest(USER_NOT_FOUND)
+            )
         }
     }
 
     @PostMapping("/register")
-    public ResponseEntity register(@RequestBody LoginForm data) {
+    fun register(@RequestBody data: LoginForm): ResponseEntity<*> {
         if (userService.existsByEmail(data.email)) {
             return ResponseEntity.badRequest().body(
-                    new BadRequest(USER_ALREADY_EXIST));
+                BadRequest(USER_ALREADY_EXIST)
+            )
         }
 
-        User user = new User();
-        user.setEmail(data.email);
-        user.setPassword(Password.hash(data.password));
-        userService.create(user);
+        val user = User(
+            email = data.email!!,
+            password = Password.hash(data.password!!)
+        )
+        userService.create(user)
 
-        String token = tokenUtil.create(user);
-        return ResponseEntity.ok(new TokenResponse(user, token));
+        val token = tokenUtil.create(user)
+        return ResponseEntity.ok(TokenResponse(user, token))
     }
 
-    public static class LoginForm {
-        public String email;
-        public String password;
+    class LoginForm {
+        var email: String? = null
+        var password: String? = null
 
-        public boolean isEmpty() {
-            return ((email == null || email.isBlank()) || (password == null || password.isBlank()));
-        }
+        val isEmpty: Boolean
+            get() = ((email == null || email!!.isBlank()) || (password == null || password!!.isBlank()))
+    }
+
+    companion object {
+        private const val USER_NOT_FOUND = "User with such credentials does not exist."
+        private const val USER_ALREADY_EXIST = "User with such credentials already exist."
     }
 }

@@ -1,11 +1,10 @@
-package com.application.lamion.form;
+package com.application.lamion.form
 
-public class MakeRequestForm {
-    public int appId;
-    public String event;
-    public String device;
+class MakeRequestForm {
+    var appId: Int = 0
+    var event: String? = null
+    var device: String? = null
 
-    public boolean isValid() {
-        return (appId >= 0 && (event != null && !event.isBlank()));
-    }
+    val isValid: Boolean
+        get() = (appId >= 0 && (event != null && !event!!.isBlank()))
 }

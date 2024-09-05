@@ -1,89 +1,78 @@
-package com.application.lamion.controller.api;
+package com.application.lamion.controller.api
 
-import com.application.lamion.exception.Forbidden;
-import com.application.lamion.exception.NotFound;
-import com.application.lamion.exception.Unauthorized;
-import com.application.lamion.model.EventAnalytics;
-import com.application.lamion.model.Request;
-import com.application.lamion.model.RequestAnalytics;
-import com.application.lamion.model.User;
-import com.application.lamion.service.AppService;
-import com.application.lamion.service.EventService;
-import com.application.lamion.service.RequestService;
-import com.application.lamion.util.TokenUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import com.application.lamion.exception.Forbidden
+import com.application.lamion.exception.NotFound
+import com.application.lamion.exception.Unauthorized
+import com.application.lamion.model.User
+import com.application.lamion.service.AppService
+import com.application.lamion.service.EventService
+import com.application.lamion.service.RequestService
+import com.application.lamion.util.TokenUtil
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.*
 
 @CrossOrigin
 @RestController
 @RequestMapping("/api/application/{app_pk}/event/{event_pk}/request")
-public class RequestController {
-    private AppService appService;
-    private EventService eventService;
-    private RequestService requestService;
-
-    private TokenUtil tokenUtil;
-
-    @Autowired
-    public RequestController(AppService appService, EventService eventService, RequestService requestService, TokenUtil tokenUtil) {
-        this.appService = appService;
-        this.eventService = eventService;
-        this.requestService = requestService;
-        this.tokenUtil = tokenUtil;
-    }
-
+class RequestController @Autowired constructor(
+    private val appService: AppService,
+    private val eventService: EventService,
+    private val requestService: RequestService,
+    private val tokenUtil: TokenUtil
+) {
     @GetMapping
-    public ResponseEntity list(@RequestHeader("Authorization") String token,
-                               @PathVariable("app_pk") long app_pk,
-                               @PathVariable("event_pk") long event_pk) {
-        ResponseEntity valid = validateRequest(token, app_pk, event_pk);
-        if (valid != null)
-            return valid;
+    fun list(
+        @RequestHeader("Authorization") token: String,
+        @PathVariable("app_pk") app_pk: Long,
+        @PathVariable("event_pk") event_pk: Long
+    ): ResponseEntity<*> {
+        val valid = validateRequest(token, app_pk, event_pk)
+        if (valid != null) return valid
 
-        List<Request> requests = requestService.findAllByEventId(event_pk);
-        return ResponseEntity.ok(requests);
+        val requests = requestService.findAllByEventId(event_pk)
+        return ResponseEntity.ok(requests)
     }
 
     @GetMapping("/analytics")
-    public ResponseEntity analytics(@RequestHeader("Authorization") String token,
-                                    @PathVariable("app_pk") long app_pk,
-                                    @PathVariable("event_pk") long event_pk) {
-        ResponseEntity valid = validateRequest(token, app_pk, event_pk);
-        if (valid != null)
-            return valid;
+    fun analytics(
+        @RequestHeader("Authorization") token: String,
+        @PathVariable("app_pk") app_pk: Long,
+        @PathVariable("event_pk") event_pk: Long
+    ): ResponseEntity<*> {
+        val valid = validateRequest(token, app_pk, event_pk)
+        if (valid != null) return valid
 
-        List<RequestAnalytics> requests = requestService.findAnalytics(event_pk);
-        return ResponseEntity.ok(requests);
+        val requests = requestService.findAnalytics(event_pk)
+        return ResponseEntity.ok(requests)
     }
 
-    private ResponseEntity validateRequest(@RequestHeader("Authorization") String token,
-                                           @PathVariable("app_pk") long app_pk,
-                                           @PathVariable("event_pk") long event_pk) {
-        User user = login(token);
-        if (user == null) {
-            return ResponseEntity.status(401).body(new Unauthorized());
-        }
+    private fun validateRequest(
+        @RequestHeader("Authorization") token: String,
+        @PathVariable("app_pk") app_pk: Long,
+        @PathVariable("event_pk") event_pk: Long
+    ): ResponseEntity<*>? {
+        val user = login(token)
+            ?: return ResponseEntity.status(401)
+                .body(Unauthorized())
 
-        if (appService.hasAccess(app_pk, user.getId())) {
-            EventAnalytics event = eventService.find(event_pk);
-            if (event == null) {
-                return ResponseEntity.status(404).body(new NotFound());
-            }
+        if (appService.hasAccess(app_pk, user.id.toLong())) {
+            val event = eventService.find(event_pk)
+                ?: return ResponseEntity.status(404)
+                    .body(NotFound())
 
-            if (event.getApplicationId() == app_pk) {
-                return null;
+            return if (event.applicationId.toLong() == app_pk) {
+                null
             } else {
-                return ResponseEntity.status(403).body(new Forbidden());
+                ResponseEntity.status(403)
+                    .body(Forbidden())
             }
         } else {
-            return ResponseEntity.status(404).body(new NotFound());
+            return ResponseEntity.status(404).body(NotFound())
         }
     }
 
-    private User login(String token) {
-        return tokenUtil.verify(token);
+    private fun login(token: String): User? {
+        return tokenUtil.verify(token)
     }
 }

@@ -1,12 +1,10 @@
-package com.application.lamion.repository;
+package com.application.lamion.repository
 
-import com.application.lamion.model.Request;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
+import com.application.lamion.model.Request
+import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.stereotype.Repository
 
 @Repository
-public interface RequestRepository extends JpaRepository<Request, Long> {
-    List<Request> findAllByEventIdOrderByIdDesc(long eventId);
+interface RequestRepository : JpaRepository<Request?, Long?> {
+    fun findAllByEventIdOrderByIdDesc(eventId: Long): List<Request?>?
 }

@@ -1,9 +1,8 @@
-package com.application.lamion.form;
+package com.application.lamion.form
 
-public class EventForm {
-    public String title;
+class EventForm {
+    var title: String? = null
 
-    public boolean isValid() {
-        return ((title != null && !title.isBlank()));
-    }
+    val isValid: Boolean
+        get() = ((title != null && !title!!.isBlank()))
 }

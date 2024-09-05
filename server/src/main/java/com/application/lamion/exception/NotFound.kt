@@ -1,15 +1,17 @@
-package com.application.lamion.exception;
+package com.application.lamion.exception
 
-public class NotFound {
-    public static final String DETAILS = "Not Found";
+class NotFound {
+    val details: String
 
-    public final String details;
-
-    public NotFound() {
-        details = DETAILS;
+    constructor() {
+        details = DETAILS
     }
 
-    public NotFound(String details) {
-        this.details = details;
+    constructor(details: String) {
+        this.details = details
+    }
+
+    companion object {
+        const val DETAILS: String = "Not Found"
     }
 }

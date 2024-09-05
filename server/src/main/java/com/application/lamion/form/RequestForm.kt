@@ -1,12 +1,13 @@
-package com.application.lamion.form;
+package com.application.lamion.form
 
-public class RequestForm {
-    public String device;
+class RequestForm {
+    var device: String? = null
 
-    public boolean isValid() {
-        if (device == null) return true;
+    val isValid: Boolean
+        get() {
+            if (device == null) return true
 
-        String d = device.strip();
-        return (d.length() > 0 && d.length() <= 50);
-    }
+            val d = device!!.trim()
+            return (d.length > 0 && d.length <= 50)
+        }
 }

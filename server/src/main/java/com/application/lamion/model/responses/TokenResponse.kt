@@ -1,16 +1,8 @@
-package com.application.lamion.model.responses;
+package com.application.lamion.model.responses
 
-import com.application.lamion.model.User;
+import com.application.lamion.model.User
 
-public class TokenResponse {
-    public User user;
-    public String token;
-
-    public TokenResponse() {
-    }
-
-    public TokenResponse(User user, String token) {
-        this.user = user;
-        this.token = token;
-    }
-}
+data class TokenResponse(
+    var user: User,
+    var token: String,
+)

@@ -1,130 +1,28 @@
-package com.application.lamion.model;
+package com.application.lamion.model
 
-import jakarta.persistence.*;
-
-import java.util.Date;
+import jakarta.persistence.*
+import java.util.*
 
 @Entity
 @Table(name = "app_analytics", schema = "public")
-public class AppAnalytics {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+class AppAnalytics(
+     id: Int? = null,
+
     @Column(name = "title")
-    private String title;
+    var title: String,
+
     @Column(name = "description")
-    private String description;
+    var description: String,
+
     @Column(name = "date")
-    private Date date;
+    var date: Date,
+
     @Column(name = "user_id")
-    private int userId;
+    var userId: Int,
+
     @Column(name = "events_count")
-    private long eventsCount;
+    var eventsCount: Long,
+
     @Column(name = "requests_count")
-    private long requestsCount;
-
-    public AppAnalytics() {
-    }
-
-    public AppAnalytics(int id, String title, String description, Date date, int userId, int eventsCount, int requestsCount) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.date = date;
-        this.userId = userId;
-        this.eventsCount = eventsCount;
-        this.requestsCount = requestsCount;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public long getEventsCount() {
-        return eventsCount;
-    }
-
-    public void setEventsCount(long eventsCount) {
-        this.eventsCount = eventsCount;
-    }
-
-    public long getRequestsCount() {
-        return requestsCount;
-    }
-
-    public void setRequestsCount(long requestsCount) {
-        this.requestsCount = requestsCount;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        AppAnalytics that = (AppAnalytics) o;
-
-        if (id != that.id) return false;
-        if (userId != that.userId) return false;
-        if (!title.equals(that.title)) return false;
-        return date.equals(that.date);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + title.hashCode();
-        result = 31 * result + date.hashCode();
-        result = 31 * result + (int) (userId ^ (userId >>> 32));
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "AppAnalytics{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", date=" + date +
-                ", userId=" + userId +
-                ", eventsCount=" + eventsCount +
-                ", requestsCount=" + requestsCount +
-                '}';
-    }
-}
+    var requestsCount: Long,
+) : BaseModel<Int>(id)

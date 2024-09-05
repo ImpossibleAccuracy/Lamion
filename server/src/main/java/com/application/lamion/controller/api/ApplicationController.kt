@@ -1,146 +1,145 @@
-package com.application.lamion.controller.api;
+package com.application.lamion.controller.api
 
-import com.application.lamion.exception.BadRequest;
-import com.application.lamion.exception.Forbidden;
-import com.application.lamion.exception.NotFound;
-import com.application.lamion.exception.Unauthorized;
-import com.application.lamion.form.AppForm;
-import com.application.lamion.model.App;
-import com.application.lamion.model.AppAnalytics;
-import com.application.lamion.model.User;
-import com.application.lamion.model.responses.AppCountResponse;
-import com.application.lamion.service.AppService;
-import com.application.lamion.util.TokenUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Date;
-import java.util.List;
+import com.application.lamion.exception.BadRequest
+import com.application.lamion.exception.Forbidden
+import com.application.lamion.exception.NotFound
+import com.application.lamion.exception.Unauthorized
+import com.application.lamion.form.AppForm
+import com.application.lamion.model.App
+import com.application.lamion.model.User
+import com.application.lamion.model.responses.AppCountResponse
+import com.application.lamion.service.AppService
+import com.application.lamion.util.TokenUtil
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.*
+import java.util.*
 
 @CrossOrigin
 @RestController
 @RequestMapping("/api/application")
-public class ApplicationController {
-    private static final String APPLICATION_ALREADY_EXISTS = "Application with such title already exist.";
-
-    private AppService service;
-    private TokenUtil tokenUtil;
-
-    @Autowired
-    public ApplicationController(AppService service, TokenUtil tokenUtil) {
-        this.service = service;
-        this.tokenUtil = tokenUtil;
-    }
-
+class ApplicationController @Autowired constructor(private val service: AppService, private val tokenUtil: TokenUtil) {
     @PostMapping
-    public ResponseEntity create(@RequestHeader("Authorization") String token,
-                                 @RequestBody AppForm form) {
-        User user = login(token);
-        if (user == null) {
-            return ResponseEntity.status(401).body(new Unauthorized());
-        }
+    fun create(
+        @RequestHeader("Authorization") token: String,
+        @RequestBody form: AppForm
+    ): ResponseEntity<*> {
+        val user = login(token)
+            ?: return ResponseEntity.status(401)
+                .body(Unauthorized())
 
-        if (form.isValid()) {
-            if (service.existsByTitleAndUserId(form.title, user.getId())) {
-                return ResponseEntity.badRequest().body(new BadRequest(APPLICATION_ALREADY_EXISTS));
+        if (form.isValid) {
+            if (service.existsByTitleAndUserId(form.title, user.id.toLong())) {
+                return ResponseEntity.badRequest().body(
+                    BadRequest(
+                        APPLICATION_ALREADY_EXISTS
+                    )
+                )
             }
 
-            App app = new App();
-            app.setTitle(form.title);
-            app.setDescription(form.description);
-            app.setDate(new Date());
-            app.setUserId(user.getId());
+            val app = App(
+                title = form.title!!,
+                description = form.description,
+                date = Date(),
+                userId = user.id,
+            )
 
-            service.create(app);
-            return ResponseEntity.ok(app);
+            service.create(app)
+            return ResponseEntity.ok(app)
         } else {
-            return ResponseEntity.badRequest().body(new BadRequest());
+            return ResponseEntity.badRequest().body(BadRequest())
         }
     }
 
     @GetMapping
-    public ResponseEntity list(@RequestHeader("Authorization") String token) {
-        User user = login(token);
-        if (user == null) {
-            return ResponseEntity.status(401).body(new Unauthorized());
-        }
+    fun list(@RequestHeader("Authorization") token: String): ResponseEntity<*> {
+        val user = login(token)
+            ?: return ResponseEntity.status(401)
+                .body(Unauthorized())
 
-        List<AppAnalytics> apps = service.get(user.getId());
-        return ResponseEntity.ok(apps);
+        val apps = service.get(user.id.toLong())
+        return ResponseEntity.ok(apps)
     }
 
     @GetMapping("/count")
-    public ResponseEntity count(@RequestHeader("Authorization") String token) {
-        User user = login(token);
-        if (user == null) {
-            return ResponseEntity.status(401).body(new Unauthorized());
-        }
+    fun count(@RequestHeader("Authorization") token: String): ResponseEntity<*> {
+        val user = login(token)
+            ?: return ResponseEntity.status(401)
+                .body(Unauthorized())
 
         return ResponseEntity.ok(
-            new AppCountResponse(
-                service.count(user.getId())));
+            AppCountResponse(
+                service.count(user.id.toLong())
+            )
+        )
     }
 
     @GetMapping("/{pk}")
-    public ResponseEntity retrieve(@RequestHeader("Authorization") String token,
-                                   @PathVariable(value = "pk") long pk) {
-        User user = login(token);
-        if (user == null) {
-            return ResponseEntity.status(401).body(new Unauthorized());
-        }
+    fun retrieve(
+        @RequestHeader("Authorization") token: String,
+        @PathVariable(value = "pk") pk: Long
+    ): ResponseEntity<*> {
+        val user = login(token)
+            ?: return ResponseEntity.status(401)
+                .body(Unauthorized())
 
-        if (service.hasAccess(pk, user.getId())) {
-            AppAnalytics app = service.find(pk);
-            return ResponseEntity.ok(app);
+        if (service.hasAccess(pk, user.id.toLong())) {
+            val app = service.find(pk)
+            return ResponseEntity.ok(app)
         } else {
-            return ResponseEntity.status(404).body(new NotFound());
+            return ResponseEntity.status(404).body(NotFound())
         }
     }
 
     @PutMapping("/{pk}")
-    public ResponseEntity update(@RequestHeader("Authorization") String token,
-                                 @PathVariable(value = "pk") long pk,
-                                 @RequestBody AppForm form) {
-        User user = login(token);
-        if (user == null) {
-            return ResponseEntity.status(401).body(new Unauthorized());
-        }
+    fun update(
+        @RequestHeader("Authorization") token: String,
+        @PathVariable(value = "pk") pk: Long,
+        @RequestBody form: AppForm
+    ): ResponseEntity<*> {
+        val user = login(token)
+            ?: return ResponseEntity.status(401)
+                .body(Unauthorized())
 
-        if (!form.isValid()) {
-            return ResponseEntity.badRequest().body(new BadRequest());
+        if (!form.isValid) {
+            return ResponseEntity.badRequest().body(BadRequest())
         }
 
         if (!service.exists(pk)) {
-            return ResponseEntity.status(404).body(new NotFound());
+            return ResponseEntity.status(404).body(NotFound())
         }
 
-        if (service.hasAccess(pk, user.getId())) {
-            App app = service.updateTitle(pk, form.title, form.description);
-            return ResponseEntity.ok(app);
+        if (service.hasAccess(pk, user.id.toLong())) {
+            val app = service.updateTitle(pk, form.title!!, form.description)
+            return ResponseEntity.ok(app)
         } else {
-            return ResponseEntity.status(403).body(new Forbidden());
+            return ResponseEntity.status(403).body(Forbidden())
         }
     }
 
     @DeleteMapping("/{pk}")
-    public ResponseEntity delete(@RequestHeader("Authorization") String token,
-                                 @PathVariable long pk) {
-        User user = login(token);
-        if (user == null) {
-            return ResponseEntity.status(401).body(new Unauthorized());
-        }
+    fun delete(
+        @RequestHeader("Authorization") token: String,
+        @PathVariable pk: Long
+    ): ResponseEntity<*> {
+        val user = login(token)
+            ?: return ResponseEntity.status(401)
+                .body(Unauthorized())
 
-        if (service.hasAccess(pk, user.getId())) {
-            System.out.println(pk);
-            service.delete(pk);
-            return ResponseEntity.noContent().build();
+        if (service.hasAccess(pk, user.id.toLong())) {
+            println(pk)
+            service.delete(pk)
+            return ResponseEntity.noContent().build<Any>()
         } else {
-            return ResponseEntity.status(404).body(new NotFound());
+            return ResponseEntity.status(404).body(NotFound())
         }
     }
 
-    private User login(String token) {
-        return tokenUtil.verify(token);
+    private fun login(token: String): User? {
+        return tokenUtil.verify(token)
+    }
+
+    companion object {
+        private const val APPLICATION_ALREADY_EXISTS = "Application with such title already exist."
     }
 }
