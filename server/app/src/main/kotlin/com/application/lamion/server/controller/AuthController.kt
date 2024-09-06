@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api")
 class AuthController @Autowired constructor(
     private val authService: AuthService,
 ) {

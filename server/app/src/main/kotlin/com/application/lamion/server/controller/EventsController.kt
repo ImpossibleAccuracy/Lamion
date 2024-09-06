@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/application/{app_pk}/event")
+@RequestMapping("/application/{app_pk}/event")
 class EventsController @Autowired constructor(
     private val appService: AppService,
     private val eventService: EventService,

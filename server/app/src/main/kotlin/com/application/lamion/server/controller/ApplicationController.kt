@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/application")
+@RequestMapping("/application")
 class ApplicationController @Autowired constructor(
     private val service: AppService
 ) {

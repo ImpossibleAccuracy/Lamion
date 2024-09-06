@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api")
 class MakeRequestController @Autowired constructor(
     private val appService: AppService,
     private val eventService: EventService,

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/application/{app_pk}/event/{event_pk}/request")
+@RequestMapping("/application/{app_pk}/event/{event_pk}/request")
 class RequestController @Autowired constructor(
     private val appService: AppService,
     private val eventService: EventService,
