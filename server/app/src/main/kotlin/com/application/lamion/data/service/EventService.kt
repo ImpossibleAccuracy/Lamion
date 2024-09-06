@@ -20,7 +20,7 @@ class EventService @Autowired constructor(
         app: AppDomain,
         title: String,
     ): EventDomain {
-        if (repository.existsByTitle(title)) {
+        if (repository.existsByTitleAndApplicationId(title, app.id)) {
             throw InvalidArgumentsException("Event with such title already exist")
         }
 

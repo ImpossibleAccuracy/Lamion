@@ -9,5 +9,5 @@ import java.util.*
 interface EventRepository : JpaRepository<EventDomain, Int> {
     fun findByTitleIgnoreCaseAndApplicationId(title: String, appId: Int): Optional<EventDomain>
 
-    fun existsByTitle(title: String): Boolean
+    fun existsByTitleAndApplicationId(title: String, appId: Int): Boolean
 }
