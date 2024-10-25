@@ -3,7 +3,7 @@ name: Deploy to Dev server
 on:
   push:
     branches:
-      - "develop"
+      - "master"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -33,6 +33,6 @@ jobs:
         uses: JorgeLNJunior/render-deploy@v1.4.4
         continue-on-error: true
         with:
-          service_id: ${{ secrets.DEV_SERVICE_ID }}
-          api_key: ${{ secrets.DEV_API_KEY }}
+          service_id: ${{ secrets.PROD_SERVICE_ID }}
+          api_key: ${{ secrets.PROD_API_KEY }}
           wait_deploy: true
