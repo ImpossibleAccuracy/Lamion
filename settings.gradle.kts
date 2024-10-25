@@ -18,4 +18,3 @@ dependencyResolutionManagement {
 }
 
 include(":server:app")
-include(":server:security")

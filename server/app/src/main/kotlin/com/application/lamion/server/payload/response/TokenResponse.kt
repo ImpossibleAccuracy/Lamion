@@ -1,8 +1,8 @@
 package com.application.lamion.server.payload.response
 
-import com.application.lamion.server.payload.dto.UserDto
+import com.application.lamion.server.payload.dto.AccountDto
 
 data class TokenResponse(
-    var user: UserDto,
+    var user: AccountDto,
     var token: String,
 )

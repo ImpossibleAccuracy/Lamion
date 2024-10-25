@@ -1,3 +1,3 @@
 package com.application.lamion.domain.exception
 
-class OperationDeniedException(message: String?) : ServiceException(message, 401)
+class OperationDeniedException(message: String?) : ServiceException(message, 403)

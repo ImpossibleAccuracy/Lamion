@@ -1,40 +1,36 @@
 package com.application.lamion.server.security
 
-import com.application.lamion.security.applyJwtSecurity
-import com.application.lamion.security.service.TokenService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.security.authentication.AuthenticationProvider
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity
-import org.springframework.security.config.annotation.web.builders.HttpSecurity
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
-import org.springframework.security.core.userdetails.UserDetailsService
-import org.springframework.security.web.SecurityFilterChain
+import org.springframework.security.authentication.ReactiveAuthenticationManager
+import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity
+import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity
+import org.springframework.security.config.web.server.ServerHttpSecurity
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+import org.springframework.security.crypto.password.PasswordEncoder
+import org.springframework.security.web.server.SecurityWebFilterChain
+import org.springframework.security.web.server.context.ServerSecurityContextRepository
 
 @Configuration
-@EnableWebSecurity
-@EnableMethodSecurity(securedEnabled = true, jsr250Enabled = true)
+@EnableWebFluxSecurity
+@EnableReactiveMethodSecurity
 class SecurityConfig(
-    private val tokenService: TokenService,
-    private val userDetailsService: UserDetailsService,
-    private val authenticationProvider: AuthenticationProvider
+    private val authenticationManager: ReactiveAuthenticationManager,
+    private val authenticationRepository: ServerSecurityContextRepository,
 ) {
     @Bean
-    @Throws(Exception::class)
-    fun filterChain(http: HttpSecurity): SecurityFilterChain {
-        http
-            .cors {
-                it.disable()
-            }
-            .csrf {
-                it.disable()
-            }
-            .authorizeHttpRequests {
-                it.anyRequest().permitAll()
-            }
-
-        http.applyJwtSecurity(tokenService, userDetailsService, authenticationProvider)
-
-        return http.build()
+    fun passwordEncoder(): PasswordEncoder {
+        return BCryptPasswordEncoder()
     }
+
+    @Bean
+    fun filterChain(http: ServerHttpSecurity): SecurityWebFilterChain =
+        http.authenticationManager(authenticationManager)
+            .securityContextRepository(authenticationRepository)
+            .csrf { it.disable() }
+            .cors { it.disable() }
+            .authorizeExchange {
+                it.anyExchange().permitAll()
+            }
+            .build()
 }

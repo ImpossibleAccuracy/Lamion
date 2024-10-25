@@ -1,3 +1,7 @@
 package com.application.lamion.domain.exception
 
-open class ServiceException(message: String?, val status: Int) : RuntimeException(message)
+import org.springframework.http.HttpStatusCode
+import org.springframework.web.server.ResponseStatusException
+
+open class ServiceException(message: String?, status: Int) :
+    ResponseStatusException(HttpStatusCode.valueOf(status), message)

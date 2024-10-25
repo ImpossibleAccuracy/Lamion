@@ -7,6 +7,5 @@ data class TokenProperties(
     var secret: String,
     var issuer: String,
     var audience: String,
-    var claimName: String,
     var ttl: Long,
 )

@@ -3,11 +3,13 @@ package com.application.lamion
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan
-import org.springframework.boot.context.properties.EnableConfigurationProperties
-import org.springframework.context.annotation.ComponentScan
+import org.springframework.web.reactive.config.EnableWebFlux
 
-@SpringBootApplication(scanBasePackages = ["com.application.lamion"])
-@ConfigurationPropertiesScan("com.application.lamion")
+const val BASE_PACKAGE = "com.application.lamion"
+
+@SpringBootApplication(scanBasePackages = [BASE_PACKAGE])
+@ConfigurationPropertiesScan(BASE_PACKAGE)
+@EnableWebFlux
 class LamionApplication
 
 fun main(args: Array<String>) {

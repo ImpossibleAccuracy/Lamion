@@ -1,9 +1,10 @@
 package com.application.lamion.server.controller
 
-import com.application.lamion.data.service.AuthService
+import com.application.lamion.data.service.AuthServiceImpl
 import com.application.lamion.server.mapper.toDto
-import com.application.lamion.server.payload.dto.UserDto
-import com.application.lamion.server.payload.request.AuthRequest
+import com.application.lamion.server.payload.dto.AccountDto
+import com.application.lamion.server.payload.request.SignInRequest
+import com.application.lamion.server.payload.request.SignUpRequest
 import com.application.lamion.server.payload.response.TokenResponse
 import com.application.lamion.server.security.UserHolder
 import jakarta.validation.Valid
@@ -13,17 +14,19 @@ import org.springframework.web.bind.annotation.*
 @CrossOrigin
 @RestController
 class AuthController @Autowired constructor(
-    private val authService: AuthService,
+    private val authService: AuthServiceImpl,
 ) {
-    @GetMapping("/user")
-    fun profile(): UserDto {
-        return UserHolder.getUserOrThrow().toDto()
-    }
+    @GetMapping("/me")
+    suspend fun profile(): AccountDto =
+        UserHolder.requireAccount().toDto()
 
-    @PostMapping("/login")
-    fun login(@Valid @RequestBody data: AuthRequest): TokenResponse =
+    @PostMapping("/signIn")
+    suspend fun signIn(@Valid @RequestBody data: SignInRequest): TokenResponse =
         authService
-            .signIn(data.email, data.password)
+            .signIn(
+                email = data.email,
+                password = data.password
+            )
             .let {
                 TokenResponse(
                     user = it.user.toDto(),
@@ -31,10 +34,14 @@ class AuthController @Autowired constructor(
                 )
             }
 
-    @PostMapping("/register")
-    fun register(@Valid @RequestBody data: AuthRequest): TokenResponse =
+    @PostMapping("/signUp")
+    suspend fun signUp(@Valid @RequestBody data: SignUpRequest): TokenResponse =
         authService
-            .signUp(data.email, data.password)
+            .signUp(
+                username = data.username,
+                email = data.email,
+                password = data.password
+            )
             .let {
                 TokenResponse(
                     user = it.user.toDto(),

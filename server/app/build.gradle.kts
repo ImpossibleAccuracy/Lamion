@@ -7,35 +7,42 @@ plugins {
 }
 
 allOpen {
-    annotation("jakarta.persistence.Entity")
-    annotation("jakarta.persistence.Embeddable")
-    annotation("jakarta.persistence.MappedSuperclass")
-    annotation("jakarta.persistence.Embeddable")
-    annotation("com.application.lamion.server.payload.dto.DTO")
+    annotation("org.springframework.data.relational.core.mapping.Table")
 }
 
-group = "com.application.lamion"
-version = "0.0.1"
-
 dependencies {
-    implementation(project(":server:security"))
-
+    // Kotlin
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlin.reflect)
 
+    // Coroutines
+    implementation(libs.coroutines.core)
+    implementation(libs.coroutines.reactor)
+
+    // Spring
     implementation(libs.spring.starter.boot)
-    implementation(libs.spring.starter.web)
-    implementation(libs.spring.starter.thymeleaf)
     implementation(libs.spring.starter.validation)
-    implementation(libs.spring.starter.jpa)
     implementation(libs.spring.starter.security)
     implementation(libs.spring.starter.actuator)
     developmentOnly(libs.spring.devtools)
 
+    // Web server
+    implementation(libs.spring.starter.web)
+    implementation(libs.netty.core)
+    implementation(libs.netty.http)
+    implementation(libs.reactor.kotlin)
+
+    // Swagger
     implementation(libs.spring.swagger.ui)
     implementation(libs.spring.swagger.api)
 
-    implementation(libs.postgresql.connector)
-    implementation(libs.bcrypt)
+    // Database
+    implementation(libs.spring.r2dbc)
+    implementation(libs.r2dbc.pool)
+    runtimeOnly(libs.postgresql)
+    runtimeOnly(libs.postgresql.r2dbc)
+
+    // Other
     implementation(libs.auth0)
+    implementation(libs.jackson)
 }
