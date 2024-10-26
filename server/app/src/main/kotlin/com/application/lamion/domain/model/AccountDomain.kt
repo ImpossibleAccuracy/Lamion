@@ -1,7 +1,20 @@
 package com.application.lamion.domain.model
 
-interface AccountDomain {
+sealed interface AccountDomain {
     val id: Id
-    val email: String
     val username: String
+    val avatar: Id?
+
+    data class Public(
+        override val id: Id,
+        override val username: String,
+        override val avatar: Id?,
+    ) : AccountDomain
+
+    data class Total(
+        override val id: Id,
+        override val username: String,
+        val email: String,
+        override val avatar: Id?,
+    ) : AccountDomain
 }

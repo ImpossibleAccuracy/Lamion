@@ -1,7 +1,7 @@
 package com.application.lamion.server.security.auth
 
-import com.application.lamion.domain.service.AuthService
-import com.application.lamion.domain.model.Authorization
+import com.application.lamion.domain.security.Authorization
+import com.application.lamion.domain.service.SecurityService
 import kotlinx.coroutines.reactor.mono
 import org.springframework.context.annotation.Lazy
 import org.springframework.security.authentication.ReactiveAuthenticationManager
@@ -14,13 +14,13 @@ import reactor.core.publisher.Mono
 @Lazy
 @Component
 class JwtAuthenticationManager(
-    private val authService: AuthService
+    private val securityService: SecurityService,
 ) : ReactiveAuthenticationManager {
     override fun authenticate(authentication: Authentication): Mono<Authentication> =
         mono {
             val jwtToken = authentication.credentials.toString()
 
-            authService
+            securityService
                 .authUser(jwtToken)
                 .let { getAuthorities(it) }
         }

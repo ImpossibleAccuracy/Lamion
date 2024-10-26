@@ -1,7 +1,7 @@
 package com.application.lamion.data.database.entity
 
 import com.application.lamion.data.database.entity.base.BaseEntity
-import com.application.lamion.domain.model.AccountRole
+import com.application.lamion.domain.security.AccountRole
 import org.springframework.data.relational.core.mapping.Column
 import org.springframework.data.relational.core.mapping.Table
 
