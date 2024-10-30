@@ -2,18 +2,18 @@ rootProject.name = "Lamion"
 
 pluginManagement {
     repositories {
-        google()
-        gradlePluginPortal()
         mavenCentral()
+        gradlePluginPortal()
+        google()
     }
 }
 
 dependencyResolutionManagement {
     @Suppress("UnstableApiUsage")
     repositories {
-        google()
-        gradlePluginPortal()
         mavenCentral()
+        gradlePluginPortal()
+        google()
     }
 }
 
