@@ -14,6 +14,7 @@ dependencies {
     // Kotlin
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlin.reflect)
+    implementation(libs.kotlin.datetime)
 
     // Coroutines
     implementation(libs.coroutines.core)
@@ -37,10 +38,12 @@ dependencies {
     implementation(libs.spring.swagger.api)
 
     // Database
-    implementation(libs.spring.r2dbc)
-    implementation(libs.r2dbc.pool)
+    implementation(libs.spring.exposed)
+    implementation(libs.exposed.core)
+    implementation(libs.exposed.dao)
+    implementation(libs.exposed.jdbc)
+    implementation(libs.exposed.datetime)
     runtimeOnly(libs.postgresql)
-    runtimeOnly(libs.postgresql.r2dbc)
 
     // Other
     implementation(libs.auth0)

@@ -10,17 +10,17 @@ sealed interface FeatureDomain {
     data class Partial(
         override val id: Id,
         override val title: String,
-        override val description: String,
+        override val description: String?,
     ) : FeatureDomain
 
     data class Detailed(
         override val id: Id,
         override val title: String,
-        override val description: String,
+        override val description: String?,
         val totalFunctions: Long,
         val totalEvents: Long,
         val errors: Long,
-        val topFunction: TopFunction,
+        val topFunctions: List<TopFunction>,
     ) : FeatureDomain {
         data class TopFunction(
             val id: Id,

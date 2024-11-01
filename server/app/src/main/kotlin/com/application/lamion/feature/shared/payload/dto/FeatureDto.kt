@@ -9,30 +9,30 @@ sealed interface FeatureDto {
     val description: String?
 
     data class Partial(
-        @field:JsonProperty("id")
+        @JsonProperty("id")
         override val id: Id,
 
-        @field:JsonProperty("title")
+        @JsonProperty("title")
         override val title: String,
 
-        @field:JsonProperty("description")
+        @JsonProperty("description")
         override val description: String?,
     ) : FeatureDto
 
     data class WithEvents(
-        @field:JsonProperty("id")
+        @JsonProperty("id")
         override val id: Id,
 
-        @field:JsonProperty("title")
+        @JsonProperty("title")
         override val title: String,
 
-        @field:JsonProperty("description")
+        @JsonProperty("description")
         override val description: String?,
 
-        @field:JsonProperty("total_events")
+        @JsonProperty("total_events")
         val totalEvents: Long,
 
-        @field:JsonProperty("total_events_percent")
+        @JsonProperty("total_events_percent")
         val totalEventsPercent: Long,
     ) : FeatureDto
 
@@ -43,7 +43,7 @@ sealed interface FeatureDto {
         val functionsCount: Long,
         val totalEvents: Long,
         val totalErrors: Long,
-        val topFunction: TopFunction,
+        val topFunction: List<TopFunction>,
     ) : FeatureDto {
         data class TopFunction(
             val id: Id,

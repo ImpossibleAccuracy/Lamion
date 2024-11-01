@@ -16,7 +16,7 @@ fun FeatureDomain.Detailed.toDto() = FeatureDto.Detailed(
     functionsCount = totalFunctions,
     totalEvents = totalEvents,
     totalErrors = errors,
-    topFunction = topFunction.let {
+    topFunction = topFunctions.map {
         FeatureDto.Detailed.TopFunction(
             id = it.id,
             title = it.title,

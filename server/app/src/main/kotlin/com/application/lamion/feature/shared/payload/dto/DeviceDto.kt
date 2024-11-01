@@ -8,27 +8,27 @@ sealed interface DeviceDto {
     val platform: String
 
     data class Partial(
-        @field:JsonProperty("title")
+        @JsonProperty("title")
         override val title: String,
 
-        @field:JsonProperty("activity")
+        @JsonProperty("activity")
         override val activity: ComparisonDto<Long>,
 
-        @field:JsonProperty("platform")
+        @JsonProperty("platform")
         override val platform: String
     ) : DeviceDto
 
     data class Detailed(
-        @field:JsonProperty("title")
+        @JsonProperty("title")
         override val title: String,
 
-        @field:JsonProperty("platform")
+        @JsonProperty("platform")
         override val platform: String,
 
-        @field:JsonProperty("activity")
+        @JsonProperty("activity")
         override val activity: ComparisonDto<Long>,
 
-        @field:JsonProperty("errors")
+        @JsonProperty("errors")
         val errors: ComparisonDto<Long>,
     ) : DeviceDto
 }

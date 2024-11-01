@@ -9,24 +9,12 @@ spring:
     username: ${DATABASE_USER}
     password: ${DATABASE_PASSWORD}
     url: ${DATABASE_URL}
-  security:
-    filter:
-      order: 10
-  jpa:
-    show-sql: false
-    hibernate:
-      ddl-auto: none
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-    properties:
-      hibernate:
-        format_sql: false
-        dialect: org.hibernate.dialect.PostgreSQLDialect
 
 app:
   token:
     secret: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     issuer: http://localhost/
     audience: http://localhost/
-    claimName: http://localhost/
     ttl: 604800000
+  resources:
+    resources-url: http://localhost:8080/TODO # TODO

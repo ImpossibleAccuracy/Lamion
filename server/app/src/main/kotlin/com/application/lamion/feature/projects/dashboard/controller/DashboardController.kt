@@ -9,14 +9,17 @@ import com.application.lamion.feature.projects.dashboard.controller.payload.Dash
 import com.application.lamion.feature.projects.dashboard.domain.service.DashboardService
 import com.application.lamion.feature.shared.mapper.toDto
 import com.application.lamion.feature.shared.security.secured
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import kotlinx.coroutines.async
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import java.time.LocalDate
 
 @RestController
 @RequestMapping("/project/{pId}/dashboard")
+@SecurityRequirement(name = "jwt")
 class DashboardController(
     private val projectService: ProjectService,
     private val dashboardService: DashboardService,
@@ -28,8 +31,8 @@ class DashboardController(
 
         val scalingDeferred = async { dashboardService.getScaling(project) }
         val topFeatures = async { dashboardService.getTopFeatures(project) }
-        val activity = async { activityService.getProjectActivity(project) }
-        val userActivityTime = async { activityService.getProjectUserActivityTime(project) }
+        val activity = async { activityService.getProjectActivity(project, LocalDate.now()) }
+        val userActivityTime = async { activityService.getUserActivityTime(LocalDate.now(), project) }
 
         val scaling = scalingDeferred.await()
 

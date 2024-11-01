@@ -5,7 +5,7 @@ import com.application.lamion.domain.model.ProjectDomain
 import com.application.lamion.domain.service.ProjectService
 
 interface ProjectFeatureService : ProjectService {
-    suspend fun create(account: AccountDomain, title: String, description: String?): ProjectDomain
+    suspend fun create(owner: AccountDomain, title: String, description: String?): ProjectDomain
 
     suspend fun list(account: AccountDomain): List<ProjectDomain>
 

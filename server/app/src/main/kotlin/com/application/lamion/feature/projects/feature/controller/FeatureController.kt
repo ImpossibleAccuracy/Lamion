@@ -14,10 +14,10 @@ import com.application.lamion.feature.projects.feature.controller.payload.respon
 import com.application.lamion.feature.projects.feature.domain.model.FeatureDomain
 import com.application.lamion.feature.projects.feature.domain.service.FeatureService
 import com.application.lamion.feature.projects.feature.domain.service.FunctionService
-import com.application.lamion.feature.shared.mapper.mapToDto
 import com.application.lamion.feature.shared.mapper.toDto
 import com.application.lamion.feature.shared.payload.dto.FeatureDto
 import com.application.lamion.feature.shared.security.secured
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import jakarta.validation.Valid
 import kotlinx.coroutines.async
 import org.springframework.http.HttpStatus
@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/project/{pId}/features")
+@SecurityRequirement(name = "jwt")
 class FeatureController(
     private val projectService: ProjectService,
     private val featureService: FeatureService,
@@ -103,13 +104,14 @@ class FeatureController(
                 count = count,
             )
             .let { data ->
-                TopFeaturesResponse(
+                TODO()
+                /*TopFeaturesResponse(
                     items = data.items.mapToDto { key, value ->
                         key.toPartialDto() to value
                     },
                     totalEvents = data.totalEvents,
                     avgEventsPerDay = data.avgEventsPerDay,
-                )
+                )*/
             }
     }
 

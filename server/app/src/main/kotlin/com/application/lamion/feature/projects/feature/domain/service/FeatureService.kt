@@ -3,7 +3,6 @@ package com.application.lamion.feature.projects.feature.domain.service
 import com.application.lamion.domain.model.*
 import com.application.lamion.feature.projects.feature.controller.payload.request.FeaturesSort
 import com.application.lamion.feature.projects.feature.domain.model.FeatureDomain
-import com.application.lamion.feature.projects.feature.domain.model.TopFeatures
 import java.time.LocalDate
 
 interface FeatureService {
@@ -15,7 +14,7 @@ interface FeatureService {
         functions: List<Id>,
     ): FeatureDomain.Partial
 
-    suspend fun checkExists(ids: List<Id>): Boolean
+    suspend fun checkFeaturesExists(project: ProjectDomain, featuresIds: List<Id>): Boolean
 
     suspend fun get(id: Id, project: ProjectDomain): FeatureDomain.Partial
 
@@ -23,7 +22,7 @@ interface FeatureService {
 
     suspend fun getTotalFeaturesCount(project: ProjectDomain): Long
 
-    suspend fun getTopFeatures(project: ProjectDomain, period: TimePeriod, count: Int): TopFeatures
+    suspend fun getTopFeatures(project: ProjectDomain, period: TimePeriod, count: Int): Map<FeatureDomain.Partial, Long>
 
     suspend fun list(
         project: ProjectDomain,

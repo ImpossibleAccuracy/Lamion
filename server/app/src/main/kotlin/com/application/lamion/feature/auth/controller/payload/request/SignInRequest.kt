@@ -4,11 +4,11 @@ import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
 
 data class SignInRequest(
-    @field:NotNull
-    @field:NotBlank
+    @NotNull
+    @NotBlank
     var email: String,
 
-    @field:NotNull
-    @field:NotBlank
+    @NotNull
+    @NotBlank
     var password: String,
 )

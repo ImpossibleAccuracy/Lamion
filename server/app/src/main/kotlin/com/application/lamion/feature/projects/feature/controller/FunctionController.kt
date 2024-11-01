@@ -10,10 +10,12 @@ import com.application.lamion.feature.projects.feature.domain.service.FeatureSer
 import com.application.lamion.feature.projects.feature.domain.service.FunctionService
 import com.application.lamion.feature.shared.payload.dto.FunctionDto
 import com.application.lamion.feature.shared.security.secured
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/project/{pId}/functions")
+@SecurityRequirement(name = "jwt")
 class FunctionController(
     private val projectService: ProjectService,
     private val featureService: FeatureService,
@@ -24,6 +26,7 @@ class FunctionController(
         @PathVariable("pId") projectId: Id,
         @RequestParam("p") page: Long,
     ): List<FunctionDto.Partial> = secured {
+        // TODO: change return type from List to Flow for entire project
         projectService
             .require(projectId, it.account)
             .let { project ->
@@ -45,7 +48,7 @@ class FunctionController(
             .require(projectId, it.account)
             .let { project ->
                 features?.let {
-                    if (featureService.checkExists(features)) {
+                    if (featureService.checkFeaturesExists(project, features)) {
                         throw InvalidArgumentsException("One or more feature was not found")
                     }
                 }

@@ -1,4 +1,4 @@
-package com.application.lamion.domain.properties
+package com.application.lamion.data.properties
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 

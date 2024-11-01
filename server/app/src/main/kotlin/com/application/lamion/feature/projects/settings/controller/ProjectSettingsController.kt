@@ -6,13 +6,15 @@ import com.application.lamion.feature.projects.settings.controller.payload.Proje
 import com.application.lamion.feature.projects.settings.domain.service.ProjectTokenService
 import com.application.lamion.feature.shared.payload.dto.TokenDto
 import com.application.lamion.feature.shared.security.secured
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/project/{pId}//settings")
+@RequestMapping("/project/{pId}/settings")
+@SecurityRequirement(name = "jwt")
 class ProjectSettingsController(
     private val projectService: ProjectService,
     private val projectTokenService: ProjectTokenService,

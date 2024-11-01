@@ -9,12 +9,14 @@ import com.application.lamion.feature.projects.activity.controller.payload.Activ
 import com.application.lamion.feature.projects.activity.domain.service.ActivityFeatureService
 import com.application.lamion.feature.shared.mapper.toDto
 import com.application.lamion.feature.shared.security.secured
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import kotlinx.coroutines.async
 import org.springframework.web.bind.annotation.*
 import java.time.LocalDate
 
 @RestController
 @RequestMapping("/project/{pId}/activity")
+@SecurityRequirement(name = "jwt")
 class ActivityController(
     private val projectService: ProjectService,
     private val activityService: ActivityFeatureService,
@@ -28,7 +30,7 @@ class ActivityController(
             .require(projectId, it.account)
             .let { project ->
                 activityService
-                    .getActivity(project, date)
+                    .getProjectActivity(project, date)
                     .map(CalendarItemDomain::toDto)
             }
             .let(::ActivityResponse)

@@ -5,12 +5,14 @@ import com.application.lamion.feature.account.payload.ProfileResponse
 import com.application.lamion.feature.shared.mapper.toTotalDto
 import com.application.lamion.feature.shared.payload.dto.AccountDto
 import com.application.lamion.server.security.UserHolder
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/account")
+@SecurityRequirement(name = "jwt")
 class AccountController(
     private val resourceManager: ResourceManager,
 ) {

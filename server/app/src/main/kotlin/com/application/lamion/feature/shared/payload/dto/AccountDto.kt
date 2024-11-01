@@ -9,27 +9,27 @@ sealed interface AccountDto {
     val avatar: String?
 
     data class Public(
-        @field:JsonProperty("id")
+        @JsonProperty("id")
         override val id: Id,
 
-        @field:JsonProperty("username")
+        @JsonProperty("username")
         override val username: String,
 
-        @field:JsonProperty("avatar")
+        @JsonProperty("avatar")
         override val avatar: String?,
     ) : AccountDto
 
     data class Total(
-        @field:JsonProperty("id")
+        @JsonProperty("id")
         override val id: Id,
 
-        @field:JsonProperty("username")
+        @JsonProperty("username")
         override val username: String,
 
-        @field:JsonProperty("email")
+        @JsonProperty("email")
         val email: String,
 
-        @field:JsonProperty("avatar")
+        @JsonProperty("avatar")
         override val avatar: String?,
     ) : AccountDto
 }

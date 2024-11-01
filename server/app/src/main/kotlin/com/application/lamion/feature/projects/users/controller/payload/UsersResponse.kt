@@ -8,21 +8,21 @@ import java.time.LocalDate
 import java.time.LocalTime
 
 data class UsersResponse(
-    @field:JsonProperty("total_users_chart")
+    @JsonProperty("total_users_chart")
     val totalUsersChart: ChartDto<LocalDate, Long>,
 
-    @field:JsonProperty("active_users_chart")
+    @JsonProperty("active_users_chart")
     val activeUsersChart: ChartDto<LocalDate, Long>,
 
-    @field:JsonProperty("growth_rate")
+    @JsonProperty("growth_rate")
     val growthRate: ComparisonDto<Double>,
 
-    @field:JsonProperty("user_activity_time")
+    @JsonProperty("user_activity_time")
     val userActivityTime: ChartDto<LocalTime, Long>,
 
-    @field:JsonProperty("platforms")
+    @JsonProperty("platforms")
     val platforms: ChartDto<String, Double>,
 
-    @field:JsonProperty("top_devices")
+    @JsonProperty("top_devices")
     val topDevices: List<DeviceDto.Partial>,
 )

@@ -8,32 +8,32 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import java.time.LocalTime
 
 data class DashboardResponse(
-    @field:JsonProperty("title")
+    @JsonProperty("title")
     val title: String,
 
-    @field:JsonProperty("scaling")
+    @JsonProperty("scaling")
     val scaling: Scaling,
 
-    @field:JsonProperty("top_features")
+    @JsonProperty("top_features")
     val topFeatures: List<FeatureDto.WithEvents>,
 
-    @field:JsonProperty("calendar")
+    @JsonProperty("calendar")
     val calendar: List<CalendarItemDto>,
 
-    @field:JsonProperty("user_activity_time")
+    @JsonProperty("user_activity_time")
     val userActivityTime: ChartDto<LocalTime, Long>
 ) {
     data class Scaling(
-        @field:JsonProperty("total_users")
+        @JsonProperty("total_users")
         val totalUsers: ComparisonDto<Long>,
 
-        @field:JsonProperty("active_uUsers")
+        @JsonProperty("active_uUsers")
         val activeUsers: ComparisonDto<Long>,
 
-        @field:JsonProperty("total_crashes")
+        @JsonProperty("total_crashes")
         val totalCrashes: ComparisonDto<Long>,
 
-        @field:JsonProperty("triggeredEvents")
+        @JsonProperty("triggeredEvents")
         val triggeredEvents: ComparisonDto<Long>,
     )
 }

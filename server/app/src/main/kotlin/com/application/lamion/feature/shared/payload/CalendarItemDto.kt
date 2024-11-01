@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import java.time.LocalDate
 
 data class CalendarItemDto(
-    @field:JsonProperty("date")
+    @JsonProperty("date")
     val date: LocalDate,
 
-    @field:JsonProperty("types")
-    val types: List<Type>
+    @JsonProperty("types")
+    val activity: Map<Type, Long>
 ) {
     enum class Type {
         USERS,

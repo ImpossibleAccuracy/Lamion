@@ -21,6 +21,8 @@ object UserHolder {
             }
             .awaitSingleOrNull()
 
-    suspend fun requireAccount(): AccountDomain.Total = currentUser()?.account
+    suspend fun getAccount(): AccountDomain.Total? = currentUser()?.account
+
+    suspend fun requireAccount(): AccountDomain.Total = getAccount()
         ?: throw OperationDeniedException("No authorization found")
 }

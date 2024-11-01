@@ -4,7 +4,7 @@ import java.time.LocalDate
 
 data class CalendarItemDomain(
     val date: LocalDate,
-    val types: List<Type>
+    val activity: Map<Type, Long>
 ) {
     enum class Type {
         USERS,

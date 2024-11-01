@@ -7,10 +7,12 @@ import com.application.lamion.feature.projects.users.domain.service.DeviceServic
 import com.application.lamion.feature.shared.mapper.toDto
 import com.application.lamion.feature.shared.payload.dto.DeviceDto
 import com.application.lamion.feature.shared.security.secured
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/project/{pId}/devices")
+@SecurityRequirement(name = "jwt")
 class DevicesController(
     private val projectService: ProjectService,
     private val deviceService: DeviceService,
