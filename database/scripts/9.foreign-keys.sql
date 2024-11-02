@@ -1,37 +1,37 @@
-ALTER TABLE File ADD FOREIGN KEY ("type_id") REFERENCES FileType ("id");
+ALTER TABLE file ADD FOREIGN KEY ("type_id") REFERENCES file_type ("id");
 
-ALTER TABLE Account ADD FOREIGN KEY ("avatar_id") REFERENCES File ("id");
+ALTER TABLE account ADD FOREIGN KEY ("avatar_id") REFERENCES file ("id");
 
-ALTER TABLE Role_Account ADD FOREIGN KEY ("role_id") REFERENCES Role ("id");
+ALTER TABLE role_account_ref ADD FOREIGN KEY ("role_id") REFERENCES role ("id");
 
-ALTER TABLE Role_Account ADD FOREIGN KEY ("account_id") REFERENCES Account ("id");
+ALTER TABLE role_account_ref ADD FOREIGN KEY ("account_id") REFERENCES account ("id");
 
-ALTER TABLE Project ADD FOREIGN KEY ("owner_id") REFERENCES Account ("id");
+ALTER TABLE project ADD FOREIGN KEY ("owner_id") REFERENCES account ("id");
 
-ALTER TABLE ProjectAccessKey ADD FOREIGN KEY ("project_id") REFERENCES Project ("id");
+ALTER TABLE project_access_key ADD FOREIGN KEY ("project_id") REFERENCES project ("id");
 
-ALTER TABLE ProjectDevice ADD FOREIGN KEY ("platform_id") REFERENCES DevicePlatform ("id");
+ALTER TABLE project_device ADD FOREIGN KEY ("platform_id") REFERENCES device_platform ("id");
 
-ALTER TABLE ProjectUser ADD FOREIGN KEY ("project_id") REFERENCES Project ("id");
+ALTER TABLE project_user ADD FOREIGN KEY ("project_id") REFERENCES project ("id");
 
-ALTER TABLE ProjectFunction ADD FOREIGN KEY ("project_id") REFERENCES Project ("id");
+ALTER TABLE project_function ADD FOREIGN KEY ("project_id") REFERENCES project ("id");
 
-ALTER TABLE Function_Tag ADD FOREIGN KEY ("tag_id") REFERENCES FunctionTag ("id");
+ALTER TABLE function_tag_ref ADD FOREIGN KEY ("tag_id") REFERENCES function_tag ("id");
 
-ALTER TABLE Function_Tag ADD FOREIGN KEY ("function_id") REFERENCES ProjectFunction ("id");
+ALTER TABLE function_tag_ref ADD FOREIGN KEY ("function_id") REFERENCES project_function ("id");
 
-ALTER TABLE ProjectFeature ADD FOREIGN KEY ("project_id") REFERENCES Project ("id");
+ALTER TABLE project_feature ADD FOREIGN KEY ("project_id") REFERENCES project ("id");
 
-ALTER TABLE Function_Feature ADD FOREIGN KEY ("feature_id") REFERENCES ProjectFeature ("id");
+ALTER TABLE function_feature_ref ADD FOREIGN KEY ("feature_id") REFERENCES project_feature ("id");
 
-ALTER TABLE Function_Feature ADD FOREIGN KEY ("function_id") REFERENCES ProjectFunction ("id");
+ALTER TABLE function_feature_ref ADD FOREIGN KEY ("function_id") REFERENCES project_function ("id");
 
-ALTER TABLE Event ADD FOREIGN KEY ("function_id") REFERENCES ProjectFunction ("id");
+ALTER TABLE event ADD FOREIGN KEY ("function_id") REFERENCES project_function ("id");
 
-ALTER TABLE Event ADD FOREIGN KEY ("user_id") REFERENCES ProjectUser ("id");
+ALTER TABLE event ADD FOREIGN KEY ("user_id") REFERENCES project_user ("id");
 
-ALTER TABLE Event ADD FOREIGN KEY ("device_id") REFERENCES ProjectDevice ("id");
+ALTER TABLE event ADD FOREIGN KEY ("device_id") REFERENCES project_device ("id");
 
-ALTER TABLE Error ADD FOREIGN KEY ("user_id") REFERENCES ProjectUser ("id");
+ALTER TABLE error ADD FOREIGN KEY ("user_id") REFERENCES project_user ("id");
 
-ALTER TABLE Error ADD FOREIGN KEY ("device_id") REFERENCES ProjectDevice ("id");
+ALTER TABLE error ADD FOREIGN KEY ("device_id") REFERENCES project_device ("id");

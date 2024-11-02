@@ -40,7 +40,7 @@ class ProjectController(
     // TODO: add update method
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @GetMapping("/{pId}")
+    @DeleteMapping("/{pId}")
     suspend fun delete(
         @PathVariable("pId") projectId: Id
     ): Unit = secured {

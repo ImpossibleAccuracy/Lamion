@@ -1,6 +1,6 @@
 package com.application.lamion.domain.model
 
-import java.time.LocalDate
+import kotlinx.datetime.LocalDate
 
 data class CalendarItemDomain(
     val date: LocalDate,

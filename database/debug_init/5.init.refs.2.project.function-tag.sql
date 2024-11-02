@@ -1,4 +1,4 @@
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (1, 1),
        (7, 1),
        (2, 2),
@@ -9,7 +9,7 @@ VALUES (1, 1),
        (10, 3),
        (8, 4),
        (9, 4);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (1, 4),
        (3, 5),
        (7, 5),
@@ -20,7 +20,7 @@ VALUES (1, 4),
        (2, 7),
        (8, 7),
        (10, 8);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (4, 8),
        (5, 9),
        (1, 9),
@@ -31,7 +31,7 @@ VALUES (4, 8),
        (1, 11),
        (3, 11),
        (4, 11);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (8, 12),
        (10, 12),
        (5, 12),
@@ -42,7 +42,7 @@ VALUES (8, 12),
        (1, 14),
        (10, 15),
        (1, 15);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (4, 16),
        (9, 16),
        (1, 17),
@@ -53,7 +53,7 @@ VALUES (4, 16),
        (1, 18),
        (1, 19),
        (6, 19);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (3, 19),
        (9, 20),
        (8, 20),
@@ -64,7 +64,7 @@ VALUES (3, 19),
        (3, 22),
        (9, 22),
        (5, 22);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (9, 23),
        (1, 23),
        (2, 23),
@@ -75,7 +75,7 @@ VALUES (9, 23),
        (7, 25),
        (10, 25),
        (4, 26);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (9, 26),
        (10, 27),
        (5, 27),
@@ -86,7 +86,7 @@ VALUES (9, 26),
        (7, 29),
        (4, 29),
        (2, 30);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (3, 30),
        (3, 31),
        (10, 31),
@@ -97,7 +97,7 @@ VALUES (3, 30),
        (1, 33),
        (6, 33),
        (7, 33);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (5, 34),
        (6, 34),
        (2, 34),
@@ -108,7 +108,7 @@ VALUES (5, 34),
        (1, 36),
        (3, 37),
        (5, 37);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (8, 37),
        (10, 38),
        (5, 38),
@@ -119,7 +119,7 @@ VALUES (8, 37),
        (10, 40),
        (7, 40),
        (4, 41);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (2, 41),
        (8, 41),
        (2, 42),
@@ -130,7 +130,7 @@ VALUES (2, 41),
        (8, 44),
        (10, 44),
        (6, 44);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (4, 45),
        (1, 45),
        (7, 45),
@@ -141,7 +141,7 @@ VALUES (4, 45),
        (7, 47),
        (1, 47),
        (7, 48);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (8, 48),
        (2, 48),
        (6, 49),
@@ -152,7 +152,7 @@ VALUES (8, 48),
        (4, 50),
        (10, 51),
        (5, 51);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (10, 52),
        (2, 52),
        (7, 52),
@@ -163,7 +163,7 @@ VALUES (10, 52),
        (4, 54),
        (2, 54),
        (2, 55);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (6, 55),
        (7, 55),
        (6, 56),
@@ -174,7 +174,7 @@ VALUES (6, 55),
        (6, 58),
        (1, 58),
        (2, 58);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (3, 59),
        (10, 59),
        (6, 60),
@@ -185,7 +185,7 @@ VALUES (3, 59),
        (2, 61),
        (1, 62),
        (3, 62);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (7, 63),
        (4, 63),
        (10, 63),
@@ -196,7 +196,7 @@ VALUES (7, 63),
        (6, 65),
        (6, 66),
        (9, 66);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (4, 66),
        (2, 67),
        (6, 67),
@@ -207,7 +207,7 @@ VALUES (4, 66),
        (3, 69),
        (9, 69),
        (5, 69);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (9, 70),
        (10, 70),
        (5, 70),
@@ -218,7 +218,7 @@ VALUES (9, 70),
        (7, 73),
        (2, 73),
        (3, 73);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (8, 74),
        (9, 74),
        (3, 74),
@@ -229,7 +229,7 @@ VALUES (8, 74),
        (7, 76),
        (1, 76),
        (7, 77);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (2, 77),
        (6, 77),
        (9, 78),
@@ -240,7 +240,7 @@ VALUES (2, 77),
        (1, 80),
        (9, 80),
        (5, 80);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (10, 81),
        (2, 81),
        (7, 81),
@@ -251,7 +251,7 @@ VALUES (10, 81),
        (8, 83),
        (8, 84),
        (4, 84);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (2, 84),
        (4, 85),
        (7, 85),
@@ -262,7 +262,7 @@ VALUES (2, 84),
        (8, 87),
        (2, 87),
        (7, 87);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (9, 88),
        (5, 88),
        (10, 89),
@@ -273,7 +273,7 @@ VALUES (9, 88),
        (3, 91),
        (9, 91),
        (6, 92);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (10, 92),
        (1, 92),
        (10, 93),
@@ -284,7 +284,7 @@ VALUES (10, 92),
        (8, 94),
        (7, 95),
        (9, 95);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (2, 95),
        (7, 96),
        (1, 96),
@@ -295,7 +295,7 @@ VALUES (2, 95),
        (3, 98),
        (7, 98),
        (1, 99);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (9, 99),
        (7, 99),
        (7, 100),
@@ -306,7 +306,7 @@ VALUES (9, 99),
        (7, 102),
        (10, 102),
        (9, 102);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (10, 103),
        (5, 103),
        (4, 103),
@@ -317,7 +317,7 @@ VALUES (10, 103),
        (4, 105),
        (8, 105),
        (6, 106);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (9, 106),
        (3, 106),
        (5, 107),
@@ -328,7 +328,7 @@ VALUES (9, 106),
        (6, 109),
        (9, 109),
        (8, 109);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (5, 110),
        (1, 110),
        (10, 111),
@@ -339,7 +339,7 @@ VALUES (5, 110),
        (2, 112),
        (4, 113),
        (9, 113);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (7, 113),
        (5, 114),
        (8, 114),
@@ -350,7 +350,7 @@ VALUES (7, 113),
        (1, 116),
        (5, 116),
        (2, 116);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (8, 117),
        (6, 117),
        (1, 117),
@@ -361,7 +361,7 @@ VALUES (8, 117),
        (7, 119),
        (6, 119),
        (1, 120);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (9, 120),
        (6, 120),
        (4, 121),
@@ -372,7 +372,7 @@ VALUES (9, 120),
        (10, 123),
        (1, 124),
        (9, 124);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (7, 125),
        (4, 125),
        (10, 125),
@@ -383,7 +383,7 @@ VALUES (7, 125),
        (10, 127),
        (7, 128),
        (3, 128);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (1, 129),
        (5, 129),
        (8, 130),
@@ -394,7 +394,7 @@ VALUES (1, 129),
        (10, 132),
        (7, 132),
        (2, 133);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (1, 133),
        (4, 134),
        (9, 134),
@@ -405,7 +405,7 @@ VALUES (1, 133),
        (5, 136),
        (9, 136),
        (8, 137);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (6, 137),
        (3, 137),
        (3, 138),
@@ -416,7 +416,7 @@ VALUES (6, 137),
        (4, 139),
        (6, 140),
        (9, 140);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (5, 140),
        (6, 141),
        (2, 141),
@@ -427,7 +427,7 @@ VALUES (5, 140),
        (10, 143),
        (9, 144),
        (6, 144);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (7, 144),
        (6, 145),
        (4, 145),
@@ -438,7 +438,7 @@ VALUES (7, 144),
        (8, 147),
        (9, 147),
        (4, 148);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (8, 148),
        (6, 148),
        (2, 149),
@@ -449,7 +449,7 @@ VALUES (8, 148),
        (2, 151),
        (1, 151),
        (8, 152);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (3, 152),
        (5, 152),
        (2, 153),
@@ -460,7 +460,7 @@ VALUES (3, 152),
        (7, 154),
        (7, 155),
        (9, 155);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (8, 155),
        (10, 156),
        (6, 156),
@@ -471,7 +471,7 @@ VALUES (8, 155),
        (7, 158),
        (4, 158),
        (2, 159);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (5, 159),
        (9, 159),
        (4, 160),
@@ -482,7 +482,7 @@ VALUES (5, 159),
        (9, 162),
        (4, 162),
        (5, 162);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (5, 163),
        (4, 163),
        (6, 163),
@@ -493,7 +493,7 @@ VALUES (5, 163),
        (4, 165),
        (5, 165),
        (1, 166);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (6, 166),
        (2, 166),
        (1, 167),
@@ -504,7 +504,7 @@ VALUES (6, 166),
        (4, 169),
        (9, 169),
        (10, 169);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (6, 170),
        (7, 170),
        (8, 170),
@@ -515,7 +515,7 @@ VALUES (6, 170),
        (10, 173),
        (9, 173),
        (4, 173);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (7, 174),
        (6, 174),
        (9, 175),
@@ -526,7 +526,7 @@ VALUES (7, 174),
        (4, 177),
        (1, 177),
        (7, 177);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (7, 178),
        (4, 178),
        (9, 178),
@@ -537,7 +537,7 @@ VALUES (7, 178),
        (5, 180),
        (1, 180),
        (1, 181);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (6, 181),
        (5, 181),
        (7, 182),
@@ -548,7 +548,7 @@ VALUES (6, 181),
        (1, 184),
        (5, 184),
        (7, 185);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (6, 185),
        (3, 185),
        (9, 186),
@@ -559,7 +559,7 @@ VALUES (6, 185),
        (2, 188),
        (9, 188),
        (6, 188);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (1, 189),
        (10, 189),
        (4, 189),
@@ -570,7 +570,7 @@ VALUES (1, 189),
        (5, 191),
        (2, 191),
        (3, 192);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (5, 192),
        (7, 192),
        (9, 193),
@@ -581,7 +581,7 @@ VALUES (5, 192),
        (2, 194),
        (4, 195),
        (3, 195);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (8, 196),
        (9, 196),
        (7, 196),
@@ -592,7 +592,7 @@ VALUES (8, 196),
        (10, 199),
        (8, 199),
        (1, 199);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (6, 200),
        (1, 200),
        (2, 200),
@@ -603,7 +603,7 @@ VALUES (6, 200),
        (3, 202),
        (4, 203),
        (5, 203);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (3, 203),
        (9, 204),
        (9, 205),
@@ -614,7 +614,7 @@ VALUES (3, 203),
        (1, 206),
        (8, 207),
        (6, 207);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (10, 207),
        (9, 208),
        (10, 208),
@@ -625,7 +625,7 @@ VALUES (10, 207),
        (4, 210),
        (2, 210),
        (6, 211);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (10, 211),
        (4, 211),
        (7, 212),
@@ -636,7 +636,7 @@ VALUES (10, 211),
        (10, 213),
        (6, 214),
        (10, 214);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (3, 214),
        (9, 215),
        (2, 215),
@@ -647,7 +647,7 @@ VALUES (3, 214),
        (10, 217),
        (2, 217),
        (5, 217);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (7, 218),
        (9, 218),
        (3, 219),
@@ -658,7 +658,7 @@ VALUES (7, 218),
        (8, 220),
        (4, 221),
        (3, 221);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (6, 221),
        (7, 222),
        (9, 222),
@@ -669,7 +669,7 @@ VALUES (6, 221),
        (3, 224),
        (9, 225),
        (8, 225);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (4, 225),
        (2, 226),
        (10, 226),
@@ -680,7 +680,7 @@ VALUES (4, 225),
        (9, 228),
        (6, 228),
        (5, 228);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (6, 229),
        (5, 229),
        (2, 230),
@@ -691,7 +691,7 @@ VALUES (6, 229),
        (3, 231),
        (2, 232),
        (6, 232);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (9, 233),
        (6, 233),
        (8, 233),
@@ -702,7 +702,7 @@ VALUES (9, 233),
        (2, 235),
        (8, 235),
        (1, 236);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (8, 236),
        (9, 236),
        (2, 237),
@@ -713,7 +713,7 @@ VALUES (8, 236),
        (4, 238),
        (4, 239),
        (3, 239);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (5, 239),
        (4, 240),
        (1, 240),
@@ -724,7 +724,7 @@ VALUES (5, 239),
        (5, 242),
        (6, 242),
        (9, 243);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (7, 243),
        (6, 243),
        (5, 244),
@@ -735,7 +735,7 @@ VALUES (7, 243),
        (6, 246),
        (7, 246),
        (3, 246);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (8, 247),
        (5, 247),
        (10, 247),
@@ -746,7 +746,7 @@ VALUES (8, 247),
        (9, 249),
        (2, 249),
        (4, 250);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (9, 250),
        (3, 250),
        (9, 251),
@@ -757,7 +757,7 @@ VALUES (9, 250),
        (1, 253),
        (9, 253),
        (6, 253);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (6, 254),
        (7, 254),
        (8, 255),
@@ -768,7 +768,7 @@ VALUES (6, 254),
        (5, 257),
        (9, 257),
        (4, 258);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (1, 258),
        (7, 258),
        (6, 259),
@@ -779,7 +779,7 @@ VALUES (1, 258),
        (7, 260),
        (5, 261),
        (2, 261);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (1, 262),
        (9, 262),
        (6, 263),
@@ -790,7 +790,7 @@ VALUES (1, 262),
        (7, 265),
        (1, 265),
        (4, 265);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (8, 266),
        (7, 266),
        (10, 266),
@@ -801,7 +801,7 @@ VALUES (8, 266),
        (6, 268),
        (4, 268),
        (5, 269);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (2, 269),
        (4, 269),
        (1, 270),
@@ -812,7 +812,7 @@ VALUES (2, 269),
        (8, 272),
        (5, 272),
        (10, 273);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (6, 273),
        (6, 274),
        (2, 274),
@@ -823,7 +823,7 @@ VALUES (6, 273),
        (1, 276),
        (5, 277),
        (10, 277);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (9, 277),
        (1, 278),
        (4, 278),
@@ -834,7 +834,7 @@ VALUES (9, 277),
        (9, 280),
        (3, 280),
        (1, 280);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (3, 281),
        (4, 281),
        (7, 281),
@@ -845,7 +845,7 @@ VALUES (3, 281),
        (10, 283),
        (2, 284),
        (10, 284);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (6, 284),
        (8, 285),
        (6, 285),
@@ -856,7 +856,7 @@ VALUES (6, 284),
        (9, 287),
        (10, 287),
        (3, 287);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (2, 288),
        (4, 288),
        (1, 288),
@@ -867,7 +867,7 @@ VALUES (2, 288),
        (9, 291),
        (7, 291),
        (2, 292);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (5, 292),
        (2, 293),
        (9, 293),
@@ -878,7 +878,7 @@ VALUES (5, 292),
        (9, 295),
        (3, 296),
        (1, 296);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (5, 296),
        (3, 297),
        (5, 297),
@@ -889,7 +889,7 @@ VALUES (5, 296),
        (10, 299),
        (5, 299),
        (9, 299);
-INSERT INTO function_tag (tag_id, function_id)
+INSERT INTO function_tag_ref (tag_id, function_id)
 VALUES (8, 300),
        (2, 300),
        (10, 300);

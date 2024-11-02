@@ -5,11 +5,11 @@ import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
 
 data class CreateProjectRequest(
-    @NotNull
-    @NotBlank
-    @JsonProperty("title")
+    @field:NotNull
+    @field:NotBlank
+    @field:JsonProperty("title")
     var title: String,
 
-    @JsonProperty("description")
+    @field:JsonProperty("description")
     var description: String?,
 )

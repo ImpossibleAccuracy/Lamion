@@ -4,12 +4,12 @@ import com.application.lamion.domain.model.Id
 import com.fasterxml.jackson.annotation.JsonProperty
 
 data class ProjectDto(
-    @JsonProperty("id")
+    @field:JsonProperty("id")
     val id: Id,
 
-    @JsonProperty("title")
+    @field:JsonProperty("title")
     val title: String,
 
-    @JsonProperty("description")
+    @field:JsonProperty("description")
     val description: String?,
 )

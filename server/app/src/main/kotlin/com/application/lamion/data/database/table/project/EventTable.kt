@@ -4,7 +4,7 @@ import org.jetbrains.exposed.dao.id.LongIdTable
 import org.jetbrains.exposed.sql.kotlin.datetime.CurrentDateTime
 import org.jetbrains.exposed.sql.kotlin.datetime.datetime
 
-object EventTable : LongIdTable("Event") {
+object EventTable : LongIdTable("event") {
     val createdAt = datetime("created_at").defaultExpression(CurrentDateTime)
     val function = reference("function_id", FunctionTable)
     val user = reference("user_id", UserTable)

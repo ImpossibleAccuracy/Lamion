@@ -9,6 +9,8 @@ spring:
     username: ${DATABASE_USER}
     password: ${DATABASE_PASSWORD}
     url: ${DATABASE_URL}
+  exposed:
+    show-sql: true
 
 app:
   token:

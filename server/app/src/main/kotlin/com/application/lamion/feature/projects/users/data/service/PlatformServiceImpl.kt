@@ -1,4 +1,4 @@
-package com.application.lamion.feature.projects.users.data
+package com.application.lamion.feature.projects.users.data.service
 
 import com.application.lamion.domain.model.ChartDomain
 import com.application.lamion.domain.model.ProjectDomain

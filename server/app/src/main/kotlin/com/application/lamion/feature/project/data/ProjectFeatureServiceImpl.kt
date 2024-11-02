@@ -7,21 +7,19 @@ import com.application.lamion.domain.model.Id
 import com.application.lamion.domain.model.ProjectDomain
 import com.application.lamion.feature.project.domain.ProjectFeatureService
 import com.application.lamion.feature.shared.utils.require
-import com.application.lamion.utils.ioCall
+import com.application.lamion.utils.dbQuery
 import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.deleteWhere
 import org.jetbrains.exposed.sql.selectAll
 import org.springframework.stereotype.Service
-import org.springframework.transaction.annotation.Transactional
 
 @Service
-@Transactional
 class ProjectFeatureServiceImpl : ProjectFeatureService {
     override suspend fun require(id: Id, account: AccountDomain): ProjectDomain =
         get(id, account).require { "Project not found" }
 
-    override suspend fun get(id: Id, account: AccountDomain): ProjectDomain? = ioCall {
+    override suspend fun get(id: Id, account: AccountDomain): ProjectDomain? = dbQuery {
         ProjectTable
             .selectAll()
             .where { ProjectTable.id eq id }
@@ -29,7 +27,11 @@ class ProjectFeatureServiceImpl : ProjectFeatureService {
             ?.toDomain()
     }
 
-    override suspend fun create(owner: AccountDomain, title: String, description: String?): ProjectDomain = ioCall {
+    override suspend fun create(
+        owner: AccountDomain,
+        title: String,
+        description: String?
+    ): ProjectDomain = dbQuery {
         ProjectTable
             .new {
                 it[ProjectTable.title] = title
@@ -39,14 +41,15 @@ class ProjectFeatureServiceImpl : ProjectFeatureService {
             .toDomain()
     }
 
-    override suspend fun list(account: AccountDomain): List<ProjectDomain> = ioCall {
+    override suspend fun list(account: AccountDomain): List<ProjectDomain> = dbQuery {
         ProjectTable
             .selectAll()
+            .where(ProjectTable.owner eq account.id)
             .toList()
             .map { it.toDomain() }
     }
 
-    override suspend fun delete(project: ProjectDomain, account: AccountDomain): Unit = ioCall {
+    override suspend fun delete(project: ProjectDomain, account: AccountDomain): Unit = dbQuery {
         ProjectTable.deleteWhere { ProjectTable.id eq project.id }
     }
 }

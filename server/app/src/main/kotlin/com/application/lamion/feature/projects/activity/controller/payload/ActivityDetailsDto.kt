@@ -2,8 +2,8 @@ package com.application.lamion.feature.projects.activity.controller.payload
 
 import com.application.lamion.feature.shared.payload.ChartDto
 import com.application.lamion.feature.shared.payload.dto.FeatureDto
-import java.time.LocalDate
-import java.time.LocalTime
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalTime
 
 data class ActivityDetailsDto(
     val date: LocalDate,

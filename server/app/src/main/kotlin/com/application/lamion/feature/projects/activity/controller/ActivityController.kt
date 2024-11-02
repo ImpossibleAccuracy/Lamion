@@ -9,10 +9,14 @@ import com.application.lamion.feature.projects.activity.controller.payload.Activ
 import com.application.lamion.feature.projects.activity.domain.service.ActivityFeatureService
 import com.application.lamion.feature.shared.mapper.toDto
 import com.application.lamion.feature.shared.security.secured
+import com.application.lamion.utils.atStartOfDay
+import com.application.lamion.utils.now
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import kotlinx.coroutines.async
+import kotlinx.datetime.DatePeriod
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.plus
 import org.springframework.web.bind.annotation.*
-import java.time.LocalDate
 
 @RestController
 @RequestMapping("/project/{pId}/activity")
@@ -22,7 +26,7 @@ class ActivityController(
     private val activityService: ActivityFeatureService,
 ) {
     @GetMapping("/full")
-    suspend fun dashboard(
+    suspend fun full(
         @PathVariable("pId") projectId: Id,
         @RequestParam("date", required = false) date: LocalDate = LocalDate.now(),
     ): ActivityResponse = secured {
@@ -45,8 +49,20 @@ class ActivityController(
             .require(projectId, it.account)
             .let { project ->
                 val detailsDeferred = async { activityService.details(date, project) }
-                val userActivity = async { activityService.getUserActivityTime(date, project) }
-                val topFeatures = async { activityService.getTopFeatures(date, project) }
+                val userActivity = async {
+                    activityService.getUserActivityTime(
+                        project = project,
+                        start = date,
+                        end = date,
+                    )
+                }
+                val topFeatures = async {
+                    activityService.getTopFeatures(
+                        project = project,
+                        start = date.atStartOfDay(),
+                        end = date.plus(DatePeriod(days = 1)).atStartOfDay()
+                    )
+                }
 
                 val details = detailsDeferred.await()
 

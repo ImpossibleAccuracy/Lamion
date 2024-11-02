@@ -1,4 +1,4 @@
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (1, 2),
        (1, 3),
        (2, 4),
@@ -9,7 +9,7 @@ VALUES (1, 2),
        (3, 9),
        (3, 10),
        (3, 11);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (4, 12),
        (4, 13),
        (4, 14),
@@ -20,7 +20,7 @@ VALUES (4, 12),
        (5, 19),
        (6, 20),
        (6, 21);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (6, 22),
        (6, 23),
        (7, 24),
@@ -31,7 +31,7 @@ VALUES (6, 22),
        (8, 29),
        (8, 30),
        (8, 31);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (9, 32),
        (9, 33),
        (9, 34),
@@ -42,7 +42,7 @@ VALUES (9, 32),
        (10, 39),
        (11, 40),
        (11, 41);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (11, 42),
        (11, 43),
        (12, 44),
@@ -53,7 +53,7 @@ VALUES (11, 42),
        (13, 49),
        (13, 50),
        (13, 51);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (14, 52),
        (14, 53),
        (14, 54),
@@ -64,7 +64,7 @@ VALUES (14, 52),
        (15, 59),
        (16, 60),
        (16, 61);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (16, 62),
        (16, 63),
        (17, 64),
@@ -75,7 +75,7 @@ VALUES (16, 62),
        (18, 69),
        (18, 70),
        (18, 71);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (19, 72),
        (19, 73),
        (19, 74),
@@ -86,7 +86,7 @@ VALUES (19, 72),
        (20, 79),
        (21, 80),
        (21, 81);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (21, 82),
        (21, 83),
        (22, 84),
@@ -97,7 +97,7 @@ VALUES (21, 82),
        (23, 89),
        (23, 90),
        (23, 91);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (24, 92),
        (24, 93),
        (24, 94),
@@ -108,7 +108,7 @@ VALUES (24, 92),
        (25, 99),
        (26, 100),
        (26, 101);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (26, 102),
        (26, 103),
        (27, 104),
@@ -119,7 +119,7 @@ VALUES (26, 102),
        (28, 109),
        (28, 110),
        (28, 111);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (29, 112),
        (29, 113),
        (29, 114),
@@ -130,7 +130,7 @@ VALUES (29, 112),
        (30, 119),
        (31, 120),
        (31, 121);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (31, 122),
        (31, 123),
        (32, 124),
@@ -141,7 +141,7 @@ VALUES (31, 122),
        (33, 129),
        (33, 130),
        (33, 131);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (34, 132),
        (34, 133),
        (34, 134),
@@ -152,7 +152,7 @@ VALUES (34, 132),
        (35, 139),
        (36, 140),
        (36, 141);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (36, 142),
        (36, 143),
        (37, 144),
@@ -163,7 +163,7 @@ VALUES (36, 142),
        (38, 149),
        (38, 150),
        (38, 151);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (39, 152),
        (39, 153),
        (39, 154),
@@ -174,7 +174,7 @@ VALUES (39, 152),
        (40, 159),
        (41, 160),
        (41, 161);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (41, 162),
        (41, 163),
        (42, 164),
@@ -185,7 +185,7 @@ VALUES (41, 162),
        (43, 169),
        (43, 170),
        (43, 171);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (44, 172),
        (44, 173),
        (44, 174),
@@ -196,7 +196,7 @@ VALUES (44, 172),
        (45, 179),
        (46, 180),
        (46, 181);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (46, 182),
        (46, 183),
        (47, 184),
@@ -207,7 +207,7 @@ VALUES (46, 182),
        (48, 189),
        (48, 190),
        (48, 191);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (49, 192),
        (49, 193),
        (49, 194),
@@ -218,7 +218,7 @@ VALUES (49, 192),
        (50, 199),
        (51, 200),
        (51, 201);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (51, 202),
        (51, 203),
        (52, 204),
@@ -229,7 +229,7 @@ VALUES (51, 202),
        (53, 209),
        (53, 210),
        (53, 211);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (54, 212),
        (54, 213),
        (54, 214),
@@ -240,7 +240,7 @@ VALUES (54, 212),
        (55, 219),
        (56, 220),
        (56, 221);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (56, 222),
        (56, 223),
        (57, 224),
@@ -251,7 +251,7 @@ VALUES (56, 222),
        (58, 229),
        (58, 230),
        (58, 231);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (59, 232),
        (59, 233),
        (59, 234),
@@ -262,7 +262,7 @@ VALUES (59, 232),
        (60, 239),
        (61, 240),
        (61, 241);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (61, 242),
        (61, 243),
        (62, 244),
@@ -273,7 +273,7 @@ VALUES (61, 242),
        (63, 249),
        (63, 250),
        (63, 251);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (64, 252),
        (64, 253),
        (64, 254),
@@ -284,7 +284,7 @@ VALUES (64, 252),
        (65, 259),
        (66, 260),
        (66, 261);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (66, 262),
        (66, 263),
        (67, 264),
@@ -295,7 +295,7 @@ VALUES (66, 262),
        (68, 269),
        (68, 270),
        (68, 271);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (69, 272),
        (69, 273),
        (69, 274),
@@ -306,7 +306,7 @@ VALUES (69, 272),
        (69, 279),
        (69, 280),
        (70, 281);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (70, 282),
        (70, 283),
        (70, 284),
@@ -317,7 +317,7 @@ VALUES (70, 282),
        (70, 292),
        (70, 293),
        (70, 294);
-INSERT INTO function_feature (feature_id, function_id)
+INSERT INTO function_feature_ref (feature_id, function_id)
 VALUES (70, 295),
        (70, 296),
        (70, 297),

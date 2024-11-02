@@ -9,30 +9,30 @@ sealed interface FeatureDto {
     val description: String?
 
     data class Partial(
-        @JsonProperty("id")
+        @field:JsonProperty("id")
         override val id: Id,
 
-        @JsonProperty("title")
+        @field:JsonProperty("title")
         override val title: String,
 
-        @JsonProperty("description")
+        @field:JsonProperty("description")
         override val description: String?,
     ) : FeatureDto
 
     data class WithEvents(
-        @JsonProperty("id")
+        @field:JsonProperty("id")
         override val id: Id,
 
-        @JsonProperty("title")
+        @field:JsonProperty("title")
         override val title: String,
 
-        @JsonProperty("description")
+        @field:JsonProperty("description")
         override val description: String?,
 
-        @JsonProperty("total_events")
+        @field:JsonProperty("total_events")
         val totalEvents: Long,
 
-        @JsonProperty("total_events_percent")
+        @field:JsonProperty("total_events_percent")
         val totalEventsPercent: Long,
     ) : FeatureDto
 

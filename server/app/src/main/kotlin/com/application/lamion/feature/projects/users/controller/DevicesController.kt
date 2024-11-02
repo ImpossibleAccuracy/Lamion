@@ -20,15 +20,15 @@ class DevicesController(
     @GetMapping
     suspend fun list(
         @PathVariable("pId") projectId: Id,
-        @RequestParam("period") period: TimePeriod,
-        @RequestParam("p") page: Long,
+        @RequestParam("period", required = false) period: TimePeriod = TimePeriod.DEFAULT,
+        @RequestParam("p", required = false) page: Long = 0,
     ): List<DeviceDto.Detailed> = secured {
         projectService
             .require(projectId, it.account)
             .let { project ->
                 deviceService.getDevices(
                     project = project,
-                    period = period,
+                    dateRange = period.toDateRange(),
                     page = page
                 )
             }

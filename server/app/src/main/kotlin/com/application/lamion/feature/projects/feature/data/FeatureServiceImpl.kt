@@ -10,18 +10,16 @@ import com.application.lamion.feature.projects.feature.controller.payload.reques
 import com.application.lamion.feature.projects.feature.domain.model.FeatureDomain
 import com.application.lamion.feature.projects.feature.domain.service.FeatureService
 import com.application.lamion.feature.shared.utils.require
+import com.application.lamion.utils.toDateTime
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
-import kotlinx.datetime.Clock.System.now
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toLocalDateTime
+import kotlinx.datetime.LocalDate
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.inList
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import java.time.LocalDate
 
 @Service
 @Transactional
@@ -96,8 +94,7 @@ class FeatureServiceImpl : FeatureService {
         period: TimePeriod,
         count: Int
     ): Map<FeatureDomain.Partial, Long> {
-        // TODO: compute from [period]
-        val periodStartDate = now().toLocalDateTime(TimeZone.UTC)
+        val periodStartDate = period.toLocalDate().toDateTime()
 
         val eventsCountQuery = EventTable.id.count().alias("eventsCount")
 

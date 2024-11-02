@@ -4,7 +4,7 @@ import org.jetbrains.exposed.dao.id.LongIdTable
 import org.jetbrains.exposed.sql.kotlin.datetime.CurrentDateTime
 import org.jetbrains.exposed.sql.kotlin.datetime.datetime
 
-object ProjectAccessKeyTable : LongIdTable("ProjectAccessKey") {
+object ProjectAccessKeyTable : LongIdTable("project_access_key") {
     val createdAt = datetime("created_at").defaultExpression(CurrentDateTime)
     val title = varchar("title", 255)
     val value = varchar("value", 255)

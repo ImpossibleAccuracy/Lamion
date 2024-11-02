@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component
 import org.springframework.web.server.ServerWebExchange
 import reactor.core.publisher.Mono
 
+private const val BEARER_PREFIX = "Bearer "
+
 @Component
 class JwtSecurityContextRepository(
     private val authenticationManager: ReactiveAuthenticationManager,
@@ -25,6 +27,8 @@ class JwtSecurityContextRepository(
         val headers = exchange.request.headers
 
         val token = headers.getFirst(AuthConstants.AUTH_HEADER)
+            ?.takeIf { it.startsWith(BEARER_PREFIX) }
+            ?.substring(BEARER_PREFIX.length)
             ?: return Mono.empty()
 
         val auth = UsernamePasswordAuthenticationToken(token, token)

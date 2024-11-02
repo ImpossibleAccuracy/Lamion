@@ -3,7 +3,7 @@ package com.application.lamion.feature.projects.feature.domain.service
 import com.application.lamion.domain.model.*
 import com.application.lamion.feature.projects.feature.controller.payload.request.FeaturesSort
 import com.application.lamion.feature.projects.feature.domain.model.FeatureDomain
-import java.time.LocalDate
+import kotlinx.datetime.LocalDate
 
 interface FeatureService {
     suspend fun create(

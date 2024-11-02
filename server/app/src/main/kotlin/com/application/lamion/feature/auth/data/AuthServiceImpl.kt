@@ -14,12 +14,11 @@ import com.application.lamion.domain.security.Authorization
 import com.application.lamion.feature.auth.domain.model.AuthResult
 import com.application.lamion.feature.auth.domain.service.AuthService
 import com.application.lamion.feature.shared.utils.require
-import kotlinx.coroutines.Dispatchers
+import com.application.lamion.utils.dbQuery
 import org.jetbrains.exposed.sql.JoinType
 import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.selectAll
-import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransaction
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
@@ -29,7 +28,7 @@ class AuthServiceImpl @Autowired constructor(
     private val tokenService: TokenService,
     private val passwordEncoder: PasswordEncoder,
 ) : AuthService {
-    override suspend fun authUser(token: String): Authorization = newSuspendedTransaction(Dispatchers.IO) {
+    override suspend fun authUser(token: String): Authorization = dbQuery {
         val subject = tokenService.extractSubject(token)?.toLongOrNull()
             ?: throw UnauthorizedException("Token invalid or expired")
 
@@ -52,7 +51,7 @@ class AuthServiceImpl @Autowired constructor(
         Authorization(account, roles)
     }
 
-    override suspend fun signIn(email: String, password: String): AuthResult = newSuspendedTransaction(Dispatchers.IO) {
+    override suspend fun signIn(email: String, password: String): AuthResult = dbQuery {
         AccountTable
             .selectAll()
             .where { AccountTable.email eq email }
@@ -71,7 +70,7 @@ class AuthServiceImpl @Autowired constructor(
     }
 
     override suspend fun signUp(username: String, email: String, password: String): AuthResult =
-        newSuspendedTransaction(Dispatchers.IO) {
+        dbQuery {
             AccountTable
                 .select(AccountTable.id)
                 .where { AccountTable.email eq email }

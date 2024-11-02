@@ -1,6 +1,6 @@
 package com.application.lamion.feature.projects.activity.domain.model
 
-import java.time.LocalDate
+import kotlinx.datetime.LocalDate
 
 data class ActivityDetails(
     val date: LocalDate,

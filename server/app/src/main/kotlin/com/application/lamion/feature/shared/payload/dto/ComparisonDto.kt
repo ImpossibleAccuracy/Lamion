@@ -3,9 +3,9 @@ package com.application.lamion.feature.shared.payload.dto
 import com.fasterxml.jackson.annotation.JsonProperty
 
 data class ComparisonDto<T>(
-    @JsonProperty("actual")
+    @field:JsonProperty("actual")
     val actual: T,
 
-    @JsonProperty("past")
+    @field:JsonProperty("past")
     val past: T,
 )
