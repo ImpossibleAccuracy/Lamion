@@ -4,36 +4,39 @@ import com.application.lamion.feature.shared.payload.CalendarItemDto
 import com.application.lamion.feature.shared.payload.ChartDto
 import com.application.lamion.feature.shared.payload.dto.ComparisonDto
 import com.application.lamion.feature.shared.payload.dto.FeatureDto
-import com.fasterxml.jackson.annotation.JsonProperty
 import kotlinx.datetime.LocalTime
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class DashboardResponse(
-    @field:JsonProperty("title")
+    @SerialName("title")
     val title: String,
 
-    @field:JsonProperty("scaling")
+    @SerialName("scaling")
     val scaling: Scaling,
 
-    @field:JsonProperty("top_features")
+    @SerialName("top_features")
     val topFeatures: List<FeatureDto.WithEvents>,
 
-    @field:JsonProperty("calendar")
+    @SerialName("calendar")
     val calendar: List<CalendarItemDto>,
 
-    @field:JsonProperty("user_activity_time")
+    @SerialName("user_activity_time")
     val userActivityTime: ChartDto<LocalTime, Long>
 ) {
+    @Serializable
     data class Scaling(
-        @field:JsonProperty("total_users")
+        @SerialName("total_users")
         val totalUsers: ComparisonDto<Long>,
 
-        @field:JsonProperty("active_users")
+        @SerialName("active_users")
         val activeUsers: ComparisonDto<Long>,
 
-        @field:JsonProperty("total_crashes")
+        @SerialName("total_crashes")
         val totalCrashes: ComparisonDto<Long>,
 
-        @field:JsonProperty("triggered_events")
+        @SerialName("triggered_events")
         val triggeredEvents: ComparisonDto<Long>,
     )
 }

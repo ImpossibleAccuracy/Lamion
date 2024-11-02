@@ -5,5 +5,5 @@ data class FeatureWithEvents(
     val title: String,
     val description: String?,
     val totalEvents: Long,
-    val totalEventsPercent: Long,
+    val totalEventsPercent: Double,
 )

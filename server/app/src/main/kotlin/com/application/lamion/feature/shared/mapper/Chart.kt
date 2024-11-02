@@ -5,17 +5,17 @@ import com.application.lamion.feature.shared.payload.ChartDto
 import com.application.lamion.feature.shared.payload.ChartItemDto
 
 fun <K, T> ChartDomain<K, T>.toDto(): List<ChartItemDto<K, T>> =
-    items.map {
+    map {
         ChartItemDto(
-            date = it.date,
+            date = it.key,
             value = it.value,
         )
     }
 
 fun <K, T, K2, T2> ChartDomain<K, T>.mapToDto(
     mapper: (K, T) -> Pair<K2, T2>,
-): ChartDto<K2, T2> = items.map { item ->
-    mapper(item.date, item.value).let {
+): ChartDto<K2, T2> = map { item ->
+    mapper(item.key, item.value).let {
         ChartItemDto(
             date = it.first,
             value = it.second,

@@ -17,7 +17,8 @@ object ActivityDataSource {
         eventsCountQuery: Expression<Long>,
         projectId: Id,
         start: LocalDateTime,
-        end: LocalDateTime
+        end: LocalDateTime,
+        count: Int,
     ) = FeatureTable
         .innerJoin(FeatureFunctionRef)
         .innerJoin(FunctionTable)
@@ -32,5 +33,6 @@ object ActivityDataSource {
         )
         .groupBy(*FeatureTable.columns.toTypedArray())
         .orderBy(eventsCountQuery, SortOrder.DESC)
+        .limit(count)
         .toList()
 }

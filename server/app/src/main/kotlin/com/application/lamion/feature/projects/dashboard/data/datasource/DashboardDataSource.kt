@@ -21,7 +21,7 @@ object DashboardDataSource {
         .select(UserTable.id)
         .where(
             ProjectTable.id.eq(projectId)
-                .and(ProjectTable.createdAt.between(start, end))
+                .and(UserTable.createdAt.between(start, end))
         )
         .count()
 
@@ -34,29 +34,28 @@ object DashboardDataSource {
         val eventsCount = EventTable.id.count()
 
         return UserTable
-            .innerJoin(ProjectTable)
             .innerJoin(EventTable)
             .select(UserTable.id)
             .where(
-                ProjectTable.id.eq(projectId)
+                UserTable.project.eq(projectId)
                     .and(EventTable.createdAt.between(start, end))
             )
             .having {
                 eventsCount greaterEq minEventsToActive
             }
+            .groupBy(UserTable.id)
             .count()
     }
 
-    fun getCrashesCountByCreatedBetween(
+    fun getErrorsCountByCreatedBetween(
         projectId: Id,
         start: LocalDateTime,
         end: LocalDateTime,
     ) = ErrorTable
         .innerJoin(UserTable)
-        .innerJoin(ProjectTable)
         .select(ErrorTable.id)
         .where(
-            ProjectTable.id.eq(projectId)
+            UserTable.project.eq(projectId)
                 .and(ErrorTable.createdAt.between(start, end))
         )
         .count()

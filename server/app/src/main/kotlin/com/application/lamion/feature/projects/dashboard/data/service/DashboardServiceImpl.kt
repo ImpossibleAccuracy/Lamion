@@ -9,6 +9,7 @@ import com.application.lamion.feature.projects.dashboard.domain.model.ProjectSca
 import com.application.lamion.feature.projects.dashboard.domain.service.DashboardService
 import com.application.lamion.utils.asyncDbQuery
 import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -22,21 +23,21 @@ class DashboardServiceImpl : DashboardService {
     override suspend fun getScaling(
         project: ProjectDomain,
         dateRange: DateRange,
-    ): ProjectScaling {
-        val users = asyncDbQuery {
-            val actual = async {
-                DashboardDataSource.getTotalUsersCountByCreatedBetween(
-                    projectId = project.id,
-                    start = dateRange.firstStart,
-                    end = dateRange.firstEnd,
-                )
-            }
-
-            val past = async {
+    ): ProjectScaling = coroutineScope {
+        val users = async {
+            val actual = asyncDbQuery {
                 DashboardDataSource.getTotalUsersCountByCreatedBetween(
                     projectId = project.id,
                     start = dateRange.finishStart,
                     end = dateRange.finishEnd,
+                )
+            }
+
+            val past = asyncDbQuery {
+                DashboardDataSource.getTotalUsersCountByCreatedBetween(
+                    projectId = project.id,
+                    start = dateRange.firstStart,
+                    end = dateRange.firstEnd,
                 )
             }
 
@@ -46,17 +47,8 @@ class DashboardServiceImpl : DashboardService {
             )
         }
 
-        val activeUsers = asyncDbQuery {
-            val actual = async {
-                DashboardDataSource.getActiveUsersCountByCreatedBetween(
-                    projectId = project.id,
-                    start = dateRange.firstStart,
-                    end = dateRange.firstEnd,
-                    minEventsToActive = ACTIVE_USERS_MIN_EVENTS,
-                )
-            }
-
-            val past = async {
+        val activeUsers = async {
+            val actual = asyncDbQuery {
                 DashboardDataSource.getActiveUsersCountByCreatedBetween(
                     projectId = project.id,
                     start = dateRange.finishStart,
@@ -65,37 +57,54 @@ class DashboardServiceImpl : DashboardService {
                 )
             }
 
+            val past = asyncDbQuery {
+                DashboardDataSource.getActiveUsersCountByCreatedBetween(
+                    projectId = project.id,
+                    start = dateRange.firstStart,
+                    end = dateRange.firstEnd,
+                    minEventsToActive = ACTIVE_USERS_MIN_EVENTS,
+                )
+            }
+
             ComparisonDomain(
                 actual = actual.await(),
                 past = past.await(),
             )
         }
 
-        val errors = asyncDbQuery {
-            val actual = async {
-                DashboardDataSource.getCrashesCountByCreatedBetween(
-                    projectId = project.id,
-                    start = dateRange.firstStart,
-                    end = dateRange.firstEnd,
-                )
-            }
-
-            val past = async {
-                DashboardDataSource.getCrashesCountByCreatedBetween(
+        val errors = async {
+            val actual = asyncDbQuery {
+                DashboardDataSource.getErrorsCountByCreatedBetween(
                     projectId = project.id,
                     start = dateRange.finishStart,
                     end = dateRange.finishEnd,
                 )
             }
 
+            val past = asyncDbQuery {
+                DashboardDataSource.getErrorsCountByCreatedBetween(
+                    projectId = project.id,
+                    start = dateRange.firstStart,
+                    end = dateRange.firstEnd,
+                )
+            }
+
             ComparisonDomain(
                 actual = actual.await(),
                 past = past.await(),
             )
         }
 
-        val events = asyncDbQuery {
-            val actual = async {
+        val events = async {
+            val actual = asyncDbQuery {
+                EventDataSource.getEventsCountByCreatedBetween(
+                    projectId = project.id,
+                    start = dateRange.finishStart,
+                    end = dateRange.finishEnd,
+                )
+            }
+
+            val past = asyncDbQuery {
                 EventDataSource.getEventsCountByCreatedBetween(
                     projectId = project.id,
                     start = dateRange.firstStart,
@@ -103,21 +112,13 @@ class DashboardServiceImpl : DashboardService {
                 )
             }
 
-            val past = async {
-                EventDataSource.getEventsCountByCreatedBetween(
-                    projectId = project.id,
-                    start = dateRange.finishStart,
-                    end = dateRange.finishEnd,
-                )
-            }
-
             ComparisonDomain(
                 actual = actual.await(),
                 past = past.await(),
             )
         }
 
-        return ProjectScaling(
+        return@coroutineScope ProjectScaling(
             totalUsers = users.await(),
             activeUsers = activeUsers.await(),
             totalCrashes = errors.await(),

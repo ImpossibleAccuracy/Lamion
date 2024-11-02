@@ -2,6 +2,8 @@ package com.application.lamion.feature.projects.activity.data.service
 
 import com.application.lamion.data.database.table.project.EventTable
 import com.application.lamion.data.database.table.project.FeatureTable
+import com.application.lamion.data.database.table.project.FunctionTable
+import com.application.lamion.data.database.utils.datePart
 import com.application.lamion.data.datasource.EventDataSource
 import com.application.lamion.domain.model.CalendarItemDomain
 import com.application.lamion.domain.model.ChartDomain
@@ -12,10 +14,14 @@ import com.application.lamion.feature.projects.activity.domain.model.ActivityDet
 import com.application.lamion.feature.projects.activity.domain.service.ActivityFeatureService
 import com.application.lamion.utils.dbQuery
 import com.application.lamion.utils.now
+import com.application.lamion.utils.toDateTime
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.between
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.alias
+import org.jetbrains.exposed.sql.and
 import org.jetbrains.exposed.sql.count
 import org.springframework.stereotype.Service
 
@@ -41,7 +47,8 @@ class ActivityFeatureServiceImpl : ActivityFeatureService {
     override suspend fun getTopFeatures(
         project: ProjectDomain,
         start: LocalDateTime,
-        end: LocalDateTime?
+        end: LocalDateTime?,
+        count: Int,
     ): List<FeatureWithEvents> = dbQuery {
         val endDate = end ?: LocalDateTime.now()
 
@@ -58,7 +65,8 @@ class ActivityFeatureServiceImpl : ActivityFeatureService {
                 eventsCountQuery = eventsCountQuery,
                 projectId = project.id,
                 start = start,
-                end = endDate
+                end = endDate,
+                count = count,
             )
             .map {
                 val totalEventsResult = it[eventsCountQuery]
@@ -68,7 +76,7 @@ class ActivityFeatureServiceImpl : ActivityFeatureService {
                     title = it[FeatureTable.title],
                     description = it[FeatureTable.description],
                     totalEvents = totalEventsResult,
-                    totalEventsPercent = totalEventsResult * 100 / totalEventsCount
+                    totalEventsPercent = totalEventsResult * 100.0 / totalEventsCount
                 )
             }
     }
@@ -77,11 +85,31 @@ class ActivityFeatureServiceImpl : ActivityFeatureService {
         project: ProjectDomain,
         start: LocalDate,
         end: LocalDate?
-    ): ChartDomain<LocalTime, Long> {
-        // Query all events by past month
-        // And compute it's time of day
-        // Group by hour
-        // TODO("Not yet implemented")
-        return ChartDomain<LocalTime, Long>(listOf())
+    ): ChartDomain<LocalTime, Long> = dbQuery {
+        val startDate = start.toDateTime()
+        val endDate = end?.toDateTime() ?: LocalDateTime.now()
+
+        val partQuery = EventTable.createdAt.datePart("hour")
+        val countQuery = EventTable.id.count().alias("count")
+
+        EventTable
+            .innerJoin(FunctionTable)
+            .select(partQuery, countQuery)
+            .where(
+                FunctionTable.project.eq(project.id)
+                    .and(EventTable.createdAt.between(startDate, endDate))
+            )
+            .groupBy(partQuery)
+            .toList()
+            .sortedBy { it[partQuery] }
+            .associate {
+                val hour = it[partQuery]
+                val count = it[countQuery]
+
+                Pair(
+                    LocalTime(hour = hour, minute = 0, second = 0),
+                    count
+                )
+            }
     }
 }

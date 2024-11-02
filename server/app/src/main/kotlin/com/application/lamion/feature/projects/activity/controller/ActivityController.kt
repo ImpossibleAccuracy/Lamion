@@ -60,7 +60,8 @@ class ActivityController(
                     activityService.getTopFeatures(
                         project = project,
                         start = date.atStartOfDay(),
-                        end = date.plus(DatePeriod(days = 1)).atStartOfDay()
+                        end = date.plus(DatePeriod(days = 1)).atStartOfDay(),
+                        count = 10 // TODO
                     )
                 }
 

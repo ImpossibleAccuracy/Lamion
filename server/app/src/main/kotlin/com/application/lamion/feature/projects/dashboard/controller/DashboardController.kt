@@ -42,7 +42,8 @@ class DashboardController(
             activityService.getTopFeatures(
                 project = project,
                 start = dateRange.finishStart,
-                end = null
+                end = null,
+                count = 10 // TODO
             )
         }
 

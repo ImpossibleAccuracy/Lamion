@@ -6,6 +6,8 @@ kotlin-datetime = "0.6.0"
 spring = "3.3.5"
 spring-swagger = "2.6.0"
 
+serialization-json = "1.7.3"
+
 # Database
 exposed = "0.52.0"
 postgresql = "42.7.4"
@@ -24,6 +26,9 @@ kotlin-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.r
 # Coroutines
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
 coroutines-reactor = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-reactor", version.ref = "kotlin-coroutines" }
+
+# Serialization
+serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization-json" }
 
 # Spring
 spring-starter-boot = { module = "org.springframework.boot:spring-boot-starter", version.ref = "spring" }
@@ -52,10 +57,10 @@ postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" 
 
 # OTHER
 auth0 = { module = "com.auth0:java-jwt", version.ref = "auth0" }
-jackson = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
 spring-boot = { id = "org.springframework.boot", version.ref = "spring" }
 kotlin-allopen = { id = "org.jetbrains.kotlin.plugin.allopen", version.ref = "kotlin" }

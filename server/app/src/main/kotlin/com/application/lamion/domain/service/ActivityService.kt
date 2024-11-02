@@ -20,6 +20,7 @@ interface ActivityService {
     suspend fun getTopFeatures(
         project: ProjectDomain,
         start: LocalDateTime,
-        end: LocalDateTime?
+        end: LocalDateTime?,
+        count: Int,
     ): List<FeatureWithEvents>
 }

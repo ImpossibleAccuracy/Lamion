@@ -1,15 +1,17 @@
 package com.application.lamion.feature.projects.settings.controller.payload
 
 import com.application.lamion.feature.shared.payload.dto.TokenDto
-import com.fasterxml.jackson.annotation.JsonProperty
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class ProjectSettingsResponse(
-    @field:JsonProperty("title")
+    @SerialName("title")
     val title: String,
 
-    @field:JsonProperty("description")
+    @SerialName("description")
     val description: String?,
 
-    @field:JsonProperty("tokens")
+    @SerialName("tokens")
     val tokens: List<TokenDto>,
 )

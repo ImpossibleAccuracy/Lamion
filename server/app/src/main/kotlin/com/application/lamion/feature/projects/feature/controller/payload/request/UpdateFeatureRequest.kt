@@ -1,14 +1,16 @@
 package com.application.lamion.feature.projects.feature.controller.payload.request
 
-import com.fasterxml.jackson.annotation.JsonProperty
 import jakarta.validation.constraints.NotBlank
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class UpdateFeatureRequest(
-    @field:JsonProperty("title")
+    @SerialName("title")
     @field:NotBlank
     val title: String,
 
-    @field:JsonProperty("description")
+    @SerialName("description")
     @field:NotBlank
     val description: String,
 )

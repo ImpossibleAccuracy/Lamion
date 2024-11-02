@@ -1,15 +1,17 @@
 package com.application.lamion.feature.project.controller.payload
 
-import com.fasterxml.jackson.annotation.JsonProperty
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class CreateProjectRequest(
     @field:NotNull
     @field:NotBlank
-    @field:JsonProperty("title")
+    @SerialName("title")
     var title: String,
 
-    @field:JsonProperty("description")
+    @SerialName("description")
     var description: String?,
 )

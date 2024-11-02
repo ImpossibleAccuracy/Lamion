@@ -1,1000 +1,1100 @@
-insert into event (function_id, user_id, device_id) values (1, 1, 17);
-insert into event (function_id, user_id, device_id) values (1, 1, 30);
-insert into event (function_id, user_id, device_id) values (1, 1, 19);
-insert into event (function_id, user_id, device_id) values (2, 1, 1);
-insert into event (function_id, user_id, device_id) values (2, 1, 30);
-insert into event (function_id, user_id, device_id) values (2, 1, 19);
-insert into event (function_id, user_id, device_id) values (3, 1, 18);
-insert into event (function_id, user_id, device_id) values (3, 1, 26);
-insert into event (function_id, user_id, device_id) values (3, 1, 19);
-insert into event (function_id, user_id, device_id) values (4, 1, 30);
-insert into event (function_id, user_id, device_id) values (4, 1, 15);
-insert into event (function_id, user_id, device_id) values (4, 1, 21);
-insert into event (function_id, user_id, device_id) values (4, 1, 29);
-insert into event (function_id, user_id, device_id) values (5, 1, 28);
-insert into event (function_id, user_id, device_id) values (5, 1, 12);
-insert into event (function_id, user_id, device_id) values (5, 1, 24);
-insert into event (function_id, user_id, device_id) values (6, 1, 29);
-insert into event (function_id, user_id, device_id) values (6, 1, 24);
-insert into event (function_id, user_id, device_id) values (6, 1, 18);
-insert into event (function_id, user_id, device_id) values (7, 1, 30);
-insert into event (function_id, user_id, device_id) values (7, 1, 18);
-insert into event (function_id, user_id, device_id) values (7, 1, 21);
-insert into event (function_id, user_id, device_id) values (7, 1, 24);
-insert into event (function_id, user_id, device_id) values (8, 1, 6);
-insert into event (function_id, user_id, device_id) values (8, 1, 15);
-insert into event (function_id, user_id, device_id) values (8, 1, 20);
-insert into event (function_id, user_id, device_id) values (9, 1, 11);
-insert into event (function_id, user_id, device_id) values (9, 1, 15);
-insert into event (function_id, user_id, device_id) values (9, 1, 10);
-insert into event (function_id, user_id, device_id) values (10, 1, 16);
-insert into event (function_id, user_id, device_id) values (10, 1, 5);
-insert into event (function_id, user_id, device_id) values (10, 1, 9);
-insert into event (function_id, user_id, device_id) values (10, 1, 23);
-insert into event (function_id, user_id, device_id) values (11, 1, 19);
-insert into event (function_id, user_id, device_id) values (11, 1, 2);
-insert into event (function_id, user_id, device_id) values (11, 1, 4);
-insert into event (function_id, user_id, device_id) values (12, 1, 26);
-insert into event (function_id, user_id, device_id) values (12, 1, 11);
-insert into event (function_id, user_id, device_id) values (12, 1, 24);
-insert into event (function_id, user_id, device_id) values (13, 1, 16);
-insert into event (function_id, user_id, device_id) values (13, 1, 6);
-insert into event (function_id, user_id, device_id) values (13, 1, 23);
-insert into event (function_id, user_id, device_id) values (13, 1, 27);
-insert into event (function_id, user_id, device_id) values (14, 1, 24);
-insert into event (function_id, user_id, device_id) values (14, 1, 11);
-insert into event (function_id, user_id, device_id) values (14, 1, 5);
-insert into event (function_id, user_id, device_id) values (15, 1, 29);
-insert into event (function_id, user_id, device_id) values (15, 1, 25);
-insert into event (function_id, user_id, device_id) values (15, 1, 5);
-insert into event (function_id, user_id, device_id) values (16, 1, 7);
-insert into event (function_id, user_id, device_id) values (16, 1, 23);
-insert into event (function_id, user_id, device_id) values (16, 1, 23);
-insert into event (function_id, user_id, device_id) values (16, 1, 4);
-insert into event (function_id, user_id, device_id) values (17, 1, 8);
-insert into event (function_id, user_id, device_id) values (17, 1, 20);
-insert into event (function_id, user_id, device_id) values (17, 1, 10);
-insert into event (function_id, user_id, device_id) values (18, 1, 9);
-insert into event (function_id, user_id, device_id) values (18, 1, 19);
-insert into event (function_id, user_id, device_id) values (18, 1, 15);
-insert into event (function_id, user_id, device_id) values (19, 1, 14);
-insert into event (function_id, user_id, device_id) values (19, 1, 17);
-insert into event (function_id, user_id, device_id) values (19, 1, 30);
-insert into event (function_id, user_id, device_id) values (19, 1, 10);
-insert into event (function_id, user_id, device_id) values (20, 1, 19);
-insert into event (function_id, user_id, device_id) values (20, 1, 25);
-insert into event (function_id, user_id, device_id) values (20, 1, 6);
-insert into event (function_id, user_id, device_id) values (21, 1, 2);
-insert into event (function_id, user_id, device_id) values (21, 1, 11);
-insert into event (function_id, user_id, device_id) values (21, 1, 5);
-insert into event (function_id, user_id, device_id) values (22, 1, 25);
-insert into event (function_id, user_id, device_id) values (22, 1, 29);
-insert into event (function_id, user_id, device_id) values (22, 1, 25);
-insert into event (function_id, user_id, device_id) values (22, 1, 8);
-insert into event (function_id, user_id, device_id) values (23, 1, 1);
-insert into event (function_id, user_id, device_id) values (23, 1, 25);
-insert into event (function_id, user_id, device_id) values (23, 1, 3);
-insert into event (function_id, user_id, device_id) values (24, 1, 24);
-insert into event (function_id, user_id, device_id) values (24, 1, 10);
-insert into event (function_id, user_id, device_id) values (24, 1, 28);
-insert into event (function_id, user_id, device_id) values (25, 1, 22);
-insert into event (function_id, user_id, device_id) values (25, 1, 2);
-insert into event (function_id, user_id, device_id) values (25, 1, 10);
-insert into event (function_id, user_id, device_id) values (25, 1, 27);
-insert into event (function_id, user_id, device_id) values (26, 1, 21);
-insert into event (function_id, user_id, device_id) values (26, 1, 7);
-insert into event (function_id, user_id, device_id) values (26, 1, 18);
-insert into event (function_id, user_id, device_id) values (27, 1, 24);
-insert into event (function_id, user_id, device_id) values (27, 1, 22);
-insert into event (function_id, user_id, device_id) values (27, 1, 25);
-insert into event (function_id, user_id, device_id) values (28, 1, 28);
-insert into event (function_id, user_id, device_id) values (28, 1, 7);
-insert into event (function_id, user_id, device_id) values (28, 1, 2);
-insert into event (function_id, user_id, device_id) values (28, 1, 17);
-insert into event (function_id, user_id, device_id) values (29, 1, 16);
-insert into event (function_id, user_id, device_id) values (29, 1, 18);
-insert into event (function_id, user_id, device_id) values (29, 1, 24);
-insert into event (function_id, user_id, device_id) values (30, 1, 22);
-insert into event (function_id, user_id, device_id) values (30, 1, 27);
-insert into event (function_id, user_id, device_id) values (30, 1, 7);
-insert into event (function_id, user_id, device_id) values (31, 1, 15);
-insert into event (function_id, user_id, device_id) values (31, 1, 19);
-insert into event (function_id, user_id, device_id) values (31, 1, 27);
-insert into event (function_id, user_id, device_id) values (31, 1, 5);
-insert into event (function_id, user_id, device_id) values (32, 1, 29);
-insert into event (function_id, user_id, device_id) values (32, 1, 11);
-insert into event (function_id, user_id, device_id) values (32, 1, 26);
-insert into event (function_id, user_id, device_id) values (33, 1, 29);
-insert into event (function_id, user_id, device_id) values (33, 1, 2);
-insert into event (function_id, user_id, device_id) values (33, 1, 18);
-insert into event (function_id, user_id, device_id) values (34, 1, 14);
-insert into event (function_id, user_id, device_id) values (34, 1, 30);
-insert into event (function_id, user_id, device_id) values (34, 1, 12);
-insert into event (function_id, user_id, device_id) values (34, 1, 4);
-insert into event (function_id, user_id, device_id) values (35, 1, 9);
-insert into event (function_id, user_id, device_id) values (35, 1, 3);
-insert into event (function_id, user_id, device_id) values (35, 1, 28);
-insert into event (function_id, user_id, device_id) values (36, 1, 30);
-insert into event (function_id, user_id, device_id) values (36, 1, 6);
-insert into event (function_id, user_id, device_id) values (36, 1, 9);
-insert into event (function_id, user_id, device_id) values (37, 1, 13);
-insert into event (function_id, user_id, device_id) values (37, 1, 8);
-insert into event (function_id, user_id, device_id) values (37, 1, 2);
-insert into event (function_id, user_id, device_id) values (37, 1, 24);
-insert into event (function_id, user_id, device_id) values (38, 1, 28);
-insert into event (function_id, user_id, device_id) values (38, 1, 3);
-insert into event (function_id, user_id, device_id) values (38, 1, 30);
-insert into event (function_id, user_id, device_id) values (39, 1, 3);
-insert into event (function_id, user_id, device_id) values (39, 1, 24);
-insert into event (function_id, user_id, device_id) values (39, 1, 19);
-insert into event (function_id, user_id, device_id) values (40, 1, 29);
-insert into event (function_id, user_id, device_id) values (40, 1, 28);
-insert into event (function_id, user_id, device_id) values (40, 1, 7);
-insert into event (function_id, user_id, device_id) values (40, 1, 3);
-insert into event (function_id, user_id, device_id) values (41, 1, 14);
-insert into event (function_id, user_id, device_id) values (41, 1, 15);
-insert into event (function_id, user_id, device_id) values (41, 1, 25);
-insert into event (function_id, user_id, device_id) values (42, 1, 19);
-insert into event (function_id, user_id, device_id) values (42, 1, 11);
-insert into event (function_id, user_id, device_id) values (42, 1, 24);
-insert into event (function_id, user_id, device_id) values (43, 1, 21);
-insert into event (function_id, user_id, device_id) values (43, 1, 4);
-insert into event (function_id, user_id, device_id) values (43, 1, 5);
-insert into event (function_id, user_id, device_id) values (43, 1, 5);
-insert into event (function_id, user_id, device_id) values (44, 1, 9);
-insert into event (function_id, user_id, device_id) values (44, 1, 30);
-insert into event (function_id, user_id, device_id) values (44, 1, 3);
-insert into event (function_id, user_id, device_id) values (45, 1, 23);
-insert into event (function_id, user_id, device_id) values (45, 1, 18);
-insert into event (function_id, user_id, device_id) values (45, 1, 4);
-insert into event (function_id, user_id, device_id) values (46, 1, 29);
-insert into event (function_id, user_id, device_id) values (46, 1, 3);
-insert into event (function_id, user_id, device_id) values (46, 1, 9);
-insert into event (function_id, user_id, device_id) values (46, 1, 1);
-insert into event (function_id, user_id, device_id) values (47, 1, 6);
-insert into event (function_id, user_id, device_id) values (47, 1, 9);
-insert into event (function_id, user_id, device_id) values (47, 1, 21);
-insert into event (function_id, user_id, device_id) values (48, 1, 13);
-insert into event (function_id, user_id, device_id) values (48, 1, 23);
-insert into event (function_id, user_id, device_id) values (48, 1, 15);
-insert into event (function_id, user_id, device_id) values (49, 1, 5);
-insert into event (function_id, user_id, device_id) values (49, 1, 4);
-insert into event (function_id, user_id, device_id) values (49, 1, 5);
-insert into event (function_id, user_id, device_id) values (49, 1, 17);
-insert into event (function_id, user_id, device_id) values (50, 1, 28);
-insert into event (function_id, user_id, device_id) values (50, 1, 13);
-insert into event (function_id, user_id, device_id) values (50, 1, 29);
-insert into event (function_id, user_id, device_id) values (51, 1, 28);
-insert into event (function_id, user_id, device_id) values (51, 1, 19);
-insert into event (function_id, user_id, device_id) values (51, 1, 16);
-insert into event (function_id, user_id, device_id) values (52, 1, 16);
-insert into event (function_id, user_id, device_id) values (52, 1, 21);
-insert into event (function_id, user_id, device_id) values (52, 1, 5);
-insert into event (function_id, user_id, device_id) values (52, 1, 20);
-insert into event (function_id, user_id, device_id) values (53, 1, 2);
-insert into event (function_id, user_id, device_id) values (53, 1, 10);
-insert into event (function_id, user_id, device_id) values (53, 1, 23);
-insert into event (function_id, user_id, device_id) values (54, 1, 3);
-insert into event (function_id, user_id, device_id) values (54, 1, 29);
-insert into event (function_id, user_id, device_id) values (54, 1, 9);
-insert into event (function_id, user_id, device_id) values (55, 1, 4);
-insert into event (function_id, user_id, device_id) values (55, 1, 21);
-insert into event (function_id, user_id, device_id) values (55, 1, 15);
-insert into event (function_id, user_id, device_id) values (55, 1, 7);
-insert into event (function_id, user_id, device_id) values (56, 1, 13);
-insert into event (function_id, user_id, device_id) values (56, 1, 27);
-insert into event (function_id, user_id, device_id) values (56, 1, 27);
-insert into event (function_id, user_id, device_id) values (57, 1, 1);
-insert into event (function_id, user_id, device_id) values (57, 1, 17);
-insert into event (function_id, user_id, device_id) values (57, 1, 12);
-insert into event (function_id, user_id, device_id) values (58, 1, 5);
-insert into event (function_id, user_id, device_id) values (58, 1, 25);
-insert into event (function_id, user_id, device_id) values (58, 1, 3);
-insert into event (function_id, user_id, device_id) values (58, 1, 18);
-insert into event (function_id, user_id, device_id) values (59, 1, 3);
-insert into event (function_id, user_id, device_id) values (59, 1, 18);
-insert into event (function_id, user_id, device_id) values (59, 1, 3);
-insert into event (function_id, user_id, device_id) values (60, 1, 14);
-insert into event (function_id, user_id, device_id) values (60, 1, 13);
-insert into event (function_id, user_id, device_id) values (60, 1, 29);
-insert into event (function_id, user_id, device_id) values (61, 1, 15);
-insert into event (function_id, user_id, device_id) values (61, 1, 6);
-insert into event (function_id, user_id, device_id) values (61, 1, 13);
-insert into event (function_id, user_id, device_id) values (61, 1, 6);
-insert into event (function_id, user_id, device_id) values (62, 1, 19);
-insert into event (function_id, user_id, device_id) values (62, 1, 28);
-insert into event (function_id, user_id, device_id) values (62, 1, 8);
-insert into event (function_id, user_id, device_id) values (63, 1, 3);
-insert into event (function_id, user_id, device_id) values (63, 1, 2);
-insert into event (function_id, user_id, device_id) values (63, 1, 30);
-insert into event (function_id, user_id, device_id) values (64, 1, 14);
-insert into event (function_id, user_id, device_id) values (64, 1, 3);
-insert into event (function_id, user_id, device_id) values (64, 1, 17);
-insert into event (function_id, user_id, device_id) values (64, 1, 13);
-insert into event (function_id, user_id, device_id) values (65, 1, 11);
-insert into event (function_id, user_id, device_id) values (65, 1, 5);
-insert into event (function_id, user_id, device_id) values (65, 1, 16);
-insert into event (function_id, user_id, device_id) values (66, 1, 2);
-insert into event (function_id, user_id, device_id) values (66, 1, 28);
-insert into event (function_id, user_id, device_id) values (66, 1, 1);
-insert into event (function_id, user_id, device_id) values (67, 1, 30);
-insert into event (function_id, user_id, device_id) values (67, 1, 1);
-insert into event (function_id, user_id, device_id) values (67, 1, 22);
-insert into event (function_id, user_id, device_id) values (67, 1, 1);
-insert into event (function_id, user_id, device_id) values (68, 1, 5);
-insert into event (function_id, user_id, device_id) values (68, 1, 12);
-insert into event (function_id, user_id, device_id) values (68, 1, 30);
-insert into event (function_id, user_id, device_id) values (69, 1, 2);
-insert into event (function_id, user_id, device_id) values (69, 1, 11);
-insert into event (function_id, user_id, device_id) values (69, 1, 13);
-insert into event (function_id, user_id, device_id) values (70, 1, 19);
-insert into event (function_id, user_id, device_id) values (70, 1, 7);
-insert into event (function_id, user_id, device_id) values (70, 1, 28);
-insert into event (function_id, user_id, device_id) values (70, 1, 5);
-insert into event (function_id, user_id, device_id) values (71, 1, 22);
-insert into event (function_id, user_id, device_id) values (71, 1, 10);
-insert into event (function_id, user_id, device_id) values (71, 1, 4);
-insert into event (function_id, user_id, device_id) values (72, 1, 25);
-insert into event (function_id, user_id, device_id) values (72, 1, 20);
-insert into event (function_id, user_id, device_id) values (72, 1, 4);
-insert into event (function_id, user_id, device_id) values (73, 1, 18);
-insert into event (function_id, user_id, device_id) values (73, 1, 18);
-insert into event (function_id, user_id, device_id) values (73, 1, 26);
-insert into event (function_id, user_id, device_id) values (73, 1, 20);
-insert into event (function_id, user_id, device_id) values (74, 1, 22);
-insert into event (function_id, user_id, device_id) values (74, 1, 8);
-insert into event (function_id, user_id, device_id) values (74, 1, 19);
-insert into event (function_id, user_id, device_id) values (75, 1, 28);
-insert into event (function_id, user_id, device_id) values (75, 1, 29);
-insert into event (function_id, user_id, device_id) values (75, 1, 15);
-insert into event (function_id, user_id, device_id) values (76, 1, 9);
-insert into event (function_id, user_id, device_id) values (76, 1, 27);
-insert into event (function_id, user_id, device_id) values (76, 1, 20);
-insert into event (function_id, user_id, device_id) values (76, 1, 14);
-insert into event (function_id, user_id, device_id) values (77, 1, 28);
-insert into event (function_id, user_id, device_id) values (77, 1, 8);
-insert into event (function_id, user_id, device_id) values (77, 1, 8);
-insert into event (function_id, user_id, device_id) values (78, 1, 12);
-insert into event (function_id, user_id, device_id) values (78, 1, 27);
-insert into event (function_id, user_id, device_id) values (78, 1, 24);
-insert into event (function_id, user_id, device_id) values (79, 1, 22);
-insert into event (function_id, user_id, device_id) values (79, 1, 7);
-insert into event (function_id, user_id, device_id) values (79, 1, 2);
-insert into event (function_id, user_id, device_id) values (79, 1, 1);
-insert into event (function_id, user_id, device_id) values (80, 1, 15);
-insert into event (function_id, user_id, device_id) values (80, 1, 28);
-insert into event (function_id, user_id, device_id) values (80, 1, 16);
-insert into event (function_id, user_id, device_id) values (81, 1, 17);
-insert into event (function_id, user_id, device_id) values (81, 1, 8);
-insert into event (function_id, user_id, device_id) values (81, 1, 1);
-insert into event (function_id, user_id, device_id) values (82, 1, 23);
-insert into event (function_id, user_id, device_id) values (82, 1, 18);
-insert into event (function_id, user_id, device_id) values (82, 1, 15);
-insert into event (function_id, user_id, device_id) values (82, 1, 13);
-insert into event (function_id, user_id, device_id) values (83, 1, 30);
-insert into event (function_id, user_id, device_id) values (83, 1, 27);
-insert into event (function_id, user_id, device_id) values (83, 1, 13);
-insert into event (function_id, user_id, device_id) values (84, 1, 19);
-insert into event (function_id, user_id, device_id) values (84, 1, 26);
-insert into event (function_id, user_id, device_id) values (84, 1, 12);
-insert into event (function_id, user_id, device_id) values (85, 1, 8);
-insert into event (function_id, user_id, device_id) values (85, 1, 4);
-insert into event (function_id, user_id, device_id) values (85, 1, 18);
-insert into event (function_id, user_id, device_id) values (85, 1, 3);
-insert into event (function_id, user_id, device_id) values (86, 1, 20);
-insert into event (function_id, user_id, device_id) values (86, 1, 7);
-insert into event (function_id, user_id, device_id) values (86, 1, 15);
-insert into event (function_id, user_id, device_id) values (87, 1, 16);
-insert into event (function_id, user_id, device_id) values (87, 1, 1);
-insert into event (function_id, user_id, device_id) values (87, 1, 21);
-insert into event (function_id, user_id, device_id) values (88, 1, 7);
-insert into event (function_id, user_id, device_id) values (88, 1, 21);
-insert into event (function_id, user_id, device_id) values (88, 1, 10);
-insert into event (function_id, user_id, device_id) values (88, 1, 13);
-insert into event (function_id, user_id, device_id) values (89, 1, 7);
-insert into event (function_id, user_id, device_id) values (89, 1, 19);
-insert into event (function_id, user_id, device_id) values (89, 1, 1);
-insert into event (function_id, user_id, device_id) values (90, 1, 15);
-insert into event (function_id, user_id, device_id) values (90, 1, 30);
-insert into event (function_id, user_id, device_id) values (90, 1, 2);
-insert into event (function_id, user_id, device_id) values (91, 1, 4);
-insert into event (function_id, user_id, device_id) values (91, 1, 15);
-insert into event (function_id, user_id, device_id) values (91, 1, 3);
-insert into event (function_id, user_id, device_id) values (91, 1, 10);
-insert into event (function_id, user_id, device_id) values (92, 1, 4);
-insert into event (function_id, user_id, device_id) values (92, 1, 5);
-insert into event (function_id, user_id, device_id) values (92, 1, 2);
-insert into event (function_id, user_id, device_id) values (93, 1, 8);
-insert into event (function_id, user_id, device_id) values (93, 1, 7);
-insert into event (function_id, user_id, device_id) values (93, 1, 23);
-insert into event (function_id, user_id, device_id) values (94, 1, 2);
-insert into event (function_id, user_id, device_id) values (94, 1, 25);
-insert into event (function_id, user_id, device_id) values (94, 1, 9);
-insert into event (function_id, user_id, device_id) values (94, 1, 20);
-insert into event (function_id, user_id, device_id) values (95, 1, 12);
-insert into event (function_id, user_id, device_id) values (95, 1, 26);
-insert into event (function_id, user_id, device_id) values (95, 1, 21);
-insert into event (function_id, user_id, device_id) values (96, 1, 11);
-insert into event (function_id, user_id, device_id) values (96, 1, 13);
-insert into event (function_id, user_id, device_id) values (96, 1, 12);
-insert into event (function_id, user_id, device_id) values (97, 1, 7);
-insert into event (function_id, user_id, device_id) values (97, 1, 11);
-insert into event (function_id, user_id, device_id) values (97, 1, 21);
-insert into event (function_id, user_id, device_id) values (97, 1, 20);
-insert into event (function_id, user_id, device_id) values (98, 1, 30);
-insert into event (function_id, user_id, device_id) values (98, 1, 22);
-insert into event (function_id, user_id, device_id) values (98, 1, 29);
-insert into event (function_id, user_id, device_id) values (99, 1, 23);
-insert into event (function_id, user_id, device_id) values (99, 1, 13);
-insert into event (function_id, user_id, device_id) values (99, 1, 8);
-insert into event (function_id, user_id, device_id) values (100, 1, 26);
-insert into event (function_id, user_id, device_id) values (100, 1, 1);
-insert into event (function_id, user_id, device_id) values (100, 1, 20);
-insert into event (function_id, user_id, device_id) values (100, 1, 14);
-insert into event (function_id, user_id, device_id) values (101, 1, 16);
-insert into event (function_id, user_id, device_id) values (101, 1, 30);
-insert into event (function_id, user_id, device_id) values (101, 1, 17);
-insert into event (function_id, user_id, device_id) values (102, 1, 27);
-insert into event (function_id, user_id, device_id) values (102, 1, 22);
-insert into event (function_id, user_id, device_id) values (102, 1, 6);
-insert into event (function_id, user_id, device_id) values (103, 1, 19);
-insert into event (function_id, user_id, device_id) values (103, 1, 23);
-insert into event (function_id, user_id, device_id) values (103, 1, 7);
-insert into event (function_id, user_id, device_id) values (103, 1, 8);
-insert into event (function_id, user_id, device_id) values (104, 1, 18);
-insert into event (function_id, user_id, device_id) values (104, 1, 20);
-insert into event (function_id, user_id, device_id) values (104, 1, 7);
-insert into event (function_id, user_id, device_id) values (105, 1, 15);
-insert into event (function_id, user_id, device_id) values (105, 1, 15);
-insert into event (function_id, user_id, device_id) values (105, 1, 26);
-insert into event (function_id, user_id, device_id) values (106, 1, 7);
-insert into event (function_id, user_id, device_id) values (106, 1, 14);
-insert into event (function_id, user_id, device_id) values (106, 1, 3);
-insert into event (function_id, user_id, device_id) values (106, 1, 10);
-insert into event (function_id, user_id, device_id) values (107, 1, 14);
-insert into event (function_id, user_id, device_id) values (107, 1, 3);
-insert into event (function_id, user_id, device_id) values (107, 1, 22);
-insert into event (function_id, user_id, device_id) values (108, 1, 16);
-insert into event (function_id, user_id, device_id) values (108, 1, 21);
-insert into event (function_id, user_id, device_id) values (108, 1, 24);
-insert into event (function_id, user_id, device_id) values (109, 1, 18);
-insert into event (function_id, user_id, device_id) values (109, 1, 7);
-insert into event (function_id, user_id, device_id) values (109, 1, 17);
-insert into event (function_id, user_id, device_id) values (109, 1, 13);
-insert into event (function_id, user_id, device_id) values (110, 1, 10);
-insert into event (function_id, user_id, device_id) values (110, 1, 18);
-insert into event (function_id, user_id, device_id) values (110, 1, 7);
-insert into event (function_id, user_id, device_id) values (111, 1, 23);
-insert into event (function_id, user_id, device_id) values (111, 1, 28);
-insert into event (function_id, user_id, device_id) values (111, 1, 30);
-insert into event (function_id, user_id, device_id) values (112, 1, 30);
-insert into event (function_id, user_id, device_id) values (112, 1, 12);
-insert into event (function_id, user_id, device_id) values (112, 1, 18);
-insert into event (function_id, user_id, device_id) values (112, 1, 23);
-insert into event (function_id, user_id, device_id) values (113, 1, 8);
-insert into event (function_id, user_id, device_id) values (113, 1, 18);
-insert into event (function_id, user_id, device_id) values (113, 1, 6);
-insert into event (function_id, user_id, device_id) values (114, 1, 13);
-insert into event (function_id, user_id, device_id) values (114, 1, 23);
-insert into event (function_id, user_id, device_id) values (114, 1, 26);
-insert into event (function_id, user_id, device_id) values (115, 1, 16);
-insert into event (function_id, user_id, device_id) values (115, 1, 23);
-insert into event (function_id, user_id, device_id) values (115, 1, 5);
-insert into event (function_id, user_id, device_id) values (115, 1, 10);
-insert into event (function_id, user_id, device_id) values (116, 1, 1);
-insert into event (function_id, user_id, device_id) values (116, 1, 10);
-insert into event (function_id, user_id, device_id) values (116, 1, 10);
-insert into event (function_id, user_id, device_id) values (117, 1, 1);
-insert into event (function_id, user_id, device_id) values (117, 1, 21);
-insert into event (function_id, user_id, device_id) values (117, 1, 19);
-insert into event (function_id, user_id, device_id) values (118, 1, 2);
-insert into event (function_id, user_id, device_id) values (118, 1, 16);
-insert into event (function_id, user_id, device_id) values (118, 1, 17);
-insert into event (function_id, user_id, device_id) values (118, 1, 22);
-insert into event (function_id, user_id, device_id) values (119, 1, 13);
-insert into event (function_id, user_id, device_id) values (119, 1, 22);
-insert into event (function_id, user_id, device_id) values (119, 1, 7);
-insert into event (function_id, user_id, device_id) values (120, 1, 2);
-insert into event (function_id, user_id, device_id) values (120, 1, 3);
-insert into event (function_id, user_id, device_id) values (120, 1, 21);
-insert into event (function_id, user_id, device_id) values (121, 1, 12);
-insert into event (function_id, user_id, device_id) values (121, 1, 12);
-insert into event (function_id, user_id, device_id) values (121, 1, 21);
-insert into event (function_id, user_id, device_id) values (121, 1, 30);
-insert into event (function_id, user_id, device_id) values (122, 1, 18);
-insert into event (function_id, user_id, device_id) values (122, 1, 21);
-insert into event (function_id, user_id, device_id) values (122, 1, 21);
-insert into event (function_id, user_id, device_id) values (123, 1, 2);
-insert into event (function_id, user_id, device_id) values (123, 1, 28);
-insert into event (function_id, user_id, device_id) values (123, 1, 17);
-insert into event (function_id, user_id, device_id) values (123, 1, 16);
-insert into event (function_id, user_id, device_id) values (124, 1, 25);
-insert into event (function_id, user_id, device_id) values (124, 1, 9);
-insert into event (function_id, user_id, device_id) values (124, 1, 4);
-insert into event (function_id, user_id, device_id) values (125, 1, 5);
-insert into event (function_id, user_id, device_id) values (125, 1, 23);
-insert into event (function_id, user_id, device_id) values (125, 1, 16);
-insert into event (function_id, user_id, device_id) values (126, 1, 9);
-insert into event (function_id, user_id, device_id) values (126, 1, 10);
-insert into event (function_id, user_id, device_id) values (126, 1, 16);
-insert into event (function_id, user_id, device_id) values (127, 1, 7);
-insert into event (function_id, user_id, device_id) values (127, 1, 21);
-insert into event (function_id, user_id, device_id) values (127, 1, 28);
-insert into event (function_id, user_id, device_id) values (127, 1, 2);
-insert into event (function_id, user_id, device_id) values (128, 1, 28);
-insert into event (function_id, user_id, device_id) values (128, 1, 27);
-insert into event (function_id, user_id, device_id) values (128, 1, 24);
-insert into event (function_id, user_id, device_id) values (129, 1, 29);
-insert into event (function_id, user_id, device_id) values (129, 1, 22);
-insert into event (function_id, user_id, device_id) values (129, 1, 1);
-insert into event (function_id, user_id, device_id) values (130, 1, 13);
-insert into event (function_id, user_id, device_id) values (130, 1, 4);
-insert into event (function_id, user_id, device_id) values (130, 1, 17);
-insert into event (function_id, user_id, device_id) values (130, 1, 27);
-insert into event (function_id, user_id, device_id) values (131, 1, 7);
-insert into event (function_id, user_id, device_id) values (131, 1, 29);
-insert into event (function_id, user_id, device_id) values (131, 1, 8);
-insert into event (function_id, user_id, device_id) values (132, 1, 22);
-insert into event (function_id, user_id, device_id) values (132, 1, 7);
-insert into event (function_id, user_id, device_id) values (132, 1, 29);
-insert into event (function_id, user_id, device_id) values (133, 1, 6);
-insert into event (function_id, user_id, device_id) values (133, 1, 7);
-insert into event (function_id, user_id, device_id) values (133, 1, 5);
-insert into event (function_id, user_id, device_id) values (133, 1, 27);
-insert into event (function_id, user_id, device_id) values (134, 1, 11);
-insert into event (function_id, user_id, device_id) values (134, 1, 2);
-insert into event (function_id, user_id, device_id) values (134, 1, 5);
-insert into event (function_id, user_id, device_id) values (135, 1, 14);
-insert into event (function_id, user_id, device_id) values (135, 1, 17);
-insert into event (function_id, user_id, device_id) values (135, 1, 16);
-insert into event (function_id, user_id, device_id) values (136, 1, 12);
-insert into event (function_id, user_id, device_id) values (136, 1, 3);
-insert into event (function_id, user_id, device_id) values (136, 1, 10);
-insert into event (function_id, user_id, device_id) values (136, 1, 16);
-insert into event (function_id, user_id, device_id) values (137, 1, 20);
-insert into event (function_id, user_id, device_id) values (137, 1, 16);
-insert into event (function_id, user_id, device_id) values (137, 1, 2);
-insert into event (function_id, user_id, device_id) values (138, 1, 9);
-insert into event (function_id, user_id, device_id) values (138, 1, 22);
-insert into event (function_id, user_id, device_id) values (138, 1, 27);
-insert into event (function_id, user_id, device_id) values (139, 1, 19);
-insert into event (function_id, user_id, device_id) values (139, 1, 12);
-insert into event (function_id, user_id, device_id) values (139, 1, 29);
-insert into event (function_id, user_id, device_id) values (139, 1, 11);
-insert into event (function_id, user_id, device_id) values (140, 1, 30);
-insert into event (function_id, user_id, device_id) values (140, 1, 22);
-insert into event (function_id, user_id, device_id) values (140, 1, 23);
-insert into event (function_id, user_id, device_id) values (141, 1, 16);
-insert into event (function_id, user_id, device_id) values (141, 1, 3);
-insert into event (function_id, user_id, device_id) values (141, 1, 3);
-insert into event (function_id, user_id, device_id) values (142, 1, 16);
-insert into event (function_id, user_id, device_id) values (142, 1, 26);
-insert into event (function_id, user_id, device_id) values (142, 1, 4);
-insert into event (function_id, user_id, device_id) values (142, 1, 16);
-insert into event (function_id, user_id, device_id) values (143, 1, 13);
-insert into event (function_id, user_id, device_id) values (143, 1, 29);
-insert into event (function_id, user_id, device_id) values (143, 1, 10);
-insert into event (function_id, user_id, device_id) values (144, 1, 15);
-insert into event (function_id, user_id, device_id) values (144, 1, 7);
-insert into event (function_id, user_id, device_id) values (144, 1, 3);
-insert into event (function_id, user_id, device_id) values (145, 1, 11);
-insert into event (function_id, user_id, device_id) values (145, 1, 2);
-insert into event (function_id, user_id, device_id) values (145, 1, 10);
-insert into event (function_id, user_id, device_id) values (145, 1, 28);
-insert into event (function_id, user_id, device_id) values (146, 1, 1);
-insert into event (function_id, user_id, device_id) values (146, 1, 16);
-insert into event (function_id, user_id, device_id) values (146, 1, 15);
-insert into event (function_id, user_id, device_id) values (147, 1, 4);
-insert into event (function_id, user_id, device_id) values (147, 1, 25);
-insert into event (function_id, user_id, device_id) values (147, 1, 10);
-insert into event (function_id, user_id, device_id) values (148, 1, 8);
-insert into event (function_id, user_id, device_id) values (148, 1, 26);
-insert into event (function_id, user_id, device_id) values (148, 1, 11);
-insert into event (function_id, user_id, device_id) values (148, 1, 1);
-insert into event (function_id, user_id, device_id) values (149, 1, 19);
-insert into event (function_id, user_id, device_id) values (149, 1, 15);
-insert into event (function_id, user_id, device_id) values (149, 1, 3);
-insert into event (function_id, user_id, device_id) values (150, 1, 7);
-insert into event (function_id, user_id, device_id) values (150, 1, 18);
-insert into event (function_id, user_id, device_id) values (150, 1, 8);
-insert into event (function_id, user_id, device_id) values (151, 2, 12);
-insert into event (function_id, user_id, device_id) values (151, 2, 14);
-insert into event (function_id, user_id, device_id) values (151, 2, 1);
-insert into event (function_id, user_id, device_id) values (151, 2, 14);
-insert into event (function_id, user_id, device_id) values (152, 2, 13);
-insert into event (function_id, user_id, device_id) values (152, 2, 26);
-insert into event (function_id, user_id, device_id) values (152, 2, 16);
-insert into event (function_id, user_id, device_id) values (153, 2, 13);
-insert into event (function_id, user_id, device_id) values (153, 2, 4);
-insert into event (function_id, user_id, device_id) values (153, 2, 13);
-insert into event (function_id, user_id, device_id) values (154, 2, 6);
-insert into event (function_id, user_id, device_id) values (154, 2, 27);
-insert into event (function_id, user_id, device_id) values (154, 2, 21);
-insert into event (function_id, user_id, device_id) values (154, 2, 24);
-insert into event (function_id, user_id, device_id) values (155, 2, 27);
-insert into event (function_id, user_id, device_id) values (155, 2, 1);
-insert into event (function_id, user_id, device_id) values (155, 2, 11);
-insert into event (function_id, user_id, device_id) values (156, 2, 22);
-insert into event (function_id, user_id, device_id) values (156, 2, 2);
-insert into event (function_id, user_id, device_id) values (156, 2, 28);
-insert into event (function_id, user_id, device_id) values (157, 2, 30);
-insert into event (function_id, user_id, device_id) values (157, 2, 18);
-insert into event (function_id, user_id, device_id) values (157, 2, 28);
-insert into event (function_id, user_id, device_id) values (157, 2, 28);
-insert into event (function_id, user_id, device_id) values (158, 2, 15);
-insert into event (function_id, user_id, device_id) values (158, 2, 20);
-insert into event (function_id, user_id, device_id) values (158, 2, 20);
-insert into event (function_id, user_id, device_id) values (159, 2, 1);
-insert into event (function_id, user_id, device_id) values (159, 2, 5);
-insert into event (function_id, user_id, device_id) values (159, 2, 29);
-insert into event (function_id, user_id, device_id) values (160, 2, 18);
-insert into event (function_id, user_id, device_id) values (160, 2, 11);
-insert into event (function_id, user_id, device_id) values (160, 2, 23);
-insert into event (function_id, user_id, device_id) values (160, 2, 12);
-insert into event (function_id, user_id, device_id) values (161, 2, 30);
-insert into event (function_id, user_id, device_id) values (161, 2, 16);
-insert into event (function_id, user_id, device_id) values (161, 2, 21);
-insert into event (function_id, user_id, device_id) values (162, 2, 30);
-insert into event (function_id, user_id, device_id) values (162, 2, 17);
-insert into event (function_id, user_id, device_id) values (162, 2, 12);
-insert into event (function_id, user_id, device_id) values (163, 2, 24);
-insert into event (function_id, user_id, device_id) values (163, 2, 10);
-insert into event (function_id, user_id, device_id) values (163, 2, 11);
-insert into event (function_id, user_id, device_id) values (163, 2, 29);
-insert into event (function_id, user_id, device_id) values (164, 2, 28);
-insert into event (function_id, user_id, device_id) values (164, 2, 5);
-insert into event (function_id, user_id, device_id) values (164, 2, 23);
-insert into event (function_id, user_id, device_id) values (165, 2, 6);
-insert into event (function_id, user_id, device_id) values (165, 2, 27);
-insert into event (function_id, user_id, device_id) values (165, 2, 22);
-insert into event (function_id, user_id, device_id) values (166, 2, 2);
-insert into event (function_id, user_id, device_id) values (166, 2, 28);
-insert into event (function_id, user_id, device_id) values (166, 2, 13);
-insert into event (function_id, user_id, device_id) values (166, 2, 8);
-insert into event (function_id, user_id, device_id) values (167, 2, 15);
-insert into event (function_id, user_id, device_id) values (167, 2, 4);
-insert into event (function_id, user_id, device_id) values (167, 2, 20);
-insert into event (function_id, user_id, device_id) values (168, 2, 15);
-insert into event (function_id, user_id, device_id) values (168, 2, 19);
-insert into event (function_id, user_id, device_id) values (168, 2, 15);
-insert into event (function_id, user_id, device_id) values (169, 2, 12);
-insert into event (function_id, user_id, device_id) values (169, 2, 27);
-insert into event (function_id, user_id, device_id) values (169, 2, 18);
-insert into event (function_id, user_id, device_id) values (169, 2, 28);
-insert into event (function_id, user_id, device_id) values (170, 2, 1);
-insert into event (function_id, user_id, device_id) values (170, 2, 25);
-insert into event (function_id, user_id, device_id) values (170, 2, 10);
-insert into event (function_id, user_id, device_id) values (171, 2, 14);
-insert into event (function_id, user_id, device_id) values (171, 2, 6);
-insert into event (function_id, user_id, device_id) values (171, 2, 15);
-insert into event (function_id, user_id, device_id) values (171, 2, 29);
-insert into event (function_id, user_id, device_id) values (172, 2, 7);
-insert into event (function_id, user_id, device_id) values (172, 2, 27);
-insert into event (function_id, user_id, device_id) values (172, 2, 14);
-insert into event (function_id, user_id, device_id) values (173, 2, 19);
-insert into event (function_id, user_id, device_id) values (173, 2, 22);
-insert into event (function_id, user_id, device_id) values (173, 2, 17);
-insert into event (function_id, user_id, device_id) values (174, 2, 5);
-insert into event (function_id, user_id, device_id) values (174, 2, 16);
-insert into event (function_id, user_id, device_id) values (174, 2, 28);
-insert into event (function_id, user_id, device_id) values (175, 2, 2);
-insert into event (function_id, user_id, device_id) values (175, 2, 2);
-insert into event (function_id, user_id, device_id) values (175, 2, 24);
-insert into event (function_id, user_id, device_id) values (175, 2, 29);
-insert into event (function_id, user_id, device_id) values (176, 2, 30);
-insert into event (function_id, user_id, device_id) values (176, 2, 16);
-insert into event (function_id, user_id, device_id) values (176, 2, 15);
-insert into event (function_id, user_id, device_id) values (177, 2, 3);
-insert into event (function_id, user_id, device_id) values (177, 2, 15);
-insert into event (function_id, user_id, device_id) values (177, 2, 9);
-insert into event (function_id, user_id, device_id) values (178, 2, 18);
-insert into event (function_id, user_id, device_id) values (178, 2, 18);
-insert into event (function_id, user_id, device_id) values (178, 2, 3);
-insert into event (function_id, user_id, device_id) values (178, 2, 20);
-insert into event (function_id, user_id, device_id) values (179, 2, 22);
-insert into event (function_id, user_id, device_id) values (179, 2, 13);
-insert into event (function_id, user_id, device_id) values (179, 2, 14);
-insert into event (function_id, user_id, device_id) values (180, 2, 26);
-insert into event (function_id, user_id, device_id) values (180, 2, 8);
-insert into event (function_id, user_id, device_id) values (180, 2, 22);
-insert into event (function_id, user_id, device_id) values (181, 2, 12);
-insert into event (function_id, user_id, device_id) values (181, 2, 19);
-insert into event (function_id, user_id, device_id) values (181, 2, 3);
-insert into event (function_id, user_id, device_id) values (181, 2, 23);
-insert into event (function_id, user_id, device_id) values (182, 2, 12);
-insert into event (function_id, user_id, device_id) values (182, 2, 28);
-insert into event (function_id, user_id, device_id) values (182, 2, 19);
-insert into event (function_id, user_id, device_id) values (183, 2, 24);
-insert into event (function_id, user_id, device_id) values (183, 2, 15);
-insert into event (function_id, user_id, device_id) values (183, 2, 7);
-insert into event (function_id, user_id, device_id) values (184, 2, 15);
-insert into event (function_id, user_id, device_id) values (184, 2, 10);
-insert into event (function_id, user_id, device_id) values (184, 2, 10);
-insert into event (function_id, user_id, device_id) values (184, 2, 24);
-insert into event (function_id, user_id, device_id) values (185, 2, 20);
-insert into event (function_id, user_id, device_id) values (185, 2, 4);
-insert into event (function_id, user_id, device_id) values (185, 2, 19);
-insert into event (function_id, user_id, device_id) values (186, 2, 12);
-insert into event (function_id, user_id, device_id) values (186, 2, 24);
-insert into event (function_id, user_id, device_id) values (186, 2, 15);
-insert into event (function_id, user_id, device_id) values (187, 2, 25);
-insert into event (function_id, user_id, device_id) values (187, 2, 17);
-insert into event (function_id, user_id, device_id) values (187, 2, 13);
-insert into event (function_id, user_id, device_id) values (187, 2, 16);
-insert into event (function_id, user_id, device_id) values (188, 2, 23);
-insert into event (function_id, user_id, device_id) values (188, 2, 17);
-insert into event (function_id, user_id, device_id) values (188, 2, 23);
-insert into event (function_id, user_id, device_id) values (189, 2, 20);
-insert into event (function_id, user_id, device_id) values (189, 2, 2);
-insert into event (function_id, user_id, device_id) values (189, 2, 30);
-insert into event (function_id, user_id, device_id) values (190, 2, 8);
-insert into event (function_id, user_id, device_id) values (190, 2, 29);
-insert into event (function_id, user_id, device_id) values (190, 2, 26);
-insert into event (function_id, user_id, device_id) values (190, 2, 25);
-insert into event (function_id, user_id, device_id) values (191, 2, 22);
-insert into event (function_id, user_id, device_id) values (191, 2, 12);
-insert into event (function_id, user_id, device_id) values (191, 2, 1);
-insert into event (function_id, user_id, device_id) values (192, 2, 23);
-insert into event (function_id, user_id, device_id) values (192, 2, 17);
-insert into event (function_id, user_id, device_id) values (192, 2, 13);
-insert into event (function_id, user_id, device_id) values (193, 2, 24);
-insert into event (function_id, user_id, device_id) values (193, 2, 1);
-insert into event (function_id, user_id, device_id) values (193, 2, 27);
-insert into event (function_id, user_id, device_id) values (193, 2, 24);
-insert into event (function_id, user_id, device_id) values (194, 2, 26);
-insert into event (function_id, user_id, device_id) values (194, 2, 20);
-insert into event (function_id, user_id, device_id) values (194, 2, 24);
-insert into event (function_id, user_id, device_id) values (195, 2, 25);
-insert into event (function_id, user_id, device_id) values (195, 2, 9);
-insert into event (function_id, user_id, device_id) values (195, 2, 11);
-insert into event (function_id, user_id, device_id) values (196, 2, 22);
-insert into event (function_id, user_id, device_id) values (196, 2, 17);
-insert into event (function_id, user_id, device_id) values (196, 2, 26);
-insert into event (function_id, user_id, device_id) values (196, 2, 18);
-insert into event (function_id, user_id, device_id) values (197, 2, 6);
-insert into event (function_id, user_id, device_id) values (197, 2, 26);
-insert into event (function_id, user_id, device_id) values (197, 2, 14);
-insert into event (function_id, user_id, device_id) values (198, 2, 7);
-insert into event (function_id, user_id, device_id) values (198, 2, 3);
-insert into event (function_id, user_id, device_id) values (198, 2, 15);
-insert into event (function_id, user_id, device_id) values (199, 2, 4);
-insert into event (function_id, user_id, device_id) values (199, 2, 19);
-insert into event (function_id, user_id, device_id) values (199, 2, 28);
-insert into event (function_id, user_id, device_id) values (199, 2, 23);
-insert into event (function_id, user_id, device_id) values (200, 2, 25);
-insert into event (function_id, user_id, device_id) values (200, 2, 3);
-insert into event (function_id, user_id, device_id) values (200, 2, 10);
-insert into event (function_id, user_id, device_id) values (201, 2, 6);
-insert into event (function_id, user_id, device_id) values (201, 2, 19);
-insert into event (function_id, user_id, device_id) values (201, 2, 16);
-insert into event (function_id, user_id, device_id) values (202, 2, 30);
-insert into event (function_id, user_id, device_id) values (202, 2, 7);
-insert into event (function_id, user_id, device_id) values (202, 2, 20);
-insert into event (function_id, user_id, device_id) values (202, 2, 9);
-insert into event (function_id, user_id, device_id) values (203, 2, 13);
-insert into event (function_id, user_id, device_id) values (203, 2, 1);
-insert into event (function_id, user_id, device_id) values (203, 2, 27);
-insert into event (function_id, user_id, device_id) values (204, 2, 10);
-insert into event (function_id, user_id, device_id) values (204, 2, 12);
-insert into event (function_id, user_id, device_id) values (204, 2, 24);
-insert into event (function_id, user_id, device_id) values (205, 2, 7);
-insert into event (function_id, user_id, device_id) values (205, 2, 10);
-insert into event (function_id, user_id, device_id) values (205, 2, 15);
-insert into event (function_id, user_id, device_id) values (205, 2, 7);
-insert into event (function_id, user_id, device_id) values (206, 2, 20);
-insert into event (function_id, user_id, device_id) values (206, 2, 22);
-insert into event (function_id, user_id, device_id) values (206, 2, 4);
-insert into event (function_id, user_id, device_id) values (207, 2, 26);
-insert into event (function_id, user_id, device_id) values (207, 2, 20);
-insert into event (function_id, user_id, device_id) values (207, 2, 17);
-insert into event (function_id, user_id, device_id) values (207, 2, 4);
-insert into event (function_id, user_id, device_id) values (208, 2, 25);
-insert into event (function_id, user_id, device_id) values (208, 2, 14);
-insert into event (function_id, user_id, device_id) values (208, 2, 22);
-insert into event (function_id, user_id, device_id) values (209, 2, 23);
-insert into event (function_id, user_id, device_id) values (209, 2, 16);
-insert into event (function_id, user_id, device_id) values (209, 2, 24);
-insert into event (function_id, user_id, device_id) values (210, 2, 19);
-insert into event (function_id, user_id, device_id) values (210, 2, 2);
-insert into event (function_id, user_id, device_id) values (210, 2, 12);
-insert into event (function_id, user_id, device_id) values (211, 2, 23);
-insert into event (function_id, user_id, device_id) values (211, 2, 12);
-insert into event (function_id, user_id, device_id) values (211, 2, 25);
-insert into event (function_id, user_id, device_id) values (211, 2, 7);
-insert into event (function_id, user_id, device_id) values (212, 2, 14);
-insert into event (function_id, user_id, device_id) values (212, 2, 26);
-insert into event (function_id, user_id, device_id) values (212, 2, 4);
-insert into event (function_id, user_id, device_id) values (213, 2, 1);
-insert into event (function_id, user_id, device_id) values (213, 2, 15);
-insert into event (function_id, user_id, device_id) values (213, 2, 21);
-insert into event (function_id, user_id, device_id) values (214, 2, 17);
-insert into event (function_id, user_id, device_id) values (214, 2, 8);
-insert into event (function_id, user_id, device_id) values (214, 2, 9);
-insert into event (function_id, user_id, device_id) values (214, 2, 27);
-insert into event (function_id, user_id, device_id) values (215, 2, 4);
-insert into event (function_id, user_id, device_id) values (215, 2, 5);
-insert into event (function_id, user_id, device_id) values (215, 2, 27);
-insert into event (function_id, user_id, device_id) values (216, 2, 21);
-insert into event (function_id, user_id, device_id) values (216, 2, 5);
-insert into event (function_id, user_id, device_id) values (216, 2, 14);
-insert into event (function_id, user_id, device_id) values (217, 2, 29);
-insert into event (function_id, user_id, device_id) values (217, 2, 12);
-insert into event (function_id, user_id, device_id) values (217, 2, 19);
-insert into event (function_id, user_id, device_id) values (217, 2, 2);
-insert into event (function_id, user_id, device_id) values (218, 2, 29);
-insert into event (function_id, user_id, device_id) values (218, 2, 27);
-insert into event (function_id, user_id, device_id) values (218, 2, 13);
-insert into event (function_id, user_id, device_id) values (219, 2, 15);
-insert into event (function_id, user_id, device_id) values (219, 2, 11);
-insert into event (function_id, user_id, device_id) values (219, 2, 13);
-insert into event (function_id, user_id, device_id) values (220, 2, 11);
-insert into event (function_id, user_id, device_id) values (220, 2, 18);
-insert into event (function_id, user_id, device_id) values (220, 2, 6);
-insert into event (function_id, user_id, device_id) values (220, 2, 18);
-insert into event (function_id, user_id, device_id) values (221, 2, 8);
-insert into event (function_id, user_id, device_id) values (221, 2, 5);
-insert into event (function_id, user_id, device_id) values (221, 2, 3);
-insert into event (function_id, user_id, device_id) values (222, 2, 15);
-insert into event (function_id, user_id, device_id) values (222, 2, 18);
-insert into event (function_id, user_id, device_id) values (222, 2, 8);
-insert into event (function_id, user_id, device_id) values (223, 2, 8);
-insert into event (function_id, user_id, device_id) values (223, 2, 7);
-insert into event (function_id, user_id, device_id) values (223, 2, 17);
-insert into event (function_id, user_id, device_id) values (223, 2, 4);
-insert into event (function_id, user_id, device_id) values (224, 2, 23);
-insert into event (function_id, user_id, device_id) values (224, 2, 22);
-insert into event (function_id, user_id, device_id) values (224, 2, 8);
-insert into event (function_id, user_id, device_id) values (225, 2, 30);
-insert into event (function_id, user_id, device_id) values (225, 2, 9);
-insert into event (function_id, user_id, device_id) values (225, 2, 24);
-insert into event (function_id, user_id, device_id) values (226, 2, 15);
-insert into event (function_id, user_id, device_id) values (226, 2, 28);
-insert into event (function_id, user_id, device_id) values (226, 2, 27);
-insert into event (function_id, user_id, device_id) values (226, 2, 23);
-insert into event (function_id, user_id, device_id) values (227, 2, 24);
-insert into event (function_id, user_id, device_id) values (227, 2, 19);
-insert into event (function_id, user_id, device_id) values (227, 2, 4);
-insert into event (function_id, user_id, device_id) values (228, 2, 29);
-insert into event (function_id, user_id, device_id) values (228, 2, 4);
-insert into event (function_id, user_id, device_id) values (228, 2, 1);
-insert into event (function_id, user_id, device_id) values (229, 2, 19);
-insert into event (function_id, user_id, device_id) values (229, 2, 9);
-insert into event (function_id, user_id, device_id) values (229, 2, 26);
-insert into event (function_id, user_id, device_id) values (229, 2, 6);
-insert into event (function_id, user_id, device_id) values (230, 2, 12);
-insert into event (function_id, user_id, device_id) values (230, 2, 20);
-insert into event (function_id, user_id, device_id) values (230, 2, 14);
-insert into event (function_id, user_id, device_id) values (231, 2, 4);
-insert into event (function_id, user_id, device_id) values (231, 2, 15);
-insert into event (function_id, user_id, device_id) values (231, 2, 26);
-insert into event (function_id, user_id, device_id) values (232, 2, 17);
-insert into event (function_id, user_id, device_id) values (232, 2, 1);
-insert into event (function_id, user_id, device_id) values (232, 2, 14);
-insert into event (function_id, user_id, device_id) values (232, 2, 27);
-insert into event (function_id, user_id, device_id) values (233, 2, 20);
-insert into event (function_id, user_id, device_id) values (233, 2, 20);
-insert into event (function_id, user_id, device_id) values (233, 2, 15);
-insert into event (function_id, user_id, device_id) values (234, 2, 20);
-insert into event (function_id, user_id, device_id) values (234, 2, 3);
-insert into event (function_id, user_id, device_id) values (234, 2, 16);
-insert into event (function_id, user_id, device_id) values (235, 2, 5);
-insert into event (function_id, user_id, device_id) values (235, 2, 4);
-insert into event (function_id, user_id, device_id) values (235, 2, 9);
-insert into event (function_id, user_id, device_id) values (235, 2, 15);
-insert into event (function_id, user_id, device_id) values (236, 2, 20);
-insert into event (function_id, user_id, device_id) values (236, 2, 1);
-insert into event (function_id, user_id, device_id) values (236, 2, 23);
-insert into event (function_id, user_id, device_id) values (237, 2, 23);
-insert into event (function_id, user_id, device_id) values (237, 2, 22);
-insert into event (function_id, user_id, device_id) values (237, 2, 1);
-insert into event (function_id, user_id, device_id) values (238, 2, 21);
-insert into event (function_id, user_id, device_id) values (238, 2, 24);
-insert into event (function_id, user_id, device_id) values (238, 2, 30);
-insert into event (function_id, user_id, device_id) values (238, 2, 8);
-insert into event (function_id, user_id, device_id) values (239, 2, 27);
-insert into event (function_id, user_id, device_id) values (239, 2, 5);
-insert into event (function_id, user_id, device_id) values (239, 2, 6);
-insert into event (function_id, user_id, device_id) values (240, 2, 22);
-insert into event (function_id, user_id, device_id) values (240, 2, 28);
-insert into event (function_id, user_id, device_id) values (240, 2, 6);
-insert into event (function_id, user_id, device_id) values (241, 2, 6);
-insert into event (function_id, user_id, device_id) values (241, 2, 21);
-insert into event (function_id, user_id, device_id) values (241, 2, 18);
-insert into event (function_id, user_id, device_id) values (241, 2, 20);
-insert into event (function_id, user_id, device_id) values (242, 2, 7);
-insert into event (function_id, user_id, device_id) values (242, 2, 9);
-insert into event (function_id, user_id, device_id) values (242, 2, 6);
-insert into event (function_id, user_id, device_id) values (243, 2, 19);
-insert into event (function_id, user_id, device_id) values (243, 2, 26);
-insert into event (function_id, user_id, device_id) values (243, 2, 8);
-insert into event (function_id, user_id, device_id) values (244, 2, 11);
-insert into event (function_id, user_id, device_id) values (244, 2, 14);
-insert into event (function_id, user_id, device_id) values (244, 2, 7);
-insert into event (function_id, user_id, device_id) values (244, 2, 19);
-insert into event (function_id, user_id, device_id) values (245, 2, 9);
-insert into event (function_id, user_id, device_id) values (245, 2, 17);
-insert into event (function_id, user_id, device_id) values (245, 2, 21);
-insert into event (function_id, user_id, device_id) values (246, 2, 16);
-insert into event (function_id, user_id, device_id) values (246, 2, 3);
-insert into event (function_id, user_id, device_id) values (246, 2, 26);
-insert into event (function_id, user_id, device_id) values (246, 2, 5);
-insert into event (function_id, user_id, device_id) values (247, 2, 2);
-insert into event (function_id, user_id, device_id) values (247, 2, 1);
-insert into event (function_id, user_id, device_id) values (247, 2, 29);
-insert into event (function_id, user_id, device_id) values (248, 2, 5);
-insert into event (function_id, user_id, device_id) values (248, 2, 7);
-insert into event (function_id, user_id, device_id) values (248, 2, 12);
-insert into event (function_id, user_id, device_id) values (249, 2, 21);
-insert into event (function_id, user_id, device_id) values (249, 2, 23);
-insert into event (function_id, user_id, device_id) values (249, 2, 4);
-insert into event (function_id, user_id, device_id) values (250, 2, 25);
-insert into event (function_id, user_id, device_id) values (250, 2, 17);
-insert into event (function_id, user_id, device_id) values (250, 2, 24);
-insert into event (function_id, user_id, device_id) values (250, 2, 4);
-insert into event (function_id, user_id, device_id) values (251, 2, 13);
-insert into event (function_id, user_id, device_id) values (251, 2, 5);
-insert into event (function_id, user_id, device_id) values (251, 2, 8);
-insert into event (function_id, user_id, device_id) values (252, 2, 3);
-insert into event (function_id, user_id, device_id) values (252, 2, 29);
-insert into event (function_id, user_id, device_id) values (252, 2, 15);
-insert into event (function_id, user_id, device_id) values (253, 2, 17);
-insert into event (function_id, user_id, device_id) values (253, 2, 28);
-insert into event (function_id, user_id, device_id) values (253, 2, 22);
-insert into event (function_id, user_id, device_id) values (253, 2, 27);
-insert into event (function_id, user_id, device_id) values (254, 2, 2);
-insert into event (function_id, user_id, device_id) values (254, 2, 4);
-insert into event (function_id, user_id, device_id) values (254, 2, 13);
-insert into event (function_id, user_id, device_id) values (255, 2, 15);
-insert into event (function_id, user_id, device_id) values (255, 2, 6);
-insert into event (function_id, user_id, device_id) values (255, 2, 18);
-insert into event (function_id, user_id, device_id) values (256, 2, 7);
-insert into event (function_id, user_id, device_id) values (256, 2, 28);
-insert into event (function_id, user_id, device_id) values (256, 2, 14);
-insert into event (function_id, user_id, device_id) values (256, 2, 28);
-insert into event (function_id, user_id, device_id) values (257, 2, 25);
-insert into event (function_id, user_id, device_id) values (257, 2, 12);
-insert into event (function_id, user_id, device_id) values (257, 2, 25);
-insert into event (function_id, user_id, device_id) values (258, 2, 28);
-insert into event (function_id, user_id, device_id) values (258, 2, 11);
-insert into event (function_id, user_id, device_id) values (258, 2, 3);
-insert into event (function_id, user_id, device_id) values (259, 2, 18);
-insert into event (function_id, user_id, device_id) values (259, 2, 6);
-insert into event (function_id, user_id, device_id) values (259, 2, 9);
-insert into event (function_id, user_id, device_id) values (259, 2, 16);
-insert into event (function_id, user_id, device_id) values (260, 2, 24);
-insert into event (function_id, user_id, device_id) values (260, 2, 19);
-insert into event (function_id, user_id, device_id) values (260, 2, 25);
-insert into event (function_id, user_id, device_id) values (261, 2, 23);
-insert into event (function_id, user_id, device_id) values (261, 2, 29);
-insert into event (function_id, user_id, device_id) values (261, 2, 28);
-insert into event (function_id, user_id, device_id) values (262, 2, 25);
-insert into event (function_id, user_id, device_id) values (262, 2, 4);
-insert into event (function_id, user_id, device_id) values (262, 2, 11);
-insert into event (function_id, user_id, device_id) values (262, 2, 1);
-insert into event (function_id, user_id, device_id) values (263, 2, 12);
-insert into event (function_id, user_id, device_id) values (263, 2, 26);
-insert into event (function_id, user_id, device_id) values (263, 2, 9);
-insert into event (function_id, user_id, device_id) values (264, 2, 13);
-insert into event (function_id, user_id, device_id) values (264, 2, 13);
-insert into event (function_id, user_id, device_id) values (264, 2, 2);
-insert into event (function_id, user_id, device_id) values (265, 2, 24);
-insert into event (function_id, user_id, device_id) values (265, 2, 30);
-insert into event (function_id, user_id, device_id) values (265, 2, 8);
-insert into event (function_id, user_id, device_id) values (265, 2, 23);
-insert into event (function_id, user_id, device_id) values (266, 2, 14);
-insert into event (function_id, user_id, device_id) values (266, 2, 26);
-insert into event (function_id, user_id, device_id) values (266, 2, 2);
-insert into event (function_id, user_id, device_id) values (267, 2, 7);
-insert into event (function_id, user_id, device_id) values (267, 2, 30);
-insert into event (function_id, user_id, device_id) values (267, 2, 18);
-insert into event (function_id, user_id, device_id) values (268, 2, 22);
-insert into event (function_id, user_id, device_id) values (268, 2, 10);
-insert into event (function_id, user_id, device_id) values (268, 2, 2);
-insert into event (function_id, user_id, device_id) values (268, 2, 26);
-insert into event (function_id, user_id, device_id) values (269, 2, 8);
-insert into event (function_id, user_id, device_id) values (269, 2, 25);
-insert into event (function_id, user_id, device_id) values (269, 2, 5);
-insert into event (function_id, user_id, device_id) values (270, 2, 4);
-insert into event (function_id, user_id, device_id) values (270, 2, 29);
-insert into event (function_id, user_id, device_id) values (270, 2, 27);
-insert into event (function_id, user_id, device_id) values (271, 2, 18);
-insert into event (function_id, user_id, device_id) values (271, 2, 1);
-insert into event (function_id, user_id, device_id) values (271, 2, 17);
-insert into event (function_id, user_id, device_id) values (271, 2, 24);
-insert into event (function_id, user_id, device_id) values (272, 2, 25);
-insert into event (function_id, user_id, device_id) values (272, 2, 14);
-insert into event (function_id, user_id, device_id) values (272, 2, 21);
-insert into event (function_id, user_id, device_id) values (273, 2, 10);
-insert into event (function_id, user_id, device_id) values (273, 2, 15);
-insert into event (function_id, user_id, device_id) values (273, 2, 1);
-insert into event (function_id, user_id, device_id) values (274, 2, 9);
-insert into event (function_id, user_id, device_id) values (274, 2, 13);
-insert into event (function_id, user_id, device_id) values (274, 2, 10);
-insert into event (function_id, user_id, device_id) values (274, 2, 25);
-insert into event (function_id, user_id, device_id) values (275, 2, 25);
-insert into event (function_id, user_id, device_id) values (275, 2, 20);
-insert into event (function_id, user_id, device_id) values (275, 2, 4);
-insert into event (function_id, user_id, device_id) values (276, 2, 4);
-insert into event (function_id, user_id, device_id) values (276, 2, 13);
-insert into event (function_id, user_id, device_id) values (276, 2, 11);
-insert into event (function_id, user_id, device_id) values (277, 2, 30);
-insert into event (function_id, user_id, device_id) values (277, 2, 2);
-insert into event (function_id, user_id, device_id) values (277, 2, 9);
-insert into event (function_id, user_id, device_id) values (277, 2, 17);
-insert into event (function_id, user_id, device_id) values (278, 2, 28);
-insert into event (function_id, user_id, device_id) values (278, 2, 8);
-insert into event (function_id, user_id, device_id) values (278, 2, 8);
-insert into event (function_id, user_id, device_id) values (279, 2, 16);
-insert into event (function_id, user_id, device_id) values (279, 2, 12);
-insert into event (function_id, user_id, device_id) values (279, 2, 21);
-insert into event (function_id, user_id, device_id) values (280, 2, 22);
-insert into event (function_id, user_id, device_id) values (280, 2, 11);
-insert into event (function_id, user_id, device_id) values (280, 2, 27);
-insert into event (function_id, user_id, device_id) values (280, 2, 25);
-insert into event (function_id, user_id, device_id) values (281, 2, 2);
-insert into event (function_id, user_id, device_id) values (281, 2, 30);
-insert into event (function_id, user_id, device_id) values (281, 2, 18);
-insert into event (function_id, user_id, device_id) values (282, 2, 19);
-insert into event (function_id, user_id, device_id) values (282, 2, 13);
-insert into event (function_id, user_id, device_id) values (282, 2, 10);
-insert into event (function_id, user_id, device_id) values (283, 2, 9);
-insert into event (function_id, user_id, device_id) values (283, 2, 24);
-insert into event (function_id, user_id, device_id) values (283, 2, 18);
-insert into event (function_id, user_id, device_id) values (283, 2, 13);
-insert into event (function_id, user_id, device_id) values (284, 2, 1);
-insert into event (function_id, user_id, device_id) values (284, 2, 22);
-insert into event (function_id, user_id, device_id) values (284, 2, 17);
-insert into event (function_id, user_id, device_id) values (285, 2, 15);
-insert into event (function_id, user_id, device_id) values (285, 2, 2);
-insert into event (function_id, user_id, device_id) values (285, 2, 26);
-insert into event (function_id, user_id, device_id) values (286, 2, 27);
-insert into event (function_id, user_id, device_id) values (286, 2, 1);
-insert into event (function_id, user_id, device_id) values (286, 2, 8);
-insert into event (function_id, user_id, device_id) values (286, 2, 7);
-insert into event (function_id, user_id, device_id) values (287, 2, 24);
-insert into event (function_id, user_id, device_id) values (287, 2, 16);
-insert into event (function_id, user_id, device_id) values (287, 2, 7);
-insert into event (function_id, user_id, device_id) values (288, 2, 2);
-insert into event (function_id, user_id, device_id) values (288, 2, 24);
-insert into event (function_id, user_id, device_id) values (288, 2, 3);
-insert into event (function_id, user_id, device_id) values (289, 2, 1);
-insert into event (function_id, user_id, device_id) values (289, 2, 22);
-insert into event (function_id, user_id, device_id) values (289, 2, 15);
-insert into event (function_id, user_id, device_id) values (289, 2, 13);
-insert into event (function_id, user_id, device_id) values (290, 2, 25);
-insert into event (function_id, user_id, device_id) values (290, 2, 2);
-insert into event (function_id, user_id, device_id) values (290, 2, 18);
-insert into event (function_id, user_id, device_id) values (291, 2, 24);
-insert into event (function_id, user_id, device_id) values (291, 2, 23);
-insert into event (function_id, user_id, device_id) values (291, 2, 17);
-insert into event (function_id, user_id, device_id) values (292, 2, 12);
-insert into event (function_id, user_id, device_id) values (292, 2, 21);
-insert into event (function_id, user_id, device_id) values (292, 2, 29);
-insert into event (function_id, user_id, device_id) values (292, 2, 2);
-insert into event (function_id, user_id, device_id) values (293, 2, 4);
-insert into event (function_id, user_id, device_id) values (293, 2, 9);
-insert into event (function_id, user_id, device_id) values (293, 2, 8);
-insert into event (function_id, user_id, device_id) values (294, 2, 10);
-insert into event (function_id, user_id, device_id) values (294, 2, 14);
-insert into event (function_id, user_id, device_id) values (294, 2, 6);
-insert into event (function_id, user_id, device_id) values (295, 2, 2);
-insert into event (function_id, user_id, device_id) values (295, 2, 6);
-insert into event (function_id, user_id, device_id) values (295, 2, 6);
-insert into event (function_id, user_id, device_id) values (295, 2, 29);
-insert into event (function_id, user_id, device_id) values (296, 2, 4);
-insert into event (function_id, user_id, device_id) values (296, 2, 6);
-insert into event (function_id, user_id, device_id) values (296, 2, 29);
-insert into event (function_id, user_id, device_id) values (297, 2, 14);
-insert into event (function_id, user_id, device_id) values (297, 2, 18);
-insert into event (function_id, user_id, device_id) values (297, 2, 15);
-insert into event (function_id, user_id, device_id) values (298, 2, 12);
-insert into event (function_id, user_id, device_id) values (298, 2, 29);
-insert into event (function_id, user_id, device_id) values (298, 2, 26);
-insert into event (function_id, user_id, device_id) values (298, 2, 29);
-insert into event (function_id, user_id, device_id) values (299, 2, 16);
-insert into event (function_id, user_id, device_id) values (299, 2, 20);
-insert into event (function_id, user_id, device_id) values (299, 2, 12);
-insert into event (function_id, user_id, device_id) values (300, 2, 6);
-insert into event (function_id, user_id, device_id) values (300, 2, 20);
-insert into event (function_id, user_id, device_id) values (300, 2, 4);
-insert into event (function_id, user_id, device_id) values (300, 2, 16);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-07 17:36:29.802055', 187, 64, 17),
+       ('2024-10-15 23:17:42.952974', 187, 74, 13),
+       ('2024-09-05 11:07:57.190125', 187, 80, 16),
+       ('2024-11-09 13:07:10.060824', 188, 77, 23),
+       ('2024-11-28 18:36:39.107464', 188, 68, 17),
+       ('2024-09-08 06:03:37.056935', 188, 67, 23),
+       ('2024-09-03 02:37:53.07699', 189, 75, 20),
+       ('2024-09-16 05:15:39.826952', 189, 76, 2),
+       ('2024-10-25 16:16:02.225661', 189, 70, 30),
+       ('2024-11-16 00:54:06.453916', 190, 63, 8);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-21 15:23:59.465943', 190, 76, 29),
+       ('2024-11-08 02:42:55.108251', 190, 77, 26),
+       ('2024-11-24 22:19:16.077469', 190, 64, 25),
+       ('2024-09-30 11:46:34.40177', 191, 64, 22),
+       ('2024-10-09 12:05:08.851483', 191, 70, 12),
+       ('2024-11-20 06:38:29.707349', 191, 62, 1),
+       ('2024-09-07 08:40:00.65759', 192, 69, 23),
+       ('2024-11-30 16:19:49.739129', 192, 65, 17),
+       ('2024-09-05 21:29:05.243367', 192, 65, 13),
+       ('2024-10-30 16:13:54.607117', 193, 77, 24);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-10 14:49:34.222824', 193, 72, 1),
+       ('2024-09-06 04:03:01.730556', 193, 67, 27),
+       ('2024-09-22 09:34:12.924412', 193, 62, 24),
+       ('2024-10-18 00:41:16.958689', 194, 69, 26),
+       ('2024-11-03 05:32:53.724223', 194, 71, 20),
+       ('2024-11-19 01:42:23.452569', 194, 74, 24),
+       ('2024-10-12 01:48:42.881048', 195, 74, 25),
+       ('2024-11-13 05:54:53.389678', 195, 70, 9),
+       ('2024-10-30 21:23:48.92033', 195, 62, 11),
+       ('2024-09-07 19:57:45.355027', 196, 63, 22);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-05 00:34:06.419474', 196, 73, 17),
+       ('2024-11-02 00:29:01.556862', 196, 79, 26),
+       ('2024-09-30 13:52:31.171424', 196, 76, 18),
+       ('2024-10-28 03:51:17.571115', 197, 80, 6),
+       ('2024-10-11 20:18:15.469301', 197, 64, 26),
+       ('2024-10-04 17:03:42.514914', 212, 76, 14),
+       ('2024-11-10 12:00:11.901963', 212, 73, 26),
+       ('2024-11-04 23:28:52.670523', 212, 75, 4),
+       ('2024-11-21 10:07:09.538802', 213, 64, 1),
+       ('2024-09-08 00:21:37.26751', 213, 69, 15);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-27 02:16:51.840115', 213, 80, 21),
+       ('2024-10-17 11:21:06.017823', 214, 66, 17),
+       ('2024-09-14 07:41:53.23806', 214, 72, 8),
+       ('2024-10-12 12:11:51.974832', 214, 76, 9),
+       ('2024-10-29 08:44:16.053605', 214, 62, 27),
+       ('2024-11-11 16:17:01.426219', 215, 74, 4),
+       ('2024-10-16 00:09:26.053692', 215, 77, 5),
+       ('2024-09-16 04:08:51.912632', 215, 63, 27),
+       ('2024-10-03 11:02:56.851543', 216, 70, 21),
+       ('2024-11-22 04:29:13.008416', 216, 69, 5);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-10 11:27:21.548358', 216, 62, 14),
+       ('2024-09-01 18:52:05.24154', 217, 75, 29),
+       ('2024-11-19 18:33:29.448243', 217, 68, 12),
+       ('2024-09-11 11:40:35.627996', 217, 75, 19),
+       ('2024-09-24 21:35:40.883187', 217, 70, 2),
+       ('2024-09-11 19:01:47.361298', 218, 77, 29),
+       ('2024-11-09 00:17:17.802681', 218, 63, 27),
+       ('2024-11-25 20:13:57.709968', 218, 79, 13),
+       ('2024-09-21 15:15:45.350152', 219, 64, 15),
+       ('2024-10-11 16:42:12.270515', 219, 79, 11);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-07 07:28:58.176775', 219, 66, 13),
+       ('2024-11-16 17:46:57.818869', 220, 79, 11),
+       ('2024-11-05 02:10:09.964311', 220, 66, 18),
+       ('2024-10-01 00:51:21.72218', 220, 72, 6),
+       ('2024-11-14 04:14:24.870082', 220, 76, 18),
+       ('2024-11-17 19:20:16.422982', 221, 67, 8),
+       ('2024-09-10 08:44:16.108144', 221, 75, 5),
+       ('2024-10-18 19:09:14.159613', 221, 74, 3),
+       ('2024-09-25 03:36:01.947202', 222, 74, 15),
+       ('2024-11-12 07:09:08.605654', 222, 69, 18);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-31 13:58:22.155187', 222, 69, 8),
+       ('2024-11-04 13:58:43.96336', 223, 63, 8),
+       ('2024-11-25 07:07:21.45119', 223, 80, 7),
+       ('2024-11-17 15:12:46.927893', 223, 74, 17),
+       ('2024-11-21 13:06:24.200206', 223, 67, 4),
+       ('2024-10-19 21:28:44.634727', 224, 67, 23),
+       ('2024-09-05 09:51:17.699952', 224, 70, 22),
+       ('2024-10-11 02:51:50.50581', 224, 78, 8),
+       ('2024-10-28 04:05:11.370097', 225, 65, 30),
+       ('2024-11-27 23:15:49.806584', 225, 80, 9);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-16 05:57:58.885798', 225, 64, 24),
+       ('2024-11-11 08:12:58.254334', 226, 80, 15),
+       ('2024-09-20 10:22:12.92479', 226, 61, 28),
+       ('2024-10-16 08:17:48.198496', 226, 75, 27),
+       ('2024-11-19 03:45:40.168073', 226, 69, 23),
+       ('2024-09-12 08:03:24.824265', 227, 70, 24),
+       ('2024-11-06 18:05:59.831185', 227, 78, 19),
+       ('2024-09-12 23:33:11.535241', 227, 75, 4),
+       ('2024-09-24 04:53:43.076728', 228, 66, 29),
+       ('2024-10-20 01:55:11.478956', 228, 74, 4);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-15 02:59:52.915634', 228, 62, 1),
+       ('2024-10-16 16:38:49.410917', 229, 68, 19),
+       ('2024-11-12 02:10:26.87668', 229, 79, 9),
+       ('2024-09-02 18:25:40.022969', 229, 74, 26),
+       ('2024-09-02 15:50:49.890904', 229, 61, 6),
+       ('2024-10-25 15:01:36.912898', 230, 76, 12),
+       ('2024-11-04 18:11:12.109051', 230, 78, 20),
+       ('2024-11-18 02:09:53.207447', 230, 77, 14),
+       ('2024-11-13 19:52:10.690774', 231, 74, 4),
+       ('2024-10-03 22:18:59.500165', 231, 71, 15);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-24 02:13:12.090639', 231, 65, 26),
+       ('2024-11-17 23:04:50.142588', 232, 62, 17),
+       ('2024-09-04 08:31:18.917339', 232, 62, 1),
+       ('2024-11-27 19:19:24.060661', 232, 69, 14),
+       ('2024-10-25 14:34:30.466225', 232, 69, 27),
+       ('2024-11-18 09:11:02.289873', 233, 65, 20),
+       ('2024-11-15 21:07:14.96037', 233, 72, 20),
+       ('2024-11-25 04:12:21.825223', 233, 71, 15),
+       ('2024-09-20 08:46:31.952883', 234, 78, 20),
+       ('2024-10-27 14:13:10.276187', 234, 74, 3);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-04 04:24:20.241425', 234, 78, 16),
+       ('2024-11-10 20:56:10.886692', 235, 66, 5),
+       ('2024-09-20 00:39:06.15927', 235, 73, 4),
+       ('2024-10-21 07:48:14.055831', 235, 64, 9),
+       ('2024-11-09 03:45:31.183998', 235, 75, 15),
+       ('2024-09-23 23:49:07.628891', 236, 61, 20),
+       ('2024-11-25 04:22:24.507938', 236, 71, 1),
+       ('2024-09-25 14:31:23.878931', 236, 61, 23),
+       ('2024-11-04 08:45:19.140613', 237, 73, 23),
+       ('2024-09-17 19:19:48.500118', 237, 65, 22);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-27 12:50:30.021623', 237, 74, 1),
+       ('2024-10-22 08:42:37.936946', 238, 76, 21),
+       ('2024-11-28 19:20:58.703098', 238, 69, 24),
+       ('2024-10-30 22:28:31.030462', 238, 61, 30),
+       ('2024-09-18 01:11:03.476072', 238, 68, 8),
+       ('2024-09-01 16:38:53.825758', 239, 73, 27),
+       ('2024-09-02 09:58:30.277918', 239, 75, 5),
+       ('2024-09-03 17:22:15.974159', 239, 79, 6),
+       ('2024-11-19 09:19:35.577646', 240, 62, 22),
+       ('2024-10-27 06:59:30.769009', 240, 62, 28);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-30 12:46:51.577921', 240, 62, 6),
+       ('2024-11-07 07:39:55.311883', 241, 84, 6),
+       ('2024-11-20 12:42:54.533193', 241, 91, 21),
+       ('2024-11-15 16:09:01.600664', 241, 82, 18),
+       ('2024-09-20 11:00:38.928337', 241, 82, 20),
+       ('2024-11-02 23:05:31.849685', 242, 85, 7),
+       ('2024-10-26 21:24:18.266669', 242, 87, 9),
+       ('2024-10-20 22:38:41.334675', 242, 82, 6),
+       ('2024-11-16 17:02:24.03081', 243, 86, 19),
+       ('2024-11-02 11:58:08.249457', 243, 96, 26);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-02 23:08:46.459968', 243, 86, 8),
+       ('2024-11-16 23:13:29.816661', 244, 100, 11),
+       ('2024-11-21 11:59:02.706484', 244, 85, 14),
+       ('2024-10-01 20:28:05.890525', 244, 92, 7),
+       ('2024-11-12 22:10:45.397372', 244, 93, 19),
+       ('2024-09-20 19:27:44.819874', 245, 92, 9),
+       ('2024-10-04 13:09:12.138841', 245, 85, 17),
+       ('2024-09-11 07:16:54.535082', 245, 86, 21),
+       ('2024-09-28 22:42:31.850825', 246, 86, 16),
+       ('2024-09-29 20:00:24.424662', 246, 89, 3);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-26 17:23:34.359858', 246, 84, 26),
+       ('2024-11-09 18:47:37.815711', 246, 89, 5),
+       ('2024-10-06 15:04:37.018686', 247, 84, 2),
+       ('2024-10-02 23:41:35.813213', 247, 88, 1),
+       ('2024-10-05 06:52:18.128831', 247, 96, 29),
+       ('2024-09-07 11:36:41.216867', 248, 96, 5),
+       ('2024-09-19 14:17:22.119367', 248, 95, 7),
+       ('2024-10-23 00:47:07.472453', 248, 94, 12),
+       ('2024-09-18 04:46:59.511504', 249, 96, 21),
+       ('2024-09-24 23:25:29.041472', 249, 82, 23);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-20 19:36:21.923785', 249, 82, 4),
+       ('2024-09-12 22:05:30.277379', 250, 85, 25),
+       ('2024-11-25 00:22:55.306417', 250, 92, 17),
+       ('2024-09-15 07:30:13.568334', 250, 100, 24),
+       ('2024-09-17 11:26:05.301391', 250, 99, 4),
+       ('2024-10-26 12:19:58.121638', 251, 86, 13),
+       ('2024-11-15 23:36:59.02391', 251, 98, 5),
+       ('2024-09-17 19:02:56.867146', 251, 85, 8),
+       ('2024-10-19 08:52:26.252681', 252, 89, 3),
+       ('2024-10-03 18:27:09.565168', 252, 100, 29);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-01 04:16:26.298364', 252, 100, 15),
+       ('2024-09-14 16:11:40.868767', 253, 90, 17),
+       ('2024-10-22 09:12:02.64011', 253, 91, 28),
+       ('2024-11-07 04:38:39.820791', 253, 98, 22),
+       ('2024-11-02 17:07:27.912825', 253, 86, 27),
+       ('2024-09-05 04:19:43.034297', 254, 94, 2),
+       ('2024-09-09 16:46:51.626759', 254, 84, 4),
+       ('2024-09-16 16:27:16.04004', 254, 92, 13),
+       ('2024-10-09 02:10:50.903515', 255, 86, 15),
+       ('2024-10-24 03:52:27.244183', 255, 89, 6);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-10 04:47:32.140291', 255, 100, 18),
+       ('2024-10-28 04:44:59.067343', 256, 87, 7),
+       ('2024-11-16 00:15:48.46526', 256, 94, 28),
+       ('2024-11-29 03:39:14.177208', 256, 86, 14),
+       ('2024-11-13 06:26:01.435095', 256, 90, 28),
+       ('2024-10-19 02:36:20.192165', 257, 89, 25),
+       ('2024-09-03 23:57:57.432669', 257, 86, 12),
+       ('2024-09-02 19:59:19.979188', 257, 87, 25),
+       ('2024-10-30 14:41:55.198983', 258, 82, 28),
+       ('2024-11-25 21:50:45.068543', 258, 84, 11);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-08 19:27:19.410276', 258, 92, 3),
+       ('2024-10-01 23:55:59.365513', 259, 98, 18),
+       ('2024-09-04 03:12:33.797665', 259, 81, 6),
+       ('2024-09-20 02:19:22.31571', 259, 89, 9),
+       ('2024-11-21 03:00:50.971497', 259, 84, 16),
+       ('2024-10-21 10:17:34.564462', 260, 88, 24),
+       ('2024-11-16 15:02:17.060077', 260, 91, 19),
+       ('2024-09-08 20:51:42.833596', 260, 89, 25),
+       ('2024-10-30 16:36:58.654251', 261, 89, 23),
+       ('2024-09-10 01:44:00.716116', 261, 98, 29);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-22 14:01:29.854582', 261, 87, 28),
+       ('2024-10-26 22:38:16.831706', 262, 99, 25),
+       ('2024-09-07 01:08:21.522966', 262, 89, 4),
+       ('2024-09-25 21:24:29.192831', 262, 85, 11),
+       ('2024-10-03 14:04:58.198408', 262, 89, 1),
+       ('2024-10-31 23:39:34.794478', 263, 98, 12),
+       ('2024-09-07 17:02:58.224136', 263, 93, 26),
+       ('2024-10-08 18:46:34.921646', 263, 96, 9),
+       ('2024-10-14 02:45:54.373291', 264, 89, 13),
+       ('2024-10-10 16:45:58.203106', 264, 95, 13);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-20 08:48:19.477016', 264, 87, 2),
+       ('2024-11-27 02:55:32.458936', 265, 85, 24),
+       ('2024-11-21 18:26:30.816228', 265, 81, 30),
+       ('2024-09-05 16:26:11.962106', 265, 95, 8),
+       ('2024-11-06 22:05:44.662832', 265, 89, 23),
+       ('2024-10-10 11:41:03.506601', 266, 83, 14),
+       ('2024-10-01 06:25:59.227132', 266, 99, 26),
+       ('2024-09-19 20:44:04.094727', 266, 90, 2),
+       ('2024-09-19 04:49:13.315163', 267, 87, 7),
+       ('2024-09-28 21:38:27.653183', 267, 87, 30);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-09 13:08:29.430755', 267, 89, 18),
+       ('2024-10-26 10:28:59.87748', 268, 99, 22),
+       ('2024-10-29 21:00:32.190116', 268, 95, 10),
+       ('2024-11-25 17:03:07.67989', 268, 90, 2),
+       ('2024-10-25 05:29:42.079012', 268, 87, 26),
+       ('2024-11-11 08:30:22.980543', 269, 87, 8),
+       ('2024-10-12 08:19:59.886435', 269, 81, 25),
+       ('2024-10-05 22:16:55.270201', 269, 88, 5),
+       ('2024-10-04 16:50:31.046216', 270, 87, 4),
+       ('2024-10-16 17:19:05.214082', 270, 95, 29);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-02 18:20:15.480653', 270, 99, 27),
+       ('2024-11-27 03:19:36.803913', 271, 96, 18),
+       ('2024-09-19 13:00:08.602889', 271, 86, 1),
+       ('2024-09-06 21:30:28.794379', 271, 91, 17),
+       ('2024-09-23 04:56:14.988484', 271, 85, 24),
+       ('2024-11-07 20:08:59.175254', 272, 96, 25),
+       ('2024-10-31 12:41:58.63712', 284, 92, 22),
+       ('2024-09-29 18:18:19.828271', 284, 93, 17),
+       ('2024-11-06 15:10:20.917473', 285, 96, 15),
+       ('2024-11-07 10:38:29.745394', 285, 83, 2);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-17 20:28:10.793595', 285, 99, 26),
+       ('2024-10-28 07:11:12.457354', 286, 89, 27),
+       ('2024-11-28 13:51:11.353952', 286, 88, 1),
+       ('2024-11-27 01:21:46.289053', 286, 96, 8),
+       ('2024-11-21 04:52:45.621715', 286, 93, 7),
+       ('2024-10-02 09:13:45.338558', 287, 85, 24),
+       ('2024-11-03 04:56:08.65484', 287, 90, 16),
+       ('2024-11-29 00:40:01.712057', 287, 84, 7),
+       ('2024-11-11 06:07:00.352018', 288, 98, 2),
+       ('2024-10-19 13:13:16.196456', 288, 95, 24);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-20 08:37:40.47711', 288, 98, 3),
+       ('2024-11-12 03:56:46.662142', 289, 86, 1),
+       ('2024-10-10 02:29:12.675431', 289, 94, 22),
+       ('2024-09-25 01:53:09.942603', 289, 92, 15),
+       ('2024-10-29 06:57:14.768835', 289, 85, 13),
+       ('2024-09-09 06:42:27.611873', 290, 92, 25),
+       ('2024-10-25 12:57:47.787954', 290, 93, 2),
+       ('2024-09-17 09:12:31.493466', 290, 93, 18),
+       ('2024-10-25 21:28:25.019523', 291, 89, 24),
+       ('2024-10-12 09:47:27.414556', 291, 81, 23);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-09 18:41:46.6238', 291, 86, 17),
+       ('2024-10-24 19:37:07.152445', 292, 89, 12),
+       ('2024-10-26 11:53:16.187016', 9, 19, 10),
+       ('2024-11-05 21:40:34.497951', 10, 15, 16),
+       ('2024-10-28 12:23:59.756947', 10, 15, 5),
+       ('2024-09-06 22:09:15.271979', 10, 10, 9),
+       ('2024-09-21 07:18:55.80592', 10, 9, 23),
+       ('2024-10-20 17:32:57.214652', 11, 11, 19),
+       ('2024-11-19 17:06:26.2627', 11, 14, 2),
+       ('2024-10-29 07:48:36.443896', 11, 3, 4);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-26 04:08:56.970341', 12, 12, 26),
+       ('2024-10-13 08:15:42.282259', 12, 3, 11),
+       ('2024-09-03 11:14:38.240222', 12, 3, 24),
+       ('2024-09-18 03:47:38.54259', 13, 12, 16),
+       ('2024-11-08 13:48:57.662694', 13, 13, 6),
+       ('2024-10-07 13:49:19.763027', 13, 8, 23),
+       ('2024-10-23 03:52:22.780969', 13, 18, 27),
+       ('2024-10-31 09:42:38.475242', 14, 3, 24),
+       ('2024-11-03 21:46:06.871206', 14, 12, 11),
+       ('2024-11-09 05:29:43.615255', 14, 1, 5);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-29 20:54:51.488341', 15, 7, 29),
+       ('2024-09-10 08:46:29.182364', 15, 9, 25),
+       ('2024-11-10 10:05:13.561414', 15, 12, 5),
+       ('2024-10-24 10:31:48.133193', 16, 1, 7),
+       ('2024-11-17 00:53:39.006277', 16, 5, 23),
+       ('2024-10-12 12:34:18.533274', 16, 17, 23),
+       ('2024-09-15 17:44:11.910677', 16, 10, 4),
+       ('2024-11-14 03:06:31.636114', 17, 6, 8),
+       ('2024-11-23 14:15:12.179465', 17, 11, 20),
+       ('2024-11-21 04:55:43.824503', 17, 15, 10);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-01 01:29:38.708401', 18, 8, 9),
+       ('2024-09-04 22:09:07.80014', 18, 11, 19),
+       ('2024-11-23 02:23:35.959843', 18, 9, 15),
+       ('2024-09-03 04:54:44.211403', 19, 18, 14),
+       ('2024-11-30 10:40:04.006169', 19, 14, 17),
+       ('2024-11-28 19:28:17.199564', 19, 11, 30),
+       ('2024-10-11 00:38:37.992153', 19, 14, 10),
+       ('2024-11-18 00:22:08.977689', 20, 18, 19),
+       ('2024-10-16 00:54:20.368941', 20, 14, 25),
+       ('2024-10-06 17:33:14.761171', 20, 18, 6);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-04 14:25:37.188953', 21, 7, 2),
+       ('2024-11-13 18:50:36.014999', 21, 7, 11),
+       ('2024-11-04 16:42:30.437617', 21, 6, 5),
+       ('2024-11-08 10:34:27.180546', 22, 9, 25),
+       ('2024-10-29 21:27:43.760393', 22, 10, 29),
+       ('2024-09-29 20:50:43.481891', 22, 4, 25),
+       ('2024-09-21 21:56:18.330876', 22, 4, 8),
+       ('2024-10-06 17:25:05.320406', 23, 2, 1),
+       ('2024-11-30 00:24:42.048383', 23, 17, 25),
+       ('2024-10-24 21:44:00.623311', 23, 4, 3);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-28 18:55:15.165781', 24, 9, 24),
+       ('2024-09-12 00:25:42.546695', 24, 17, 10),
+       ('2024-11-11 21:32:18.565078', 24, 18, 28),
+       ('2024-11-07 04:47:20.238471', 25, 3, 22),
+       ('2024-11-11 11:10:56.99729', 25, 14, 2),
+       ('2024-10-04 19:49:17.869074', 25, 9, 10),
+       ('2024-09-07 13:29:44.522755', 25, 6, 27),
+       ('2024-10-06 13:05:16.915229', 26, 10, 21),
+       ('2024-09-22 18:57:35.710656', 26, 17, 7),
+       ('2024-09-24 13:25:18.071304', 26, 9, 18);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-16 20:10:27.521412', 27, 15, 24),
+       ('2024-10-02 06:41:43.827212', 27, 17, 22),
+       ('2024-09-01 08:06:14.151717', 27, 1, 25),
+       ('2024-11-10 03:18:23.348192', 28, 18, 28),
+       ('2024-11-20 20:36:29.321466', 28, 14, 7),
+       ('2024-10-30 15:22:51.587833', 28, 3, 2),
+       ('2024-10-11 12:39:50.461064', 28, 18, 17),
+       ('2024-09-14 06:34:55.835793', 29, 7, 16),
+       ('2024-09-13 11:24:13.645779', 29, 9, 18),
+       ('2024-10-13 11:58:04.141489', 29, 5, 24);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-20 13:14:54.461764', 30, 15, 22),
+       ('2024-10-23 06:49:00.028508', 30, 8, 27),
+       ('2024-09-05 09:17:30.836264', 30, 19, 7),
+       ('2024-10-19 05:40:10.262113', 31, 2, 15),
+       ('2024-10-03 16:16:01.918317', 31, 3, 19),
+       ('2024-11-10 04:22:00.04081', 31, 3, 27),
+       ('2024-10-16 23:34:12.028345', 31, 11, 5),
+       ('2024-09-17 08:04:38.535063', 32, 18, 29),
+       ('2024-10-08 09:35:03.778232', 32, 4, 11),
+       ('2024-10-17 11:10:09.784551', 32, 6, 26);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-15 04:54:40.128665', 33, 12, 29),
+       ('2024-09-21 18:10:29.379426', 33, 5, 2),
+       ('2024-09-11 11:14:42.477435', 33, 2, 18),
+       ('2024-11-14 06:30:19.108964', 34, 4, 14),
+       ('2024-10-01 18:54:51.59921', 34, 16, 30),
+       ('2024-09-12 23:52:07.180061', 34, 16, 12),
+       ('2024-11-02 06:14:54.246819', 34, 12, 4),
+       ('2024-10-05 07:16:09.175369', 35, 19, 9),
+       ('2024-11-26 20:36:28.410319', 35, 20, 3),
+       ('2024-10-09 08:37:05.945156', 35, 18, 28);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-12 01:23:23.918751', 36, 7, 30),
+       ('2024-11-09 10:35:38.619825', 36, 10, 6),
+       ('2024-10-27 06:45:50.056195', 36, 8, 9),
+       ('2024-09-13 01:03:58.385504', 37, 7, 13),
+       ('2024-11-21 18:40:18.178148', 37, 18, 8),
+       ('2024-11-09 00:03:28.374054', 37, 18, 2),
+       ('2024-09-24 11:22:05.494081', 37, 18, 24),
+       ('2024-09-07 08:57:00.272768', 38, 2, 28),
+       ('2024-10-21 13:31:21.820792', 38, 2, 3),
+       ('2024-10-03 01:32:51.269152', 38, 17, 30);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-15 23:02:12.021382', 39, 11, 3),
+       ('2024-11-04 23:30:50.519282', 39, 8, 24),
+       ('2024-11-05 11:59:43.519371', 39, 9, 19),
+       ('2024-11-02 20:14:10.311379', 40, 2, 29),
+       ('2024-10-05 14:49:35.426934', 40, 13, 28),
+       ('2024-09-28 16:12:26.321843', 40, 10, 7),
+       ('2024-09-27 23:19:26.6122', 40, 13, 3),
+       ('2024-09-18 01:40:54.789477', 41, 2, 14),
+       ('2024-10-12 14:09:34.211262', 41, 17, 15),
+       ('2024-11-15 08:24:30.91382', 41, 16, 25);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-16 15:53:12.636781', 48, 5, 15),
+       ('2024-10-20 10:04:45.315842', 49, 12, 5),
+       ('2024-10-09 18:56:54.968063', 49, 11, 4),
+       ('2024-11-14 07:35:51.007866', 49, 15, 5),
+       ('2024-09-27 18:04:59.956008', 49, 3, 17),
+       ('2024-09-08 00:06:57.607994', 50, 19, 28),
+       ('2024-09-24 03:08:14.341931', 50, 14, 13),
+       ('2024-11-17 03:45:30.716675', 50, 10, 29),
+       ('2024-09-30 04:18:44.953844', 51, 10, 28),
+       ('2024-10-16 11:12:36.043219', 51, 14, 19);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-10 04:28:42.746286', 51, 12, 16),
+       ('2024-11-04 23:29:43.989487', 52, 19, 16),
+       ('2024-09-05 22:44:24.603933', 52, 7, 21),
+       ('2024-10-06 12:20:28.950361', 52, 15, 5),
+       ('2024-11-16 09:22:58.645981', 52, 14, 20),
+       ('2024-09-25 09:32:10.072182', 53, 7, 2),
+       ('2024-11-18 03:30:53.792752', 53, 7, 10),
+       ('2024-10-20 10:58:52.59313', 53, 5, 23),
+       ('2024-09-27 20:03:20.820669', 54, 16, 3),
+       ('2024-11-24 18:53:59.910627', 54, 2, 29);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-12 18:24:24.771452', 54, 14, 9),
+       ('2024-09-29 04:13:33.125352', 55, 5, 4),
+       ('2024-10-16 18:03:43.251809', 55, 10, 21),
+       ('2024-11-16 02:27:22.288735', 55, 2, 15),
+       ('2024-11-26 05:23:38.540085', 55, 8, 7),
+       ('2024-11-10 12:09:25.408457', 56, 16, 13),
+       ('2024-10-11 04:09:24.976602', 56, 9, 27),
+       ('2024-09-12 15:59:45.890262', 56, 19, 27),
+       ('2024-09-23 09:38:10.466233', 57, 14, 1),
+       ('2024-10-03 13:22:44.845441', 57, 3, 17);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-05 17:04:39.268811', 57, 16, 12),
+       ('2024-10-04 20:03:06.758683', 58, 8, 5),
+       ('2024-09-11 05:40:38.998357', 58, 18, 25),
+       ('2024-09-21 09:52:24.84537', 58, 11, 3),
+       ('2024-11-29 18:31:57.416694', 58, 16, 18),
+       ('2024-10-10 19:49:08.211859', 59, 12, 3),
+       ('2024-11-29 16:00:54.053101', 59, 5, 18),
+       ('2024-11-30 18:43:28.652261', 59, 5, 3),
+       ('2024-09-10 12:27:53.233457', 60, 4, 14),
+       ('2024-09-18 12:40:58.353812', 60, 6, 13);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-27 00:43:14.495207', 60, 9, 29),
+       ('2024-09-06 22:23:49.187502', 61, 36, 15),
+       ('2024-10-13 02:33:35.551807', 61, 28, 6),
+       ('2024-10-24 01:37:16.667406', 61, 29, 13),
+       ('2024-11-05 11:14:16.658047', 61, 35, 6),
+       ('2024-10-08 18:17:04.823472', 62, 37, 19),
+       ('2024-11-10 19:50:13.601529', 62, 37, 28),
+       ('2024-11-21 14:21:04.819203', 62, 31, 8),
+       ('2024-09-12 07:28:10.00067', 63, 21, 3),
+       ('2024-09-25 15:59:20.357299', 63, 32, 2);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-22 00:56:32.362145', 63, 28, 30),
+       ('2024-10-28 10:23:23.857651', 64, 39, 14),
+       ('2024-11-18 16:37:53.801866', 64, 30, 3),
+       ('2024-11-14 15:35:48.538996', 64, 39, 17),
+       ('2024-11-05 22:40:04.220802', 64, 22, 13),
+       ('2024-09-21 14:40:00.33184', 65, 36, 11),
+       ('2024-11-12 14:03:13.150476', 65, 38, 5),
+       ('2024-09-30 01:13:25.650797', 65, 22, 16),
+       ('2024-10-13 02:27:05.281762', 66, 40, 2),
+       ('2024-09-10 06:04:04.940541', 66, 27, 28);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-04 04:10:34.910877', 66, 35, 1),
+       ('2024-11-06 18:51:11.579633', 67, 39, 30),
+       ('2024-09-05 03:33:53.186261', 67, 29, 1),
+       ('2024-11-20 07:01:44.877598', 67, 37, 22),
+       ('2024-11-15 15:41:47.68948', 83, 25, 13),
+       ('2024-10-16 06:23:38.489088', 84, 33, 19),
+       ('2024-11-29 14:54:04.761955', 84, 39, 26),
+       ('2024-09-22 22:22:59.854134', 84, 38, 12),
+       ('2024-11-05 16:23:04.077706', 85, 22, 8),
+       ('2024-11-08 19:45:16.419976', 85, 26, 4);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-18 08:20:13.166416', 85, 21, 18),
+       ('2024-10-11 10:05:10.431342', 85, 28, 3),
+       ('2024-09-18 06:02:42.43433', 86, 29, 20),
+       ('2024-11-06 21:10:51.440476', 86, 26, 7),
+       ('2024-10-27 07:18:59.589939', 86, 33, 15),
+       ('2024-09-01 18:47:26.918089', 87, 25, 16),
+       ('2024-11-15 14:58:24.639522', 87, 25, 1),
+       ('2024-09-25 09:14:53.260147', 87, 32, 21),
+       ('2024-10-22 10:31:54.194611', 88, 39, 7),
+       ('2024-09-02 02:43:46.099649', 88, 36, 21);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-22 09:44:28.408166', 88, 24, 10),
+       ('2024-10-30 06:33:08.621807', 88, 38, 13),
+       ('2024-09-04 02:15:09.67883', 89, 26, 7),
+       ('2024-11-06 21:52:56.939561', 89, 38, 19),
+       ('2024-09-30 03:05:03.804132', 89, 30, 1),
+       ('2024-10-02 20:43:23.317249', 90, 39, 15),
+       ('2024-11-29 18:14:52.043189', 90, 24, 30),
+       ('2024-11-11 05:23:17.404202', 90, 21, 2),
+       ('2024-10-06 21:59:32.322616', 91, 30, 4),
+       ('2024-11-02 20:53:29.035701', 91, 34, 15);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-05 19:29:36.403381', 91, 36, 3),
+       ('2024-10-13 14:43:36.514776', 91, 28, 10),
+       ('2024-09-10 14:52:16.686238', 92, 23, 4),
+       ('2024-11-28 15:54:29.567543', 92, 40, 5),
+       ('2024-09-04 05:25:30.641205', 92, 34, 2),
+       ('2024-10-19 22:05:47.74627', 93, 31, 8),
+       ('2024-10-24 01:05:16.073571', 93, 31, 7),
+       ('2024-11-12 09:38:56.442433', 93, 37, 23),
+       ('2024-11-11 12:51:08.633037', 94, 26, 2),
+       ('2024-11-06 19:56:33.126692', 94, 26, 25);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-06 15:36:30.716689', 94, 27, 9),
+       ('2024-09-16 08:37:27.094232', 94, 31, 20),
+       ('2024-11-17 00:25:50.557844', 95, 23, 12),
+       ('2024-11-26 04:47:06.798663', 95, 28, 26),
+       ('2024-11-29 00:16:09.377148', 95, 31, 21),
+       ('2024-09-06 06:21:05.000894', 96, 36, 11),
+       ('2024-11-05 12:33:50.409794', 96, 30, 13),
+       ('2024-11-15 02:55:27.892138', 96, 23, 12),
+       ('2024-10-06 21:01:40.456944', 97, 36, 7),
+       ('2024-10-10 20:42:38.253324', 97, 37, 11);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-01 01:39:27.354027', 97, 32, 21),
+       ('2024-10-30 21:29:02.121423', 97, 26, 20),
+       ('2024-10-17 06:02:29.101017', 68, 39, 5),
+       ('2024-09-18 04:34:51.142619', 68, 25, 12),
+       ('2024-10-27 02:45:36.732998', 68, 27, 30),
+       ('2024-11-07 03:28:41.408445', 69, 27, 2),
+       ('2024-10-31 10:25:19.38902', 69, 25, 11),
+       ('2024-09-17 18:51:56.021473', 69, 38, 13),
+       ('2024-10-13 00:58:12.60367', 70, 22, 19),
+       ('2024-10-04 19:35:14.691031', 70, 32, 7);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-01 14:57:54.243678', 70, 28, 28),
+       ('2024-10-11 07:35:37.966082', 70, 21, 5),
+       ('2024-11-22 02:47:05.146597', 71, 38, 22),
+       ('2024-10-23 23:13:57.090059', 71, 27, 10),
+       ('2024-11-30 18:07:16.258043', 71, 29, 4),
+       ('2024-09-24 18:47:17.134735', 72, 37, 25),
+       ('2024-09-24 01:13:41.603866', 72, 32, 20),
+       ('2024-10-16 22:04:20.270218', 72, 37, 4),
+       ('2024-10-02 18:10:10.88051', 73, 22, 18),
+       ('2024-11-16 16:31:09.855424', 73, 23, 18);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-17 22:36:17.776525', 73, 30, 26),
+       ('2024-10-27 12:32:35.66979', 73, 39, 20),
+       ('2024-10-22 22:16:03.020101', 74, 33, 22),
+       ('2024-09-07 15:56:32.966119', 74, 30, 8),
+       ('2024-10-15 01:44:35.229767', 74, 35, 19),
+       ('2024-10-22 22:31:25.626541', 75, 32, 28),
+       ('2024-09-24 16:15:36.730372', 75, 37, 29),
+       ('2024-09-16 03:37:46.038588', 75, 32, 15),
+       ('2024-09-13 02:20:15.136799', 76, 39, 9),
+       ('2024-09-09 06:12:26.167262', 76, 30, 27);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-12 04:23:01.392458', 76, 23, 20),
+       ('2024-11-15 14:24:53.522369', 76, 30, 14),
+       ('2024-11-19 15:24:30.045216', 77, 33, 28),
+       ('2024-09-11 14:03:33.532666', 77, 28, 8),
+       ('2024-09-17 12:59:53.300249', 77, 25, 8),
+       ('2024-09-17 09:57:17.404255', 78, 30, 12),
+       ('2024-10-18 11:54:56.412535', 78, 39, 27),
+       ('2024-10-26 12:09:16.598846', 78, 36, 24),
+       ('2024-11-04 20:03:13.416225', 79, 33, 22),
+       ('2024-10-31 16:45:23.466826', 79, 26, 7);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-05 09:22:36.654204', 79, 27, 2),
+       ('2024-11-22 09:42:46.249864', 79, 29, 1),
+       ('2024-10-16 22:04:27.837879', 80, 37, 15),
+       ('2024-09-02 22:33:59.09527', 80, 35, 28),
+       ('2024-10-20 15:10:54.036523', 80, 24, 16),
+       ('2024-09-28 05:23:33.018751', 81, 27, 17),
+       ('2024-11-15 04:06:07.323479', 81, 23, 8),
+       ('2024-09-30 16:21:45.695307', 81, 22, 1),
+       ('2024-10-14 19:32:28.371006', 82, 25, 23),
+       ('2024-09-06 11:34:22.808549', 82, 33, 18);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-22 11:29:29.563542', 82, 35, 15),
+       ('2024-10-14 02:07:16.188213', 82, 34, 13),
+       ('2024-11-10 17:11:33.203103', 83, 36, 30),
+       ('2024-11-02 16:49:05.140152', 83, 37, 27),
+       ('2024-10-06 04:58:36.351357', 98, 23, 30),
+       ('2024-09-05 07:51:36.705819', 98, 32, 22),
+       ('2024-10-09 17:42:24.59838', 98, 23, 29),
+       ('2024-09-03 14:56:04.855705', 99, 24, 23),
+       ('2024-11-01 04:30:55.862106', 99, 38, 13),
+       ('2024-09-11 17:49:18.154526', 99, 33, 8);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-03 14:17:32.50904', 100, 24, 26),
+       ('2024-09-12 09:07:50.788157', 100, 39, 1),
+       ('2024-10-18 02:37:00.965017', 100, 32, 20),
+       ('2024-09-08 16:07:56.810534', 100, 31, 14),
+       ('2024-10-23 15:51:10.056614', 122, 54, 21),
+       ('2024-10-28 15:47:55.646665', 123, 58, 2),
+       ('2024-10-24 02:12:00.652105', 123, 59, 28),
+       ('2024-09-09 09:43:45.190351', 123, 60, 17),
+       ('2024-09-08 23:24:44.682846', 123, 52, 16),
+       ('2024-10-13 08:15:52.933306', 124, 50, 25);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-18 16:36:57.729701', 124, 46, 9),
+       ('2024-09-18 03:16:56.711731', 124, 50, 4),
+       ('2024-10-26 01:49:08.542127', 125, 52, 5),
+       ('2024-09-12 10:49:14.565695', 125, 50, 23),
+       ('2024-10-02 23:40:07.618923', 125, 47, 16),
+       ('2024-09-14 16:55:18.801614', 126, 43, 9),
+       ('2024-10-23 06:01:44.059584', 126, 55, 10),
+       ('2024-09-06 06:23:47.43716', 126, 42, 16),
+       ('2024-11-09 04:43:07.745551', 127, 54, 7),
+       ('2024-11-15 00:04:37.292341', 127, 50, 21);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-04 13:47:20.11121', 127, 49, 28),
+       ('2024-10-20 01:31:31.108175', 127, 56, 2),
+       ('2024-09-01 17:31:23.299363', 128, 48, 28),
+       ('2024-09-10 14:51:42.487803', 128, 59, 27),
+       ('2024-11-09 21:11:21.975238', 128, 57, 24),
+       ('2024-11-09 00:27:58.135698', 129, 49, 29),
+       ('2024-10-09 22:00:20.979705', 129, 50, 22),
+       ('2024-10-23 00:27:50.69871', 129, 51, 1),
+       ('2024-11-11 21:31:46.760613', 130, 59, 13),
+       ('2024-09-05 16:51:37.732521', 130, 47, 4);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-06 06:15:35.114683', 130, 52, 17),
+       ('2024-11-16 13:41:13.014745', 130, 42, 27),
+       ('2024-11-27 21:48:38.687473', 131, 52, 7),
+       ('2024-10-20 22:12:16.75448', 131, 59, 29),
+       ('2024-11-12 22:11:31.794517', 131, 54, 8),
+       ('2024-11-29 22:43:08.102132', 132, 43, 22),
+       ('2024-10-11 21:28:55.766052', 132, 58, 7),
+       ('2024-11-03 11:28:55.920304', 132, 48, 29),
+       ('2024-11-14 05:50:01.720358', 133, 56, 6),
+       ('2024-10-21 18:44:06.791106', 133, 58, 7);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-06 18:14:13.337005', 133, 54, 5),
+       ('2024-10-24 06:49:32.193219', 133, 57, 27),
+       ('2024-10-18 23:26:51.10526', 134, 43, 11),
+       ('2024-09-11 18:34:09.986487', 134, 55, 2),
+       ('2024-10-27 13:19:18.284239', 134, 50, 5),
+       ('2024-11-26 14:04:27.726099', 135, 52, 14),
+       ('2024-11-09 22:41:20.759047', 135, 59, 17),
+       ('2024-09-12 01:01:12.256568', 135, 54, 16),
+       ('2024-11-22 13:44:00.432017', 136, 46, 12),
+       ('2024-09-04 22:07:45.571107', 136, 54, 3);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-08 06:43:50.637696', 136, 42, 10),
+       ('2024-10-21 01:13:42.833452', 101, 40, 16),
+       ('2024-10-24 03:58:02.138886', 101, 25, 30),
+       ('2024-09-18 06:51:12.2952', 101, 29, 17),
+       ('2024-11-29 08:43:02.778074', 102, 26, 27),
+       ('2024-09-04 13:30:15.175682', 102, 23, 22),
+       ('2024-10-30 07:54:43.783084', 102, 30, 6),
+       ('2024-11-08 03:54:05.239438', 103, 33, 19),
+       ('2024-09-02 21:01:46.139836', 103, 30, 23),
+       ('2024-10-19 12:00:56.969979', 103, 37, 7);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-19 10:51:41.840001', 103, 22, 8),
+       ('2024-09-11 04:39:36.440765', 104, 25, 18),
+       ('2024-10-04 03:19:31.777306', 104, 25, 20),
+       ('2024-09-21 01:03:35.290141', 104, 30, 7),
+       ('2024-09-27 21:03:30.542971', 105, 25, 15),
+       ('2024-11-06 17:50:45.906855', 105, 26, 15),
+       ('2024-11-01 22:28:19.383334', 105, 37, 26),
+       ('2024-10-17 15:11:35.533425', 106, 27, 7),
+       ('2024-10-11 23:09:17.959448', 106, 24, 14),
+       ('2024-11-03 09:10:12.683522', 106, 29, 3);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-28 13:49:25.547119', 106, 22, 10),
+       ('2024-11-20 15:23:13.205342', 107, 31, 14),
+       ('2024-09-23 18:05:08.728389', 107, 25, 3),
+       ('2024-10-09 13:02:18.80223', 107, 36, 22),
+       ('2024-11-27 05:34:34.301655', 108, 29, 16),
+       ('2024-10-14 09:20:14.671821', 108, 33, 21),
+       ('2024-10-22 09:54:29.782133', 108, 38, 24),
+       ('2024-11-18 19:11:51.164807', 109, 37, 18),
+       ('2024-10-05 12:37:36.196323', 109, 39, 7),
+       ('2024-09-04 01:38:12.659704', 109, 32, 17);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-06 12:26:42.630611', 109, 34, 13),
+       ('2024-09-10 12:22:13.133483', 110, 28, 10),
+       ('2024-10-02 03:35:01.225384', 110, 28, 18),
+       ('2024-11-09 08:05:34.130644', 110, 24, 7),
+       ('2024-11-16 12:38:01.131811', 111, 30, 23),
+       ('2024-10-26 00:26:23.153951', 111, 23, 28),
+       ('2024-09-05 05:55:19.411042', 111, 25, 30),
+       ('2024-09-17 04:50:07.316871', 112, 35, 30),
+       ('2024-09-14 06:49:34.72579', 112, 36, 12),
+       ('2024-09-12 23:30:46.01365', 136, 50, 16);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-30 02:43:58.596425', 137, 44, 20),
+       ('2024-10-11 18:19:13.654929', 137, 53, 16),
+       ('2024-11-12 20:09:43.194546', 137, 52, 2),
+       ('2024-11-27 11:37:32.34815', 138, 48, 9),
+       ('2024-11-09 17:17:13.617098', 138, 52, 22),
+       ('2024-09-13 13:27:58.543887', 138, 56, 27),
+       ('2024-10-10 07:27:51.49793', 139, 51, 19),
+       ('2024-11-10 06:48:56.09368', 139, 47, 12),
+       ('2024-10-13 17:31:10.572252', 139, 56, 29),
+       ('2024-11-13 16:20:42.287582', 139, 56, 11);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-17 01:49:50.80039', 140, 55, 30),
+       ('2024-11-27 07:35:08.03111', 140, 52, 22),
+       ('2024-11-26 01:14:34.637126', 140, 47, 23),
+       ('2024-09-22 19:05:06.701124', 141, 47, 16),
+       ('2024-10-26 09:10:58.190245', 141, 42, 3),
+       ('2024-10-03 10:59:45.155499', 141, 44, 3),
+       ('2024-09-05 02:33:24.025532', 142, 48, 16),
+       ('2024-10-23 02:09:58.686359', 142, 45, 26),
+       ('2024-10-18 09:34:24.618052', 142, 49, 4),
+       ('2024-10-25 08:05:47.672814', 142, 57, 16);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-14 09:49:19.233553', 143, 58, 13),
+       ('2024-11-24 07:44:03.511274', 143, 60, 29),
+       ('2024-10-05 03:06:49.569239', 143, 58, 10),
+       ('2024-10-28 12:56:38.166294', 112, 33, 18),
+       ('2024-09-23 17:48:09.033943', 112, 27, 23),
+       ('2024-10-30 03:06:08.063986', 113, 37, 8),
+       ('2024-10-10 23:20:57.638666', 113, 31, 18),
+       ('2024-10-08 12:28:18.125838', 113, 26, 6),
+       ('2024-11-21 16:48:19.622696', 114, 30, 13),
+       ('2024-11-11 17:00:44.284287', 114, 37, 23);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-13 15:31:49.88332', 114, 25, 26),
+       ('2024-11-05 16:06:23.545128', 115, 25, 16),
+       ('2024-10-21 14:25:30.477278', 115, 39, 23),
+       ('2024-10-02 10:34:12.37705', 115, 30, 5),
+       ('2024-11-29 17:51:47.607392', 115, 23, 10),
+       ('2024-10-31 18:30:21.820507', 116, 31, 1),
+       ('2024-10-10 19:55:35.501129', 116, 26, 10),
+       ('2024-09-05 14:09:14.746581', 116, 31, 10),
+       ('2024-10-28 09:21:18.125652', 117, 31, 1),
+       ('2024-09-15 01:52:35.572714', 117, 26, 21);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-16 18:00:07.167124', 117, 37, 19),
+       ('2024-11-01 10:24:39.356533', 118, 37, 2),
+       ('2024-10-16 11:22:05.279068', 118, 26, 16),
+       ('2024-11-23 17:26:40.520583', 118, 27, 17),
+       ('2024-11-27 02:05:58.929243', 118, 34, 22),
+       ('2024-09-18 09:35:39.145608', 119, 29, 13),
+       ('2024-09-08 21:00:57.589831', 119, 24, 22),
+       ('2024-10-01 07:36:22.339557', 119, 30, 7),
+       ('2024-11-29 12:31:00.122184', 120, 33, 2),
+       ('2024-11-02 15:49:02.62572', 120, 21, 3);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-07 11:38:55.329959', 120, 32, 21),
+       ('2024-09-30 06:26:18.711081', 121, 52, 12),
+       ('2024-09-21 23:07:59.344965', 121, 59, 12),
+       ('2024-11-02 23:27:52.353659', 121, 47, 21),
+       ('2024-09-29 03:00:18.437658', 121, 59, 30),
+       ('2024-11-02 12:32:26.633132', 122, 57, 18),
+       ('2024-10-27 23:25:17.403007', 122, 49, 21),
+       ('2024-11-29 06:12:45.960174', 297, 83, 14),
+       ('2024-11-09 22:41:20.343872', 297, 82, 18),
+       ('2024-10-29 19:07:20.183535', 297, 87, 15);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-09 18:09:01.659635', 298, 83, 12),
+       ('2024-09-13 03:04:46.019732', 298, 90, 29),
+       ('2024-09-29 08:52:01.901809', 298, 99, 26),
+       ('2024-09-07 08:00:08.063255', 298, 95, 29),
+       ('2024-09-05 11:39:18.117364', 299, 86, 16),
+       ('2024-11-26 09:56:27.217626', 299, 83, 20),
+       ('2024-11-20 06:11:06.732073', 299, 90, 12),
+       ('2024-10-24 17:52:58.512689', 300, 82, 6),
+       ('2024-10-30 04:59:16.878856', 300, 93, 20),
+       ('2024-09-06 22:38:20.720915', 300, 82, 4);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-20 09:14:15.439483', 300, 83, 16),
+       ('2024-10-08 23:15:00.815714', 1, 7, 17),
+       ('2024-10-27 15:34:46.915882', 1, 3, 30),
+       ('2024-10-07 02:40:24.572229', 1, 10, 19),
+       ('2024-09-13 20:27:02.155759', 2, 12, 1),
+       ('2024-10-03 03:57:55.668841', 2, 19, 30),
+       ('2024-11-01 01:46:23.062648', 2, 2, 19),
+       ('2024-09-25 06:23:52.721833', 3, 19, 18),
+       ('2024-11-14 03:35:07.092987', 3, 19, 26),
+       ('2024-10-28 19:38:35.890567', 3, 12, 19);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-13 16:56:26.030265', 4, 13, 30),
+       ('2024-11-17 13:24:05.398622', 4, 13, 15),
+       ('2024-10-30 17:25:26.930927', 4, 12, 21),
+       ('2024-11-12 18:55:05.332775', 4, 13, 29),
+       ('2024-11-19 00:35:17.366192', 5, 17, 28),
+       ('2024-11-29 05:26:42.034757', 5, 17, 12),
+       ('2024-09-05 07:27:17.628417', 5, 11, 24),
+       ('2024-11-20 04:32:17.59462', 6, 7, 29),
+       ('2024-09-24 02:21:25.932789', 6, 13, 24),
+       ('2024-11-07 22:00:37.52522', 6, 10, 18);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-14 12:58:30.164025', 7, 9, 30),
+       ('2024-11-20 00:49:21.252544', 7, 5, 18),
+       ('2024-10-08 15:09:43.600701', 7, 5, 21),
+       ('2024-09-22 18:30:24.081357', 7, 20, 24),
+       ('2024-10-25 15:06:00.839016', 8, 18, 6),
+       ('2024-09-15 11:26:34.439404', 8, 10, 15),
+       ('2024-11-28 18:31:49.815919', 8, 13, 20),
+       ('2024-09-09 10:48:59.168989', 9, 16, 11),
+       ('2024-09-30 17:24:40.479057', 9, 20, 15),
+       ('2024-11-28 16:30:19.827602', 169, 49, 28);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-09 11:43:28.945068', 170, 48, 1),
+       ('2024-10-03 21:40:16.069864', 170, 49, 25),
+       ('2024-11-04 08:32:59.409587', 170, 50, 10),
+       ('2024-11-19 18:27:58.423752', 171, 52, 14),
+       ('2024-10-21 17:18:59.256565', 171, 44, 6),
+       ('2024-10-14 16:59:34.285114', 171, 48, 15),
+       ('2024-10-18 21:13:02.031861', 171, 59, 29),
+       ('2024-10-04 08:30:00.046009', 172, 51, 7),
+       ('2024-11-20 13:50:47.113918', 172, 53, 27),
+       ('2024-11-12 23:51:44.545261', 172, 45, 14);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-16 18:00:30.308307', 173, 60, 19),
+       ('2024-09-16 16:58:30.749338', 173, 45, 22),
+       ('2024-10-18 05:46:15.541142', 173, 60, 17),
+       ('2024-10-23 06:39:15.974764', 174, 56, 5),
+       ('2024-10-21 02:02:04.543101', 174, 43, 16),
+       ('2024-10-31 22:59:01.507977', 174, 59, 28),
+       ('2024-10-04 02:46:53.379523', 175, 58, 2),
+       ('2024-09-12 07:35:41.82998', 175, 44, 2),
+       ('2024-11-13 05:46:28.018552', 175, 44, 24),
+       ('2024-09-21 04:52:24.829373', 175, 58, 29);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-27 09:12:51.078505', 176, 44, 30),
+       ('2024-11-18 18:35:40.31596', 176, 55, 16),
+       ('2024-10-23 08:45:41.845883', 176, 49, 15),
+       ('2024-11-18 05:17:58.885161', 177, 41, 3),
+       ('2024-10-10 05:12:49.804886', 177, 41, 15),
+       ('2024-09-06 22:44:44.882138', 177, 46, 9),
+       ('2024-10-21 19:27:59.03177', 178, 42, 18),
+       ('2024-11-23 16:01:38.709063', 178, 43, 18),
+       ('2024-11-23 03:00:46.716546', 178, 47, 3),
+       ('2024-11-10 04:53:44.855412', 178, 46, 20);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-04 19:17:12.431271', 179, 54, 22),
+       ('2024-09-23 04:49:49.798746', 179, 43, 13),
+       ('2024-11-24 21:18:26.117534', 179, 58, 14),
+       ('2024-10-12 22:44:45.190037', 180, 42, 26),
+       ('2024-09-02 10:55:42.41117', 180, 41, 8),
+       ('2024-10-11 22:15:41.846218', 180, 43, 22),
+       ('2024-11-04 22:40:44.04377', 181, 79, 12),
+       ('2024-11-28 17:36:47.783019', 181, 78, 19),
+       ('2024-10-30 00:30:05.539513', 181, 68, 3),
+       ('2024-11-14 11:57:09.741701', 197, 64, 14);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-22 17:16:38.278241', 198, 67, 7),
+       ('2024-11-19 08:37:08.14584', 198, 69, 3),
+       ('2024-09-14 22:04:20.750832', 198, 74, 15),
+       ('2024-10-21 21:14:15.053724', 199, 75, 4),
+       ('2024-11-01 00:28:00.250883', 199, 69, 19),
+       ('2024-09-09 18:24:45.210396', 199, 72, 28),
+       ('2024-09-08 08:00:55.62545', 199, 76, 23),
+       ('2024-10-28 08:41:54.40968', 200, 67, 25),
+       ('2024-11-14 07:03:55.615527', 200, 71, 3),
+       ('2024-11-03 09:09:19.447165', 200, 76, 10);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-02 16:15:34.937694', 201, 62, 6),
+       ('2024-10-11 07:44:54.784685', 201, 67, 19),
+       ('2024-10-29 14:21:35.622613', 201, 68, 16),
+       ('2024-10-19 04:24:36.602589', 202, 72, 30),
+       ('2024-10-18 01:28:08.353702', 202, 70, 7),
+       ('2024-10-21 17:14:06.272187', 202, 80, 20),
+       ('2024-10-15 12:41:22.81473', 202, 71, 9),
+       ('2024-10-14 15:34:25.832561', 203, 70, 13),
+       ('2024-10-19 11:33:03.335989', 203, 70, 1),
+       ('2024-11-13 22:35:42.249539', 203, 66, 27);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-15 08:32:46.88944', 204, 62, 10),
+       ('2024-10-31 09:54:26.479017', 204, 77, 12),
+       ('2024-11-26 06:58:20.289621', 204, 69, 24),
+       ('2024-09-07 18:11:59.679532', 205, 78, 7),
+       ('2024-09-11 23:27:51.111958', 205, 68, 10),
+       ('2024-10-21 15:59:59.662941', 205, 73, 15),
+       ('2024-11-30 20:35:49.973713', 205, 62, 7),
+       ('2024-09-18 05:44:57.990273', 206, 65, 20),
+       ('2024-11-19 23:14:50.964868', 206, 64, 22),
+       ('2024-10-23 08:17:46.252674', 206, 80, 4);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-19 23:45:09.021322', 207, 69, 26),
+       ('2024-10-28 22:04:46.35867', 207, 63, 20),
+       ('2024-09-29 23:10:49.323495', 207, 73, 17),
+       ('2024-11-06 19:19:04.910816', 207, 77, 4),
+       ('2024-10-30 18:38:41.239379', 208, 80, 25),
+       ('2024-10-05 08:18:08.266309', 208, 77, 14),
+       ('2024-10-28 04:46:05.60846', 208, 80, 22),
+       ('2024-11-13 04:16:53.173206', 209, 72, 23),
+       ('2024-09-09 05:55:26.486206', 209, 68, 16),
+       ('2024-09-27 15:14:48.802432', 209, 80, 24);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-05 09:27:42.840293', 210, 80, 19),
+       ('2024-10-11 19:25:42.012766', 210, 67, 2),
+       ('2024-11-24 10:03:43.494787', 210, 67, 12),
+       ('2024-10-03 08:43:47.92988', 211, 70, 23),
+       ('2024-09-03 09:53:47.288323', 211, 62, 12),
+       ('2024-09-03 01:39:22.779999', 211, 77, 25),
+       ('2024-11-07 16:21:39.782213', 211, 70, 7),
+       ('2024-09-02 07:55:22.801736', 144, 55, 15),
+       ('2024-09-09 02:53:39.434901', 144, 53, 7),
+       ('2024-11-06 13:40:02.777834', 144, 48, 3);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-02 21:55:23.622718', 67, 25, 1),
+       ('2024-09-02 21:34:16.33451', 272, 85, 14),
+       ('2024-09-06 18:54:51.461214', 272, 83, 21),
+       ('2024-11-09 03:45:14.951493', 273, 83, 10),
+       ('2024-09-20 14:07:15.711893', 273, 88, 15),
+       ('2024-10-25 07:30:31.566229', 273, 94, 1),
+       ('2024-11-10 16:00:27.83106', 274, 100, 9),
+       ('2024-09-27 13:23:21.73903', 274, 98, 13),
+       ('2024-09-16 18:17:58.90799', 274, 88, 10),
+       ('2024-11-07 02:38:10.010542', 274, 84, 25);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-19 17:12:32.700094', 275, 90, 25),
+       ('2024-10-06 16:48:31.080333', 275, 91, 20),
+       ('2024-11-27 04:56:23.922284', 275, 99, 4),
+       ('2024-10-06 16:06:42.556059', 276, 85, 4),
+       ('2024-11-20 21:59:50.984676', 276, 94, 13),
+       ('2024-10-29 13:47:42.596321', 276, 85, 11),
+       ('2024-11-30 20:47:18.387979', 277, 82, 30),
+       ('2024-10-07 14:59:54.375584', 277, 89, 2),
+       ('2024-10-21 04:15:44.030794', 277, 91, 9),
+       ('2024-11-15 04:16:49.527339', 277, 90, 17);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-30 04:31:18.81742', 278, 92, 28),
+       ('2024-10-09 07:24:21.411889', 278, 92, 8),
+       ('2024-09-26 20:11:19.090104', 278, 99, 8),
+       ('2024-09-11 17:00:17.215945', 279, 94, 16),
+       ('2024-09-13 22:34:28.118844', 279, 84, 12),
+       ('2024-09-05 12:52:17.448488', 279, 91, 21),
+       ('2024-11-19 13:28:22.344595', 280, 96, 22),
+       ('2024-10-21 18:58:55.830097', 280, 83, 11),
+       ('2024-11-26 20:05:38.867955', 280, 99, 27),
+       ('2024-09-27 10:11:15.352861', 280, 81, 25);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-04 23:37:07.487057', 281, 86, 2),
+       ('2024-10-16 10:52:54.510015', 281, 91, 30),
+       ('2024-09-17 21:36:50.961374', 281, 94, 18),
+       ('2024-09-23 14:32:20.50388', 282, 82, 19),
+       ('2024-10-02 08:32:53.339296', 282, 91, 13),
+       ('2024-11-04 00:58:13.630481', 282, 93, 10),
+       ('2024-11-11 01:11:05.509383', 283, 89, 9),
+       ('2024-10-08 15:43:01.311163', 283, 85, 24),
+       ('2024-09-05 10:46:52.179078', 283, 82, 18),
+       ('2024-11-04 23:47:55.892976', 283, 92, 13);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-28 19:12:29.650631', 284, 100, 1),
+       ('2024-11-09 13:00:17.875777', 145, 49, 11),
+       ('2024-10-21 05:18:02.385734', 145, 51, 2),
+       ('2024-10-26 16:17:09.968812', 145, 59, 10),
+       ('2024-09-22 00:13:14.055538', 145, 47, 28),
+       ('2024-09-24 15:58:34.719643', 146, 49, 1),
+       ('2024-09-02 16:15:23.209256', 146, 45, 16),
+       ('2024-09-20 23:09:43.664768', 146, 53, 15),
+       ('2024-10-02 21:07:51.125657', 147, 49, 4),
+       ('2024-09-08 07:16:10.387825', 147, 53, 25);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-22 09:59:10.740697', 147, 42, 10),
+       ('2024-11-11 10:13:06.720163', 148, 51, 8),
+       ('2024-10-27 13:02:19.597244', 148, 60, 26),
+       ('2024-09-09 22:16:13.813691', 148, 41, 11),
+       ('2024-09-05 02:52:01.955629', 148, 42, 1),
+       ('2024-10-12 15:18:36.811071', 149, 45, 19),
+       ('2024-11-03 03:51:18.852864', 149, 46, 15),
+       ('2024-11-20 16:05:09.207142', 149, 44, 3),
+       ('2024-11-24 10:01:45.353185', 150, 44, 7),
+       ('2024-10-05 01:08:20.936408', 150, 46, 18);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-07 22:04:39.597686', 150, 44, 8),
+       ('2024-11-08 09:51:08.330976', 151, 54, 12),
+       ('2024-09-16 03:37:15.365674', 151, 56, 14),
+       ('2024-10-03 05:22:30.666289', 151, 59, 1),
+       ('2024-10-01 12:18:14.894928', 151, 55, 14),
+       ('2024-10-12 14:32:58.870319', 152, 47, 13),
+       ('2024-10-09 19:21:22.69091', 152, 41, 26),
+       ('2024-10-17 20:37:51.556306', 152, 49, 16),
+       ('2024-11-03 22:22:14.238471', 153, 47, 13),
+       ('2024-09-04 20:41:10.385117', 153, 50, 4);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-17 19:03:46.942162', 153, 51, 13),
+       ('2024-09-30 07:01:10.076484', 154, 52, 6),
+       ('2024-11-04 04:19:01.662849', 154, 56, 27),
+       ('2024-09-22 03:34:34.776815', 154, 56, 21),
+       ('2024-11-15 13:19:00.697131', 154, 56, 24),
+       ('2024-10-30 09:59:29.009187', 155, 50, 27),
+       ('2024-09-06 02:12:30.262313', 155, 41, 1),
+       ('2024-09-05 15:08:55.927058', 155, 55, 11),
+       ('2024-09-11 02:51:17.998614', 156, 53, 22),
+       ('2024-09-08 05:25:56.955807', 156, 57, 2);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-30 07:40:10.990223', 156, 48, 28),
+       ('2024-10-23 06:43:18.138532', 157, 56, 30),
+       ('2024-10-27 02:46:08.751411', 157, 55, 18),
+       ('2024-10-22 09:20:00.653506', 157, 50, 28),
+       ('2024-09-25 21:27:00.990713', 157, 59, 28),
+       ('2024-11-16 10:33:09.795128', 158, 57, 15),
+       ('2024-10-18 12:43:12.83015', 158, 53, 20),
+       ('2024-09-01 23:38:38.520969', 158, 47, 20),
+       ('2024-09-19 02:36:28.025938', 159, 48, 1),
+       ('2024-11-26 01:53:45.189446', 159, 57, 5);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-10 05:18:55.790456', 159, 57, 29),
+       ('2024-10-30 00:08:47.240534', 160, 49, 18),
+       ('2024-09-05 17:54:43.901345', 160, 43, 11),
+       ('2024-10-12 13:36:15.777947', 160, 59, 23),
+       ('2024-11-13 21:49:16.512839', 160, 50, 12),
+       ('2024-11-12 05:31:50.742517', 161, 43, 30),
+       ('2024-09-25 12:12:11.051379', 161, 47, 16),
+       ('2024-10-21 02:56:52.115697', 161, 47, 21),
+       ('2024-10-22 12:32:25.227765', 162, 42, 30),
+       ('2024-10-05 10:30:13.419045', 162, 51, 17);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-27 16:52:39.069689', 162, 43, 12),
+       ('2024-10-22 21:20:27.900101', 163, 46, 24),
+       ('2024-10-16 12:09:06.917072', 163, 42, 10),
+       ('2024-09-28 13:10:42.477439', 163, 51, 11),
+       ('2024-10-02 13:06:14.688302', 163, 51, 29),
+       ('2024-11-30 09:17:33.78277', 164, 59, 28),
+       ('2024-11-04 08:22:55.977866', 164, 43, 5),
+       ('2024-11-07 11:36:57.498958', 164, 47, 23),
+       ('2024-09-10 09:08:22.313621', 165, 56, 6),
+       ('2024-10-16 13:24:48.866099', 165, 45, 27);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-10 18:26:41.109379', 165, 41, 22),
+       ('2024-09-22 09:53:30.434224', 166, 47, 2),
+       ('2024-10-16 17:13:31.294565', 166, 48, 28),
+       ('2024-09-05 01:12:09.921374', 166, 46, 13),
+       ('2024-10-21 01:19:01.151627', 166, 54, 8),
+       ('2024-11-01 12:11:09.612855', 167, 44, 15),
+       ('2024-09-20 10:34:34.757616', 167, 42, 4),
+       ('2024-09-30 19:08:36.792472', 167, 46, 20),
+       ('2024-10-10 01:15:29.999697', 168, 43, 15),
+       ('2024-09-12 12:02:08.026723', 168, 43, 19);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-11-07 02:09:13.519744', 168, 44, 15),
+       ('2024-09-17 14:04:00.987294', 169, 48, 12),
+       ('2024-11-01 11:48:55.843629', 169, 49, 27),
+       ('2024-09-02 17:01:33.053879', 169, 56, 18),
+       ('2024-11-28 17:07:05.754865', 181, 73, 23),
+       ('2024-09-21 07:36:48.02095', 182, 66, 12),
+       ('2024-09-10 09:19:05.867516', 182, 62, 28),
+       ('2024-10-09 03:00:45.297212', 182, 62, 19),
+       ('2024-10-30 20:31:17.011208', 183, 66, 24),
+       ('2024-09-16 08:53:14.433008', 183, 78, 15);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-22 06:34:48.880846', 183, 75, 7),
+       ('2024-09-22 14:39:32.926947', 184, 79, 15),
+       ('2024-09-11 11:03:53.671089', 184, 77, 10),
+       ('2024-09-15 06:06:39.937481', 184, 65, 10),
+       ('2024-11-01 03:51:26.270364', 184, 68, 24),
+       ('2024-09-04 15:04:31.431816', 185, 64, 20),
+       ('2024-11-30 12:19:22.123526', 185, 61, 4),
+       ('2024-10-22 16:27:22.620014', 185, 73, 19),
+       ('2024-10-23 12:21:01.443843', 186, 70, 12),
+       ('2024-09-24 23:08:18.327385', 186, 63, 24);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-18 10:03:29.942957', 186, 61, 15),
+       ('2024-10-28 05:34:34.322478', 187, 66, 25),
+       ('2024-10-02 08:56:50.722671', 42, 14, 19),
+       ('2024-11-29 11:48:55.045983', 42, 3, 11),
+       ('2024-09-17 17:41:09.58426', 42, 19, 24),
+       ('2024-10-18 22:45:50.558912', 43, 18, 21),
+       ('2024-10-09 00:15:07.44659', 43, 10, 4),
+       ('2024-09-14 05:15:32.304715', 43, 7, 5),
+       ('2024-10-30 17:04:51.675443', 43, 19, 5),
+       ('2024-10-21 22:05:32.152906', 44, 9, 9);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-22 04:54:50.976271', 44, 4, 30),
+       ('2024-09-07 19:25:56.131933', 44, 15, 3),
+       ('2024-10-04 04:49:01.362441', 45, 3, 23),
+       ('2024-11-06 08:26:36.435964', 45, 15, 18),
+       ('2024-09-14 02:58:22.182094', 45, 17, 4),
+       ('2024-09-18 03:30:52.122346', 46, 16, 29),
+       ('2024-11-01 00:24:04.217869', 46, 6, 3),
+       ('2024-10-17 04:15:29.275398', 46, 5, 9),
+       ('2024-09-03 01:09:22.959278', 46, 3, 1),
+       ('2024-09-12 00:00:45.085775', 47, 5, 6);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-10-04 15:06:40.469144', 47, 11, 9),
+       ('2024-09-01 23:50:59.359028', 47, 16, 21),
+       ('2024-11-11 16:09:23.628217', 48, 19, 13),
+       ('2024-09-21 00:15:30.830392', 48, 1, 23),
+       ('2024-09-06 04:00:00.858863', 292, 84, 21),
+       ('2024-10-01 15:40:21.194227', 292, 85, 29),
+       ('2024-11-17 06:23:49.603457', 292, 90, 2),
+       ('2024-09-16 02:24:19.715014', 293, 89, 4),
+       ('2024-11-09 18:02:15.594422', 293, 97, 9),
+       ('2024-11-14 15:21:30.625448', 293, 86, 8);
+INSERT INTO "event" (created_at, function_id, user_id, device_id)
+VALUES ('2024-09-20 05:20:15.259995', 294, 96, 10),
+       ('2024-11-24 11:19:32.260697', 294, 89, 14),
+       ('2024-11-07 04:20:09.84495', 294, 97, 6),
+       ('2024-09-28 01:24:04.99214', 295, 89, 2),
+       ('2024-11-01 21:04:12.331096', 295, 93, 6),
+       ('2024-11-13 22:06:25.16316', 295, 86, 6),
+       ('2024-09-26 00:53:08.856526', 295, 87, 29),
+       ('2024-11-21 05:06:32.468741', 296, 83, 4),
+       ('2024-11-10 11:05:03.417535', 296, 100, 6),
+       ('2024-09-07 02:37:42.844463', 296, 93, 29);

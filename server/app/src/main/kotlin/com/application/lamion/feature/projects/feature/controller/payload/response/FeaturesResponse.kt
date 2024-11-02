@@ -1,13 +1,15 @@
 package com.application.lamion.feature.projects.feature.controller.payload.response
 
 import com.application.lamion.feature.shared.payload.ChartDto
-import com.fasterxml.jackson.annotation.JsonProperty
 import kotlinx.datetime.LocalDate
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class FeaturesResponse(
-    @field:JsonProperty("total_events")
+    @SerialName("total_events")
     val totalEvents: ChartDto<LocalDate, Long>,
 
-    @field:JsonProperty("total_features")
+    @SerialName("total_features")
     val totalFeatures: Long,
 )

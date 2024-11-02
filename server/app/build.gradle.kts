@@ -1,5 +1,7 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.serialization)
+
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.kotlin.spring)
     alias(libs.plugins.kotlin.jpa)
@@ -47,5 +49,5 @@ dependencies {
 
     // Other
     implementation(libs.auth0)
-    implementation(libs.jackson)
+    implementation(libs.serialization.json)
 }

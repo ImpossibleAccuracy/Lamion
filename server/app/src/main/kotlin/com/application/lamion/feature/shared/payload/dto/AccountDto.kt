@@ -1,35 +1,38 @@
 package com.application.lamion.feature.shared.payload.dto
 
 import com.application.lamion.domain.model.Id
-import com.fasterxml.jackson.annotation.JsonProperty
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 sealed interface AccountDto {
     val id: Id
     val username: String
     val avatar: String?
 
+    @Serializable
     data class Public(
-        @field:JsonProperty("id")
+        @SerialName("id")
         override val id: Id,
 
-        @field:JsonProperty("username")
+        @SerialName("username")
         override val username: String,
 
-        @field:JsonProperty("avatar")
+        @SerialName("avatar")
         override val avatar: String?,
     ) : AccountDto
 
+    @Serializable
     data class Total(
-        @field:JsonProperty("id")
+        @SerialName("id")
         override val id: Id,
 
-        @field:JsonProperty("username")
+        @SerialName("username")
         override val username: String,
 
-        @field:JsonProperty("email")
+        @SerialName("email")
         val email: String,
 
-        @field:JsonProperty("avatar")
+        @SerialName("avatar")
         override val avatar: String?,
     ) : AccountDto
 }

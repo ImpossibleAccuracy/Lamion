@@ -1,12 +1,14 @@
 package com.application.lamion.feature.shared.payload.dto
 
-import com.fasterxml.jackson.annotation.JsonProperty
 import kotlinx.datetime.LocalDate
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class TokenDto(
-    @field:JsonProperty("title")
+    @SerialName("title")
     val title: String,
 
-    @field:JsonProperty("created_at")
+    @SerialName("created_at")
     val createdAt: LocalDate,
 )
