@@ -8,10 +8,9 @@ import com.application.lamion.domain.service.ActivityService
 import com.application.lamion.domain.service.ProjectService
 import com.application.lamion.feature.projects.dashboard.controller.payload.DashboardResponse
 import com.application.lamion.feature.projects.dashboard.domain.service.DashboardService
+import com.application.lamion.feature.shared.controller.BaseController
 import com.application.lamion.feature.shared.mapper.toDto
-import com.application.lamion.feature.shared.security.secured
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
-import kotlinx.coroutines.async
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -21,24 +20,26 @@ class DashboardController(
     private val projectService: ProjectService,
     private val dashboardService: DashboardService,
     private val activityService: ActivityService,
-) {
+) : BaseController() {
     @GetMapping("/full")
     suspend fun dashboard(
         @PathVariable("pId") projectId: Id,
         @RequestParam("period", required = false) period: TimePeriod = TimePeriod.DEFAULT,
-    ): DashboardResponse = secured {
-        val project = projectService.require(projectId, it.account)
+    ): DashboardResponse = endpoint("dashboard") {
+        val project = logTime("Project query: %s") {
+            projectService.require(projectId, account)
+        }
 
         val dateRange = period.toDateRange()
 
-        val scalingDeferred = async {
+        val scalingDeferred = logTimeAsync("Scaling querying took: %s") {
             dashboardService.getScaling(
                 project = project,
                 dateRange = dateRange,
             )
         }
 
-        val topFeatures = async {
+        val topFeaturesDeferred = logTimeAsync("Top features querying took: %s") {
             activityService.getTopFeatures(
                 project = project,
                 start = dateRange.finishStart,
@@ -47,14 +48,15 @@ class DashboardController(
             )
         }
 
-        val activity = async {
+        val activityDeferred = logTimeAsync("Project activity querying took: %s") {
             activityService.getProjectActivity(
                 project = project,
-                month = dateRange.finishStart.date // TODO: check
+                start = dateRange.finishStart,
+                end = dateRange.finishEnd,
             )
         }
 
-        val userActivityTime = async {
+        val userActivityTimeDeferred = logTimeAsync("User activity time querying took: %s") {
             activityService.getUserActivityTime(
                 project = project,
                 start = dateRange.finishStart.date,
@@ -63,18 +65,23 @@ class DashboardController(
         }
 
         val scaling = scalingDeferred.await()
+        val topFeatures = topFeaturesDeferred.await()
+        val activity = activityDeferred.await()
+        val userActivityTime = userActivityTimeDeferred.await()
 
-        DashboardResponse(
-            title = project.title,
-            scaling = DashboardResponse.Scaling(
-                totalUsers = scaling.totalUsers.toDto(),
-                activeUsers = scaling.activeUsers.toDto(),
-                totalCrashes = scaling.totalCrashes.toDto(),
-                triggeredEvents = scaling.triggeredEvents.toDto(),
-            ),
-            topFeatures = topFeatures.await().map(FeatureWithEvents::toDto),
-            calendar = activity.await().map(CalendarItemDomain::toDto),
-            userActivityTime = userActivityTime.await().toDto()
-        )
+        logTime("Mapping took: %s") {
+            DashboardResponse(
+                title = project.title,
+                scaling = DashboardResponse.Scaling(
+                    totalUsers = scaling.totalUsers.toDto(),
+                    activeUsers = scaling.activeUsers.toDto(),
+                    totalCrashes = scaling.totalCrashes.toDto(),
+                    triggeredEvents = scaling.triggeredEvents.toDto(),
+                ),
+                topFeatures = topFeatures.map(FeatureWithEvents::toDto),
+                calendar = activity.map(CalendarItemDomain::toDto),
+                userActivityTime = userActivityTime.toDto()
+            )
+        }
     }
 }

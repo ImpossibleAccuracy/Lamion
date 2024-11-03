@@ -5,7 +5,7 @@ import com.application.lamion.data.database.table.RoleTable
 import com.application.lamion.data.database.table.refs.AccountRoleRef
 import com.application.lamion.data.database.utils.exists
 import com.application.lamion.data.database.utils.new
-import com.application.lamion.data.service.TokenService
+import com.application.lamion.data.service.token.TokenService
 import com.application.lamion.domain.exception.InvalidArgumentsException
 import com.application.lamion.domain.exception.UnauthorizedException
 import com.application.lamion.domain.model.AccountDomain

@@ -19,6 +19,8 @@ fun LocalDate.toDateTime() =
 
 fun LocalDate.atStartOfDay() = atTime(0, 0, 0)
 
+fun LocalDate.atStartOfMonth() = minus(DatePeriod(days = dayOfMonth))
+
 fun LocalDateTime.minus(
     period: DateTimePeriod,
 ) = this.date

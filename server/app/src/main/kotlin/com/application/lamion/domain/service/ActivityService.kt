@@ -9,7 +9,11 @@ import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
 
 interface ActivityService {
-    suspend fun getProjectActivity(project: ProjectDomain, month: LocalDate): List<CalendarItemDomain>
+    suspend fun getProjectActivity(
+        project: ProjectDomain,
+        start: LocalDateTime,
+        end: LocalDateTime?,
+    ): List<CalendarItemDomain>
 
     suspend fun getUserActivityTime(
         project: ProjectDomain,

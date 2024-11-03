@@ -29,7 +29,7 @@ object DashboardDataSource {
         projectId: Id,
         start: LocalDateTime,
         end: LocalDateTime,
-        minEventsToActive: Long,
+        minEventsToActive: Long, // TODO: replace fixed number to percent of total events by this period
     ): Long {
         val eventsCount = EventTable.id.count()
 

@@ -1,4 +1,4 @@
-package com.application.lamion.data.service
+package com.application.lamion.data.service.resource
 
 import com.application.lamion.data.properties.ResourcesProperties
 import com.application.lamion.domain.model.AccountDomain

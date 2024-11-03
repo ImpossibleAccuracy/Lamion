@@ -1,6 +1,5 @@
 package com.application.lamion.data.datasource
 
-import com.application.lamion.data.database.table.project.ErrorTable
 import com.application.lamion.data.database.table.project.EventTable
 import com.application.lamion.data.database.table.project.FunctionTable
 import com.application.lamion.domain.model.Id
@@ -16,7 +15,7 @@ object EventDataSource {
         end: LocalDateTime,
     ) = EventTable
         .innerJoin(FunctionTable)
-        .select(ErrorTable.id)
+        .select(EventTable.id)
         .where(
             FunctionTable.project.eq(projectId)
                 .and(EventTable.createdAt.between(start, end))

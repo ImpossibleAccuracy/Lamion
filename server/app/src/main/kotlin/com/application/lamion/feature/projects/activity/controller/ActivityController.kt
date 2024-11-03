@@ -10,7 +10,9 @@ import com.application.lamion.feature.projects.activity.domain.service.ActivityF
 import com.application.lamion.feature.shared.mapper.toDto
 import com.application.lamion.feature.shared.security.secured
 import com.application.lamion.utils.atStartOfDay
+import com.application.lamion.utils.atStartOfMonth
 import com.application.lamion.utils.now
+import com.application.lamion.utils.toDateTime
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import kotlinx.coroutines.async
 import kotlinx.datetime.DatePeriod
@@ -34,7 +36,11 @@ class ActivityController(
             .require(projectId, it.account)
             .let { project ->
                 activityService
-                    .getProjectActivity(project, date)
+                    .getProjectActivity(
+                        project,
+                        date.atStartOfMonth().toDateTime(),
+                        null,
+                    )
                     .map(CalendarItemDomain::toDto)
             }
             .let(::ActivityResponse)

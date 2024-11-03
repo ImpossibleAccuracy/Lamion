@@ -1,4 +1,4 @@
-package com.application.lamion.data.service
+package com.application.lamion.data.service.token
 
 import com.application.lamion.data.properties.TokenProperties
 import com.auth0.jwt.JWT
