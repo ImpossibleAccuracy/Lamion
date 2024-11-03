@@ -1,6 +1,6 @@
 package com.application.lamion.feature.projects.settings.controller.payload
 
-import com.application.lamion.feature.shared.payload.dto.TokenDto
+import com.application.lamion.feature.shared.payload.dto.AccessKeysDto
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -13,5 +13,5 @@ data class ProjectSettingsResponse(
     val description: String?,
 
     @SerialName("tokens")
-    val tokens: List<TokenDto>,
+    val accessKeys: List<AccessKeysDto>,
 )

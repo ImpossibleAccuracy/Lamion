@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class TokenDto(
+data class AccessKeysDto(
     @SerialName("title")
     val title: String,
 
