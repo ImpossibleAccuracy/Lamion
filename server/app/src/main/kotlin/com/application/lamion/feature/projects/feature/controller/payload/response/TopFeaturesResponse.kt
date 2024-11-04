@@ -1,7 +1,7 @@
 package com.application.lamion.feature.projects.feature.controller.payload.response
 
 import com.application.lamion.feature.shared.payload.ChartDto
-import com.application.lamion.feature.shared.payload.dto.FeatureDto
+import com.application.lamion.feature.shared.payload.FeatureDto
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

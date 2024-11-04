@@ -1,4 +1,4 @@
-package com.application.lamion.feature.shared.payload.dto
+package com.application.lamion.feature.shared.payload
 
 import com.application.lamion.domain.model.Id
 import kotlinx.serialization.SerialName

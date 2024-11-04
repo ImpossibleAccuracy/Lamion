@@ -1,8 +1,8 @@
 package com.application.lamion.feature.projects.users.controller.payload
 
 import com.application.lamion.feature.shared.payload.ChartDto
-import com.application.lamion.feature.shared.payload.dto.ComparisonDto
-import com.application.lamion.feature.shared.payload.dto.DeviceDto
+import com.application.lamion.feature.shared.payload.ComparisonDto
+import com.application.lamion.feature.shared.payload.DeviceDto
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
 import kotlinx.serialization.SerialName

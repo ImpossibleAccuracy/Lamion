@@ -1,6 +1,5 @@
 package com.application.lamion.feature.projects.dashboard.data.datasource
 
-import com.application.lamion.data.database.table.ProjectTable
 import com.application.lamion.data.database.table.project.ErrorTable
 import com.application.lamion.data.database.table.project.EventTable
 import com.application.lamion.data.database.table.project.UserTable
@@ -12,7 +11,7 @@ import org.jetbrains.exposed.sql.and
 import org.jetbrains.exposed.sql.count
 
 object DashboardDataSource {
-    fun getTotalUsersCountByCreatedBetween(
+    /*fun getTotalUsersCountByCreatedBetween(
         projectId: Id,
         start: LocalDateTime,
         end: LocalDateTime
@@ -23,29 +22,28 @@ object DashboardDataSource {
             ProjectTable.id.eq(projectId)
                 .and(UserTable.createdAt.between(start, end))
         )
-        .count()
+        .count()*/
 
-    fun getActiveUsersCountByCreatedBetween(
+    fun getUsersCountByEventsCount(
         projectId: Id,
         start: LocalDateTime,
         end: LocalDateTime,
-        minEventsToActive: Long, // TODO: replace fixed number to percent of total events by this period
-    ): Long {
-        val eventsCount = EventTable.id.count()
-
-        return UserTable
-            .innerJoin(EventTable)
-            .select(UserTable.id)
-            .where(
-                UserTable.project.eq(projectId)
-                    .and(EventTable.createdAt.between(start, end))
-            )
-            .having {
-                eventsCount greaterEq minEventsToActive
+        minEventsToActive: Long?, // TODO: replace fixed number to percent of total events by this period
+    ): Long = UserTable
+        .innerJoin(EventTable)
+        .select(UserTable.id)
+        .where(
+            UserTable.project.eq(projectId)
+                .and(EventTable.createdAt.between(start, end))
+        )
+        .let {
+            if (minEventsToActive == null) it
+            else it.having {
+                EventTable.id.count() greaterEq minEventsToActive
             }
-            .groupBy(UserTable.id)
-            .count()
-    }
+        }
+        .groupBy(UserTable.id)
+        .count()
 
     fun getErrorsCountByCreatedBetween(
         projectId: Id,

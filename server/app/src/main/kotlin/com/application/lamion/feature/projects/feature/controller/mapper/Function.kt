@@ -1,7 +1,7 @@
 package com.application.lamion.feature.projects.feature.controller.mapper
 
 import com.application.lamion.feature.projects.feature.domain.model.FunctionDomain
-import com.application.lamion.feature.shared.payload.dto.FunctionDto
+import com.application.lamion.feature.shared.payload.FunctionDto
 
 fun FunctionDomain.toPartialDto() = FunctionDto.Partial(
     id = id,

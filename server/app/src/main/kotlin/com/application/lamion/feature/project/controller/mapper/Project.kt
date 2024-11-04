@@ -1,7 +1,7 @@
 package com.application.lamion.feature.project.controller.mapper
 
 import com.application.lamion.domain.model.ProjectDomain
-import com.application.lamion.feature.shared.payload.dto.ProjectDto
+import com.application.lamion.feature.shared.payload.ProjectDto
 
 fun ProjectDomain.toDto() = ProjectDto(
     id = id,

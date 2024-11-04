@@ -2,13 +2,14 @@ package com.application.lamion.feature.projects.activity.data.datasource
 
 import com.application.lamion.data.database.table.project.*
 import com.application.lamion.data.database.table.refs.FeatureFunctionRef
-import com.application.lamion.data.database.utils.DatePart
 import com.application.lamion.data.database.utils.datePart
 import com.application.lamion.domain.model.Id
+import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.between
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
+import org.jetbrains.exposed.sql.kotlin.datetime.KotlinLocalDateColumnType
 
 object ActivityDataSource {
     fun getFeatureWithTotalEventsCount(
@@ -61,9 +62,9 @@ object ActivityDataSource {
         projectId: Id,
         start: LocalDateTime,
         end: LocalDateTime,
-    ): List<Pair<Long, Int>> {
+    ): List<Pair<LocalDate, Long>> {
         val countQuery = UserTable.id.count()
-        val dayQuery = UserTable.createdAt.datePart("day")
+        val dayQuery = UserTable.createdAt.castTo(KotlinLocalDateColumnType())
 
         return getAvg(
             set = UserTable,
@@ -80,9 +81,9 @@ object ActivityDataSource {
         projectId: Id,
         start: LocalDateTime,
         end: LocalDateTime,
-    ): List<Pair<Long, Int>> {
+    ): List<Pair<LocalDate, Long>> {
         val countQuery = EventTable.id.count()
-        val dayQuery = EventTable.createdAt.datePart("day")
+        val dayQuery = EventTable.createdAt.castTo(KotlinLocalDateColumnType())
 
         return getAvg(
             set = EventTable.innerJoin(FunctionTable),
@@ -99,9 +100,9 @@ object ActivityDataSource {
         projectId: Id,
         start: LocalDateTime,
         end: LocalDateTime,
-    ): List<Pair<Long, Int>> {
+    ): List<Pair<LocalDate, Long>> {
         val countQuery = ErrorTable.id.count()
-        val dayQuery = ErrorTable.createdAt.datePart("day")
+        val dayQuery = ErrorTable.createdAt.castTo(KotlinLocalDateColumnType())
 
         return getAvg(
             set = ErrorTable.innerJoin(UserTable),
@@ -117,9 +118,9 @@ object ActivityDataSource {
     private fun getAvg(
         set: ColumnSet,
         countQuery: Count,
-        dateQuery: DatePart,
+        dateQuery: ExpressionWithColumnType<LocalDate>,
         where: SqlExpressionBuilder.() -> Op<Boolean>
-    ): List<Pair<Long, Int>> {
+    ): List<Pair<LocalDate, Long>> {
         val avg = set
             .select(countQuery)
             .where(where)
@@ -138,7 +139,7 @@ object ActivityDataSource {
             .groupBy(dateQuery)
             .toList()
             .map {
-                it[countQuery] to it[dateQuery]
+                it[dateQuery] to it[countQuery]
             }
     }
 }

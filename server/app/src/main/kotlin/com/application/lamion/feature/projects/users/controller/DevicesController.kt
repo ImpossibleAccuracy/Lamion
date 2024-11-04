@@ -1,11 +1,11 @@
 package com.application.lamion.feature.projects.users.controller
 
 import com.application.lamion.domain.model.Id
-import com.application.lamion.domain.model.TimePeriod
 import com.application.lamion.domain.service.ProjectService
 import com.application.lamion.feature.projects.users.domain.service.DeviceService
 import com.application.lamion.feature.shared.mapper.toDto
-import com.application.lamion.feature.shared.payload.dto.DeviceDto
+import com.application.lamion.feature.shared.model.TimePeriod
+import com.application.lamion.feature.shared.payload.DeviceDto
 import com.application.lamion.feature.shared.security.secured
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.web.bind.annotation.*
@@ -28,7 +28,7 @@ class DevicesController(
             .let { project ->
                 deviceService.getDevices(
                     project = project,
-                    dateRange = period.toDateRange(),
+                    dateRange = period.toExtendedDateRange(),
                     page = page
                 )
             }

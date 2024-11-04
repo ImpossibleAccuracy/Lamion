@@ -1,7 +1,6 @@
 package com.application.lamion.feature.projects.users.controller
 
 import com.application.lamion.domain.model.Id
-import com.application.lamion.domain.model.TimePeriod
 import com.application.lamion.domain.service.ActivityService
 import com.application.lamion.domain.service.ProjectService
 import com.application.lamion.feature.projects.users.controller.payload.UsersResponse
@@ -9,7 +8,8 @@ import com.application.lamion.feature.projects.users.domain.service.DeviceServic
 import com.application.lamion.feature.projects.users.domain.service.PlatformService
 import com.application.lamion.feature.projects.users.domain.service.UsersService
 import com.application.lamion.feature.shared.mapper.toDto
-import com.application.lamion.feature.shared.payload.dto.DeviceDto
+import com.application.lamion.feature.shared.model.TimePeriod
+import com.application.lamion.feature.shared.payload.DeviceDto
 import com.application.lamion.feature.shared.security.secured
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import kotlinx.coroutines.async
@@ -37,7 +37,8 @@ class UsersController(
         projectService
             .require(projectId, it.account)
             .let { project ->
-                val startDate = period.toLocalDate()
+                val extendedDateRange = period.toExtendedDateRange()
+                val dateRange = extendedDateRange.toDateRange()
 
                 val totalUsers = async {
                     usersService.getTotalUsers(project)
@@ -58,15 +59,14 @@ class UsersController(
                 val userActivity = async {
                     activityService.getUserActivityTime(
                         project = project,
-                        start = startDate,
-                        end = null,
+                        dateRange = dateRange,
                     )
                 }
 
                 val topDevices = async {
                     deviceService.getTopDevices(
                         project = project,
-                        dateRange = period.toDateRange(),
+                        dateRange = extendedDateRange,
                         count = TOP_DEVICES_COUNT,
                     )
                 }

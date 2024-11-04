@@ -1,6 +1,6 @@
 package com.application.lamion.feature.projects.settings.controller.payload
 
-import com.application.lamion.feature.shared.payload.dto.AccessKeysDto
+import com.application.lamion.feature.shared.payload.AccessKeysDto
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

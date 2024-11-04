@@ -8,7 +8,7 @@ import com.application.lamion.feature.projects.feature.controller.mapper.toParti
 import com.application.lamion.feature.projects.feature.domain.model.FunctionDomain
 import com.application.lamion.feature.projects.feature.domain.service.FeatureService
 import com.application.lamion.feature.projects.feature.domain.service.FunctionService
-import com.application.lamion.feature.shared.payload.dto.FunctionDto
+import com.application.lamion.feature.shared.payload.FunctionDto
 import com.application.lamion.feature.shared.security.secured
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.web.bind.annotation.*

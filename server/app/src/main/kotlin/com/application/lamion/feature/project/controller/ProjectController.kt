@@ -5,7 +5,7 @@ import com.application.lamion.domain.model.ProjectDomain
 import com.application.lamion.feature.project.controller.mapper.toDto
 import com.application.lamion.feature.project.controller.payload.CreateProjectRequest
 import com.application.lamion.feature.project.domain.ProjectFeatureService
-import com.application.lamion.feature.shared.payload.dto.ProjectDto
+import com.application.lamion.feature.shared.payload.ProjectDto
 import com.application.lamion.feature.shared.security.secured
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import jakarta.validation.Valid

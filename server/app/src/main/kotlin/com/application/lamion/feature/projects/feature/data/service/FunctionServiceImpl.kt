@@ -1,4 +1,4 @@
-package com.application.lamion.feature.projects.feature.data
+package com.application.lamion.feature.projects.feature.data.service
 
 import com.application.lamion.data.database.table.project.EventTable
 import com.application.lamion.data.database.table.project.FeatureTable

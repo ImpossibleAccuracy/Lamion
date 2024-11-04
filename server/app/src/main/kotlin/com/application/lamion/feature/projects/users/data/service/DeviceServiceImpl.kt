@@ -3,7 +3,7 @@ package com.application.lamion.feature.projects.users.data.service
 import com.application.lamion.data.database.table.project.DevicePlatformTable
 import com.application.lamion.data.database.table.project.DeviceTable
 import com.application.lamion.domain.model.ComparisonDomain
-import com.application.lamion.domain.model.DateRange
+import com.application.lamion.domain.model.ExtendedDateRange
 import com.application.lamion.domain.model.ProjectDomain
 import com.application.lamion.feature.projects.users.data.datasource.DeviceDataSource
 import com.application.lamion.feature.projects.users.domain.model.DeviceDomain
@@ -21,7 +21,7 @@ class DeviceServiceImpl : DeviceService {
 
     override suspend fun getTopDevices(
         project: ProjectDomain,
-        dateRange: DateRange,
+        dateRange: ExtendedDateRange,
         count: Int,
     ): List<DeviceDomain.Partial> = dbQuery {
         val (currentMonthActivity, prevMonthActivity) = deviceActivityQueries(dateRange, project)
@@ -47,22 +47,22 @@ class DeviceServiceImpl : DeviceService {
 
     override suspend fun getDevices(
         project: ProjectDomain,
-        dateRange: DateRange,
+        dateRange: ExtendedDateRange,
         page: Long,
     ): List<DeviceDomain.Detailed> = dbQuery {
         val (currentMonthActivity, prevMonthActivity) = deviceActivityQueries(dateRange, project)
 
         val currentMonthErrors = DeviceDataSource.createErrorSubquery(
             projectId = project.id,
-            start = dateRange.firstStart,
-            end = dateRange.firstEnd,
+            start = dateRange.first.start,
+            end = dateRange.first.end,
             alias = "startErrors"
         )
 
         val prevMonthErrors = DeviceDataSource.createErrorSubquery(
             projectId = project.id,
-            start = dateRange.finishStart,
-            end = dateRange.finishEnd,
+            start = dateRange.second.start,
+            end = dateRange.second.end,
             alias = "endErrors"
         )
 
@@ -93,21 +93,20 @@ class DeviceServiceImpl : DeviceService {
     }
 
     private fun deviceActivityQueries(
-        dateRange: DateRange,
+        dateRange: ExtendedDateRange,
         project: ProjectDomain
     ): Pair<ExpressionAlias<Long?>, ExpressionAlias<Long?>> {
-
         val currentMonthActivity = DeviceDataSource.createActivitySubquery(
             projectId = project.id,
-            start = dateRange.firstStart,
-            end = dateRange.firstEnd,
+            start = dateRange.first.start,
+            end = dateRange.first.end,
             alias = "startActivity"
         )
 
         val prevMonthActivity = DeviceDataSource.createActivitySubquery(
             projectId = project.id,
-            start = dateRange.finishStart,
-            end = dateRange.finishEnd,
+            start = dateRange.second.start,
+            end = dateRange.second.end,
             alias = "endActivity"
         )
 

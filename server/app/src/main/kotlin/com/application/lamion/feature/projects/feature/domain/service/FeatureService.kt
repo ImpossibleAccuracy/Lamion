@@ -18,11 +18,15 @@ interface FeatureService {
 
     suspend fun get(id: Id, project: ProjectDomain): FeatureDomain.Partial
 
-    suspend fun getTotalEvents(project: ProjectDomain): ChartDomain<LocalDate, Long>
+    suspend fun getEventsGroupByDate(project: ProjectDomain, dateRange: DateRange): ChartDomain<LocalDate, Long>
 
     suspend fun getTotalFeaturesCount(project: ProjectDomain): Long
 
-    suspend fun getTopFeatures(project: ProjectDomain, period: TimePeriod, count: Int): Map<FeatureDomain.Partial, Long>
+    suspend fun getTopFeatures(
+        project: ProjectDomain,
+        dateRange: DateRange,
+        count: Int
+    ): ChartDomain<FeatureDomain.Partial, Long>
 
     suspend fun list(
         project: ProjectDomain,

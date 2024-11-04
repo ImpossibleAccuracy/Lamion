@@ -3,13 +3,13 @@ package com.application.lamion.feature.projects.dashboard.controller
 import com.application.lamion.domain.model.CalendarItemDomain
 import com.application.lamion.domain.model.FeatureWithEvents
 import com.application.lamion.domain.model.Id
-import com.application.lamion.domain.model.TimePeriod
 import com.application.lamion.domain.service.ActivityService
 import com.application.lamion.domain.service.ProjectService
 import com.application.lamion.feature.projects.dashboard.controller.payload.DashboardResponse
 import com.application.lamion.feature.projects.dashboard.domain.service.DashboardService
 import com.application.lamion.feature.shared.controller.BaseController
 import com.application.lamion.feature.shared.mapper.toDto
+import com.application.lamion.feature.shared.model.TimePeriod
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.web.bind.annotation.*
 
@@ -30,20 +30,20 @@ class DashboardController(
             projectService.require(projectId, account)
         }
 
-        val dateRange = period.toDateRange()
+        val extendedDateRange = period.toExtendedDateRange()
+        val dateRange = extendedDateRange.toDateRange()
 
         val scalingDeferred = logTimeAsync("Scaling querying took: %s") {
             dashboardService.getScaling(
                 project = project,
-                dateRange = dateRange,
+                dateRange = extendedDateRange,
             )
         }
 
         val topFeaturesDeferred = logTimeAsync("Top features querying took: %s") {
             activityService.getTopFeatures(
                 project = project,
-                start = dateRange.finishStart,
-                end = null,
+                dateRange = dateRange,
                 count = 10 // TODO
             )
         }
@@ -51,16 +51,14 @@ class DashboardController(
         val activityDeferred = logTimeAsync("Project activity querying took: %s") {
             activityService.getProjectActivity(
                 project = project,
-                start = dateRange.finishStart,
-                end = dateRange.finishEnd,
+                dateRange = dateRange,
             )
         }
 
         val userActivityTimeDeferred = logTimeAsync("User activity time querying took: %s") {
             activityService.getUserActivityTime(
                 project = project,
-                start = dateRange.finishStart.date,
-                end = null,
+                dateRange = dateRange,
             )
         }
 

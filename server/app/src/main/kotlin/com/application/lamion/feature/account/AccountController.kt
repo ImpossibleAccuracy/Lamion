@@ -3,7 +3,7 @@ package com.application.lamion.feature.account
 import com.application.lamion.domain.service.ResourceManager
 import com.application.lamion.feature.account.payload.ProfileResponse
 import com.application.lamion.feature.shared.mapper.toTotalDto
-import com.application.lamion.feature.shared.payload.dto.AccountDto
+import com.application.lamion.feature.shared.payload.AccountDto
 import com.application.lamion.server.security.UserHolder
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.web.bind.annotation.GetMapping

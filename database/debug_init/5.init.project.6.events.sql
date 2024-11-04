@@ -3,7 +3,7 @@ $do$
     BEGIN
         FOR p_id IN 1..5
             LOOP
-                FOR _ IN 1..1000
+                FOR _ IN 1..100000
                     LOOP
 
                         INSERT INTO "event" (created_at, function_id, user_id, device_id)

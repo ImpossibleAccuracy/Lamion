@@ -1,7 +1,7 @@
 package com.application.lamion.feature.projects.feature.controller.mapper
 
 import com.application.lamion.feature.projects.feature.domain.model.FeatureDomain
-import com.application.lamion.feature.shared.payload.dto.FeatureDto
+import com.application.lamion.feature.shared.payload.FeatureDto
 
 fun FeatureDomain.toPartialDto() = FeatureDto.Partial(
     id = id,

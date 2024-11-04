@@ -2,7 +2,7 @@ package com.application.lamion.feature.shared.mapper
 
 import com.application.lamion.domain.model.AccountDomain
 import com.application.lamion.domain.service.ResourceManager
-import com.application.lamion.feature.shared.payload.dto.AccountDto
+import com.application.lamion.feature.shared.payload.AccountDto
 
 suspend fun AccountDomain.toPublicDto(resourceManager: ResourceManager) =
     AccountDto.Public(

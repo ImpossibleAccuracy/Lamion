@@ -1,6 +1,7 @@
 package com.application.lamion.feature.projects.activity.controller
 
 import com.application.lamion.domain.model.CalendarItemDomain
+import com.application.lamion.domain.model.DateRange
 import com.application.lamion.domain.model.FeatureWithEvents
 import com.application.lamion.domain.model.Id
 import com.application.lamion.domain.service.ProjectService
@@ -37,9 +38,10 @@ class ActivityController(
             .let { project ->
                 activityService
                     .getProjectActivity(
-                        project,
-                        date.atStartOfMonth().toDateTime(),
-                        null,
+                        project = project,
+                        dateRange = DateRange(
+                            start = date.atStartOfMonth().toDateTime(),
+                        )
                     )
                     .map(CalendarItemDomain::toDto)
             }
@@ -54,19 +56,24 @@ class ActivityController(
         projectService
             .require(projectId, it.account)
             .let { project ->
-                val detailsDeferred = async { activityService.details(date, project) }
+                val dateRange = DateRange(
+                    start = date.atStartOfDay(),
+                    end = date.plus(DatePeriod(days = 1)).atStartOfDay(),
+                )
+
+                val detailsDeferred = async {
+                    activityService.details(date, project)
+                }
                 val userActivity = async {
                     activityService.getUserActivityTime(
                         project = project,
-                        start = date,
-                        end = date,
+                        dateRange = dateRange,
                     )
                 }
                 val topFeatures = async {
                     activityService.getTopFeatures(
                         project = project,
-                        start = date.atStartOfDay(),
-                        end = date.plus(DatePeriod(days = 1)).atStartOfDay(),
+                        dateRange = dateRange,
                         count = 10 // TODO
                     )
                 }

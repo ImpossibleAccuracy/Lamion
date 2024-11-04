@@ -3,5 +3,6 @@ package com.application.lamion.feature.projects.feature.controller.payload.reque
 enum class FeaturesSort {
     EVENTS_COUNT,
     ERRORS_COUNT,
+    FUNCTIONS_COUNT,
     DATE_CREATED,
 }

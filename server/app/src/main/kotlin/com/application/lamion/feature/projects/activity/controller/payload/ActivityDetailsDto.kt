@@ -1,7 +1,7 @@
 package com.application.lamion.feature.projects.activity.controller.payload
 
 import com.application.lamion.feature.shared.payload.ChartDto
-import com.application.lamion.feature.shared.payload.dto.FeatureDto
+import com.application.lamion.feature.shared.payload.FeatureDto
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
 import kotlinx.serialization.SerialName

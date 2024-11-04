@@ -5,7 +5,7 @@ import com.application.lamion.domain.service.ProjectService
 import com.application.lamion.feature.projects.settings.controller.payload.ProjectSettingsResponse
 import com.application.lamion.feature.projects.settings.domain.service.ProjectAccessKeyService
 import com.application.lamion.feature.shared.controller.BaseController
-import com.application.lamion.feature.shared.payload.dto.AccessKeysDto
+import com.application.lamion.feature.shared.payload.AccessKeysDto
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable

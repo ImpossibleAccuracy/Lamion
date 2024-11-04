@@ -2,8 +2,8 @@ package com.application.lamion.feature.projects.dashboard.controller.payload
 
 import com.application.lamion.feature.shared.payload.CalendarItemDto
 import com.application.lamion.feature.shared.payload.ChartDto
-import com.application.lamion.feature.shared.payload.dto.ComparisonDto
-import com.application.lamion.feature.shared.payload.dto.FeatureDto
+import com.application.lamion.feature.shared.payload.ComparisonDto
+import com.application.lamion.feature.shared.payload.FeatureDto
 import kotlinx.datetime.LocalTime
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

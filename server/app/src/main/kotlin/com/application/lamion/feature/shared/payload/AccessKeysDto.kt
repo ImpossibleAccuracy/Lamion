@@ -1,4 +1,4 @@
-package com.application.lamion.feature.shared.payload.dto
+package com.application.lamion.feature.shared.payload
 
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.SerialName
