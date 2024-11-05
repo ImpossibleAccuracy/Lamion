@@ -10,8 +10,9 @@ import com.application.lamion.feature.shared.utils.require
 import com.application.lamion.utils.dbQuery
 import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
-import org.jetbrains.exposed.sql.deleteWhere
+import org.jetbrains.exposed.sql.and
 import org.jetbrains.exposed.sql.selectAll
+import org.jetbrains.exposed.sql.update
 import org.springframework.stereotype.Service
 
 @Service
@@ -22,7 +23,10 @@ class ProjectFeatureServiceImpl : ProjectFeatureService {
     override suspend fun get(id: Id, account: AccountDomain): ProjectDomain? = dbQuery {
         ProjectTable
             .selectAll()
-            .where { ProjectTable.id eq id }
+            .where(
+                ProjectTable.id.eq(id)
+                    .and(ProjectTable.deleted.eq(false))
+            )
             .firstOrNull()
             ?.toDomain()
     }
@@ -44,13 +48,18 @@ class ProjectFeatureServiceImpl : ProjectFeatureService {
     override suspend fun list(account: AccountDomain): List<ProjectDomain> = dbQuery {
         ProjectTable
             .selectAll()
-            .where(ProjectTable.owner eq account.id)
+            .where(
+                ProjectTable.owner.eq(account.id)
+                    .and(ProjectTable.deleted.eq(false))
+            )
             .toList()
             .map { it.toDomain() }
     }
 
     override suspend fun delete(project: ProjectDomain, account: AccountDomain): Unit = dbQuery {
-        ProjectTable.deleteWhere { ProjectTable.id eq project.id }
+        ProjectTable.update(where = { ProjectTable.id eq project.id }) {
+            it[deleted] = true
+        }
     }
 }
 

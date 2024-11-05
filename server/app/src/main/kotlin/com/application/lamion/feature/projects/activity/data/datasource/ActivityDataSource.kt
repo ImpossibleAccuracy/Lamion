@@ -29,6 +29,8 @@ object ActivityDataSource {
         .where(
             FeatureTable.project.eq(projectId)
                 .and(EventTable.createdAt.between(start, end))
+                .and(FeatureTable.deleted.eq(false))
+                .and(FunctionTable.deleted.eq(false))
         )
         .groupBy(*FeatureTable.columns.toTypedArray())
         .orderBy(eventsCountQuery, SortOrder.DESC)
@@ -92,6 +94,7 @@ object ActivityDataSource {
             where = {
                 FunctionTable.project.eq(projectId)
                     .and(EventTable.createdAt.between(start, end))
+                    .and(FunctionTable.deleted.eq(false))
             }
         )
     }

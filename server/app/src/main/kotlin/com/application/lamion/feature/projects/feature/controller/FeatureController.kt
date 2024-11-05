@@ -71,7 +71,7 @@ class FeatureController(
         projectService
             .require(pId, account)
             .let { project ->
-                if (!functionService.checkExists(body.functions)) {
+                if (!functionService.checkExists(project, body.functions)) {
                     throw InvalidArgumentsException("One or more functions was not found")
                 }
 
@@ -91,22 +91,26 @@ class FeatureController(
     @GetMapping
     suspend fun list(
         @PathVariable("pId") projectId: Id,
-        @RequestParam("p") page: Long,
+        @RequestParam("p", required = false) page: Long = 0,
         @RequestParam("sort", required = false) sort: FeaturesSort = FeaturesSort.EVENTS_COUNT,
     ): List<FeatureDto.Detailed> = endpoint("list feature") {
-        featureService
-            .list(
-                project = projectService.require(projectId, account),
-                page = page,
-                sort = sort,
-            )
-            .map(FeatureDomain.Detailed::toDto)
+        projectService
+            .require(projectId, account)
+            .let { project ->
+                featureService
+                    .list(
+                        project = project,
+                        page = page,
+                        sort = sort,
+                    )
+                    .map(FeatureDomain.Detailed::toDto)
+            }
     }
 
     @GetMapping("/chart")
     suspend fun getTopFeatures(
         @PathVariable("pId") projectId: Id,
-        @RequestParam("period") period: TimePeriod,
+        @RequestParam("period", required = false) period: TimePeriod = TimePeriod.DEFAULT,
         @RequestParam("count", required = false) count: Int = DEFAULT_CHART_SIZE,
     ): TopFeaturesResponse = endpoint("top features") {
         projectService

@@ -9,7 +9,7 @@ import com.application.lamion.feature.projects.users.data.datasource.DeviceDataS
 import com.application.lamion.feature.projects.users.domain.model.DeviceDomain
 import com.application.lamion.feature.projects.users.domain.service.DeviceService
 import com.application.lamion.utils.dbQuery
-import org.jetbrains.exposed.sql.ExpressionAlias
+import org.jetbrains.exposed.sql.Expression
 import org.springframework.stereotype.Service
 
 @Service
@@ -95,7 +95,7 @@ class DeviceServiceImpl : DeviceService {
     private fun deviceActivityQueries(
         dateRange: ExtendedDateRange,
         project: ProjectDomain
-    ): Pair<ExpressionAlias<Long?>, ExpressionAlias<Long?>> {
+    ): Pair<Expression<Long?>, Expression<Long?>> {
         val currentMonthActivity = DeviceDataSource.createActivitySubquery(
             projectId = project.id,
             start = dateRange.first.start,

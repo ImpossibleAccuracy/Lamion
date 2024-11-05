@@ -92,6 +92,7 @@ class ActivityFeatureServiceImpl : ActivityFeatureService {
         TODO("Not yet implemented")
     }
 
+    // TODO: regroup methods over services
     override suspend fun getTopFeatures(
         project: ProjectDomain,
         dateRange: DateRange,

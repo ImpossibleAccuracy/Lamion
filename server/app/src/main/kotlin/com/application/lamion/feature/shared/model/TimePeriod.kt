@@ -32,7 +32,7 @@ enum class TimePeriod {
     private fun toLocalDate(base: LocalDate = LocalDate.now(), multiplier: Int = 1): LocalDate =
         base.minus(
             when (this) {
-                DAY -> DatePeriod(days = 0)
+                DAY -> DatePeriod(days = 1)
                 WEEK -> DatePeriod(days = 7 * multiplier)
                 MONTH -> DatePeriod(months = 1 * multiplier)
                 YEAR -> DatePeriod(years = 1 * multiplier)

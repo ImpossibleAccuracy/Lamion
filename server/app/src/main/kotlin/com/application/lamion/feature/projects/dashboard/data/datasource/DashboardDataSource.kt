@@ -11,19 +11,6 @@ import org.jetbrains.exposed.sql.and
 import org.jetbrains.exposed.sql.count
 
 object DashboardDataSource {
-    /*fun getTotalUsersCountByCreatedBetween(
-        projectId: Id,
-        start: LocalDateTime,
-        end: LocalDateTime
-    ): Long = UserTable
-        .innerJoin(ProjectTable)
-        .select(UserTable.id)
-        .where(
-            ProjectTable.id.eq(projectId)
-                .and(UserTable.createdAt.between(start, end))
-        )
-        .count()*/
-
     fun getUsersCountByEventsCount(
         projectId: Id,
         start: LocalDateTime,

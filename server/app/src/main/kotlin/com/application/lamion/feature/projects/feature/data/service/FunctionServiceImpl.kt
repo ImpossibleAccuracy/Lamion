@@ -13,30 +13,28 @@ import com.application.lamion.domain.model.ProjectDomain
 import com.application.lamion.feature.projects.feature.domain.model.FeatureDomain
 import com.application.lamion.feature.projects.feature.domain.model.FunctionDomain
 import com.application.lamion.feature.projects.feature.domain.service.FunctionService
+import com.application.lamion.utils.dbQuery
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
+import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.inList
-import org.jetbrains.exposed.sql.alias
-import org.jetbrains.exposed.sql.count
-import org.jetbrains.exposed.sql.or
-import org.jetbrains.exposed.sql.selectAll
 import org.springframework.stereotype.Service
-import org.springframework.transaction.annotation.Transactional
 
 @Service
-@Transactional
 class FunctionServiceImpl : FunctionService {
     companion object {
         const val PAGE_SIZE = 30
     }
 
-    override suspend fun checkExists(ids: List<Id>): Boolean {
-        // TODO: verify
-        return FunctionTable
+    override suspend fun checkExists(project: ProjectDomain, ids: List<Id>): Boolean = dbQuery {
+        FunctionTable
             .select(FunctionTable.id)
-            .where(FunctionTable.id inList ids)
+            .where(
+                FunctionTable.project.eq(project.id)
+                    .and(FunctionTable.id.inList(ids))
+            )
             .exists()
     }
 

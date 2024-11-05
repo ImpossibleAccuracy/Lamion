@@ -35,10 +35,6 @@ out/
 ### VS Code ###
 .vscode/
 
-### APP TEMP FILES ###
-/database/data/
-/database/logs/
-
 ### APP SECRETS ###
 .env
 .env.local

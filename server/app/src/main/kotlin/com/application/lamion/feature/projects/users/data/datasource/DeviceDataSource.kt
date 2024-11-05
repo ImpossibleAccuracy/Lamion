@@ -10,8 +10,8 @@ import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 
 object DeviceDataSource {
     fun getDevicesWithActivity(
-        currentMonthActivitySubquery: ExpressionAlias<Long?>,
-        prevMonthActivitySubquery: ExpressionAlias<Long?>,
+        currentMonthActivitySubquery: Expression<Long?>,
+        prevMonthActivitySubquery: Expression<Long?>,
         project: ProjectDomain,
         count: Int,
     ) = DeviceTable
@@ -23,7 +23,10 @@ object DeviceDataSource {
             prevMonthActivitySubquery,
             *DeviceTable.columns.toTypedArray(),
         )
-        .where(FunctionTable.project eq project.id)
+        .where(
+            FunctionTable.project.eq(project.id)
+                .and(FunctionTable.deleted.eq(false))
+        )
         .orderBy(EventTable.id.count(), SortOrder.ASC)
         .limit(count)
         .toList()
@@ -31,10 +34,10 @@ object DeviceDataSource {
 
     fun getDevicesWithActivityAndErrors(
         projectId: Id,
-        currentMonthActivity: ExpressionAlias<Long?>,
-        prevMonthActivity: ExpressionAlias<Long?>,
-        currentMonthErrors: ExpressionAlias<Long?>,
-        prevMonthErrors: ExpressionAlias<Long?>,
+        currentMonthActivity: Expression<Long?>,
+        prevMonthActivity: Expression<Long?>,
+        currentMonthErrors: Expression<Long?>,
+        prevMonthErrors: Expression<Long?>,
         limit: Int,
         offset: Long,
     ) = DeviceTable
@@ -50,7 +53,10 @@ object DeviceDataSource {
             *DeviceTable.columns.toTypedArray(),
             DevicePlatformTable.title,
         )
-        .where(FunctionTable.project.eq(projectId))
+        .where(
+            FunctionTable.project.eq(projectId)
+                .and(FunctionTable.deleted.eq(false))
+        )
         .limit(limit, offset)
         .toList()
 
@@ -66,6 +72,7 @@ object DeviceDataSource {
         .where(
             FunctionTable.project.eq(projectId)
                 .and(EventTable.createdAt.between(start, end))
+                .and(FunctionTable.deleted.eq(false))
         )
         .let {
             wrapAsExpression<Long>(it)

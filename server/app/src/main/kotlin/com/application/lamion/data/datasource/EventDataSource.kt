@@ -19,6 +19,7 @@ object EventDataSource {
         .where(
             FunctionTable.project.eq(projectId)
                 .and(EventTable.createdAt.between(start, end))
+                .and(FunctionTable.deleted.eq(false))
         )
         .count()
 }

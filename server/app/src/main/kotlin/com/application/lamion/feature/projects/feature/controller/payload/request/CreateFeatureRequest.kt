@@ -16,6 +16,5 @@ data class CreateFeatureRequest(
     val description: String,
 
     @SerialName("functions")
-    @field:NotBlank
     val functions: List<Id>,
 )

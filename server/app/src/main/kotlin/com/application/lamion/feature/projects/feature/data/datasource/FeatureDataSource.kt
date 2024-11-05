@@ -1,7 +1,9 @@
 package com.application.lamion.feature.projects.feature.data.datasource
 
-import com.application.lamion.data.database.table.ProjectTable
-import com.application.lamion.data.database.table.project.*
+import com.application.lamion.data.database.table.project.ErrorTable
+import com.application.lamion.data.database.table.project.EventTable
+import com.application.lamion.data.database.table.project.FeatureTable
+import com.application.lamion.data.database.table.project.FunctionTable
 import com.application.lamion.data.database.table.refs.FeatureFunctionRef
 import com.application.lamion.data.database.utils.new
 import com.application.lamion.domain.model.Id
@@ -42,15 +44,19 @@ object FeatureDataSource {
 
     fun countFeatures(projectId: Id) = FeatureTable
         .select(FeatureTable.id)
-        .where(FeatureTable.project eq projectId)
+        .where(
+            FeatureTable.project.eq(projectId)
+                .and(FeatureTable.deleted.eq(false))
+        )
         .count()
 
     fun findFeature(projectId: Id, featureId: Id) =
         FeatureTable
             .selectAll()
             .where(
-                (FeatureTable.project eq projectId) and
-                        (FeatureTable.id eq featureId)
+                FeatureTable.project.eq(projectId)
+                    .and(FeatureTable.id eq featureId)
+                    .and(FeatureTable.deleted.eq(false))
             )
             .firstOrNull()
 
@@ -60,8 +66,9 @@ object FeatureDataSource {
     ) = FeatureTable
         .select(FeatureTable.id)
         .where(
-            (FeatureTable.project eq projectId) and
-                    (FeatureTable.id inList featuresIds)
+            FeatureTable.project.eq(projectId)
+                .and(FeatureTable.id inList featuresIds)
+                .and(FeatureTable.deleted.eq(false))
         )
         .count()
 
@@ -80,6 +87,7 @@ object FeatureDataSource {
             .where(
                 FunctionTable.project.eq(projectId)
                     .and(EventTable.createdAt.between(start, end))
+                    .and(FunctionTable.deleted.eq(false))
             )
             .groupBy(dateQuery)
             .orderBy(dateQuery)
@@ -91,21 +99,23 @@ object FeatureDataSource {
 
     fun findFeaturesOrderByEventsCount(
         projectId: Id,
-        eventsCountQuery: ExpressionAlias<Long>,
+        eventsCountQuery: Expression<Long>,
         start: LocalDateTime,
         end: LocalDateTime,
         count: Int
     ) = FeatureTable
         .innerJoin(FeatureFunctionRef)
-        .innerJoin(FeatureTable)
+        .innerJoin(FunctionTable)
         .innerJoin(EventTable)
         .select(
             eventsCountQuery,
             *FeatureTable.columns.toTypedArray(),
         )
         .where(
-            (FeatureTable.project.eq(projectId))
+            FeatureTable.project.eq(projectId)
                 .and(EventTable.createdAt.between(start, end))
+                .and(FeatureTable.deleted.eq(false))
+                .and(FunctionTable.deleted.eq(false))
         )
         .groupBy(*FeatureTable.columns.toTypedArray())
         .orderBy(eventsCountQuery)
@@ -114,18 +124,16 @@ object FeatureDataSource {
 
     fun getFeaturesList(
         projectId: Id,
-        eventsCountQuery: ExpressionAlias<Long>,
-        functionsCountQuery: ExpressionAlias<Long>,
-        errorsCountQuery: ExpressionAlias<Long>,
+        eventsCountQuery: Expression<Long>,
+        functionsCountQuery: Expression<Long>,
+        errorsCountQuery: Expression<Long>,
         orderStatement: Expression<*>,
         limit: Int,
         offset: Long,
     ) = FeatureTable
-        .innerJoin(ProjectTable)
         .innerJoin(FeatureFunctionRef)
         .innerJoin(FunctionTable)
         .innerJoin(EventTable)
-        .innerJoin(UserTable)
         .innerJoin(ErrorTable)
         .select(
             eventsCountQuery,
@@ -134,7 +142,9 @@ object FeatureDataSource {
             *FeatureTable.columns.toTypedArray(),
         )
         .where(
-            (FeatureTable.project eq projectId)
+            FeatureTable.project.eq(projectId)
+                .and(FeatureTable.deleted.eq(false))
+                .and(FunctionTable.deleted.eq(false))
         )
         .groupBy(*FeatureTable.columns.toTypedArray())
         .orderBy(orderStatement, SortOrder.DESC)
@@ -150,10 +160,23 @@ object FeatureDataSource {
 
         return FunctionTable
             .innerJoin(FeatureFunctionRef)
+            .innerJoin(FeatureTable)
             .innerJoin(EventTable)
-            .selectAll()
-            .where(FeatureFunctionRef.feature eq featureId)
+            .select(
+                FunctionTable.id,
+                FunctionTable.title,
+                eventsCountQuery,
+            )
+            .where(
+                FeatureTable.id.eq(featureId)
+                    .and(FeatureTable.deleted.eq(false))
+                    .and(FunctionTable.deleted.eq(false))
+            )
             .limit(count)
+            .groupBy(
+                FunctionTable.id,
+                FunctionTable.title,
+            )
             .toList()
             .map {
                 val eventsCount = it[eventsCountQuery]
@@ -162,7 +185,7 @@ object FeatureDataSource {
                     id = it[FunctionTable.id].value,
                     title = it[FunctionTable.title],
                     totalEvents = eventsCount,
-                    percent = totalFeatureEventsCount * 100.0 / eventsCount
+                    percent = eventsCount * 100.0 / totalFeatureEventsCount
                 )
             }
     }
@@ -172,15 +195,14 @@ object FeatureDataSource {
         title: String,
         description: String
     ) = FeatureTable
-        .updateReturning(
-            returning = FeatureTable.columns,
-            where = { FeatureTable.id eq featureId }
-        ) {
+        .updateReturning(where = { FeatureTable.id eq featureId }) {
             it[FeatureTable.title] = title
             it[FeatureTable.description] = description
         }
         .first()
 
     fun deleteFeature(featureId: Id) =
-        FeatureTable.deleteWhere { FeatureTable.id eq featureId }
+        FeatureTable.update(where = { FeatureTable.id eq featureId }) {
+            it[deleted] = true
+        }
 }

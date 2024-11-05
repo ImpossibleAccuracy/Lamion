@@ -8,5 +8,6 @@ object ErrorTable : LongIdTable("error") {
     val createdAt = datetime("created_at").defaultExpression(CurrentDateTime)
     val user = reference("user_id", UserTable)
     val device = reference("device_id", DeviceTable)
+    val function = optReference("function_id", FunctionTable)
     val message = text("message")
 }
