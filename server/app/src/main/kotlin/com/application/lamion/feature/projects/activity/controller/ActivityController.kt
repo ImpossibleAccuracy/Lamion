@@ -8,18 +8,15 @@ import com.application.lamion.domain.service.ProjectService
 import com.application.lamion.feature.projects.activity.controller.payload.ActivityDetailsDto
 import com.application.lamion.feature.projects.activity.controller.payload.ActivityResponse
 import com.application.lamion.feature.projects.activity.domain.service.ActivityFeatureService
+import com.application.lamion.feature.shared.controller.BaseController
 import com.application.lamion.feature.shared.mapper.toDto
-import com.application.lamion.feature.shared.security.secured
 import com.application.lamion.utils.atStartOfDay
-import com.application.lamion.utils.atStartOfMonth
-import com.application.lamion.utils.now
-import com.application.lamion.utils.toDateTime
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
-import kotlinx.coroutines.async
 import kotlinx.datetime.DatePeriod
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.plus
 import org.springframework.web.bind.annotation.*
+import java.time.LocalDate as JavaLocalDate
 
 @RestController
 @RequestMapping("/project/{pId}/activity")
@@ -27,20 +24,28 @@ import org.springframework.web.bind.annotation.*
 class ActivityController(
     private val projectService: ProjectService,
     private val activityService: ActivityFeatureService,
-) {
+) : BaseController() {
+    companion object {
+        private const val DEFAULT_ACTIVITY_FEATURES_COUNT = 5
+    }
+
     @GetMapping("/full")
     suspend fun full(
         @PathVariable("pId") projectId: Id,
-        @RequestParam("date", required = false) date: LocalDate = LocalDate.now(),
-    ): ActivityResponse = secured {
+        @RequestParam("date", required = false) jDate: JavaLocalDate = JavaLocalDate.now(),
+    ): ActivityResponse = endpoint("activity full") {
         projectService
-            .require(projectId, it.account)
+            .require(projectId, account)
             .let { project ->
+                val startDate = LocalDate(jDate.year, jDate.monthValue, 1)
+                val endDate = startDate.plus(DatePeriod(months = 1))
+
                 activityService
                     .getProjectActivity(
                         project = project,
                         dateRange = DateRange(
-                            start = date.atStartOfMonth().toDateTime(),
+                            start = startDate.atStartOfDay(),
+                            end = endDate.atStartOfDay(),
                         )
                     )
                     .map(CalendarItemDomain::toDto)
@@ -51,30 +56,34 @@ class ActivityController(
     @GetMapping("/{date}")
     suspend fun details(
         @PathVariable("pId") projectId: Id,
-        @PathVariable("date") date: LocalDate,
-    ): ActivityDetailsDto = secured {
+        @PathVariable("date") jDate: JavaLocalDate,
+        @RequestParam("fCount", required = false) featuresCount: Int = DEFAULT_ACTIVITY_FEATURES_COUNT,
+    ): ActivityDetailsDto = endpoint("activity details") {
         projectService
-            .require(projectId, it.account)
+            .require(projectId, account)
             .let { project ->
+                val date = LocalDate(jDate.year, jDate.monthValue, jDate.dayOfMonth)
                 val dateRange = DateRange(
                     start = date.atStartOfDay(),
                     end = date.plus(DatePeriod(days = 1)).atStartOfDay(),
                 )
 
-                val detailsDeferred = async {
+                val detailsDeferred = logTimeAsync("Activity details querying took: %s") {
                     activityService.details(date, project)
                 }
-                val userActivity = async {
+
+                val userActivity = logTimeAsync("User activity time querying took: %s") {
                     activityService.getUserActivityTime(
                         project = project,
                         dateRange = dateRange,
                     )
                 }
-                val topFeatures = async {
+
+                val topFeatures = logTimeAsync("Top features querying took: %s") {
                     activityService.getTopFeatures(
                         project = project,
                         dateRange = dateRange,
-                        count = 10 // TODO
+                        count = featuresCount,
                     )
                 }
 

@@ -124,6 +124,7 @@ object ActivityDataSource {
         dateQuery: ExpressionWithColumnType<LocalDate>,
         where: SqlExpressionBuilder.() -> Op<Boolean>
     ): List<Pair<LocalDate, Long>> {
+        // TODO: join to single db query
         val avg = set
             .select(countQuery)
             .where(where)

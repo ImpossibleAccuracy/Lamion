@@ -9,7 +9,7 @@ import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.and
 
 object EventDataSource {
-    fun getEventsCountByCreatedBetween(
+    fun countEventsByCreatedBetween(
         projectId: Id,
         start: LocalDateTime,
         end: LocalDateTime,

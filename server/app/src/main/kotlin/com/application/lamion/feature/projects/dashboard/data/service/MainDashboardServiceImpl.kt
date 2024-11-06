@@ -1,10 +1,11 @@
 package com.application.lamion.feature.projects.dashboard.data.service
 
+import com.application.lamion.data.datasource.ErrorDataSource
 import com.application.lamion.data.datasource.EventDataSource
+import com.application.lamion.data.datasource.UserDataSource
 import com.application.lamion.domain.model.ComparisonDomain
 import com.application.lamion.domain.model.ExtendedDateRange
 import com.application.lamion.domain.model.ProjectDomain
-import com.application.lamion.feature.projects.dashboard.data.datasource.DashboardDataSource
 import com.application.lamion.feature.projects.dashboard.domain.model.ProjectScaling
 import com.application.lamion.feature.projects.dashboard.domain.service.MainDashboardService
 import com.application.lamion.utils.asyncDbQuery
@@ -23,7 +24,7 @@ class MainDashboardServiceImpl : MainDashboardService {
     ): ProjectScaling = coroutineScope {
         val users = async {
             val actual = asyncDbQuery {
-                DashboardDataSource.getUsersCount(
+                UserDataSource.getUsersCount(
                     projectId = project.id,
                     start = dateRange.second.start,
                     end = dateRange.second.end,
@@ -31,7 +32,7 @@ class MainDashboardServiceImpl : MainDashboardService {
             }
 
             val past = asyncDbQuery {
-                DashboardDataSource.getUsersCount(
+                UserDataSource.getUsersCount(
                     projectId = project.id,
                     start = dateRange.first.start,
                     end = dateRange.first.end,
@@ -46,7 +47,7 @@ class MainDashboardServiceImpl : MainDashboardService {
 
         val activeUsers = async {
             val actual = asyncDbQuery {
-                DashboardDataSource.getActiveUsersCount(
+                UserDataSource.getActiveUsersCount(
                     projectId = project.id,
                     start = dateRange.second.start,
                     end = dateRange.second.end,
@@ -54,7 +55,7 @@ class MainDashboardServiceImpl : MainDashboardService {
             }
 
             val past = asyncDbQuery {
-                DashboardDataSource.getActiveUsersCount(
+                UserDataSource.getActiveUsersCount(
                     projectId = project.id,
                     start = dateRange.first.start,
                     end = dateRange.first.end,
@@ -69,7 +70,7 @@ class MainDashboardServiceImpl : MainDashboardService {
 
         val errors = async {
             val actual = asyncDbQuery {
-                DashboardDataSource.getErrorsCountByCreatedBetween(
+                ErrorDataSource.countErrorsByCreatedBetween(
                     projectId = project.id,
                     start = dateRange.second.start,
                     end = dateRange.second.end,
@@ -77,7 +78,7 @@ class MainDashboardServiceImpl : MainDashboardService {
             }
 
             val past = asyncDbQuery {
-                DashboardDataSource.getErrorsCountByCreatedBetween(
+                ErrorDataSource.countErrorsByCreatedBetween(
                     projectId = project.id,
                     start = dateRange.first.start,
                     end = dateRange.first.end,
@@ -92,7 +93,7 @@ class MainDashboardServiceImpl : MainDashboardService {
 
         val events = async {
             val actual = asyncDbQuery {
-                EventDataSource.getEventsCountByCreatedBetween(
+                EventDataSource.countEventsByCreatedBetween(
                     projectId = project.id,
                     start = dateRange.second.start,
                     end = dateRange.second.end,
@@ -100,7 +101,7 @@ class MainDashboardServiceImpl : MainDashboardService {
             }
 
             val past = asyncDbQuery {
-                EventDataSource.getEventsCountByCreatedBetween(
+                EventDataSource.countEventsByCreatedBetween(
                     projectId = project.id,
                     start = dateRange.first.start,
                     end = dateRange.first.end,

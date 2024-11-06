@@ -1,7 +1,7 @@
 package com.application.lamion.domain.model
 
+import com.application.lamion.utils.atStartOfDay
 import com.application.lamion.utils.now
-import com.application.lamion.utils.toDateTime
 import kotlinx.datetime.DatePeriod
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.minus
@@ -18,13 +18,13 @@ enum class TimePeriod {
 
     fun toExtendedDateRange() =
         ExtendedDateRange(
-            start = toLocalDate(multiplier = 2).toDateTime(),
-            step = toLocalDate().toDateTime(),
+            start = toLocalDate(multiplier = 2).atStartOfDay(),
+            step = toLocalDate().atStartOfDay(),
         )
 
     fun toSimpleDateRange() =
         DateRange(
-            start = toLocalDate().toDateTime(),
+            start = toLocalDate().atStartOfDay(),
         )
 
     fun toLocalDate(base: LocalDate = LocalDate.now(), multiplier: Int = 1): LocalDate =

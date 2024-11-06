@@ -2,15 +2,20 @@ package com.application.lamion.feature.projects.activity.data.service
 
 import com.application.lamion.data.database.table.project.EventTable
 import com.application.lamion.data.database.table.project.FeatureTable
+import com.application.lamion.data.datasource.ErrorDataSource
 import com.application.lamion.data.datasource.EventDataSource
+import com.application.lamion.data.datasource.UserDataSource
 import com.application.lamion.domain.model.*
 import com.application.lamion.feature.projects.activity.data.datasource.ActivityDataSource
 import com.application.lamion.feature.projects.activity.domain.model.ActivityDetails
 import com.application.lamion.feature.projects.activity.domain.service.ActivityFeatureService
 import com.application.lamion.utils.asyncDbQuery
+import com.application.lamion.utils.atStartOfDay
 import com.application.lamion.utils.dbQuery
+import kotlinx.datetime.DatePeriod
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
+import kotlinx.datetime.plus
 import org.jetbrains.exposed.sql.alias
 import org.jetbrains.exposed.sql.count
 import org.springframework.stereotype.Service
@@ -70,8 +75,10 @@ class ActivityFeatureServiceImpl : ActivityFeatureService {
         }
 
         return users.await()
+            .asSequence()
             .plus(events.await())
             .plus(errors.await())
+            .sortedBy { it.first }
             .groupBy { it.first }
             .map { (date, info) ->
                 CalendarItemDomain(
@@ -81,15 +88,43 @@ class ActivityFeatureServiceImpl : ActivityFeatureService {
                     }
                 )
             }
+            .toList()
     }
 
-    /**
-     * @return TODO replace [ActivityDetails] with [CalendarItemDomain]
-     */
     override suspend fun details(date: LocalDate, project: ProjectDomain): ActivityDetails {
-        // Make 3 queries with unique filtering, counting, etc.
-        // and search by single date
-        TODO("Not yet implemented")
+        val startDate = date.atStartOfDay()
+        val endDate = date.plus(DatePeriod(days = 1)).atStartOfDay()
+
+        val eventsCountDeferred = asyncDbQuery {
+            EventDataSource.countEventsByCreatedBetween(
+                projectId = project.id,
+                start = startDate,
+                end = endDate,
+            )
+        }
+
+        val errorsCountDeferred = asyncDbQuery {
+            ErrorDataSource.countErrorsByCreatedBetween(
+                projectId = project.id,
+                start = startDate,
+                end = endDate,
+            )
+        }
+
+        val activeUsersCountDeferred = asyncDbQuery {
+            UserDataSource.getActiveUsersCount(
+                projectId = project.id,
+                start = startDate,
+                end = endDate,
+            )
+        }
+
+        return ActivityDetails(
+            date = date,
+            activeUsers = activeUsersCountDeferred.await(),
+            totalEvents = eventsCountDeferred.await(),
+            crashes = errorsCountDeferred.await(),
+        )
     }
 
     // TODO: regroup methods over services
@@ -98,7 +133,7 @@ class ActivityFeatureServiceImpl : ActivityFeatureService {
         dateRange: DateRange,
         count: Int,
     ): List<FeatureWithEvents> = dbQuery {
-        val totalEventsCount = EventDataSource.getEventsCountByCreatedBetween(
+        val totalEventsCount = EventDataSource.countEventsByCreatedBetween(
             projectId = project.id,
             start = dateRange.start,
             end = dateRange.end,

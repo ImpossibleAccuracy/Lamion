@@ -24,7 +24,7 @@ abstract class BaseController {
     @Autowired
     lateinit var loggerUtils: LoggerUtils
 
-    suspend inline fun <T> logTime(message: String, noinline func: suspend () -> T): T {
+    suspend fun <T> logTime(message: String, func: suspend () -> T): T {
         if (loggerUtils.isLoggingEnabled) {
             return loggerUtils.logTime(message, func)
         }
