@@ -10,7 +10,9 @@ import com.application.lamion.domain.model.ProjectDomain
 import com.application.lamion.domain.service.EventService
 import com.application.lamion.feature.projects.users.domain.service.PlatformService
 import com.application.lamion.utils.dbQuery
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.between
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
+import org.jetbrains.exposed.sql.and
 import org.jetbrains.exposed.sql.countDistinct
 import org.springframework.stereotype.Service
 
@@ -32,7 +34,10 @@ class PlatformServiceImpl(
                     DevicePlatformTable.title,
                     countQuery
                 )
-                .where(FunctionTable.project.eq(project.id))
+                .where(
+                    FunctionTable.project.eq(project.id)
+                        .and(EventTable.createdAt.between(dateRange.start, dateRange.end))
+                )
                 .groupBy(DevicePlatformTable.title)
                 .toList()
                 .associate {
