@@ -5,7 +5,6 @@ import com.application.lamion.data.database.table.project.DeviceTable
 import com.application.lamion.domain.model.ComparisonDomain
 import com.application.lamion.domain.model.ExtendedDateRange
 import com.application.lamion.domain.model.ProjectDomain
-import com.application.lamion.domain.service.LoggerUtils
 import com.application.lamion.feature.projects.users.data.datasource.DeviceDataSource
 import com.application.lamion.feature.projects.users.domain.model.DeviceDomain
 import com.application.lamion.feature.projects.users.domain.service.DeviceService
@@ -14,9 +13,7 @@ import org.jetbrains.exposed.sql.Expression
 import org.springframework.stereotype.Service
 
 @Service
-class DeviceServiceImpl(
-    private val loggerUtils: LoggerUtils,
-) : DeviceService {
+class DeviceServiceImpl : DeviceService {
     companion object {
         // TODO: extract pagination
         const val DEVICES_PAGE_SIZE = 50

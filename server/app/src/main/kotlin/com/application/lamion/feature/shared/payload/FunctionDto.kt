@@ -29,7 +29,7 @@ sealed interface FunctionDto {
         val totalEvents: Long,
 
         @SerialName("features")
-        val features: List<FeatureDto>,
+        val features: List<FeatureDto.Partial>,
 
         @SerialName("tags")
         val tags: List<Tag>,

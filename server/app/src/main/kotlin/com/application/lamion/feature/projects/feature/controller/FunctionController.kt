@@ -8,8 +8,8 @@ import com.application.lamion.feature.projects.feature.controller.mapper.toParti
 import com.application.lamion.feature.projects.feature.domain.model.FunctionDomain
 import com.application.lamion.feature.projects.feature.domain.service.FeatureService
 import com.application.lamion.feature.projects.feature.domain.service.FunctionService
+import com.application.lamion.feature.shared.controller.BaseController
 import com.application.lamion.feature.shared.payload.FunctionDto
-import com.application.lamion.feature.shared.security.secured
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.web.bind.annotation.*
 
@@ -20,15 +20,15 @@ class FunctionController(
     private val projectService: ProjectService,
     private val featureService: FeatureService,
     private val functionService: FunctionService,
-) {
+) : BaseController() {
     @GetMapping
     suspend fun list(
         @PathVariable("pId") projectId: Id,
         @RequestParam("p") page: Long,
-    ): List<FunctionDto.Partial> = secured {
+    ): List<FunctionDto.Partial> = endpoint("functions list") {
         // TODO: change return type from List to Flow for entire project
         projectService
-            .require(projectId, it.account)
+            .require(projectId, account)
             .let { project ->
                 functionService.list(project, page)
             }
@@ -43,9 +43,9 @@ class FunctionController(
         @RequestParam("n", required = false) name: String? = null,
         @RequestParam("f", required = false) features: List<Id>? = null,
         @RequestParam("t", required = false) tags: List<Id>? = null,
-    ): List<FunctionDto.Detailed> = secured {
+    ): List<FunctionDto.Detailed> = endpoint("functions search") {
         projectService
-            .require(projectId, it.account)
+            .require(projectId, account)
             .let { project ->
                 features?.let {
                     if (featureService.exists(project, features)) {
