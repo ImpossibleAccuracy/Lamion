@@ -48,7 +48,7 @@ class FunctionController(
             .require(projectId, it.account)
             .let { project ->
                 features?.let {
-                    if (featureService.checkFeaturesExists(project, features)) {
+                    if (featureService.exists(project, features)) {
                         throw InvalidArgumentsException("One or more feature was not found")
                     }
                 }

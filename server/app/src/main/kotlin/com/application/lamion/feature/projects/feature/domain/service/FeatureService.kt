@@ -1,9 +1,10 @@
 package com.application.lamion.feature.projects.feature.domain.service
 
-import com.application.lamion.domain.model.*
+import com.application.lamion.domain.model.AccountDomain
+import com.application.lamion.domain.model.Id
+import com.application.lamion.domain.model.ProjectDomain
 import com.application.lamion.feature.projects.feature.controller.payload.request.FeaturesSort
 import com.application.lamion.feature.projects.feature.domain.model.FeatureDomain
-import kotlinx.datetime.LocalDate
 
 interface FeatureService {
     suspend fun create(
@@ -14,19 +15,11 @@ interface FeatureService {
         functions: List<Id>,
     ): FeatureDomain.Partial
 
-    suspend fun checkFeaturesExists(project: ProjectDomain, featuresIds: List<Id>): Boolean
+    suspend fun exists(project: ProjectDomain, featuresIds: List<Id>): Boolean
+
+    suspend fun count(project: ProjectDomain): Long
 
     suspend fun get(id: Id, project: ProjectDomain): FeatureDomain.Partial
-
-    suspend fun getEventsGroupByDate(project: ProjectDomain, dateRange: DateRange): ChartDomain<LocalDate, Long>
-
-    suspend fun getTotalFeaturesCount(project: ProjectDomain): Long
-
-    suspend fun getTopFeatures(
-        project: ProjectDomain,
-        dateRange: DateRange,
-        count: Int
-    ): ChartDomain<FeatureDomain.Partial, Long>
 
     suspend fun list(
         project: ProjectDomain,

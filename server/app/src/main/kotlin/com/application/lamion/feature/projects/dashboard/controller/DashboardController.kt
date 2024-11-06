@@ -3,13 +3,13 @@ package com.application.lamion.feature.projects.dashboard.controller
 import com.application.lamion.domain.model.CalendarItemDomain
 import com.application.lamion.domain.model.FeatureWithEvents
 import com.application.lamion.domain.model.Id
+import com.application.lamion.domain.model.TimePeriod
 import com.application.lamion.domain.service.ActivityService
 import com.application.lamion.domain.service.ProjectService
 import com.application.lamion.feature.projects.dashboard.controller.payload.DashboardResponse
-import com.application.lamion.feature.projects.dashboard.domain.service.DashboardService
+import com.application.lamion.feature.projects.dashboard.domain.service.MainDashboardService
 import com.application.lamion.feature.shared.controller.BaseController
 import com.application.lamion.feature.shared.mapper.toDto
-import com.application.lamion.feature.shared.model.TimePeriod
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.web.bind.annotation.*
 
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*
 @SecurityRequirement(name = "jwt")
 class DashboardController(
     private val projectService: ProjectService,
-    private val dashboardService: DashboardService,
+    private val dashboardService: MainDashboardService,
     private val activityService: ActivityService,
 ) : BaseController() {
     @GetMapping("/full")

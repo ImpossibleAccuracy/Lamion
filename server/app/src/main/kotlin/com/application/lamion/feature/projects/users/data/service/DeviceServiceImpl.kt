@@ -19,7 +19,7 @@ class DeviceServiceImpl : DeviceService {
         const val DEVICES_PAGE_SIZE = 50
     }
 
-    override suspend fun getTopDevices(
+    override suspend fun getPartialDeviceList(
         project: ProjectDomain,
         dateRange: ExtendedDateRange,
         count: Int,
@@ -45,7 +45,7 @@ class DeviceServiceImpl : DeviceService {
             }
     }
 
-    override suspend fun getDevices(
+    override suspend fun getDetailedDeviceList(
         project: ProjectDomain,
         dateRange: ExtendedDateRange,
         page: Long,

@@ -28,7 +28,7 @@ class FunctionServiceImpl : FunctionService {
         const val PAGE_SIZE = 30
     }
 
-    override suspend fun checkExists(project: ProjectDomain, ids: List<Id>): Boolean = dbQuery {
+    override suspend fun exists(project: ProjectDomain, ids: List<Id>): Boolean = dbQuery {
         FunctionTable
             .select(FunctionTable.id)
             .where(

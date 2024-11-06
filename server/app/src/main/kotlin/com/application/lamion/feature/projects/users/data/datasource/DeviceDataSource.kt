@@ -22,12 +22,17 @@ object DeviceDataSource {
             currentMonthActivitySubquery,
             prevMonthActivitySubquery,
             *DeviceTable.columns.toTypedArray(),
+            DevicePlatformTable.title,
         )
         .where(
             FunctionTable.project.eq(project.id)
                 .and(FunctionTable.deleted.eq(false))
         )
-        .orderBy(EventTable.id.count(), SortOrder.ASC)
+        .orderBy(currentMonthActivitySubquery, SortOrder.DESC)
+        .groupBy(
+            *DeviceTable.columns.toTypedArray(),
+            DevicePlatformTable.title,
+        )
         .limit(count)
         .toList()
 
@@ -56,6 +61,11 @@ object DeviceDataSource {
         .where(
             FunctionTable.project.eq(projectId)
                 .and(FunctionTable.deleted.eq(false))
+        )
+        .orderBy(currentMonthActivity, SortOrder.DESC)
+        .groupBy(
+            *DeviceTable.columns.toTypedArray(),
+            DevicePlatformTable.title,
         )
         .limit(limit, offset)
         .toList()

@@ -5,7 +5,7 @@ import com.application.lamion.domain.model.ProjectDomain
 import com.application.lamion.feature.projects.feature.domain.model.FunctionDomain
 
 interface FunctionService {
-    suspend fun checkExists(project: ProjectDomain, ids: List<Id>): Boolean
+    suspend fun exists(project: ProjectDomain, ids: List<Id>): Boolean
 
     suspend fun list(project: ProjectDomain, page: Long): List<FunctionDomain.Partial>
 

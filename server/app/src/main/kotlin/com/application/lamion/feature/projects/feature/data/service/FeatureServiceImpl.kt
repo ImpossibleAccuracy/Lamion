@@ -5,16 +5,18 @@ import com.application.lamion.data.database.table.project.EventTable
 import com.application.lamion.data.database.table.project.FeatureTable
 import com.application.lamion.data.database.table.project.FunctionTable
 import com.application.lamion.data.database.table.refs.FeatureFunctionRef
-import com.application.lamion.domain.model.*
+import com.application.lamion.domain.model.AccountDomain
+import com.application.lamion.domain.model.Id
+import com.application.lamion.domain.model.ProjectDomain
 import com.application.lamion.feature.projects.feature.controller.payload.request.FeaturesSort
 import com.application.lamion.feature.projects.feature.data.datasource.FeatureDataSource
+import com.application.lamion.feature.projects.feature.data.mapper.toDomainPartial
 import com.application.lamion.feature.projects.feature.domain.model.FeatureDomain
 import com.application.lamion.feature.projects.feature.domain.service.FeatureService
 import com.application.lamion.feature.shared.utils.require
 import com.application.lamion.utils.asyncDbQuery
 import com.application.lamion.utils.dbQuery
 import kotlinx.coroutines.awaitAll
-import kotlinx.datetime.LocalDate
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.springframework.stereotype.Service
@@ -46,7 +48,7 @@ class FeatureServiceImpl : FeatureService {
             }
     }
 
-    override suspend fun checkFeaturesExists(
+    override suspend fun exists(
         project: ProjectDomain,
         featuresIds: List<Id>
     ): Boolean = dbQuery {
@@ -60,6 +62,11 @@ class FeatureServiceImpl : FeatureService {
             }
     }
 
+    override suspend fun count(project: ProjectDomain): Long =
+        dbQuery {
+            FeatureDataSource.countFeatures(project.id)
+        }
+
     override suspend fun get(
         id: Id,
         project: ProjectDomain
@@ -71,43 +78,6 @@ class FeatureServiceImpl : FeatureService {
             )
             .require { "Feature not found" }
             .toDomainPartial()
-    }
-
-
-    override suspend fun getEventsGroupByDate(
-        project: ProjectDomain,
-        dateRange: DateRange
-    ): ChartDomain<LocalDate, Long> = dbQuery {
-        FeatureDataSource.getEventsGroupByDate(
-            projectId = project.id,
-            start = dateRange.start,
-            end = dateRange.end,
-        )
-    }
-
-    override suspend fun getTotalFeaturesCount(project: ProjectDomain): Long =
-        dbQuery {
-            FeatureDataSource.countFeatures(project.id)
-        }
-
-    override suspend fun getTopFeatures(
-        project: ProjectDomain,
-        dateRange: DateRange,
-        count: Int
-    ): ChartDomain<FeatureDomain.Partial, Long> = dbQuery {
-        val eventsCountQuery = EventTable.id.count().alias("eventsCount")
-
-        FeatureDataSource
-            .findFeaturesOrderByEventsCount(
-                projectId = project.id,
-                eventsCountQuery = eventsCountQuery,
-                start = dateRange.start,
-                end = dateRange.end,
-                count = count,
-            )
-            .associate {
-                it.toDomainPartial() to it[eventsCountQuery]
-            }
     }
 
     @Suppress("INFERRED_TYPE_VARIABLE_INTO_EMPTY_INTERSECTION_WARNING")
@@ -212,9 +182,3 @@ class FeatureServiceImpl : FeatureService {
         FeatureDataSource.deleteFeature(feature.id)
     }
 }
-
-fun ResultRow.toDomainPartial() = FeatureDomain.Partial(
-    id = this[FeatureTable.id].value,
-    title = this[FeatureTable.title],
-    description = this[FeatureTable.description],
-)

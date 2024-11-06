@@ -14,7 +14,6 @@ fun <T> CoroutineScope.logTimeAsync(
     logger: LoggerUtils,
     message: String,
     func: suspend () -> T
-): Deferred<T> =
-    async {
-        logger.logTime(message, func)
-    }
+): Deferred<T> = async {
+    logger.logTime(message, func)
+}

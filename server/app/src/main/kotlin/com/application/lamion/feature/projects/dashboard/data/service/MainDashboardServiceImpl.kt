@@ -6,7 +6,7 @@ import com.application.lamion.domain.model.ExtendedDateRange
 import com.application.lamion.domain.model.ProjectDomain
 import com.application.lamion.feature.projects.dashboard.data.datasource.DashboardDataSource
 import com.application.lamion.feature.projects.dashboard.domain.model.ProjectScaling
-import com.application.lamion.feature.projects.dashboard.domain.service.DashboardService
+import com.application.lamion.feature.projects.dashboard.domain.service.MainDashboardService
 import com.application.lamion.utils.asyncDbQuery
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
@@ -15,10 +15,7 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 @Transactional
-class DashboardServiceImpl : DashboardService {
-    companion object {
-        const val ACTIVE_USERS_MIN_EVENTS = 200L // TODO
-    }
+class MainDashboardServiceImpl : MainDashboardService {
 
     override suspend fun getScaling(
         project: ProjectDomain,
@@ -26,20 +23,18 @@ class DashboardServiceImpl : DashboardService {
     ): ProjectScaling = coroutineScope {
         val users = async {
             val actual = asyncDbQuery {
-                DashboardDataSource.getUsersCountByEventsCount(
+                DashboardDataSource.getUsersCount(
                     projectId = project.id,
                     start = dateRange.second.start,
                     end = dateRange.second.end,
-                    minEventsToActive = null,
                 )
             }
 
             val past = asyncDbQuery {
-                DashboardDataSource.getUsersCountByEventsCount(
+                DashboardDataSource.getUsersCount(
                     projectId = project.id,
                     start = dateRange.first.start,
                     end = dateRange.first.end,
-                    minEventsToActive = null,
                 )
             }
 
@@ -51,20 +46,18 @@ class DashboardServiceImpl : DashboardService {
 
         val activeUsers = async {
             val actual = asyncDbQuery {
-                DashboardDataSource.getUsersCountByEventsCount(
+                DashboardDataSource.getActiveUsersCount(
                     projectId = project.id,
                     start = dateRange.second.start,
                     end = dateRange.second.end,
-                    minEventsToActive = ACTIVE_USERS_MIN_EVENTS,
                 )
             }
 
             val past = asyncDbQuery {
-                DashboardDataSource.getUsersCountByEventsCount(
+                DashboardDataSource.getActiveUsersCount(
                     projectId = project.id,
                     start = dateRange.first.start,
                     end = dateRange.first.end,
-                    minEventsToActive = ACTIVE_USERS_MIN_EVENTS,
                 )
             }
 

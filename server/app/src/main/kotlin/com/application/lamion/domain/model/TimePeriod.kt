@@ -1,7 +1,5 @@
-package com.application.lamion.feature.shared.model
+package com.application.lamion.domain.model
 
-import com.application.lamion.domain.model.DateRange
-import com.application.lamion.domain.model.ExtendedDateRange
 import com.application.lamion.utils.now
 import com.application.lamion.utils.toDateTime
 import kotlinx.datetime.DatePeriod
@@ -29,7 +27,7 @@ enum class TimePeriod {
             start = toLocalDate().toDateTime(),
         )
 
-    private fun toLocalDate(base: LocalDate = LocalDate.now(), multiplier: Int = 1): LocalDate =
+    fun toLocalDate(base: LocalDate = LocalDate.now(), multiplier: Int = 1): LocalDate =
         base.minus(
             when (this) {
                 DAY -> DatePeriod(days = 1)

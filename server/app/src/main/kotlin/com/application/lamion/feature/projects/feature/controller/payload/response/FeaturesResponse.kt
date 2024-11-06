@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class FeaturesResponse(
     @SerialName("total_events")
-    val totalEvents: ChartDto<LocalDate, Long>,
+    val events: ChartDto<LocalDate, Long>,
 
     @SerialName("total_features")
     val totalFeatures: Long,

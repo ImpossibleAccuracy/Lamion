@@ -2,6 +2,8 @@ package com.application.lamion.feature.projects.feature.controller
 
 import com.application.lamion.domain.exception.InvalidArgumentsException
 import com.application.lamion.domain.model.Id
+import com.application.lamion.domain.model.TimePeriod
+import com.application.lamion.domain.service.EventService
 import com.application.lamion.domain.service.ProjectService
 import com.application.lamion.feature.projects.feature.controller.mapper.toDto
 import com.application.lamion.feature.projects.feature.controller.mapper.toPartialDto
@@ -11,13 +13,12 @@ import com.application.lamion.feature.projects.feature.controller.payload.reques
 import com.application.lamion.feature.projects.feature.controller.payload.response.FeaturesResponse
 import com.application.lamion.feature.projects.feature.controller.payload.response.TopFeaturesResponse
 import com.application.lamion.feature.projects.feature.domain.model.FeatureDomain
-import com.application.lamion.feature.projects.feature.domain.service.EventService
+import com.application.lamion.feature.projects.feature.domain.service.FeatureDashboardService
 import com.application.lamion.feature.projects.feature.domain.service.FeatureService
 import com.application.lamion.feature.projects.feature.domain.service.FunctionService
 import com.application.lamion.feature.shared.controller.BaseController
 import com.application.lamion.feature.shared.mapper.mapToDto
 import com.application.lamion.feature.shared.mapper.toDto
-import com.application.lamion.feature.shared.model.TimePeriod
 import com.application.lamion.feature.shared.payload.FeatureDto
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import jakarta.validation.Valid
@@ -33,6 +34,7 @@ class FeatureController(
     private val featureService: FeatureService,
     private val functionService: FunctionService,
     private val eventService: EventService,
+    private val dashboardService: FeatureDashboardService,
 ) : BaseController() {
     companion object {
         private const val DEFAULT_CHART_SIZE = 10
@@ -49,14 +51,14 @@ class FeatureController(
                 val dateRange = period.toSimpleDateRange()
 
                 val chart = logTimeAsync("Events group by date querying took: %s") {
-                    featureService.getEventsGroupByDate(project, dateRange)
+                    dashboardService.countEventsGroupByDate(project, dateRange)
                 }
-                val total = logTimeAsync("Total events count querying took: %s") {
-                    featureService.getTotalFeaturesCount(project)
+                val total = logTimeAsync("Total features count querying took: %s") {
+                    featureService.count(project)
                 }
 
                 FeaturesResponse(
-                    totalEvents = chart.await().toDto(),
+                    events = chart.await().toDto(),
                     totalFeatures = total.await(),
                 )
             }
@@ -71,7 +73,7 @@ class FeatureController(
         projectService
             .require(pId, account)
             .let { project ->
-                if (!functionService.checkExists(project, body.functions)) {
+                if (!functionService.exists(project, body.functions)) {
                     throw InvalidArgumentsException("One or more functions was not found")
                 }
 
@@ -119,7 +121,7 @@ class FeatureController(
                 val dateRange = period.toSimpleDateRange()
 
                 val topFeatures = logTimeAsync("Top features querying took: %s") {
-                    featureService.getTopFeatures(
+                    dashboardService.getTopFeatures(
                         project = project,
                         dateRange = dateRange,
                         count = count,
@@ -127,11 +129,11 @@ class FeatureController(
                 }
 
                 val totalEvents = logTimeAsync("Total events count querying took: %s") {
-                    eventService.getEventsCount(project, dateRange)
+                    eventService.countTotalEvents(project, dateRange)
                 }
 
                 val averageEvents = logTimeAsync("Average events count querying took: %s") {
-                    eventService.getAverageEventsPerDay(project, dateRange)
+                    dashboardService.countAverageEventsPerDay(project, dateRange)
                 }
 
                 TopFeaturesResponse(
