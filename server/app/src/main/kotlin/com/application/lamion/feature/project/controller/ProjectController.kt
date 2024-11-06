@@ -5,8 +5,8 @@ import com.application.lamion.domain.model.ProjectDomain
 import com.application.lamion.feature.project.controller.mapper.toDto
 import com.application.lamion.feature.project.controller.payload.CreateProjectRequest
 import com.application.lamion.feature.project.domain.ProjectFeatureService
+import com.application.lamion.feature.shared.controller.BaseController
 import com.application.lamion.feature.shared.payload.ProjectDto
-import com.application.lamion.feature.shared.security.secured
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
@@ -17,13 +17,15 @@ import org.springframework.web.bind.annotation.*
 @SecurityRequirement(name = "jwt")
 class ProjectController(
     private val projectFeatureService: ProjectFeatureService,
-) {
+) : BaseController() {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    suspend fun create(@RequestBody @Valid body: CreateProjectRequest): ProjectDto = secured {
+    suspend fun create(
+        @RequestBody @Valid body: CreateProjectRequest
+    ): ProjectDto = endpoint("create project") {
         projectFeatureService
             .create(
-                owner = it.account,
+                owner = account,
                 title = body.title,
                 description = body.description
             )
@@ -31,9 +33,9 @@ class ProjectController(
     }
 
     @GetMapping
-    suspend fun list(): List<ProjectDto> = secured {
+    suspend fun list(): List<ProjectDto> = endpoint("projects list") {
         projectFeatureService
-            .list(it.account)
+            .list(account)
             .map(ProjectDomain::toDto)
     }
 
@@ -43,11 +45,11 @@ class ProjectController(
     @DeleteMapping("/{pId}")
     suspend fun delete(
         @PathVariable("pId") projectId: Id
-    ): Unit = secured {
+    ): Unit = endpoint("delete project") {
         projectFeatureService
-            .require(projectId, it.account)
+            .require(projectId, account)
             .let { projectDomain ->
-                projectFeatureService.delete(projectDomain, it.account)
+                projectFeatureService.delete(projectDomain, account)
             }
     }
 }
