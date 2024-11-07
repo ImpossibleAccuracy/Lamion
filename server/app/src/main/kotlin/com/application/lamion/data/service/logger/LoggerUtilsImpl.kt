@@ -1,6 +1,6 @@
 package com.application.lamion.data.service.logger
 
-import com.application.lamion.domain.service.LoggerUtils
+import com.application.lamion.domain.service.logger.LoggerUtils
 import org.slf4j.LoggerFactory
 import org.springframework.core.env.Environment
 import org.springframework.stereotype.Component

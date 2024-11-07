@@ -48,6 +48,6 @@ dependencies {
     runtimeOnly(libs.postgresql)
 
     // Other
-    implementation(libs.auth0)
     implementation(libs.serialization.json)
+    implementation(libs.auth0)
 }

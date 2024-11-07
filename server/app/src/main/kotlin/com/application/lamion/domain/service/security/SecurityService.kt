@@ -1,4 +1,4 @@
-package com.application.lamion.domain.service
+package com.application.lamion.domain.service.security
 
 import com.application.lamion.domain.security.Authorization
 

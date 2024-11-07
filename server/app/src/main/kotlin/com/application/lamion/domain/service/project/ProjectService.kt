@@ -1,4 +1,4 @@
-package com.application.lamion.domain.service
+package com.application.lamion.domain.service.project
 
 import com.application.lamion.domain.model.AccountDomain
 import com.application.lamion.domain.model.Id

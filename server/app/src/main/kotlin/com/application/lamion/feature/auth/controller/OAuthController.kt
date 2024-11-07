@@ -1,6 +1,6 @@
 package com.application.lamion.feature.auth.controller
 
-import com.application.lamion.domain.service.ResourceManager
+import com.application.lamion.domain.service.resource.ResourceManager
 import com.application.lamion.feature.auth.controller.mapper.toResponse
 import com.application.lamion.feature.auth.controller.payload.request.GithubOAuthRequest
 import com.application.lamion.feature.auth.controller.payload.request.GoogleOAuthRequest

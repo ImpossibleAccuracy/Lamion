@@ -7,7 +7,7 @@ import com.application.lamion.data.database.table.project.FunctionTable
 import com.application.lamion.domain.model.ChartDomain
 import com.application.lamion.domain.model.DateRange
 import com.application.lamion.domain.model.ProjectDomain
-import com.application.lamion.domain.service.EventService
+import com.application.lamion.domain.service.event.EventService
 import com.application.lamion.feature.projects.users.domain.service.PlatformService
 import com.application.lamion.utils.dbQuery
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.between

@@ -3,8 +3,8 @@ package com.application.lamion.feature.projects.feature.controller
 import com.application.lamion.domain.exception.InvalidArgumentsException
 import com.application.lamion.domain.model.Id
 import com.application.lamion.domain.model.TimePeriod
-import com.application.lamion.domain.service.EventService
-import com.application.lamion.domain.service.ProjectService
+import com.application.lamion.domain.service.event.EventService
+import com.application.lamion.domain.service.project.ProjectService
 import com.application.lamion.feature.projects.feature.controller.mapper.toDto
 import com.application.lamion.feature.projects.feature.controller.mapper.toPartialDto
 import com.application.lamion.feature.projects.feature.controller.payload.request.CreateFeatureRequest

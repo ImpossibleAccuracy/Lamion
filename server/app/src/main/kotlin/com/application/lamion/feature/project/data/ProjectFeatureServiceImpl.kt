@@ -5,14 +5,15 @@ import com.application.lamion.data.database.utils.new
 import com.application.lamion.domain.model.AccountDomain
 import com.application.lamion.domain.model.Id
 import com.application.lamion.domain.model.ProjectDomain
+import com.application.lamion.feature.project.data.mapper.toProjectDomain
 import com.application.lamion.feature.project.domain.ProjectFeatureService
 import com.application.lamion.feature.shared.utils.require
 import com.application.lamion.utils.dbQuery
-import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.and
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.update
+import org.jetbrains.exposed.sql.updateReturning
 import org.springframework.stereotype.Service
 
 @Service
@@ -28,7 +29,7 @@ class ProjectFeatureServiceImpl : ProjectFeatureService {
                     .and(ProjectTable.deleted.eq(false))
             )
             .firstOrNull()
-            ?.toDomain()
+            ?.toProjectDomain()
     }
 
     override suspend fun create(
@@ -42,7 +43,7 @@ class ProjectFeatureServiceImpl : ProjectFeatureService {
                 it[ProjectTable.description] = description
                 it[ProjectTable.owner] = owner.id
             }!!
-            .toDomain()
+            .toProjectDomain()
     }
 
     override suspend fun list(account: AccountDomain): List<ProjectDomain> = dbQuery {
@@ -53,7 +54,31 @@ class ProjectFeatureServiceImpl : ProjectFeatureService {
                     .and(ProjectTable.deleted.eq(false))
             )
             .toList()
-            .map { it.toDomain() }
+            .map { it.toProjectDomain() }
+    }
+
+    override suspend fun update(
+        project: ProjectDomain,
+        account: AccountDomain,
+        title: String?,
+        description: String?
+    ): ProjectDomain = dbQuery {
+        ProjectTable
+            .updateReturning(
+                where = {
+                    ProjectTable.id.eq(project.id)
+                }
+            ) {
+                if (title != null) {
+                    it[ProjectTable.title] = title
+                }
+
+                if (description != null) {
+                    it[ProjectTable.description] = description
+                }
+            }
+            .first()
+            .toProjectDomain()
     }
 
     override suspend fun delete(project: ProjectDomain, account: AccountDomain): Unit = dbQuery {
@@ -63,8 +88,3 @@ class ProjectFeatureServiceImpl : ProjectFeatureService {
     }
 }
 
-private fun ResultRow.toDomain() = ProjectDomain(
-    id = this[ProjectTable.id].value,
-    title = this[ProjectTable.title],
-    description = this[ProjectTable.description],
-)

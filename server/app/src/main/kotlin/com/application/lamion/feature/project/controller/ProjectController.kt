@@ -4,6 +4,7 @@ import com.application.lamion.domain.model.Id
 import com.application.lamion.domain.model.ProjectDomain
 import com.application.lamion.feature.project.controller.mapper.toDto
 import com.application.lamion.feature.project.controller.payload.CreateProjectRequest
+import com.application.lamion.feature.project.controller.payload.UpdateProjectRequest
 import com.application.lamion.feature.project.domain.ProjectFeatureService
 import com.application.lamion.feature.shared.controller.BaseController
 import com.application.lamion.feature.shared.payload.ProjectDto
@@ -39,7 +40,24 @@ class ProjectController(
             .map(ProjectDomain::toDto)
     }
 
-    // TODO: add update method
+    @PatchMapping("/{pId}")
+    suspend fun update(
+        @PathVariable("pId") projectId: Id,
+        @RequestBody @Valid body: UpdateProjectRequest,
+    ) = endpoint("update project") {
+        projectFeatureService
+            .require(projectId, account)
+            .let { projectDomain ->
+                projectFeatureService
+                    .update(
+                        project = projectDomain,
+                        account = account,
+                        title = body.title,
+                        description = body.description,
+                    )
+                    .toDto()
+            }
+    }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{pId}")

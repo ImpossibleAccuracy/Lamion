@@ -4,8 +4,8 @@ import com.application.lamion.domain.model.CalendarItemDomain
 import com.application.lamion.domain.model.FeatureWithEvents
 import com.application.lamion.domain.model.Id
 import com.application.lamion.domain.model.TimePeriod
-import com.application.lamion.domain.service.ActivityService
-import com.application.lamion.domain.service.ProjectService
+import com.application.lamion.domain.service.activity.ActivityService
+import com.application.lamion.domain.service.project.ProjectService
 import com.application.lamion.feature.projects.dashboard.controller.payload.DashboardResponse
 import com.application.lamion.feature.projects.dashboard.domain.service.MainDashboardService
 import com.application.lamion.feature.shared.controller.BaseController

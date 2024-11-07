@@ -12,6 +12,7 @@ const val BASE_PACKAGE = "com.application.lamion"
 @EnableWebFlux
 class LamionApplication
 
+// TODO: add role system
 // TODO: add response compression
 fun main(args: Array<String>) {
     SpringApplication.run(LamionApplication::class.java, *args)

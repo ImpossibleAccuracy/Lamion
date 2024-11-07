@@ -1,4 +1,4 @@
-package com.application.lamion.domain.service
+package com.application.lamion.domain.service.event
 
 import com.application.lamion.domain.model.DateRange
 import com.application.lamion.domain.model.ProjectDomain

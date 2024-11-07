@@ -1,7 +1,7 @@
 package com.application.lamion.server.security.auth
 
 import com.application.lamion.domain.security.Authorization
-import com.application.lamion.domain.service.SecurityService
+import com.application.lamion.domain.service.security.SecurityService
 import kotlinx.coroutines.reactor.mono
 import org.springframework.context.annotation.Lazy
 import org.springframework.security.authentication.ReactiveAuthenticationManager

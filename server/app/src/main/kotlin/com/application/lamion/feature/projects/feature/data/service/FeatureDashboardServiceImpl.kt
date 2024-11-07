@@ -4,9 +4,9 @@ import com.application.lamion.data.database.table.project.EventTable
 import com.application.lamion.domain.model.ChartDomain
 import com.application.lamion.domain.model.DateRange
 import com.application.lamion.domain.model.ProjectDomain
-import com.application.lamion.domain.service.EventService
+import com.application.lamion.domain.service.event.EventService
 import com.application.lamion.feature.projects.feature.data.datasource.FeatureDataSource
-import com.application.lamion.feature.projects.feature.data.mapper.toDomainPartial
+import com.application.lamion.feature.projects.feature.data.mapper.toFeatureDomainPartial
 import com.application.lamion.feature.projects.feature.domain.model.FeatureDomain
 import com.application.lamion.feature.projects.feature.domain.service.FeatureDashboardService
 import com.application.lamion.utils.dbQuery
@@ -54,7 +54,7 @@ class FeatureDashboardServiceImpl(
             )
             .toList()
             .associate {
-                it.toDomainPartial() to it[eventsCountQuery]
+                it.toFeatureDomainPartial() to it[eventsCountQuery]
             }
     }
 }

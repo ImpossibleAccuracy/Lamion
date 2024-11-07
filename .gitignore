@@ -38,3 +38,6 @@ out/
 ### APP SECRETS ###
 .env
 .env.local
+
+### APP TEMP FILES ###
+TEMP_STORE

@@ -2,8 +2,8 @@ package com.application.lamion.feature.projects.users.controller
 
 import com.application.lamion.domain.model.Id
 import com.application.lamion.domain.model.TimePeriod
-import com.application.lamion.domain.service.ActivityService
-import com.application.lamion.domain.service.ProjectService
+import com.application.lamion.domain.service.activity.ActivityService
+import com.application.lamion.domain.service.project.ProjectService
 import com.application.lamion.feature.projects.users.controller.payload.UsersResponse
 import com.application.lamion.feature.projects.users.domain.service.DeviceService
 import com.application.lamion.feature.projects.users.domain.service.PlatformService

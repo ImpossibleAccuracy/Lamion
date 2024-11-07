@@ -1,7 +1,7 @@
 package com.application.lamion.feature.projects.users.data.service
 
 import com.application.lamion.domain.model.*
-import com.application.lamion.domain.service.EventService
+import com.application.lamion.domain.service.event.EventService
 import com.application.lamion.feature.projects.users.data.datasource.UserFeatureDataSource
 import com.application.lamion.feature.projects.users.domain.service.UsersDashboardService
 import com.application.lamion.utils.asyncDbQuery

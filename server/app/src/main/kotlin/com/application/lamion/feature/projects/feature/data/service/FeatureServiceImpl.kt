@@ -10,7 +10,7 @@ import com.application.lamion.domain.model.Id
 import com.application.lamion.domain.model.ProjectDomain
 import com.application.lamion.feature.projects.feature.controller.payload.request.FeaturesSort
 import com.application.lamion.feature.projects.feature.data.datasource.FeatureDataSource
-import com.application.lamion.feature.projects.feature.data.mapper.toDomainPartial
+import com.application.lamion.feature.projects.feature.data.mapper.toFeatureDomainPartial
 import com.application.lamion.feature.projects.feature.domain.model.FeatureDomain
 import com.application.lamion.feature.projects.feature.domain.service.FeatureService
 import com.application.lamion.feature.shared.utils.require
@@ -42,7 +42,7 @@ class FeatureServiceImpl : FeatureService {
                 description = description
             )
             .require { "Feature not created" }
-            .toDomainPartial()
+            .toFeatureDomainPartial()
             .also { feature ->
                 FeatureDataSource.attachFunctionsToFeature(feature.id, functions)
             }
@@ -77,7 +77,7 @@ class FeatureServiceImpl : FeatureService {
                 featureId = id,
             )
             .require { "Feature not found" }
-            .toDomainPartial()
+            .toFeatureDomainPartial()
     }
 
     @Suppress("INFERRED_TYPE_VARIABLE_INTO_EMPTY_INTERSECTION_WARNING")
@@ -175,7 +175,7 @@ class FeatureServiceImpl : FeatureService {
         description: String
     ): FeatureDomain.Partial = dbQuery {
         FeatureDataSource.updateFeature(feature.id, title, description)
-            .toDomainPartial()
+            .toFeatureDomainPartial()
     }
 
     override suspend fun delete(feature: FeatureDomain, account: AccountDomain): Unit = dbQuery {

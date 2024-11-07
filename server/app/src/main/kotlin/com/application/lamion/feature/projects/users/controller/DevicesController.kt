@@ -2,7 +2,7 @@ package com.application.lamion.feature.projects.users.controller
 
 import com.application.lamion.domain.model.Id
 import com.application.lamion.domain.model.TimePeriod
-import com.application.lamion.domain.service.ProjectService
+import com.application.lamion.domain.service.project.ProjectService
 import com.application.lamion.feature.projects.users.domain.service.DeviceService
 import com.application.lamion.feature.shared.controller.BaseController
 import com.application.lamion.feature.shared.mapper.toDto

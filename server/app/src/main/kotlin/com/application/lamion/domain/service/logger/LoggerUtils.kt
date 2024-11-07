@@ -1,4 +1,4 @@
-package com.application.lamion.domain.service
+package com.application.lamion.domain.service.logger
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred

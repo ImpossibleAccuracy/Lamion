@@ -1,6 +1,6 @@
 package com.application.lamion.feature.auth.domain.service
 
-import com.application.lamion.domain.service.SecurityService
+import com.application.lamion.domain.service.security.SecurityService
 import com.application.lamion.feature.auth.domain.model.AuthResult
 
 interface AuthService : SecurityService {

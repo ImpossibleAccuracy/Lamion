@@ -1,4 +1,4 @@
-package com.application.lamion.feature.account.payload
+package com.application.lamion.feature.account.controller.payload
 
 import com.application.lamion.feature.shared.payload.AccountDto
 import kotlinx.serialization.SerialName

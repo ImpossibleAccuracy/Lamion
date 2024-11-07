@@ -17,4 +17,7 @@ app:
     audience: http://localhost/
     ttl: 604800000
   resources:
-    resources-url: http://localhost:8080/TODO # TODO
+    resources-url: /account/avatar/
+  storage:
+    store-path: ${STORE_PATH}
+    file-name-pattern: "{FILE_HASH}_{TIMESTAMP}.{EXTENSION}"

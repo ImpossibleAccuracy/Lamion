@@ -11,12 +11,12 @@ import com.application.lamion.domain.exception.UnauthorizedException
 import com.application.lamion.domain.model.AccountDomain
 import com.application.lamion.domain.security.AccountRole
 import com.application.lamion.domain.security.Authorization
+import com.application.lamion.feature.account.data.mapper.toAccountDomain
 import com.application.lamion.feature.auth.domain.model.AuthResult
 import com.application.lamion.feature.auth.domain.service.AuthService
 import com.application.lamion.feature.shared.utils.require
 import com.application.lamion.utils.dbQuery
 import org.jetbrains.exposed.sql.JoinType
-import org.jetbrains.exposed.sql.ResultRow
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.selectAll
 import org.springframework.beans.factory.annotation.Autowired
@@ -37,7 +37,7 @@ class AuthServiceImpl @Autowired constructor(
             .where { AccountTable.id eq subject }
             .firstOrNull()
             .require { "Account not found" }
-            .toDomain()
+            .toAccountDomain()
 
         val roles = RoleTable
             .join(AccountRoleRef, JoinType.INNER)
@@ -60,7 +60,7 @@ class AuthServiceImpl @Autowired constructor(
                 passwordEncoder.matches(password, it[AccountTable.password])
             }
             .require { "User with such credentials not found" }
-            .toDomain()
+            .toAccountDomain()
             .let {
                 AuthResult(
                     user = it,
@@ -87,7 +87,7 @@ class AuthServiceImpl @Autowired constructor(
                     it[AccountTable.email] = email
                     it[AccountTable.password] = passwordEncoder.encode(password)
                 }!!
-                .toDomain()
+                .toAccountDomain()
                 .let {
                     AuthResult(
                         user = it,
@@ -99,10 +99,3 @@ class AuthServiceImpl @Autowired constructor(
     private suspend inline fun generateToken(account: AccountDomain): String =
         tokenService.generateToken(account.id.toString())
 }
-
-private fun ResultRow.toDomain() = AccountDomain.Total(
-    id = this[AccountTable.id].value,
-    username = this[AccountTable.username],
-    email = this[AccountTable.email],
-    avatar = this[AccountTable.avatar]?.value,
-)

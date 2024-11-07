@@ -1,4 +1,4 @@
-package com.application.lamion.domain.service
+package com.application.lamion.domain.service.activity
 
 import com.application.lamion.domain.model.*
 import kotlinx.datetime.LocalTime

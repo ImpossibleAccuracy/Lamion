@@ -4,7 +4,7 @@ import com.application.lamion.domain.model.CalendarItemDomain
 import com.application.lamion.domain.model.DateRange
 import com.application.lamion.domain.model.FeatureWithEvents
 import com.application.lamion.domain.model.Id
-import com.application.lamion.domain.service.ProjectService
+import com.application.lamion.domain.service.project.ProjectService
 import com.application.lamion.feature.projects.activity.controller.payload.ActivityDetailsDto
 import com.application.lamion.feature.projects.activity.controller.payload.ActivityResponse
 import com.application.lamion.feature.projects.activity.domain.service.ActivityFeatureService

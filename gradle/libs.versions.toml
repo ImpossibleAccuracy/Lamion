@@ -13,9 +13,8 @@ exposed = "0.52.0"
 postgresql = "42.7.4"
 
 netty = "1.1.22"
-auth0 = "4.4.0"
 reactor = "1.2.3"
-jackson = "2.16.2"
+auth0 = "4.4.0"
 
 [libraries]
 # Kotlin

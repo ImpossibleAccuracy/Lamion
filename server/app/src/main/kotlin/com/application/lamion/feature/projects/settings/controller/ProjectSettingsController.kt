@@ -1,7 +1,7 @@
 package com.application.lamion.feature.projects.settings.controller
 
 import com.application.lamion.domain.model.Id
-import com.application.lamion.domain.service.ProjectService
+import com.application.lamion.domain.service.project.ProjectService
 import com.application.lamion.feature.projects.settings.controller.payload.ProjectSettingsResponse
 import com.application.lamion.feature.projects.settings.domain.service.ProjectAccessKeyService
 import com.application.lamion.feature.shared.controller.BaseController
