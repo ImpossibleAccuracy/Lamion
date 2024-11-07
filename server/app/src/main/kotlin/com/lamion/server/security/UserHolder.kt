@@ -1,0 +1,28 @@
+package com.lamion.server.security
+
+import com.lamion.domain.exception.OperationDeniedException
+import com.lamion.domain.model.AccountDomain
+import com.lamion.domain.security.Authorization
+import kotlinx.coroutines.reactor.awaitSingleOrNull
+import org.springframework.security.core.context.ReactiveSecurityContextHolder
+import org.springframework.security.core.context.SecurityContext
+
+object UserHolder {
+    private suspend fun currentUser(): Authorization? =
+        ReactiveSecurityContextHolder.getContext()
+            .mapNotNull<Authorization> { ctx: SecurityContext ->
+                try {
+                    (ctx.authentication.principal as Authorization)
+                } catch (e: ClassCastException) {
+                    null
+                } catch (e: NullPointerException) {
+                    null
+                }
+            }
+            .awaitSingleOrNull()
+
+    suspend fun getAccount(): AccountDomain.Total? = currentUser()?.account
+
+    suspend fun requireAccount(): AccountDomain.Total = getAccount()
+        ?: throw OperationDeniedException("No authorization found")
+}

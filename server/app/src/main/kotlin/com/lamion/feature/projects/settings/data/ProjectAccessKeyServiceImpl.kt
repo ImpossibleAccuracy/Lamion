@@ -1,0 +1,30 @@
+package com.lamion.feature.projects.settings.data
+
+import com.lamion.data.database.table.ProjectAccessKeyTable
+import com.lamion.domain.model.AccountDomain
+import com.lamion.domain.model.ProjectDomain
+import com.lamion.feature.projects.settings.domain.model.AccessKeyDomain
+import com.lamion.feature.projects.settings.domain.service.ProjectAccessKeyService
+import com.lamion.utils.dbQuery
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
+import org.jetbrains.exposed.sql.selectAll
+import org.springframework.stereotype.Service
+
+@Service
+class ProjectAccessKeyServiceImpl : ProjectAccessKeyService {
+    override suspend fun getAccessKeys(account: AccountDomain, project: ProjectDomain): List<AccessKeyDomain> =
+        dbQuery {
+            ProjectAccessKeyTable
+                .selectAll()
+                .where(
+                    ProjectAccessKeyTable.project.eq(project.id)
+                )
+                .toList()
+                .map {
+                    AccessKeyDomain(
+                        title = it[ProjectAccessKeyTable.title],
+                        createdAt = it[ProjectAccessKeyTable.createdAt].date,
+                    )
+                }
+        }
+}

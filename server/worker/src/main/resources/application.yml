@@ -1,0 +1,11 @@
+server:
+  port: ${WORKER_PORT}
+  servlet:
+    contextPath: /v1
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
+    url: ${DATABASE_URL}

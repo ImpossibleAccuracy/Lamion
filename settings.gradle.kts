@@ -17,4 +17,8 @@ dependencyResolutionManagement {
     }
 }
 
-include(":server:app")
+include(
+    ":server:shared",
+    ":server:worker",
+    ":server:app",
+)

@@ -4,22 +4,15 @@ plugins {
 
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.kotlin.spring)
-    alias(libs.plugins.kotlin.jpa)
-    alias(libs.plugins.kotlin.allopen)
-}
-
-allOpen {
-    annotation("org.springframework.data.relational.core.mapping.Table")
 }
 
 dependencies {
+    implementation(project(":server:shared"))
+
     // Kotlin
-    implementation(libs.kotlin.stdlib)
     implementation(libs.kotlin.reflect)
-    implementation(libs.kotlin.datetime)
 
     // Coroutines
-    implementation(libs.coroutines.core)
     implementation(libs.coroutines.reactor)
 
     // Spring
@@ -38,14 +31,6 @@ dependencies {
     // Swagger
     implementation(libs.spring.swagger.ui)
     implementation(libs.spring.swagger.api)
-
-    // Database
-    implementation(libs.spring.exposed)
-    implementation(libs.exposed.core)
-    implementation(libs.exposed.dao)
-    implementation(libs.exposed.jdbc)
-    implementation(libs.exposed.datetime)
-    runtimeOnly(libs.postgresql)
 
     // Other
     implementation(libs.serialization.json)

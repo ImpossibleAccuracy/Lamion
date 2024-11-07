@@ -1,0 +1,189 @@
+package com.lamion.feature.projects.feature.controller
+
+import com.lamion.domain.exception.InvalidArgumentsException
+import com.lamion.domain.model.Id
+import com.lamion.domain.model.TimePeriod
+import com.lamion.domain.service.event.EventService
+import com.lamion.domain.service.project.ProjectService
+import com.lamion.feature.projects.feature.controller.mapper.toDto
+import com.lamion.feature.projects.feature.controller.mapper.toPartialDto
+import com.lamion.feature.projects.feature.controller.payload.request.CreateFeatureRequest
+import com.lamion.feature.projects.feature.controller.payload.request.FeaturesSort
+import com.lamion.feature.projects.feature.controller.payload.request.UpdateFeatureRequest
+import com.lamion.feature.projects.feature.controller.payload.response.FeaturesResponse
+import com.lamion.feature.projects.feature.controller.payload.response.TopFeaturesResponse
+import com.lamion.feature.projects.feature.domain.model.FeatureDomain
+import com.lamion.feature.projects.feature.domain.service.FeatureDashboardService
+import com.lamion.feature.projects.feature.domain.service.FeatureService
+import com.lamion.feature.projects.feature.domain.service.FunctionService
+import com.lamion.feature.shared.controller.BaseController
+import com.lamion.feature.shared.mapper.mapToDto
+import com.lamion.feature.shared.mapper.toDto
+import com.lamion.feature.shared.payload.FeatureDto
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
+import jakarta.validation.Valid
+import org.springframework.http.HttpStatus
+import org.springframework.web.bind.annotation.*
+import kotlin.math.roundToLong
+
+@RestController
+@RequestMapping("/project/{pId}/features")
+@SecurityRequirement(name = "jwt")
+class FeatureController(
+    private val projectService: ProjectService,
+    private val featureService: FeatureService,
+    private val functionService: FunctionService,
+    private val eventService: EventService,
+    private val dashboardService: FeatureDashboardService,
+) : BaseController() {
+    companion object {
+        private const val DEFAULT_CHART_SIZE = 10
+    }
+
+    @GetMapping("/full")
+    suspend fun full(
+        @PathVariable("pId") projectId: Id,
+        @RequestParam("period", required = false) period: TimePeriod = TimePeriod.DEFAULT,
+    ): FeaturesResponse = endpoint("features root") {
+        projectService
+            .require(projectId, account)
+            .let { project ->
+                val dateRange = period.toSimpleDateRange()
+
+                val chart = logTimeAsync("Events group by date querying took: %s") {
+                    dashboardService.countEventsGroupByDate(project, dateRange)
+                }
+                val total = logTimeAsync("Total features count querying took: %s") {
+                    featureService.count(project)
+                }
+
+                FeaturesResponse(
+                    events = chart.await().toDto(),
+                    totalFeatures = total.await(),
+                )
+            }
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping
+    suspend fun create(
+        @PathVariable("pId") pId: Id,
+        @RequestBody @Valid body: CreateFeatureRequest,
+    ): FeatureDto.Partial = endpoint("create feature") {
+        projectService
+            .require(pId, account)
+            .let { project ->
+                if (!functionService.exists(project, body.functions)) {
+                    throw InvalidArgumentsException("One or more functions was not found")
+                }
+
+                logTime("Feature creation took: %s") {
+                    featureService.create(
+                        project = project,
+                        account = account,
+                        title = body.title,
+                        description = body.description,
+                        functions = body.functions,
+                    )
+                }
+            }
+            .toPartialDto()
+    }
+
+    @GetMapping
+    suspend fun list(
+        @PathVariable("pId") projectId: Id,
+        @RequestParam("p", required = false) page: Long = 0,
+        @RequestParam("sort", required = false) sort: FeaturesSort = FeaturesSort.EVENTS_COUNT,
+    ): List<FeatureDto.Detailed> = endpoint("list feature") {
+        projectService
+            .require(projectId, account)
+            .let { project ->
+                featureService
+                    .list(
+                        project = project,
+                        page = page,
+                        sort = sort,
+                    )
+                    .map(FeatureDomain.Detailed::toDto)
+            }
+    }
+
+    @GetMapping("/chart")
+    suspend fun getTopFeatures(
+        @PathVariable("pId") projectId: Id,
+        @RequestParam("period", required = false) period: TimePeriod = TimePeriod.DEFAULT,
+        @RequestParam("count", required = false) count: Int = DEFAULT_CHART_SIZE,
+    ): TopFeaturesResponse = endpoint("top features") {
+        projectService
+            .require(projectId, account)
+            .let { project ->
+                val dateRange = period.toSimpleDateRange()
+
+                val topFeatures = logTimeAsync("Top features querying took: %s") {
+                    dashboardService.getTopFeatures(
+                        project = project,
+                        dateRange = dateRange,
+                        count = count,
+                    )
+                }
+
+                val totalEvents = logTimeAsync("Total events count querying took: %s") {
+                    eventService.countTotalEvents(project, dateRange)
+                }
+
+                val averageEvents = logTimeAsync("Average events count querying took: %s") {
+                    dashboardService.countAverageEventsPerDay(project, dateRange)
+                }
+
+                TopFeaturesResponse(
+                    items = topFeatures.await().mapToDto { f, e ->
+                        f.toPartialDto() to e
+                    },
+                    totalEvents = totalEvents.await(),
+                    avgEventsPerDay = averageEvents.await().roundToLong(),
+                )
+            }
+    }
+
+    @PostMapping("/{featureId}")
+    suspend fun update(
+        @PathVariable("pId") pId: Id,
+        @PathVariable("featureId") featureId: Id,
+        @RequestBody @Valid body: UpdateFeatureRequest,
+    ): FeatureDto = endpoint("update feature") {
+        projectService
+            .require(pId, account)
+            .let { projectDomain ->
+                featureService.get(featureId, projectDomain)
+            }
+            .let { feature ->
+                featureService.update(
+                    feature = feature,
+                    account = account,
+                    title = body.title,
+                    description = body.description,
+                )
+            }
+            .toPartialDto()
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{featureId}")
+    suspend fun delete(
+        @PathVariable("pId") pId: Id,
+        @PathVariable("featureId") featureId: Id,
+    ): Unit = endpoint("delete feature") {
+        projectService
+            .require(pId, account)
+            .let { projectDomain ->
+                featureService.get(featureId, projectDomain)
+            }
+            .let { feature ->
+                featureService.delete(
+                    feature = feature,
+                    account = account,
+                )
+            }
+    }
+}
