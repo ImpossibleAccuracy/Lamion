@@ -1,37 +1,34 @@
 package com.lamion.feature.shared.payload
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.fasterxml.jackson.annotation.JsonProperty
 
 sealed interface DeviceDto {
     val title: String
     val activity: ComparisonDto<Long>
     val platform: String
 
-    @Serializable
     data class Partial(
-        @SerialName("title")
+        @JsonProperty("title")
         override val title: String,
 
-        @SerialName("activity")
+        @JsonProperty("activity")
         override val activity: ComparisonDto<Long>,
 
-        @SerialName("platform")
+        @JsonProperty("platform")
         override val platform: String
     ) : DeviceDto
 
-    @Serializable
     data class Detailed(
-        @SerialName("title")
+        @JsonProperty("title")
         override val title: String,
 
-        @SerialName("platform")
+        @JsonProperty("platform")
         override val platform: String,
 
-        @SerialName("activity")
+        @JsonProperty("activity")
         override val activity: ComparisonDto<Long>,
 
-        @SerialName("errors")
+        @JsonProperty("errors")
         val errors: ComparisonDto<Long>,
     ) : DeviceDto
 }

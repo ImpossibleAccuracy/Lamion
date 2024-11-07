@@ -1,17 +1,15 @@
 package com.lamion.feature.projects.settings.controller.payload
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import com.lamion.feature.shared.payload.AccessKeysDto
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
-@Serializable
 data class ProjectSettingsResponse(
-    @SerialName("title")
+    @JsonProperty("title")
     val title: String,
 
-    @SerialName("description")
+    @JsonProperty("description")
     val description: String?,
 
-    @SerialName("tokens")
+    @JsonProperty("tokens")
     val accessKeys: List<AccessKeysDto>,
 )

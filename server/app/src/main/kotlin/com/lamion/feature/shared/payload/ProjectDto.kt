@@ -1,17 +1,15 @@
 package com.lamion.feature.shared.payload
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import com.lamion.domain.model.Id
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
-@Serializable
 data class ProjectDto(
-    @SerialName("id")
+    @JsonProperty("id")
     val id: Id,
 
-    @SerialName("title")
+    @JsonProperty("title")
     val title: String,
 
-    @SerialName("description")
+    @JsonProperty("description")
     val description: String?,
 )

@@ -9,7 +9,7 @@ import java.io.File
 interface FileStorageService {
     fun load(file: File): Flow<DataBuffer>
 
-    suspend fun getFileById(id: Id): com.lamion.domain.service.file.LocalFile?
+    suspend fun getFileById(id: Id): LocalFile?
 
-    suspend fun findFileByHashOrCreate(file: FilePart): com.lamion.domain.service.file.LocalFile
+    suspend fun findFileByHashOrCreate(file: FilePart): LocalFile
 }

@@ -1,45 +1,41 @@
 package com.lamion.feature.shared.payload
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import com.lamion.domain.model.Id
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
 sealed interface FunctionDto {
     val id: Id
     val title: String
 
-    @Serializable
     data class Partial(
-        @SerialName("ud")
+        @JsonProperty("ud")
         override val id: Id,
 
-        @SerialName("title")
+        @JsonProperty("title")
         override val title: String,
     ) : FunctionDto
 
-    @Serializable
     data class Detailed(
-        @SerialName("id")
+        @JsonProperty("id")
         override val id: Id,
 
-        @SerialName("title")
+        @JsonProperty("title")
         override val title: String,
 
-        @SerialName("total_events")
+        @JsonProperty("total_events")
         val totalEvents: Long,
 
-        @SerialName("features")
+        @JsonProperty("features")
         val features: List<FeatureDto.Partial>,
 
-        @SerialName("tags")
+        @JsonProperty("tags")
         val tags: List<Tag>,
     ) : FunctionDto {
-        @Serializable
         data class Tag(
-            @SerialName("id")
+            @JsonProperty("id")
             val id: Id,
 
-            @SerialName("title")
+            @JsonProperty("title")
             val title: String,
         )
     }

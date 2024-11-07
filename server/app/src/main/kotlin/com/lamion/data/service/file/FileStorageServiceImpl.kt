@@ -32,10 +32,10 @@ import kotlin.io.path.createDirectories
 
 @Service
 class FileStorageServiceImpl(
-    private val properties: com.lamion.data.service.file.FileStorageProperties,
+    private val properties: FileStorageProperties,
 ) : com.lamion.domain.service.file.FileStorageService {
     companion object {
-        private val Logger = LoggerFactory.getLogger(com.lamion.data.service.file.FileStorageServiceImpl::class.java)
+        private val Logger = LoggerFactory.getLogger(FileStorageServiceImpl::class.java)
 
         private const val MAX_ORIGINAL_NAME_LENGTH = 15
 
@@ -150,7 +150,7 @@ class FileStorageServiceImpl(
 
         val resultFile = destination.toFile()
 
-        com.lamion.data.service.file.FileStorageServiceImpl.Companion.Logger.info(
+        Logger.info(
             "File ${cutFileName(originalName)} stored as ${resultFile.absoluteFile}"
         )
 
@@ -161,21 +161,21 @@ class FileStorageServiceImpl(
         return buildString {
             append(properties.fileNamePattern)
 
-            replace(com.lamion.data.service.file.FileStorageServiceImpl.Companion.FILE_NAME_PATTERN) {
+            replace(FILE_NAME_PATTERN) {
                 val string = originalFileName.substringBeforeLast(".")
 
                 cutFileName(string)
             }
 
-            replace(com.lamion.data.service.file.FileStorageServiceImpl.Companion.FILE_HASH_PATTERN) {
+            replace(FILE_HASH_PATTERN) {
                 hash
             }
 
-            replace(com.lamion.data.service.file.FileStorageServiceImpl.Companion.TIMESTAMP_PATTERN) {
+            replace(TIMESTAMP_PATTERN) {
                 LocalDateTime.now().toString()
             }
 
-            replace(com.lamion.data.service.file.FileStorageServiceImpl.Companion.EXTENSION_PATTERN) {
+            replace(EXTENSION_PATTERN) {
                 originalFileName.substringAfterLast(".")
             }
 
@@ -184,8 +184,9 @@ class FileStorageServiceImpl(
     }
 
     private fun cutFileName(fileName: String) =
-        if (fileName.length > com.lamion.data.service.file.FileStorageServiceImpl.Companion.MAX_ORIGINAL_NAME_LENGTH) fileName.substring(0,
-            com.lamion.data.service.file.FileStorageServiceImpl.Companion.MAX_ORIGINAL_NAME_LENGTH
+        if (fileName.length > MAX_ORIGINAL_NAME_LENGTH) fileName.substring(
+            0,
+            MAX_ORIGINAL_NAME_LENGTH
         )
         else fileName
 

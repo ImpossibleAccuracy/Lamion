@@ -1,15 +1,13 @@
 package com.lamion.feature.shared.payload
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.fasterxml.jackson.annotation.JsonProperty
 
 typealias ChartDto<K, T> = List<ChartItemDto<K, T>>
 
-@Serializable
 data class ChartItemDto<K, T>(
-    @SerialName("key")
+    @JsonProperty("key")
     val date: K,
 
-    @SerialName("value")
+    @JsonProperty("value")
     val value: T
 )

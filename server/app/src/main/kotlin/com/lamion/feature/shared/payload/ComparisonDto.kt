@@ -1,13 +1,11 @@
 package com.lamion.feature.shared.payload
 
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
+import com.fasterxml.jackson.annotation.JsonProperty
 
-@Serializable
 data class ComparisonDto<T>(
-    @SerialName("actual")
+    @JsonProperty("actual")
     val actual: T,
 
-    @SerialName("past")
+    @JsonProperty("past")
     val past: T,
 )

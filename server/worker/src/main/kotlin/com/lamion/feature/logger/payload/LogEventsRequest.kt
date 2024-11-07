@@ -3,11 +3,9 @@ package com.lamion.feature.logger.payload
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
 import jakarta.validation.constraints.Size
-import kotlinx.datetime.LocalDateTime
-import kotlinx.serialization.Serializable
+import java.time.LocalDateTime
 
-@Serializable
-data class LogEventsBulkRequest(
+data class LogEventsRequest(
     @field:Size(min = 1)
     val events: List<Event>,
 
@@ -17,7 +15,6 @@ data class LogEventsBulkRequest(
     @field:NotNull
     val device: Device,
 ) {
-    @Serializable
     data class Event(
         @field:NotBlank
         val function: String,
@@ -25,7 +22,6 @@ data class LogEventsBulkRequest(
         val createdAt: LocalDateTime,
     )
 
-    @Serializable
     data class Device(
         @field:NotBlank
         val name: String,
@@ -34,7 +30,6 @@ data class LogEventsBulkRequest(
         val platform: String,
     )
 
-    @Serializable
     data class User(
         val deviceKey: String?,
         val clientKey: String?,

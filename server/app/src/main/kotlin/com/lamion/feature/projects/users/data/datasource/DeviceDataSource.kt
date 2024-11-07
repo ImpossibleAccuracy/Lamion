@@ -16,7 +16,7 @@ object DeviceDataSource {
         count: Int,
     ) = DeviceTable
         .innerJoin(EventTable)
-        .innerJoin(com.lamion.data.database.table.project.FunctionTable)
+        .innerJoin(FunctionTable)
         .innerJoin(DevicePlatformTable)
         .select(
             currentMonthActivitySubquery,
@@ -25,8 +25,8 @@ object DeviceDataSource {
             DevicePlatformTable.title,
         )
         .where(
-            com.lamion.data.database.table.project.FunctionTable.project.eq(project.id)
-                .and(com.lamion.data.database.table.project.FunctionTable.deleted.eq(false))
+            FunctionTable.project.eq(project.id)
+                .and(FunctionTable.deleted.eq(false))
         )
         .orderBy(currentMonthActivitySubquery, SortOrder.DESC)
         .limit(count)
@@ -43,7 +43,7 @@ object DeviceDataSource {
         offset: Long,
     ) = DeviceTable
         .innerJoin(EventTable)
-        .innerJoin(com.lamion.data.database.table.project.FunctionTable)
+        .innerJoin(FunctionTable)
         .innerJoin(ErrorTable)
         .innerJoin(DevicePlatformTable)
         .select(
@@ -55,8 +55,8 @@ object DeviceDataSource {
             DevicePlatformTable.title,
         )
         .where(
-            com.lamion.data.database.table.project.FunctionTable.project.eq(projectId)
-                .and(com.lamion.data.database.table.project.FunctionTable.deleted.eq(false))
+            FunctionTable.project.eq(projectId)
+                .and(FunctionTable.deleted.eq(false))
         )
         .orderBy(currentMonthActivity, SortOrder.DESC)
         .groupBy(
@@ -73,11 +73,11 @@ object DeviceDataSource {
         end: LocalDateTime,
         alias: String,
     ) = EventTable
-        .innerJoin(com.lamion.data.database.table.project.FunctionTable)
+        .innerJoin(FunctionTable)
         .select(EventTable.id.count())
         .where(
-            com.lamion.data.database.table.project.FunctionTable.project.eq(projectId)
-                .and(com.lamion.data.database.table.project.FunctionTable.deleted.eq(false))
+            FunctionTable.project.eq(projectId)
+                .and(FunctionTable.deleted.eq(false))
                 .and(EventTable.createdAt.between(start, end))
                 .and(EventTable.device.eq(DeviceTable.id))
         )

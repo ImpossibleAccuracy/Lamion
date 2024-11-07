@@ -1,11 +1,9 @@
 package com.lamion.feature.account.controller.payload
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import com.lamion.feature.shared.payload.AccountDto
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
-@Serializable
 data class ProfileResponse(
-    @SerialName("account")
+    @JsonProperty("account")
     val account: AccountDto.Total,
 )

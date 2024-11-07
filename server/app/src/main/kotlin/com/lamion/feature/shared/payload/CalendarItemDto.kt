@@ -1,15 +1,13 @@
 package com.lamion.feature.shared.payload
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import kotlinx.datetime.LocalDate
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
-@Serializable
 data class CalendarItemDto(
-    @SerialName("date")
+    @JsonProperty("date")
     val date: LocalDate,
 
-    @SerialName("types")
+    @JsonProperty("types")
     val activity: Map<Type, Long>
 ) {
     enum class Type {

@@ -1,15 +1,13 @@
 package com.lamion.feature.project.controller.payload
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import com.lamion.server.validation.NullOrNotBlank
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
-@Serializable
 data class UpdateProjectRequest(
     @field:NullOrNotBlank
-    @SerialName("title")
+    @JsonProperty("title")
     var title: String? = null,
 
-    @SerialName("description")
+    @JsonProperty("description")
     var description: String? = null,
 )

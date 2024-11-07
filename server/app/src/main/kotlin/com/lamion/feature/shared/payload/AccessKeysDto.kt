@@ -1,14 +1,12 @@
 package com.lamion.feature.shared.payload
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import kotlinx.datetime.LocalDate
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
-@Serializable
 data class AccessKeysDto(
-    @SerialName("title")
+    @JsonProperty("title")
     val title: String,
 
-    @SerialName("created_at")
+    @JsonProperty("created_at")
     val createdAt: LocalDate,
 )

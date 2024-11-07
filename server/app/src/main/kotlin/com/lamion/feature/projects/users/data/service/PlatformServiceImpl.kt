@@ -19,7 +19,10 @@ import org.springframework.stereotype.Service
 class PlatformServiceImpl(
     private val eventService: EventService,
 ) : PlatformService {
-    override suspend fun countEventsGroupByPlatforms(project: ProjectDomain, dateRange: DateRange): ChartDomain<String, Double> =
+    override suspend fun countEventsGroupByPlatforms(
+        project: ProjectDomain,
+        dateRange: DateRange
+    ): ChartDomain<String, Double> =
         dbQuery {
             val countQuery = EventTable.id.countDistinct()
 

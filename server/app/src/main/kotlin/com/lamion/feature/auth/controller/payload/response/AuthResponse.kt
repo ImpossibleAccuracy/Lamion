@@ -1,14 +1,12 @@
 package com.lamion.feature.auth.controller.payload.response
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import com.lamion.feature.shared.payload.AccountDto
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 
-@Serializable
 data class AuthResponse(
-    @SerialName("account")
+    @JsonProperty("account")
     val account: AccountDto.Public,
 
-    @SerialName("token")
+    @JsonProperty("token")
     val token: String,
 )
