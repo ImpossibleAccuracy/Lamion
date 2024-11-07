@@ -1,8 +1,6 @@
 package com.lamion.feature.projects.activity.data.datasource
 
-import com.lamion.data.database.table.project.ErrorTable
-import com.lamion.data.database.table.project.EventTable
-import com.lamion.data.database.table.project.UserTable
+import com.lamion.data.database.table.project.*
 import com.lamion.data.database.table.refs.FeatureFunctionRef
 import com.lamion.data.database.utils.datePart
 import com.lamion.domain.model.Id
@@ -20,21 +18,21 @@ object ActivityDataSource {
         start: LocalDateTime,
         end: LocalDateTime,
         count: Int,
-    ) = com.lamion.data.database.table.project.FeatureTable
+    ) = FeatureTable
         .innerJoin(FeatureFunctionRef)
-        .innerJoin(com.lamion.data.database.table.project.FunctionTable)
+        .innerJoin(FunctionTable)
         .innerJoin(EventTable)
         .select(
             eventsCountQuery,
-            *com.lamion.data.database.table.project.FeatureTable.columns.toTypedArray(),
+            *FeatureTable.columns.toTypedArray(),
         )
         .where(
-            com.lamion.data.database.table.project.FeatureTable.project.eq(projectId)
+            FeatureTable.project.eq(projectId)
                 .and(EventTable.createdAt.between(start, end))
-                .and(com.lamion.data.database.table.project.FeatureTable.deleted.eq(false))
-                .and(com.lamion.data.database.table.project.FunctionTable.deleted.eq(false))
+                .and(FeatureTable.deleted.eq(false))
+                .and(FunctionTable.deleted.eq(false))
         )
-        .groupBy(*com.lamion.data.database.table.project.FeatureTable.columns.toTypedArray())
+        .groupBy(*FeatureTable.columns.toTypedArray())
         .orderBy(eventsCountQuery, SortOrder.DESC)
         .limit(count)
         .toList()
@@ -90,13 +88,13 @@ object ActivityDataSource {
         val dayQuery = EventTable.createdAt.castTo(KotlinLocalDateColumnType())
 
         return getAvg(
-            set = EventTable.innerJoin(com.lamion.data.database.table.project.FunctionTable),
+            set = EventTable.innerJoin(FunctionTable),
             countQuery = countQuery,
             dateQuery = dayQuery,
             where = {
-                com.lamion.data.database.table.project.FunctionTable.project.eq(projectId)
+                FunctionTable.project.eq(projectId)
                     .and(EventTable.createdAt.between(start, end))
-                    .and(com.lamion.data.database.table.project.FunctionTable.deleted.eq(false))
+                    .and(FunctionTable.deleted.eq(false))
             }
         )
     }

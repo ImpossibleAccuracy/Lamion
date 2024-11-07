@@ -1,6 +1,7 @@
 package com.lamion.data.datasource
 
 import com.lamion.data.database.table.project.EventTable
+import com.lamion.data.database.table.project.FunctionTable
 import com.lamion.data.database.table.project.UserTable
 import com.lamion.domain.model.Id
 import kotlinx.datetime.LocalDateTime
@@ -84,10 +85,10 @@ object UserDataSource {
             .alias("event_count")
 
         return EventTable
-            .innerJoin(com.lamion.data.database.table.project.FunctionTable)
+            .innerJoin(FunctionTable)
             .select(resultQuery)
             .where(
-                com.lamion.data.database.table.project.FunctionTable.project.eq(projectId)
+                FunctionTable.project.eq(projectId)
                     .and(EventTable.createdAt.between(start, end))
             ).let {
                 wrapAsExpression(it)
@@ -119,13 +120,13 @@ object UserDataSource {
         val dateQuery = EventTable.createdAt.castTo(KotlinLocalDateColumnType()).alias("event_date")
 
         val subquery = EventTable
-            .innerJoin(com.lamion.data.database.table.project.FunctionTable)
+            .innerJoin(FunctionTable)
             .select(
                 resultQuery,
                 dateQuery,
             )
             .where(
-                com.lamion.data.database.table.project.FunctionTable.project.eq(projectId)
+                FunctionTable.project.eq(projectId)
                     .and(EventTable.createdAt.between(start, end))
             )
             .groupBy(dateQuery)

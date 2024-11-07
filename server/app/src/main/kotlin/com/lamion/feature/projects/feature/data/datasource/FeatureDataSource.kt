@@ -2,6 +2,8 @@ package com.lamion.feature.projects.feature.data.datasource
 
 import com.lamion.data.database.table.project.ErrorTable
 import com.lamion.data.database.table.project.EventTable
+import com.lamion.data.database.table.project.FeatureTable
+import com.lamion.data.database.table.project.FunctionTable
 import com.lamion.data.database.table.refs.FeatureFunctionRef
 import com.lamion.data.database.utils.new
 import com.lamion.domain.model.Id
@@ -19,7 +21,7 @@ object FeatureDataSource {
         projectId: Id,
         title: String,
         description: String,
-    ) = com.lamion.data.database.table.project.FeatureTable
+    ) = FeatureTable
         .new {
             it[this.title] = title
             it[this.description] = description
@@ -40,33 +42,33 @@ object FeatureDataSource {
             }
     }
 
-    fun countFeatures(projectId: Id) = com.lamion.data.database.table.project.FeatureTable
-        .select(com.lamion.data.database.table.project.FeatureTable.id)
+    fun countFeatures(projectId: Id) = FeatureTable
+        .select(FeatureTable.id)
         .where(
-            com.lamion.data.database.table.project.FeatureTable.project.eq(projectId)
-                .and(com.lamion.data.database.table.project.FeatureTable.deleted.eq(false))
+            FeatureTable.project.eq(projectId)
+                .and(FeatureTable.deleted.eq(false))
         )
         .count()
 
     fun findFeature(projectId: Id, featureId: Id) =
-        com.lamion.data.database.table.project.FeatureTable
+        FeatureTable
             .selectAll()
             .where(
-                com.lamion.data.database.table.project.FeatureTable.project.eq(projectId)
-                    .and(com.lamion.data.database.table.project.FeatureTable.id eq featureId)
-                    .and(com.lamion.data.database.table.project.FeatureTable.deleted.eq(false))
+                FeatureTable.project.eq(projectId)
+                    .and(FeatureTable.id eq featureId)
+                    .and(FeatureTable.deleted.eq(false))
             )
             .firstOrNull()
 
     fun countFeatureCountByIdIn(
         projectId: Id,
         featuresIds: List<Id>,
-    ) = com.lamion.data.database.table.project.FeatureTable
-        .select(com.lamion.data.database.table.project.FeatureTable.id)
+    ) = FeatureTable
+        .select(FeatureTable.id)
         .where(
-            com.lamion.data.database.table.project.FeatureTable.project.eq(projectId)
-                .and(com.lamion.data.database.table.project.FeatureTable.id inList featuresIds)
-                .and(com.lamion.data.database.table.project.FeatureTable.deleted.eq(false))
+            FeatureTable.project.eq(projectId)
+                .and(FeatureTable.id inList featuresIds)
+                .and(FeatureTable.deleted.eq(false))
         )
         .count()
 
@@ -80,12 +82,12 @@ object FeatureDataSource {
         val countQuery = EventTable.id.count()
 
         return EventTable
-            .innerJoin(com.lamion.data.database.table.project.FunctionTable)
+            .innerJoin(FunctionTable)
             .select(dateQuery, countQuery)
             .where(
-                com.lamion.data.database.table.project.FunctionTable.project.eq(projectId)
+                FunctionTable.project.eq(projectId)
                     .and(EventTable.createdAt.between(start, end))
-                    .and(com.lamion.data.database.table.project.FunctionTable.deleted.eq(false))
+                    .and(FunctionTable.deleted.eq(false))
             )
             .groupBy(dateQuery)
             .orderBy(dateQuery)
@@ -101,21 +103,21 @@ object FeatureDataSource {
         start: LocalDateTime,
         end: LocalDateTime,
         count: Int
-    ) = com.lamion.data.database.table.project.FeatureTable
+    ) = FeatureTable
         .innerJoin(FeatureFunctionRef)
-        .innerJoin(com.lamion.data.database.table.project.FunctionTable)
+        .innerJoin(FunctionTable)
         .innerJoin(EventTable)
         .select(
             eventsCountQuery,
-            *com.lamion.data.database.table.project.FeatureTable.columns.toTypedArray(),
+            *FeatureTable.columns.toTypedArray(),
         )
         .where(
-            com.lamion.data.database.table.project.FeatureTable.project.eq(projectId)
+            FeatureTable.project.eq(projectId)
                 .and(EventTable.createdAt.between(start, end))
-                .and(com.lamion.data.database.table.project.FeatureTable.deleted.eq(false))
-                .and(com.lamion.data.database.table.project.FunctionTable.deleted.eq(false))
+                .and(FeatureTable.deleted.eq(false))
+                .and(FunctionTable.deleted.eq(false))
         )
-        .groupBy(*com.lamion.data.database.table.project.FeatureTable.columns.toTypedArray())
+        .groupBy(*FeatureTable.columns.toTypedArray())
         .orderBy(eventsCountQuery)
         .limit(count)
         .toList()
@@ -128,23 +130,23 @@ object FeatureDataSource {
         orderStatement: Expression<*>,
         limit: Int,
         offset: Long,
-    ) = com.lamion.data.database.table.project.FeatureTable
+    ) = FeatureTable
         .innerJoin(FeatureFunctionRef)
-        .innerJoin(com.lamion.data.database.table.project.FunctionTable)
+        .innerJoin(FunctionTable)
         .innerJoin(EventTable)
         .innerJoin(ErrorTable)
         .select(
             eventsCountQuery,
             functionsCountQuery,
             errorsCountQuery,
-            *com.lamion.data.database.table.project.FeatureTable.columns.toTypedArray(),
+            *FeatureTable.columns.toTypedArray(),
         )
         .where(
-            com.lamion.data.database.table.project.FeatureTable.project.eq(projectId)
-                .and(com.lamion.data.database.table.project.FeatureTable.deleted.eq(false))
-                .and(com.lamion.data.database.table.project.FunctionTable.deleted.eq(false))
+            FeatureTable.project.eq(projectId)
+                .and(FeatureTable.deleted.eq(false))
+                .and(FunctionTable.deleted.eq(false))
         )
-        .groupBy(*com.lamion.data.database.table.project.FeatureTable.columns.toTypedArray())
+        .groupBy(*FeatureTable.columns.toTypedArray())
         .orderBy(orderStatement, SortOrder.DESC)
         .limit(limit, offset)
         .toList()
@@ -156,32 +158,32 @@ object FeatureDataSource {
     ): List<FeatureDomain.Detailed.TopFunction> {
         val eventsCountQuery = EventTable.id.count().alias("eventsCount")
 
-        return com.lamion.data.database.table.project.FunctionTable
+        return FunctionTable
             .innerJoin(FeatureFunctionRef)
-            .innerJoin(com.lamion.data.database.table.project.FeatureTable)
+            .innerJoin(FeatureTable)
             .innerJoin(EventTable)
             .select(
-                com.lamion.data.database.table.project.FunctionTable.id,
-                com.lamion.data.database.table.project.FunctionTable.title,
+                FunctionTable.id,
+                FunctionTable.title,
                 eventsCountQuery,
             )
             .where(
-                com.lamion.data.database.table.project.FeatureTable.id.eq(featureId)
-                    .and(com.lamion.data.database.table.project.FeatureTable.deleted.eq(false))
-                    .and(com.lamion.data.database.table.project.FunctionTable.deleted.eq(false))
+                FeatureTable.id.eq(featureId)
+                    .and(FeatureTable.deleted.eq(false))
+                    .and(FunctionTable.deleted.eq(false))
             )
             .limit(count)
             .groupBy(
-                com.lamion.data.database.table.project.FunctionTable.id,
-                com.lamion.data.database.table.project.FunctionTable.title,
+                FunctionTable.id,
+                FunctionTable.title,
             )
             .toList()
             .map {
                 val eventsCount = it[eventsCountQuery]
 
                 FeatureDomain.Detailed.TopFunction(
-                    id = it[com.lamion.data.database.table.project.FunctionTable.id].value,
-                    title = it[com.lamion.data.database.table.project.FunctionTable.title],
+                    id = it[FunctionTable.id].value,
+                    title = it[FunctionTable.title],
                     totalEvents = eventsCount,
                     percent = eventsCount * 100.0 / totalFeatureEventsCount
                 )
@@ -192,15 +194,15 @@ object FeatureDataSource {
         featureId: Id,
         title: String,
         description: String
-    ) = com.lamion.data.database.table.project.FeatureTable
-        .updateReturning(where = { com.lamion.data.database.table.project.FeatureTable.id eq featureId }) {
-            it[com.lamion.data.database.table.project.FeatureTable.title] = title
-            it[com.lamion.data.database.table.project.FeatureTable.description] = description
+    ) = FeatureTable
+        .updateReturning(where = { FeatureTable.id eq featureId }) {
+            it[FeatureTable.title] = title
+            it[FeatureTable.description] = description
         }
         .first()
 
     fun deleteFeature(featureId: Id) =
-        com.lamion.data.database.table.project.FeatureTable.update(where = { com.lamion.data.database.table.project.FeatureTable.id eq featureId }) {
+        FeatureTable.update(where = { FeatureTable.id eq featureId }) {
             it[deleted] = true
         }
 }

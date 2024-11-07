@@ -1,6 +1,7 @@
 package com.lamion.data.service.event
 
 import com.lamion.data.database.table.project.EventTable
+import com.lamion.data.database.table.project.FunctionTable
 import com.lamion.domain.model.DateRange
 import com.lamion.domain.model.ProjectDomain
 import com.lamion.domain.service.event.EventService
@@ -14,12 +15,12 @@ import org.springframework.stereotype.Service
 class EventServiceImpl : EventService {
     override suspend fun countTotalEvents(project: ProjectDomain, dateRange: DateRange): Long = dbQuery {
         EventTable
-            .innerJoin(com.lamion.data.database.table.project.FunctionTable)
+            .innerJoin(FunctionTable)
             .select(EventTable.id)
             .where(
-                com.lamion.data.database.table.project.FunctionTable.project.eq(project.id)
+                FunctionTable.project.eq(project.id)
                     .and(EventTable.createdAt.between(dateRange.start, dateRange.end))
-                    .and(com.lamion.data.database.table.project.FunctionTable.deleted.eq(false))
+                    .and(FunctionTable.deleted.eq(false))
             )
             .count()
     }

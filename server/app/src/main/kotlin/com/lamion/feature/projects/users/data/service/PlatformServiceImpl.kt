@@ -3,6 +3,7 @@ package com.lamion.feature.projects.users.data.service
 import com.lamion.data.database.table.project.DevicePlatformTable
 import com.lamion.data.database.table.project.DeviceTable
 import com.lamion.data.database.table.project.EventTable
+import com.lamion.data.database.table.project.FunctionTable
 import com.lamion.domain.model.ChartDomain
 import com.lamion.domain.model.DateRange
 import com.lamion.domain.model.ProjectDomain
@@ -31,13 +32,13 @@ class PlatformServiceImpl(
             DevicePlatformTable
                 .innerJoin(DeviceTable)
                 .innerJoin(EventTable)
-                .innerJoin(com.lamion.data.database.table.project.FunctionTable)
+                .innerJoin(FunctionTable)
                 .select(
                     DevicePlatformTable.title,
                     countQuery
                 )
                 .where(
-                    com.lamion.data.database.table.project.FunctionTable.project.eq(project.id)
+                    FunctionTable.project.eq(project.id)
                         .and(EventTable.createdAt.between(dateRange.start, dateRange.end))
                 )
                 .groupBy(DevicePlatformTable.title)

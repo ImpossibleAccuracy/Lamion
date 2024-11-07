@@ -2,6 +2,8 @@ package com.lamion.feature.projects.feature.data.service
 
 import com.lamion.data.database.table.project.ErrorTable
 import com.lamion.data.database.table.project.EventTable
+import com.lamion.data.database.table.project.FeatureTable
+import com.lamion.data.database.table.project.FunctionTable
 import com.lamion.data.database.table.refs.FeatureFunctionRef
 import com.lamion.domain.model.AccountDomain
 import com.lamion.domain.model.Id
@@ -86,12 +88,12 @@ class FeatureServiceImpl : FeatureService {
     ): List<FeatureDomain.Detailed> =
         dbQuery {
             val eventsCountQuery = EventTable
-                .innerJoin(com.lamion.data.database.table.project.FunctionTable)
+                .innerJoin(FunctionTable)
                 .innerJoin(FeatureFunctionRef)
                 .select(EventTable.id.count())
                 .where(
-                    FeatureFunctionRef.feature.eq(com.lamion.data.database.table.project.FeatureTable.id)
-                        .and(com.lamion.data.database.table.project.FunctionTable.deleted.eq(false))
+                    FeatureFunctionRef.feature.eq(FeatureTable.id)
+                        .and(FunctionTable.deleted.eq(false))
                 )
                 .let {
                     wrapAsExpression<Long>(it)
@@ -99,12 +101,12 @@ class FeatureServiceImpl : FeatureService {
                 .castTo(LongColumnType())
                 .alias("eventsCount")
 
-            val functionsCountQuery = com.lamion.data.database.table.project.FunctionTable
+            val functionsCountQuery = FunctionTable
                 .innerJoin(FeatureFunctionRef)
-                .select(com.lamion.data.database.table.project.FunctionTable.id.count())
+                .select(FunctionTable.id.count())
                 .where(
-                    FeatureFunctionRef.feature.eq(com.lamion.data.database.table.project.FeatureTable.id)
-                        .and(com.lamion.data.database.table.project.FunctionTable.deleted.eq(false))
+                    FeatureFunctionRef.feature.eq(FeatureTable.id)
+                        .and(FunctionTable.deleted.eq(false))
                 )
                 .let {
                     wrapAsExpression<Long>(it)
@@ -113,12 +115,12 @@ class FeatureServiceImpl : FeatureService {
                 .alias("functionsCount")
 
             val errorsCountQuery = ErrorTable
-                .innerJoin(com.lamion.data.database.table.project.FunctionTable)
+                .innerJoin(FunctionTable)
                 .innerJoin(FeatureFunctionRef)
                 .select(ErrorTable.id.count())
                 .where(
-                    FeatureFunctionRef.feature.eq(com.lamion.data.database.table.project.FeatureTable.id)
-                        .and(com.lamion.data.database.table.project.FunctionTable.deleted.eq(false))
+                    FeatureFunctionRef.feature.eq(FeatureTable.id)
+                        .and(FunctionTable.deleted.eq(false))
                 )
                 .let {
                     wrapAsExpression<Long>(it)
@@ -136,14 +138,14 @@ class FeatureServiceImpl : FeatureService {
                         FeaturesSort.EVENTS_COUNT -> eventsCountQuery
                         FeaturesSort.ERRORS_COUNT -> errorsCountQuery
                         FeaturesSort.FUNCTIONS_COUNT -> functionsCountQuery
-                        FeaturesSort.DATE_CREATED -> com.lamion.data.database.table.project.FeatureTable.createdAt
+                        FeaturesSort.DATE_CREATED -> FeatureTable.createdAt
                     },
                     limit = PAGE_SIZE,
                     offset = page * PAGE_SIZE
                 )
                 .map {
                     asyncDbQuery {
-                        val featureId = it[com.lamion.data.database.table.project.FeatureTable.id].value
+                        val featureId = it[FeatureTable.id].value
                         val totalFeatureEvents = it[eventsCountQuery]
 
                         val topFunctions = FeatureDataSource.getTopFunctions(
@@ -154,8 +156,8 @@ class FeatureServiceImpl : FeatureService {
 
                         FeatureDomain.Detailed(
                             id = featureId,
-                            title = it[com.lamion.data.database.table.project.FeatureTable.title],
-                            description = it[com.lamion.data.database.table.project.FeatureTable.description],
+                            title = it[FeatureTable.title],
+                            description = it[FeatureTable.description],
                             totalFunctions = it[functionsCountQuery],
                             totalEvents = totalFeatureEvents,
                             errors = it[errorsCountQuery],

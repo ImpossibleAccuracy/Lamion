@@ -1,5 +1,6 @@
 package com.lamion.data.service.file.datasource
 
+import com.lamion.data.database.table.FileTable
 import com.lamion.data.database.table.FileTypeTable
 import com.lamion.data.database.utils.new
 import com.lamion.domain.model.Id
@@ -12,30 +13,30 @@ object FileDataSource {
         title: String,
         path: String,
         type: Id,
-    ) = com.lamion.data.database.table.FileTable
+    ) = FileTable
         .new {
-            it[com.lamion.data.database.table.FileTable.hash] = hash
-            it[com.lamion.data.database.table.FileTable.title] = title
-            it[com.lamion.data.database.table.FileTable.path] = path
-            it[com.lamion.data.database.table.FileTable.type] = type
+            it[FileTable.hash] = hash
+            it[FileTable.title] = title
+            it[FileTable.path] = path
+            it[FileTable.type] = type
         }!!
 
     fun getFileById(id: Id) =
-        com.lamion.data.database.table.FileTable
+        FileTable
             .innerJoin(FileTypeTable)
             .selectAll()
             .where(
-                com.lamion.data.database.table.FileTable.id.eq(id)
+                FileTable.id.eq(id)
             )
             .firstOrNull()
 
-    fun getFileByHash(hash: String) = com.lamion.data.database.table.FileTable
+    fun getFileByHash(hash: String) = FileTable
         .innerJoin(FileTypeTable)
         .select(
             FileTypeTable.mimeType,
-            *com.lamion.data.database.table.FileTable.columns.toTypedArray()
+            *FileTable.columns.toTypedArray()
         )
-        .where(com.lamion.data.database.table.FileTable.hash.eq(hash))
+        .where(FileTable.hash.eq(hash))
         .firstOrNull()
 
     fun saveFileType(

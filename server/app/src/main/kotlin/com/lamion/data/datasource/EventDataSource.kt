@@ -1,6 +1,7 @@
 package com.lamion.data.datasource
 
 import com.lamion.data.database.table.project.EventTable
+import com.lamion.data.database.table.project.FunctionTable
 import com.lamion.domain.model.Id
 import kotlinx.datetime.LocalDateTime
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.between
@@ -13,12 +14,12 @@ object EventDataSource {
         start: LocalDateTime,
         end: LocalDateTime,
     ) = EventTable
-        .innerJoin(com.lamion.data.database.table.project.FunctionTable)
+        .innerJoin(FunctionTable)
         .select(EventTable.id)
         .where(
-            com.lamion.data.database.table.project.FunctionTable.project.eq(projectId)
+            FunctionTable.project.eq(projectId)
                 .and(EventTable.createdAt.between(start, end))
-                .and(com.lamion.data.database.table.project.FunctionTable.deleted.eq(false))
+                .and(FunctionTable.deleted.eq(false))
         )
         .count()
 }
