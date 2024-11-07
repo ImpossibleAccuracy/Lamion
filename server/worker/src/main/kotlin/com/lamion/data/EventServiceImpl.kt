@@ -1,11 +1,13 @@
 package com.lamion.data
 
+import com.lamion.data.database.table.project.ErrorTable
 import com.lamion.data.database.table.project.EventTable
 import com.lamion.data.database.table.project.FeatureTable
 import com.lamion.data.database.table.project.FunctionTable
 import com.lamion.data.database.table.refs.FeatureFunctionRef
 import com.lamion.domain.exception.InvalidArgumentsException
 import com.lamion.domain.model.Id
+import com.lamion.domain.model.IncomingError
 import com.lamion.domain.model.IncomingEvent
 import com.lamion.domain.service.EventService
 import com.lamion.utils.dbQuery
@@ -22,36 +24,61 @@ class EventServiceImpl : EventService {
         userId: Id,
         deviceId: Id,
         events: List<IncomingEvent>
-    ) {
-        dbQuery {
-            createAllFunctions(
-                events = events,
-                projectId = projectId
-            )
+    ): Unit = dbQuery {
+        createAllFunctions(
+            distinctFunctions = events.map { it.function }.distinct(),
+            projectId = projectId
+        )
 
-            linkAllFeatures(
-                events = events,
-                projectId = projectId
-            )
+        linkAllFeatures(
+            events = events,
+            projectId = projectId
+        )
 
-            saveEvents(
-                events = events,
-                userId = userId,
-                deviceId = deviceId,
-                projectId = projectId
-            )
-        }
+        saveEvents(
+            events = events,
+            userId = userId,
+            deviceId = deviceId,
+            projectId = projectId
+        )
+    }
+
+    override suspend fun logErrors(
+        projectId: Id,
+        userId: Id,
+        deviceId: Id,
+        errors: List<IncomingError>
+    ): Unit = dbQuery {
+        createAllFunctions(
+            distinctFunctions = errors.mapNotNull { it.function }.distinct(),
+            projectId = projectId
+        )
+
+        saveErrors(
+            errors = errors,
+            projectId = projectId,
+            deviceId = deviceId,
+            userId = userId,
+        )
     }
 
     private fun createAllFunctions(
-        events: List<IncomingEvent>,
+        distinctFunctions: List<String>,
         projectId: Id,
     ) {
-        val distinctFunctions = events.map { it.function }.distinct()
+        val count = FunctionTable
+            .select(FunctionTable.id)
+            .where(
+                FunctionTable.project.eq(projectId)
+                    .and(FunctionTable.title.inList(distinctFunctions))
+            )
+            .count()
 
-        FunctionTable.batchInsert(data = distinctFunctions, ignore = true) {
-            this[FunctionTable.title] = it
-            this[FunctionTable.project] = projectId
+        if (count != distinctFunctions.size.toLong()) {
+            FunctionTable.batchInsert(data = distinctFunctions, ignore = true) {
+                this[FunctionTable.title] = it
+                this[FunctionTable.project] = projectId
+            }
         }
     }
 
@@ -119,5 +146,26 @@ class EventServiceImpl : EventService {
                 FunctionTable.project.eq(projectId)
                     .and(FunctionTable.title.eq(it.function))
             )
+    }
+
+    private fun saveErrors(
+        errors: List<IncomingError>,
+        projectId: Id,
+        deviceId: Id,
+        userId: Id,
+    ) = ErrorTable.batchInsert(data = errors) {
+        this[ErrorTable.createdAt] = it.createdAt
+        this[ErrorTable.user] = userId
+        this[ErrorTable.device] = deviceId
+        this[ErrorTable.message] = it.text
+
+        if (it.function != null) {
+            this[ErrorTable.function] = FunctionTable
+                .select(FunctionTable.id)
+                .where(
+                    FunctionTable.project.eq(projectId)
+                        .and(FunctionTable.title.eq(it.function))
+                )
+        }
     }
 }
