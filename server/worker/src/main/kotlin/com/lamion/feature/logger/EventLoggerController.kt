@@ -1,9 +1,10 @@
 package com.lamion.feature.logger
 
-import com.lamion.domain.DeviceService
-import com.lamion.domain.EventService
-import com.lamion.domain.ProjectService
-import com.lamion.domain.UserService
+import com.lamion.domain.model.IncomingEvent
+import com.lamion.domain.service.DeviceService
+import com.lamion.domain.service.EventService
+import com.lamion.domain.service.ProjectService
+import com.lamion.domain.service.UserService
 import com.lamion.feature.logger.payload.LogEventsRequest
 import jakarta.validation.Valid
 import kotlinx.coroutines.async
@@ -52,7 +53,11 @@ class EventLoggerController(
                     userId = user,
                     deviceId = device,
                     events = body.events.map {
-                        it.function to it.createdAt.toKotlinLocalDateTime()
+                        IncomingEvent(
+                            function = it.function,
+                            feature = it.feature,
+                            createdAt = it.createdAt.toKotlinLocalDateTime(),
+                        )
                     }
                 )
             }

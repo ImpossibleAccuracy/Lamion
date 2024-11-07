@@ -3,8 +3,8 @@ package com.lamion.data
 import com.lamion.data.database.table.project.DevicePlatformTable
 import com.lamion.data.database.table.project.DeviceTable
 import com.lamion.data.database.utils.new
-import com.lamion.domain.DeviceService
 import com.lamion.domain.model.Id
+import com.lamion.domain.service.DeviceService
 import com.lamion.utils.dbQuery
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.and

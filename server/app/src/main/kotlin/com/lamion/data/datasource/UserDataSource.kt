@@ -66,7 +66,7 @@ object UserDataSource {
         projectId: Id,
         start: LocalDateTime,
         end: LocalDateTime,
-    ): GreaterOp = sourceColumn.greater(
+    ): Op<Boolean> = sourceColumn.greater(
         getAverageEventsPerUserCountSubquery(
             projectId = projectId,
             start = start,
@@ -99,7 +99,7 @@ object UserDataSource {
         projectId: Id,
         start: LocalDateTime,
         end: LocalDateTime,
-    ): GreaterOp = sourceColumn.greater(
+    ): Op<Boolean> = sourceColumn.greater(
         getAverageEventsPerUserCountSubqueryGroupByDate(
             projectId = projectId,
             start = start,

@@ -1,5 +1,6 @@
 package com.lamion.feature.logger.payload
 
+import com.lamion.server.validation.NullOrNotBlank
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
 import jakarta.validation.constraints.Size
@@ -18,6 +19,9 @@ data class LogEventsRequest(
     data class Event(
         @field:NotBlank
         val function: String,
+
+        @field:NullOrNotBlank
+        val feature: String?,
 
         val createdAt: LocalDateTime,
     )

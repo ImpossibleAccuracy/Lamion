@@ -4,9 +4,9 @@ import com.lamion.data.database.table.project.ErrorTable
 import com.lamion.data.database.table.project.EventTable
 import com.lamion.data.database.table.project.UserTable
 import com.lamion.data.database.utils.new
-import com.lamion.domain.UserService
 import com.lamion.domain.exception.InvalidArgumentsException
 import com.lamion.domain.model.Id
+import com.lamion.domain.service.UserService
 import com.lamion.utils.dbQuery
 import org.jetbrains.exposed.sql.AndOp
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq

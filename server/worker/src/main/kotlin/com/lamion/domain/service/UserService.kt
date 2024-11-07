@@ -1,4 +1,4 @@
-package com.lamion.domain
+package com.lamion.domain.service
 
 import com.lamion.domain.model.Id
 

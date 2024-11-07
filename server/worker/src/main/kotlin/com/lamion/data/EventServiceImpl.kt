@@ -1,12 +1,16 @@
 package com.lamion.data
 
 import com.lamion.data.database.table.project.EventTable
+import com.lamion.data.database.table.project.FeatureTable
 import com.lamion.data.database.table.project.FunctionTable
-import com.lamion.domain.EventService
+import com.lamion.data.database.table.refs.FeatureFunctionRef
+import com.lamion.domain.exception.InvalidArgumentsException
 import com.lamion.domain.model.Id
+import com.lamion.domain.model.IncomingEvent
+import com.lamion.domain.service.EventService
 import com.lamion.utils.dbQuery
-import kotlinx.datetime.LocalDateTime
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.inList
 import org.jetbrains.exposed.sql.and
 import org.jetbrains.exposed.sql.batchInsert
 import org.springframework.stereotype.Service
@@ -17,29 +21,103 @@ class EventServiceImpl : EventService {
         projectId: Id,
         userId: Id,
         deviceId: Id,
-        events: List<Pair<String, LocalDateTime>>
+        events: List<IncomingEvent>
     ) {
         dbQuery {
-            val distinctFunctions = events.map { it.first }.distinct()
+            createAllFunctions(
+                events = events,
+                projectId = projectId
+            )
 
-            // Make sure all function created
-            FunctionTable.batchInsert(data = distinctFunctions, ignore = true) {
-                this[FunctionTable.title] = it
-                this[FunctionTable.project] = projectId
+            linkAllFeatures(
+                events = events,
+                projectId = projectId
+            )
+
+            saveEvents(
+                events = events,
+                userId = userId,
+                deviceId = deviceId,
+                projectId = projectId
+            )
+        }
+    }
+
+    private fun createAllFunctions(
+        events: List<IncomingEvent>,
+        projectId: Id,
+    ) {
+        val distinctFunctions = events.map { it.function }.distinct()
+
+        FunctionTable.batchInsert(data = distinctFunctions, ignore = true) {
+            this[FunctionTable.title] = it
+            this[FunctionTable.project] = projectId
+        }
+    }
+
+    private fun linkAllFeatures(
+        events: List<IncomingEvent>,
+        projectId: Id,
+    ) {
+        assertAllFeaturesExists(
+            features = events
+                .mapNotNull { it.feature }
+                .distinct()
+        )
+
+        val uniqueRows = events
+            .filter { it.feature != null }
+            .map {
+                it.function to it.feature!!
             }
+            .distinct()
 
-            // Insert events
-            EventTable.batchInsert(data = events) {
-                this[EventTable.createdAt] = it.second
-                this[EventTable.user] = userId
-                this[EventTable.device] = deviceId
-                this[EventTable.function] = FunctionTable
-                    .select(FunctionTable.id)
-                    .where(
-                        FunctionTable.project.eq(projectId)
-                            .and(FunctionTable.title.eq(it.first))
-                    )
+        FeatureFunctionRef.batchInsert(data = uniqueRows, ignore = true) {
+            this[FeatureFunctionRef.function] = FunctionTable
+                .select(FunctionTable.id)
+                .where(
+                    FunctionTable.project.eq(projectId)
+                        .and(FunctionTable.title.eq(it.first))
+                )
+
+            this[FeatureFunctionRef.feature] = FeatureTable
+                .select(FeatureTable.id)
+                .where(
+                    FeatureTable.project.eq(projectId)
+                        .and(FeatureTable.title.eq(it.second))
+                )
+        }
+    }
+
+    private fun assertAllFeaturesExists(
+        features: List<String>,
+    ) = FeatureTable
+        .select(FeatureTable.id)
+        .where(
+            FeatureTable.title.inList(features)
+                .and(FeatureTable.deleted.eq(false))
+        )
+        .count()
+        .let { count ->
+            if (count != features.size.toLong()) {
+                throw InvalidArgumentsException("One or more feature not found")
             }
         }
+
+    private fun saveEvents(
+        events: List<IncomingEvent>,
+        userId: Id,
+        deviceId: Id,
+        projectId: Id
+    ) = EventTable.batchInsert(data = events) {
+        this[EventTable.createdAt] = it.createdAt
+        this[EventTable.user] = userId
+        this[EventTable.device] = deviceId
+        this[EventTable.function] = FunctionTable
+            .select(FunctionTable.id)
+            .where(
+                FunctionTable.project.eq(projectId)
+                    .and(FunctionTable.title.eq(it.function))
+            )
     }
 }

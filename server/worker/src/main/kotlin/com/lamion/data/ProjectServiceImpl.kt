@@ -1,9 +1,9 @@
 package com.lamion.data
 
 import com.lamion.data.database.table.ProjectAccessKeyTable
-import com.lamion.domain.ProjectService
 import com.lamion.domain.exception.ResourceNotFoundException
 import com.lamion.domain.model.Id
+import com.lamion.domain.service.ProjectService
 import com.lamion.utils.dbQuery
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.springframework.stereotype.Service
