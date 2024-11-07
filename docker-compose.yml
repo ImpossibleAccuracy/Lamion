@@ -1,3 +1,7 @@
+x-database-vars: &database-props
+  DATABASE_URL: "jdbc:postgresql://database:5432/$DATABASE_NAME"
+
+
 services:
   database:
     build:
@@ -28,15 +32,29 @@ services:
       database:
         condition: service_healthy
     build:
-      dockerfile: server/Dockerfile
+      dockerfile: server/app/Dockerfile
       context: .
     ports:
-      - "8080:8080"
+      - "${API_PORT}:8080"
     env_file:
       - .env
-    environment:
-      DATABASE_URL: "jdbc:postgresql://database:5432/$DATABASE_NAME"
+    environment: *database-props
+    networks:
+      - database
+  worker:
+    depends_on:
+      database:
+        condition: service_healthy
+    build:
+      dockerfile: server/worker/Dockerfile
+      context: .
+    ports:
+      - "${WORKER_PORT}:9000"
+    env_file:
+      - .env
+    environment: *database-props
+    networks:
+      - database
 
 networks:
   database:
-    driver: bridge

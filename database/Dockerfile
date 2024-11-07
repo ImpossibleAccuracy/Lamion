@@ -1,4 +1,4 @@
-FROM postgres:13.3 AS database-debug
+FROM postgres:13.3 AS database-dev
 
 COPY ./database/scripts docker-entrypoint-initdb.d
 COPY ./database/debug_init docker-entrypoint-initdb.d

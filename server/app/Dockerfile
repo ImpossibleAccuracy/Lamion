@@ -10,7 +10,8 @@ COPY gradle/ gradle/
 
 COPY build.gradle.kts .
 COPY settings.gradle.kts .
-COPY server/ server/
+COPY server/shared server/shared
+COPY server/app server/app
 
 RUN gradle clean :server:app:build
 
@@ -19,10 +20,8 @@ FROM openjdk:21-jdk
 ENV BUILD_PATH=/usr/build
 ENV APP_PATH=/usr/app
 ENV JAR_NAME=server.jar
-ENV PORT=8080
 
-EXPOSE $PORT
-EXPOSE $DB_PORT
+EXPOSE $API_PORT
 
 RUN mkdir $APP_PATH
 WORKDIR $APP_PATH
