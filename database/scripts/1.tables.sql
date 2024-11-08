@@ -22,7 +22,7 @@ CREATE TABLE account
     "created_at" timestamp    not null default current_timestamp,
     "username"   varchar(255) not null,
     "email"      varchar(255) not null,
-    "password"   varchar(255) not null,
+    "password"   varchar(255),
     "avatar_id"  int                   default null
 );
 

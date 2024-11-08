@@ -21,3 +21,7 @@ app:
   storage:
     store-path: ${STORE_PATH}
     file-name-pattern: "{FILE_HASH}_{TIMESTAMP}.{EXTENSION}"
+  oauth:
+    github:
+      client-id: ${GITHUB_CLIENT_ID}
+      client-secret: ${GITHUB_CLIENT_SECRET}

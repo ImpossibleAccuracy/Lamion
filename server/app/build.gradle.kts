@@ -27,6 +27,12 @@ dependencies {
     implementation(libs.netty.http)
     implementation(libs.reactor.kotlin)
 
+    // Ktor
+    implementation(libs.ktor.core)
+    implementation(libs.ktor.java)
+    implementation(libs.ktor.serialization)
+    implementation(libs.ktor.serialization.json)
+
     // Swagger
     implementation(libs.spring.swagger.ui)
     implementation(libs.spring.swagger.api)
