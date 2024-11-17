@@ -5,7 +5,7 @@ import com.lamion.feature.shared.payload.CalendarItemDto
 import com.lamion.feature.shared.payload.ChartDto
 import com.lamion.feature.shared.payload.ComparisonDto
 import com.lamion.feature.shared.payload.FeatureDto
-import kotlinx.datetime.LocalTime
+import java.time.LocalTime
 
 data class DashboardResponse(
     @JsonProperty("title")

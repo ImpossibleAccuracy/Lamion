@@ -2,9 +2,10 @@ package com.lamion.feature.shared.mapper
 
 import com.lamion.domain.model.CalendarItemDomain
 import com.lamion.feature.shared.payload.CalendarItemDto
+import kotlinx.datetime.toJavaLocalDate
 
 fun CalendarItemDomain.toDto() = CalendarItemDto(
-    date = date,
+    date = date.toJavaLocalDate(),
     activity = activity.map { (enum, value) ->
         when (enum) {
             CalendarItemDomain.Type.USERS -> CalendarItemDto.Type.USERS

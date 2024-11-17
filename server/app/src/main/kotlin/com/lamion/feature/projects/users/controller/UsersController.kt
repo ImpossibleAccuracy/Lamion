@@ -3,12 +3,15 @@ package com.lamion.feature.projects.users.controller
 import com.lamion.domain.model.Id
 import com.lamion.domain.model.TimePeriod
 import com.lamion.domain.service.activity.ActivityService
+import com.lamion.domain.service.analytics.AnalyticsService
 import com.lamion.domain.service.project.ProjectService
 import com.lamion.feature.projects.users.controller.payload.UsersResponse
 import com.lamion.feature.projects.users.domain.service.DeviceService
 import com.lamion.feature.projects.users.domain.service.PlatformService
 import com.lamion.feature.projects.users.domain.service.UsersDashboardService
 import com.lamion.feature.shared.controller.BaseController
+import com.lamion.feature.shared.mapper.buildProgressDto
+import com.lamion.feature.shared.mapper.toDateTimeDto
 import com.lamion.feature.shared.mapper.toDto
 import com.lamion.feature.shared.payload.DeviceDto
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/project/{pId}/users")
 @SecurityRequirement(name = "jwt")
 class UsersController(
+    private val analyticsService: AnalyticsService,
     private val projectService: ProjectService,
     private val usersService: UsersDashboardService,
     private val deviceService: DeviceService,
@@ -39,10 +43,16 @@ class UsersController(
                 val extendedDateRange = period.toExtendedDateRange()
                 val dateRange = extendedDateRange.toDateRange()
 
+                val totalUsersComparison = logTimeAsync("Total users comparison querying took: %s") {
+                    analyticsService.getTotalUsers(project, extendedDateRange)
+                }
                 val totalUsers = logTimeAsync("Total users querying took: %s") {
                     usersService.countUsersGroupByDate(project, dateRange)
                 }
 
+                val activeUsersComparison = logTimeAsync("Active users comparison querying took: %s") {
+                    analyticsService.getActiveUsers(project, extendedDateRange)
+                }
                 val activeUsers = logTimeAsync("Active users querying took: %s") {
                     usersService.countActiveUsersGroupByDate(project, dateRange)
                 }
@@ -71,10 +81,18 @@ class UsersController(
                 }
 
                 UsersResponse(
-                    totalUsersChart = totalUsers.await().toDto(),
-                    activeUsersChart = activeUsers.await().toDto(),
+                    totalUsers = buildProgressDto(
+                        dateRange = dateRange,
+                        chart = totalUsers.await(),
+                        comparison = totalUsersComparison.await(),
+                    ),
+                    activeUsers = buildProgressDto(
+                        dateRange = dateRange,
+                        chart = activeUsers.await(),
+                        comparison = activeUsersComparison.await(),
+                    ),
                     growthRate = growthRate.await().toDto(),
-                    userActivityTime = userActivity.await().toDto(),
+                    userActivityTime = userActivity.await().toDateTimeDto(),
                     platforms = platforms.await().toDto(),
                     topDevices = topDevices.await().map { item ->
                         DeviceDto.Partial(

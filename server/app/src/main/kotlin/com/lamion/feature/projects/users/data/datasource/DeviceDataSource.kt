@@ -2,7 +2,6 @@ package com.lamion.feature.projects.users.data.datasource
 
 import com.lamion.data.database.table.project.*
 import com.lamion.domain.model.Id
-import com.lamion.domain.model.ProjectDomain
 import kotlinx.datetime.LocalDateTime
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.between
@@ -10,28 +9,31 @@ import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 
 object DeviceDataSource {
     fun getDevicesWithActivity(
-        currentMonthActivitySubquery: Expression<Long?>,
-        prevMonthActivitySubquery: Expression<Long?>,
-        project: ProjectDomain,
+        projectId: Id,
+        currentMonthActivity: Expression<Long?>,
+        prevMonthActivity: Expression<Long?>,
         count: Int,
     ) = DeviceTable
         .innerJoin(EventTable)
         .innerJoin(FunctionTable)
         .innerJoin(DevicePlatformTable)
         .select(
-            currentMonthActivitySubquery,
-            prevMonthActivitySubquery,
+            currentMonthActivity,
+            prevMonthActivity,
             *DeviceTable.columns.toTypedArray(),
             DevicePlatformTable.title,
         )
         .where(
-            FunctionTable.project.eq(project.id)
+            FunctionTable.project.eq(projectId)
                 .and(FunctionTable.deleted.eq(false))
         )
-        .orderBy(currentMonthActivitySubquery, SortOrder.DESC)
+        .orderBy(currentMonthActivity, SortOrder.DESC)
+        .groupBy(
+            DeviceTable.id,
+            DevicePlatformTable.title,
+        )
         .limit(count)
         .toList()
-
 
     fun getDevicesWithActivityAndErrors(
         projectId: Id,
@@ -44,7 +46,6 @@ object DeviceDataSource {
     ) = DeviceTable
         .innerJoin(EventTable)
         .innerJoin(FunctionTable)
-        .innerJoin(ErrorTable)
         .innerJoin(DevicePlatformTable)
         .select(
             currentMonthActivity,
@@ -71,7 +72,6 @@ object DeviceDataSource {
         projectId: Id,
         start: LocalDateTime,
         end: LocalDateTime,
-        alias: String,
     ) = EventTable
         .innerJoin(FunctionTable)
         .select(EventTable.id.count())
@@ -84,13 +84,11 @@ object DeviceDataSource {
         .let {
             wrapAsExpression<Long>(it)
         }
-        .alias(alias)
 
     fun createErrorSubquery(
         projectId: Id,
         start: LocalDateTime,
         end: LocalDateTime,
-        alias: String
     ) = ErrorTable
         .innerJoin(UserTable)
         .select(ErrorTable.id.count())
@@ -102,5 +100,4 @@ object DeviceDataSource {
         .let {
             wrapAsExpression<Long>(it)
         }
-        .alias(alias)
 }

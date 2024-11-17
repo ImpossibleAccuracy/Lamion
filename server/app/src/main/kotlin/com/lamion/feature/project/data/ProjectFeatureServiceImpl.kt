@@ -9,11 +9,8 @@ import com.lamion.feature.project.data.mapper.toProjectDomain
 import com.lamion.feature.project.domain.ProjectFeatureService
 import com.lamion.feature.shared.utils.require
 import com.lamion.utils.dbQuery
+import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
-import org.jetbrains.exposed.sql.and
-import org.jetbrains.exposed.sql.selectAll
-import org.jetbrains.exposed.sql.update
-import org.jetbrains.exposed.sql.updateReturning
 import org.springframework.stereotype.Service
 
 @Service
@@ -53,6 +50,7 @@ class ProjectFeatureServiceImpl : ProjectFeatureService {
                 ProjectTable.owner.eq(account.id)
                     .and(ProjectTable.deleted.eq(false))
             )
+            .orderBy(ProjectTable.id, SortOrder.ASC)
             .toList()
             .map { it.toProjectDomain() }
     }

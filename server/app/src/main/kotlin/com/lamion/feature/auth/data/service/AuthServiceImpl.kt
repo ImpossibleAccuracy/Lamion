@@ -41,6 +41,12 @@ class AuthServiceImpl @Autowired constructor(
         Authorization(account, roles)
     }
 
+    override suspend fun refresh(account: AccountDomain.Total): AuthResult =
+        AuthResult(
+            user = account,
+            token = generateToken(account),
+        )
+
     override suspend fun signIn(email: String, password: String): AuthResult = dbQuery {
         AccountDataSource
             .findAccountByEmail(email)

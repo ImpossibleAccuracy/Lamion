@@ -138,7 +138,7 @@ object ActivityDataSource {
             .select(dateQuery, countQuery)
             .where(where)
             .having {
-                countQuery.castTo(DoubleColumnType()).greater(avg)
+                countQuery.castTo(DoubleColumnType()).greaterEq(avg)
             }
             .groupBy(dateQuery)
             .toList()

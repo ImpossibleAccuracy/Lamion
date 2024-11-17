@@ -1,12 +1,18 @@
 package com.lamion.feature.auth.controller.payload.response
 
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.lamion.feature.shared.payload.AccountDto
+import com.lamion.domain.model.Id
 
 data class AuthResponse(
-    @JsonProperty("account")
-    val account: AccountDto.Public,
+    @JsonProperty("id")
+    val id: Id,
 
-    @JsonProperty("token")
+    @JsonProperty("username")
+    val username: String,
+
+    @JsonProperty("avatar")
+    val avatar: String?,
+
+    @JsonProperty("refreshToken")
     val token: String,
 )

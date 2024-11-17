@@ -3,8 +3,8 @@ package com.lamion.feature.projects.activity.controller.payload
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.lamion.feature.shared.payload.ChartDto
 import com.lamion.feature.shared.payload.FeatureDto
-import kotlinx.datetime.LocalDate
-import kotlinx.datetime.LocalTime
+import java.time.LocalDate
+import java.time.LocalTime
 
 data class ActivityDetailsDto(
     @JsonProperty("date")

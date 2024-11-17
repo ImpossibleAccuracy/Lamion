@@ -1,10 +1,8 @@
 package com.lamion.feature.account.controller
 
-import com.lamion.domain.model.AccountDomain
 import com.lamion.domain.model.Id
 import com.lamion.feature.account.domain.service.AccountService
 import com.lamion.feature.shared.controller.BaseController
-import com.lamion.feature.shared.utils.require
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.reactor.awaitSingle
@@ -29,23 +27,16 @@ class AvatarController(
     suspend fun accountAvatar(
         @PathVariable id: Id,
     ): ResponseEntity<Flow<DataBuffer>> = endpoint("Account avatar") {
-        val targetAccount = accountService
-            .getAccount(
-                caller = account,
-                target = id,
-            )
-            .require { "Account not found" }
-
-        processAccountAvatar(targetAccount)
+        processAccountAvatar(id)
     }
 
     @GetMapping("/me")
     suspend fun me(): ResponseEntity<Flow<DataBuffer>> = endpoint("My avatar") {
-        processAccountAvatar(account)
+        processAccountAvatar(account.id)
     }
 
-    private suspend fun processAccountAvatar(targetAccount: AccountDomain): ResponseEntity<Flow<DataBuffer>> {
-        val avatar = accountService.getAvatar(targetAccount)
+    private suspend fun processAccountAvatar(accountId: Id): ResponseEntity<Flow<DataBuffer>> {
+        val avatar = accountService.getAvatar(accountId)
             ?: return ResponseEntity.notFound().build()
 
         val file = fileStorageService.load(avatar.file)

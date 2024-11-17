@@ -18,7 +18,7 @@ import com.lamion.feature.projects.feature.domain.service.FeatureService
 import com.lamion.feature.projects.feature.domain.service.FunctionService
 import com.lamion.feature.shared.controller.BaseController
 import com.lamion.feature.shared.mapper.mapToDto
-import com.lamion.feature.shared.mapper.toDto
+import com.lamion.feature.shared.mapper.toDateTimeDto
 import com.lamion.feature.shared.payload.FeatureDto
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import jakarta.validation.Valid
@@ -58,7 +58,7 @@ class FeatureController(
                 }
 
                 FeaturesResponse(
-                    events = chart.await().toDto(),
+                    events = chart.await().toDateTimeDto(),
                     totalFeatures = total.await(),
                 )
             }

@@ -10,6 +10,7 @@ import com.lamion.feature.projects.users.domain.model.DeviceDomain
 import com.lamion.feature.projects.users.domain.service.DeviceService
 import com.lamion.utils.dbQuery
 import org.jetbrains.exposed.sql.Expression
+import org.jetbrains.exposed.sql.alias
 import org.springframework.stereotype.Service
 
 @Service
@@ -19,6 +20,7 @@ class DeviceServiceImpl : DeviceService {
         const val DEVICES_PAGE_SIZE = 50
     }
 
+    // FIXME: slow performance
     override suspend fun getPartialDeviceList(
         project: ProjectDomain,
         dateRange: ExtendedDateRange,
@@ -28,9 +30,9 @@ class DeviceServiceImpl : DeviceService {
 
         DeviceDataSource
             .getDevicesWithActivity(
-                currentMonthActivitySubquery = currentMonthActivity,
-                prevMonthActivitySubquery = prevMonthActivity,
-                project = project,
+                projectId = project.id,
+                currentMonthActivity = currentMonthActivity,
+                prevMonthActivity = prevMonthActivity,
                 count = count
             )
             .map {
@@ -57,15 +59,13 @@ class DeviceServiceImpl : DeviceService {
             projectId = project.id,
             start = dateRange.second.start,
             end = dateRange.second.end,
-            alias = "startErrors"
-        )
+        ).alias("startErrors")
 
         val prevMonthErrors = DeviceDataSource.createErrorSubquery(
             projectId = project.id,
             start = dateRange.first.start,
             end = dateRange.first.end,
-            alias = "endErrors"
-        )
+        ).alias("endErrors")
 
         DeviceDataSource
             .getDevicesWithActivityAndErrors(
@@ -101,15 +101,13 @@ class DeviceServiceImpl : DeviceService {
             projectId = project.id,
             start = dateRange.second.start,
             end = dateRange.second.end,
-            alias = "startActivity"
-        )
+        ).alias("startActivity")
 
         val prevMonthActivity = DeviceDataSource.createActivitySubquery(
             projectId = project.id,
             start = dateRange.first.start,
             end = dateRange.first.end,
-            alias = "endActivity"
-        )
+        ).alias("endActivity")
 
         return Pair(currentMonthActivity, prevMonthActivity)
     }

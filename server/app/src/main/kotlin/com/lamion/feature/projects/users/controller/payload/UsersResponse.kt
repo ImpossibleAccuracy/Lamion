@@ -4,15 +4,16 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.lamion.feature.shared.payload.ChartDto
 import com.lamion.feature.shared.payload.ComparisonDto
 import com.lamion.feature.shared.payload.DeviceDto
-import kotlinx.datetime.LocalDate
-import kotlinx.datetime.LocalTime
+import com.lamion.feature.shared.payload.ProgressDto
+import java.time.LocalDate
+import java.time.LocalTime
 
 data class UsersResponse(
-    @JsonProperty("total_users_chart")
-    val totalUsersChart: ChartDto<LocalDate, Long>,
+    @JsonProperty("total_users")
+    val totalUsers: ProgressDto<LocalDate, Long>,
 
-    @JsonProperty("active_users_chart")
-    val activeUsersChart: ChartDto<LocalDate, Long>,
+    @JsonProperty("active_users")
+    val activeUsers: ProgressDto<LocalDate, Long>,
 
     @JsonProperty("growth_rate")
     val growthRate: ComparisonDto<Double>,

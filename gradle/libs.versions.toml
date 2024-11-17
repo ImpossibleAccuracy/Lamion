@@ -15,6 +15,9 @@ postgresql = "42.7.4"
 # Ktor
 ktor = "3.0.0"
 
+# Jackson
+jackson = "2.18.1"
+
 # Other
 netty = "1.1.22"
 reactor = "1.2.3"
@@ -59,6 +62,10 @@ ktor-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-java = { module = "io.ktor:ktor-client-java", version.ref = "ktor" }
 ktor-serialization = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-serialization-json = { module = "io.ktor:ktor-serialization-jackson", version.ref = "ktor" }
+
+# Jackson
+jackson-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
+jackson-datatype = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "jackson" }
 
 # OTHER
 auth0 = { module = "com.auth0:java-jwt", version.ref = "auth0" }

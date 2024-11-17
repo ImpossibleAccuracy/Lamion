@@ -5,7 +5,7 @@ import com.lamion.domain.service.project.ProjectService
 import com.lamion.feature.projects.settings.controller.payload.ProjectSettingsResponse
 import com.lamion.feature.projects.settings.domain.service.ProjectAccessKeyService
 import com.lamion.feature.shared.controller.BaseController
-import com.lamion.feature.shared.payload.AccessKeysDto
+import com.lamion.feature.shared.mapper.toDto
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -34,11 +34,8 @@ class ProjectSettingsController(
                 ProjectSettingsResponse(
                     title = project.title,
                     description = project.description,
-                    accessKeys = accessKeys.map { token ->
-                        AccessKeysDto(
-                            title = token.title,
-                            createdAt = token.createdAt,
-                        )
+                    accessKeys = accessKeys.map {
+                        it.toDto()
                     }
                 )
             }

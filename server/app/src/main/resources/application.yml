@@ -1,7 +1,5 @@
 server:
   port: ${API_PORT:8080}
-  servlet:
-    contextPath: /api
 
 spring:
   datasource:
@@ -12,12 +10,12 @@ spring:
 
 app:
   token:
-    secret: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-    issuer: http://localhost/
-    audience: http://localhost/
-    ttl: 604800000
+    secret: ${JWT_SECRET}
+    issuer: ${JWT_ISSUER}
+    audience: ${JWT_AUDIENCE}
+    ttl: ${JWT_TTL}
   resources:
-    resources-url: /account/avatar/
+    resources-url: ${SERVER_URL}/account/avatar/
   storage:
     store-path: ${STORE_PATH}
     file-name-pattern: "{FILE_HASH}_{TIMESTAMP}.{EXTENSION}"
@@ -25,3 +23,5 @@ app:
     github:
       client-id: ${GITHUB_CLIENT_ID}
       client-secret: ${GITHUB_CLIENT_SECRET}
+  cors:
+    - ${WORKSPACE_URL}

@@ -37,6 +37,10 @@ dependencies {
     implementation(libs.spring.swagger.ui)
     implementation(libs.spring.swagger.api)
 
+    // Jackson
+    implementation(libs.jackson.kotlin)
+    implementation(libs.jackson.datatype)
+
     // Other
     implementation(libs.auth0)
 }

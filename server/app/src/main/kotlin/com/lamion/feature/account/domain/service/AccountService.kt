@@ -16,7 +16,7 @@ interface AccountService {
         username: String?,
     ): AccountDomain.Total
 
-    suspend fun getAvatar(account: AccountDomain): com.lamion.domain.service.file.LocalFile?
+    suspend fun getAvatar(accountId: Id): com.lamion.domain.service.file.LocalFile?
 
     suspend fun updateAvatar(
         account: AccountDomain,

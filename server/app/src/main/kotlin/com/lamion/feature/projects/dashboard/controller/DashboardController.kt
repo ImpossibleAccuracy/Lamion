@@ -9,6 +9,7 @@ import com.lamion.domain.service.project.ProjectService
 import com.lamion.feature.projects.dashboard.controller.payload.DashboardResponse
 import com.lamion.feature.projects.dashboard.domain.service.MainDashboardService
 import com.lamion.feature.shared.controller.BaseController
+import com.lamion.feature.shared.mapper.toDateTimeDto
 import com.lamion.feature.shared.mapper.toDto
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.web.bind.annotation.*
@@ -78,7 +79,7 @@ class DashboardController(
                 ),
                 topFeatures = topFeatures.map(FeatureWithEvents::toDto),
                 calendar = activity.map(CalendarItemDomain::toDto),
-                userActivityTime = userActivityTime.toDto()
+                userActivityTime = userActivityTime.toDateTimeDto()
             )
         }
     }

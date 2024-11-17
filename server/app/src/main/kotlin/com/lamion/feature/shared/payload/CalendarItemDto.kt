@@ -1,7 +1,7 @@
 package com.lamion.feature.shared.payload
 
 import com.fasterxml.jackson.annotation.JsonProperty
-import kotlinx.datetime.LocalDate
+import java.time.LocalDate
 
 data class CalendarItemDto(
     @JsonProperty("date")

@@ -3,8 +3,10 @@ package com.lamion.feature.account.data.service
 import com.lamion.data.database.table.AccountTable
 import com.lamion.domain.model.AccountDomain
 import com.lamion.domain.model.Id
+import com.lamion.domain.service.file.LocalFile
 import com.lamion.feature.account.data.mapper.toAccountDomain
 import com.lamion.feature.account.domain.service.AccountService
+import com.lamion.feature.shared.utils.require
 import com.lamion.utils.dbQuery
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.selectAll
@@ -28,11 +30,14 @@ class AccountServiceImpl(
     }
 
     override suspend fun getAccount(caller: AccountDomain, target: Id): AccountDomain? = dbQuery {
+        findAccount(target)
+    }
+
+    private fun findAccount(id: Id) =
         AccountTable.selectAll()
-            .where(AccountTable.id.eq(target))
+            .where(AccountTable.id.eq(id))
             .firstOrNull()
             ?.toAccountDomain()
-    }
 
     override suspend fun updateAccount(
         account: AccountDomain,
@@ -53,9 +58,13 @@ class AccountServiceImpl(
             .toAccountDomain()
     }
 
-    override suspend fun getAvatar(account: AccountDomain): com.lamion.domain.service.file.LocalFile? =
-        account.avatar?.let { avatarId ->
-            fileStorageService.getFileById(avatarId)
+    override suspend fun getAvatar(accountId: Id): LocalFile? =
+        dbQuery {
+            findAccount(accountId)
+                .require { "Account not found" }
+                .avatar?.let { avatarId ->
+                    fileStorageService.getFileById(avatarId)
+                }
         }
 
     override suspend fun updateAvatar(account: AccountDomain, file: FilePart) {
