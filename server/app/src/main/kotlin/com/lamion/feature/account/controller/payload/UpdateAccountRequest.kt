@@ -6,9 +6,9 @@ import com.lamion.server.validation.NullOrNotBlank
 data class UpdateAccountRequest(
     @field:NullOrNotBlank
     @JsonProperty("email")
-    val email: String,
+    val email: String?,
 
     @field:NullOrNotBlank
     @JsonProperty("username")
-    val username: String,
+    val username: String?,
 )

@@ -1,6 +1,9 @@
 package com.lamion.domain.service.activity
 
-import com.lamion.domain.model.*
+import com.lamion.domain.model.CalendarItemDomain
+import com.lamion.domain.model.ChartDomain
+import com.lamion.domain.model.DateRange
+import com.lamion.domain.model.ProjectDomain
 import kotlinx.datetime.LocalTime
 
 interface ActivityService {
@@ -13,10 +16,4 @@ interface ActivityService {
         project: ProjectDomain,
         dateRange: DateRange,
     ): ChartDomain<LocalTime, Long>
-
-    suspend fun getTopFeatures(
-        project: ProjectDomain,
-        dateRange: DateRange,
-        count: Int,
-    ): List<FeatureWithEvents>
 }

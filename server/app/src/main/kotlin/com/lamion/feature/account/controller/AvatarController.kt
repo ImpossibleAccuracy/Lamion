@@ -49,11 +49,18 @@ class AvatarController(
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/me", consumes = [MediaType.MULTIPART_FORM_DATA_VALUE])
-    suspend fun updateAvatar(@RequestPart("file", required = true) multipartFileMono: Mono<FilePart>) =
-        endpoint("Avatar update") {
-            accountService.updateAvatar(
-                account = account,
-                file = multipartFileMono.awaitSingle(),
-            )
-        }
+    suspend fun updateAvatar(
+        @RequestPart("file", required = true) multipartFileMono: Mono<FilePart>
+    ) = endpoint("Avatar update") {
+        accountService.updateAvatar(
+            account = account,
+            file = multipartFileMono.awaitSingle(),
+        )
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/me")
+    suspend fun deleteAvatar() = endpoint("Avatar delete") {
+        accountService.deleteAvatar(account = account)
+    }
 }

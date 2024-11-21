@@ -1,24 +1,26 @@
 package com.lamion.feature.projects.feature.controller
 
 import com.lamion.domain.exception.InvalidArgumentsException
+import com.lamion.domain.exception.ResourceNotFoundException
 import com.lamion.domain.model.Id
 import com.lamion.domain.model.TimePeriod
+import com.lamion.domain.service.errors.ErrorsService
 import com.lamion.domain.service.event.EventService
 import com.lamion.domain.service.project.ProjectService
 import com.lamion.feature.projects.feature.controller.mapper.toDto
 import com.lamion.feature.projects.feature.controller.mapper.toPartialDto
 import com.lamion.feature.projects.feature.controller.payload.request.CreateFeatureRequest
-import com.lamion.feature.projects.feature.controller.payload.request.FeaturesSort
+import com.lamion.feature.projects.feature.controller.payload.request.DefaultSort
 import com.lamion.feature.projects.feature.controller.payload.request.UpdateFeatureRequest
+import com.lamion.feature.projects.feature.controller.payload.response.FeatureDetailsResponse
 import com.lamion.feature.projects.feature.controller.payload.response.FeaturesResponse
 import com.lamion.feature.projects.feature.controller.payload.response.TopFeaturesResponse
 import com.lamion.feature.projects.feature.domain.model.FeatureDomain
-import com.lamion.feature.projects.feature.domain.service.FeatureDashboardService
-import com.lamion.feature.projects.feature.domain.service.FeatureService
-import com.lamion.feature.projects.feature.domain.service.FunctionService
+import com.lamion.feature.projects.feature.domain.service.ExtendedFeatureService
+import com.lamion.feature.projects.function.domain.FunctionService
 import com.lamion.feature.shared.controller.BaseController
+import com.lamion.feature.shared.mapper.buildProgressDto
 import com.lamion.feature.shared.mapper.mapToDto
-import com.lamion.feature.shared.mapper.toDateTimeDto
 import com.lamion.feature.shared.payload.FeatureDto
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import jakarta.validation.Valid
@@ -31,10 +33,10 @@ import kotlin.math.roundToLong
 @SecurityRequirement(name = "jwt")
 class FeatureController(
     private val projectService: ProjectService,
-    private val featureService: FeatureService,
+    private val extendedFeatureService: ExtendedFeatureService,
     private val functionService: FunctionService,
     private val eventService: EventService,
-    private val dashboardService: FeatureDashboardService,
+    private val errorService: ErrorsService,
 ) : BaseController() {
     companion object {
         private const val DEFAULT_CHART_SIZE = 10
@@ -48,18 +50,27 @@ class FeatureController(
         projectService
             .require(projectId, account)
             .let { project ->
-                val dateRange = period.toSimpleDateRange()
+                val extendedDateRange = period.toExtendedDateRange()
+                val dateRange = extendedDateRange.toDateRange()
 
-                val chart = logTimeAsync("Events group by date querying took: %s") {
-                    dashboardService.countEventsGroupByDate(project, dateRange)
+                val totalEventsChart = logTimeAsync("Events group by date querying took: %s") {
+                    eventService.countEventsGroupByDate(project, dateRange)
                 }
-                val total = logTimeAsync("Total features count querying took: %s") {
-                    featureService.count(project)
+                val totalEventsComparison = logTimeAsync("Events comparison querying took: %s") {
+                    eventService.getEventsComparison(project, extendedDateRange)
+                }
+
+                val totalFeaturesCount = logTimeAsync("Total features count querying took: %s") {
+                    extendedFeatureService.count(project)
                 }
 
                 FeaturesResponse(
-                    events = chart.await().toDateTimeDto(),
-                    totalFeatures = total.await(),
+                    events = buildProgressDto(
+                        dateRange = dateRange,
+                        chart = totalEventsChart.await(),
+                        comparison = totalEventsComparison.await(),
+                    ),
+                    totalFeatures = totalFeaturesCount.await(),
                 )
             }
     }
@@ -70,20 +81,24 @@ class FeatureController(
         @PathVariable("pId") pId: Id,
         @RequestBody @Valid body: CreateFeatureRequest,
     ): FeatureDto.Partial = endpoint("create feature") {
+        if (body.functions.any { it == null }) {
+            throw InvalidArgumentsException("Functions cannot be null")
+        }
+
         projectService
             .require(pId, account)
             .let { project ->
-                if (!functionService.exists(project, body.functions)) {
+                if (!functionService.exists(project, body.functions.map { it!! })) {
                     throw InvalidArgumentsException("One or more functions was not found")
                 }
 
                 logTime("Feature creation took: %s") {
-                    featureService.create(
+                    extendedFeatureService.create(
                         project = project,
                         account = account,
                         title = body.title,
                         description = body.description,
-                        functions = body.functions,
+                        functions = body.functions.map { it!! },
                     )
                 }
             }
@@ -94,12 +109,12 @@ class FeatureController(
     suspend fun list(
         @PathVariable("pId") projectId: Id,
         @RequestParam("p", required = false) page: Long = 0,
-        @RequestParam("sort", required = false) sort: FeaturesSort = FeaturesSort.EVENTS_COUNT,
+        @RequestParam("sort", required = false) sort: DefaultSort = DefaultSort.DEFAULT,
     ): List<FeatureDto.Detailed> = endpoint("list feature") {
         projectService
             .require(projectId, account)
             .let { project ->
-                featureService
+                extendedFeatureService
                     .list(
                         project = project,
                         page = page,
@@ -121,7 +136,7 @@ class FeatureController(
                 val dateRange = period.toSimpleDateRange()
 
                 val topFeatures = logTimeAsync("Top features querying took: %s") {
-                    dashboardService.getTopFeatures(
+                    extendedFeatureService.getTopFeaturesWithEventsCount(
                         project = project,
                         dateRange = dateRange,
                         count = count,
@@ -133,7 +148,7 @@ class FeatureController(
                 }
 
                 val averageEvents = logTimeAsync("Average events count querying took: %s") {
-                    dashboardService.countAverageEventsPerDay(project, dateRange)
+                    eventService.countAverageEventsPerDay(project, dateRange)
                 }
 
                 TopFeaturesResponse(
@@ -146,19 +161,69 @@ class FeatureController(
             }
     }
 
-    @PostMapping("/{featureId}")
+    @GetMapping("/{featureId}")
+    suspend fun details(
+        @PathVariable("pId") pId: Id,
+        @PathVariable("featureId") featureId: Id,
+        @RequestParam("period", required = false) period: TimePeriod = TimePeriod.DEFAULT,
+    ): FeatureDetailsResponse = endpoint("feature details") {
+        projectService
+            .require(pId, account)
+            .let { projectDomain ->
+                extendedFeatureService.get(featureId, projectDomain)
+            }
+            .let { feature ->
+                val extendedDateRange = period.toExtendedDateRange()
+                val dateRange = extendedDateRange.toDateRange()
+
+                val tags = logTimeAsync("Feature tags took: %s") {
+                    extendedFeatureService.getFeatureTags(feature)
+                }
+
+                val eventsComparison = logTimeAsync("Events comparison took: %s") {
+                    eventService.getEventsComparison(feature, extendedDateRange)
+                }
+                val eventsChart = logTimeAsync("Events group by date took: %s") {
+                    eventService.countEventsGroupByDate(feature, dateRange)
+                }
+
+                val errorsComparison = logTimeAsync("Errors comparison took: %s") {
+                    errorService.getTotalErrorsComparison(feature, extendedDateRange)
+                }
+                val errorsChart = logTimeAsync("Errors group by date took: %s") {
+                    errorService.countErrorsGroupByDateByFeature(feature, dateRange)
+                }
+
+                FeatureDetailsResponse(
+                    feature = feature.toPartialDto(),
+                    tags = tags.await(),
+                    events = buildProgressDto(
+                        dateRange = dateRange,
+                        comparison = eventsComparison.await(),
+                        chart = eventsChart.await(),
+                    ),
+                    errors = buildProgressDto(
+                        dateRange = dateRange,
+                        comparison = errorsComparison.await(),
+                        chart = errorsChart.await(),
+                    )
+                )
+            }
+    }
+
+    @PutMapping("/{featureId}")
     suspend fun update(
         @PathVariable("pId") pId: Id,
         @PathVariable("featureId") featureId: Id,
         @RequestBody @Valid body: UpdateFeatureRequest,
-    ): FeatureDto = endpoint("update feature") {
+    ) = endpoint("update feature") {
         projectService
             .require(pId, account)
             .let { projectDomain ->
-                featureService.get(featureId, projectDomain)
+                extendedFeatureService.get(featureId, projectDomain)
             }
             .let { feature ->
-                featureService.update(
+                extendedFeatureService.update(
                     feature = feature,
                     account = account,
                     title = body.title,
@@ -166,6 +231,29 @@ class FeatureController(
                 )
             }
             .toPartialDto()
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{featureId}/functions/{functionId}")
+    suspend fun detachFunction(
+        @PathVariable("pId") pId: Id,
+        @PathVariable("featureId") featureId: Id,
+        @PathVariable("functionId") functionId: Id,
+    ): Unit = endpoint("detach function") {
+        projectService
+            .require(pId, account)
+            .let { project ->
+                val feature = extendedFeatureService.get(featureId, project)
+
+                if (!functionService.exists(project, listOf(functionId))) {
+                    throw ResourceNotFoundException("Function not found")
+                }
+
+                functionService.detachFunction(
+                    feature = feature,
+                    functionId = functionId
+                )
+            }
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -177,10 +265,10 @@ class FeatureController(
         projectService
             .require(pId, account)
             .let { projectDomain ->
-                featureService.get(featureId, projectDomain)
+                extendedFeatureService.get(featureId, projectDomain)
             }
             .let { feature ->
-                featureService.delete(
+                extendedFeatureService.delete(
                     feature = feature,
                     account = account,
                 )

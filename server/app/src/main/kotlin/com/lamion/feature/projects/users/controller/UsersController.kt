@@ -4,11 +4,11 @@ import com.lamion.domain.model.Id
 import com.lamion.domain.model.TimePeriod
 import com.lamion.domain.service.activity.ActivityService
 import com.lamion.domain.service.analytics.AnalyticsService
+import com.lamion.domain.service.event.EventService
 import com.lamion.domain.service.project.ProjectService
+import com.lamion.domain.service.users.UsersService
+import com.lamion.feature.projects.device.domain.DeviceService
 import com.lamion.feature.projects.users.controller.payload.UsersResponse
-import com.lamion.feature.projects.users.domain.service.DeviceService
-import com.lamion.feature.projects.users.domain.service.PlatformService
-import com.lamion.feature.projects.users.domain.service.UsersDashboardService
 import com.lamion.feature.shared.controller.BaseController
 import com.lamion.feature.shared.mapper.buildProgressDto
 import com.lamion.feature.shared.mapper.toDateTimeDto
@@ -23,10 +23,10 @@ import org.springframework.web.bind.annotation.*
 class UsersController(
     private val analyticsService: AnalyticsService,
     private val projectService: ProjectService,
-    private val usersService: UsersDashboardService,
     private val deviceService: DeviceService,
     private val activityService: ActivityService,
-    private val platformService: PlatformService,
+    private val usersService: UsersService,
+    private val eventService: EventService,
 ) : BaseController() {
     companion object {
         const val TOP_DEVICES_COUNT = 10
@@ -44,25 +44,25 @@ class UsersController(
                 val dateRange = extendedDateRange.toDateRange()
 
                 val totalUsersComparison = logTimeAsync("Total users comparison querying took: %s") {
-                    analyticsService.getTotalUsers(project, extendedDateRange)
+                    usersService.getTotalUsers(project, extendedDateRange)
                 }
                 val totalUsers = logTimeAsync("Total users querying took: %s") {
-                    usersService.countUsersGroupByDate(project, dateRange)
+                    usersService.countTotalUsersGroupByDate(project, dateRange)
                 }
 
                 val activeUsersComparison = logTimeAsync("Active users comparison querying took: %s") {
-                    analyticsService.getActiveUsers(project, extendedDateRange)
+                    usersService.getActiveUsers(project, extendedDateRange)
                 }
                 val activeUsers = logTimeAsync("Active users querying took: %s") {
                     usersService.countActiveUsersGroupByDate(project, dateRange)
                 }
 
                 val growthRate = logTimeAsync("Growth rate querying took: %s") {
-                    usersService.computeGrowthRate(project, period)
+                    analyticsService.computeGrowthRate(project, period)
                 }
 
                 val platforms = logTimeAsync("Platforms querying took: %s") {
-                    platformService.countEventsGroupByPlatforms(project, dateRange)
+                    eventService.countEventsByPlatform(project, dateRange)
                 }
 
                 val userActivity = logTimeAsync("User activity querying took: %s") {

@@ -5,6 +5,7 @@ import com.lamion.domain.model.FeatureWithEvents
 import com.lamion.domain.model.Id
 import com.lamion.domain.model.TimePeriod
 import com.lamion.domain.service.activity.ActivityService
+import com.lamion.domain.service.feature.FeatureService
 import com.lamion.domain.service.project.ProjectService
 import com.lamion.feature.projects.dashboard.controller.payload.DashboardResponse
 import com.lamion.feature.projects.dashboard.domain.service.MainDashboardService
@@ -21,6 +22,7 @@ class DashboardController(
     private val projectService: ProjectService,
     private val dashboardService: MainDashboardService,
     private val activityService: ActivityService,
+    private val featureService: FeatureService,
 ) : BaseController() {
     @GetMapping("/full")
     suspend fun dashboard(
@@ -42,7 +44,7 @@ class DashboardController(
         }
 
         val topFeaturesDeferred = logTimeAsync("Top features querying took: %s") {
-            activityService.getTopFeatures(
+            featureService.getTopFeaturesList(
                 project = project,
                 dateRange = dateRange,
                 count = 10 // TODO

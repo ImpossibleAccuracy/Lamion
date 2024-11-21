@@ -79,6 +79,12 @@ class AccountServiceImpl(
         }
     }
 
+    override suspend fun deleteAvatar(account: AccountDomain): Unit = dbQuery {
+        AccountTable.update(where = { AccountTable.id eq account.id }) {
+            it[avatar] = null
+        }
+    }
+
     private fun assertFileIsAcceptable(file: FilePart) {
         val headers = file.headers()
 

@@ -1,27 +1,12 @@
 package com.lamion.domain.service.analytics
 
 import com.lamion.domain.model.ComparisonDomain
-import com.lamion.domain.model.ExtendedDateRange
 import com.lamion.domain.model.ProjectDomain
+import com.lamion.domain.model.TimePeriod
 
 interface AnalyticsService {
-    suspend fun getTotalUsers(
+    suspend fun computeGrowthRate(
         project: ProjectDomain,
-        dateRange: ExtendedDateRange
-    ): ComparisonDomain<Long>
-
-    suspend fun getActiveUsers(
-        project: ProjectDomain,
-        dateRange: ExtendedDateRange
-    ): ComparisonDomain<Long>
-
-    suspend fun getTotalEvents(
-        project: ProjectDomain,
-        dateRange: ExtendedDateRange
-    ): ComparisonDomain<Long>
-
-    suspend fun getTotalErrors(
-        project: ProjectDomain,
-        dateRange: ExtendedDateRange
-    ): ComparisonDomain<Long>
+        timePeriod: TimePeriod,
+    ): ComparisonDomain<Double>
 }

@@ -1,6 +1,5 @@
 package com.lamion.feature.projects.feature.data.datasource
 
-import com.lamion.data.database.table.project.ErrorTable
 import com.lamion.data.database.table.project.EventTable
 import com.lamion.data.database.table.project.FeatureTable
 import com.lamion.data.database.table.project.FunctionTable
@@ -8,13 +7,11 @@ import com.lamion.data.database.table.refs.FeatureFunctionRef
 import com.lamion.data.database.utils.new
 import com.lamion.domain.model.Id
 import com.lamion.feature.projects.feature.domain.model.FeatureDomain
-import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.between
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.inList
-import org.jetbrains.exposed.sql.kotlin.datetime.KotlinLocalDateColumnType
 
 object FeatureDataSource {
     fun createFeature(
@@ -72,31 +69,6 @@ object FeatureDataSource {
         )
         .count()
 
-
-    fun getEventsGroupByDate(
-        projectId: Id,
-        start: LocalDateTime,
-        end: LocalDateTime,
-    ): Map<LocalDate, Long> {
-        val dateQuery = EventTable.createdAt.castTo(KotlinLocalDateColumnType())
-        val countQuery = EventTable.id.count()
-
-        return EventTable
-            .innerJoin(FunctionTable)
-            .select(dateQuery, countQuery)
-            .where(
-                FunctionTable.project.eq(projectId)
-                    .and(EventTable.createdAt.between(start, end))
-                    .and(FunctionTable.deleted.eq(false))
-            )
-            .groupBy(dateQuery)
-            .orderBy(dateQuery)
-            .toList()
-            .associate {
-                it[dateQuery] to it[countQuery]
-            }
-    }
-
     fun findFeaturesOrderByEventsCount(
         projectId: Id,
         eventsCountQuery: Expression<Long>,
@@ -131,10 +103,6 @@ object FeatureDataSource {
         limit: Int,
         offset: Long,
     ) = FeatureTable
-        .innerJoin(FeatureFunctionRef)
-        .innerJoin(FunctionTable)
-        .innerJoin(EventTable)
-        .innerJoin(ErrorTable)
         .select(
             eventsCountQuery,
             functionsCountQuery,
@@ -144,7 +112,6 @@ object FeatureDataSource {
         .where(
             FeatureTable.project.eq(projectId)
                 .and(FeatureTable.deleted.eq(false))
-                .and(FunctionTable.deleted.eq(false))
         )
         .groupBy(*FeatureTable.columns.toTypedArray())
         .orderBy(orderStatement, SortOrder.DESC)
@@ -177,6 +144,7 @@ object FeatureDataSource {
                 FunctionTable.id,
                 FunctionTable.title,
             )
+            .orderBy(eventsCountQuery, SortOrder.DESC)
             .toList()
             .map {
                 val eventsCount = it[eventsCountQuery]

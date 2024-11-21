@@ -8,11 +8,22 @@ sealed interface FunctionDto {
     val title: String
 
     data class Partial(
-        @JsonProperty("ud")
+        @JsonProperty("id")
         override val id: Id,
 
         @JsonProperty("title")
         override val title: String,
+    ) : FunctionDto
+
+    data class WithEvents(
+        @JsonProperty("id")
+        override val id: Id,
+
+        @JsonProperty("title")
+        override val title: String,
+
+        @JsonProperty("events")
+        val events: Long,
     ) : FunctionDto
 
     data class Detailed(
@@ -22,8 +33,8 @@ sealed interface FunctionDto {
         @JsonProperty("title")
         override val title: String,
 
-        @JsonProperty("total_events")
-        val totalEvents: Long,
+        @JsonProperty("events")
+        val events: Long,
 
         @JsonProperty("features")
         val features: List<FeatureDto.Partial>,

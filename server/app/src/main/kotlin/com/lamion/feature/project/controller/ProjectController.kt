@@ -5,7 +5,7 @@ import com.lamion.domain.model.ProjectDomain
 import com.lamion.feature.project.controller.mapper.toDto
 import com.lamion.feature.project.controller.payload.CreateProjectRequest
 import com.lamion.feature.project.controller.payload.UpdateProjectRequest
-import com.lamion.feature.project.domain.ProjectFeatureService
+import com.lamion.feature.project.domain.ExtendedProjectService
 import com.lamion.feature.shared.controller.BaseController
 import com.lamion.feature.shared.payload.ProjectDto
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
@@ -17,14 +17,14 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/project")
 @SecurityRequirement(name = "jwt")
 class ProjectController(
-    private val projectFeatureService: ProjectFeatureService,
+    private val extendedProjectService: ExtendedProjectService,
 ) : BaseController() {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     suspend fun create(
         @RequestBody @Valid body: CreateProjectRequest
     ): ProjectDto = endpoint("create project") {
-        projectFeatureService
+        extendedProjectService
             .create(
                 owner = account,
                 title = body.title,
@@ -35,7 +35,7 @@ class ProjectController(
 
     @GetMapping
     suspend fun list(): List<ProjectDto> = endpoint("projects list") {
-        projectFeatureService
+        extendedProjectService
             .list(account)
             .map(ProjectDomain::toDto)
     }
@@ -45,10 +45,10 @@ class ProjectController(
         @PathVariable("pId") projectId: Id,
         @RequestBody @Valid body: UpdateProjectRequest,
     ) = endpoint("update project") {
-        projectFeatureService
+        extendedProjectService
             .require(projectId, account)
             .let { projectDomain ->
-                projectFeatureService
+                extendedProjectService
                     .update(
                         project = projectDomain,
                         account = account,
@@ -64,10 +64,10 @@ class ProjectController(
     suspend fun delete(
         @PathVariable("pId") projectId: Id
     ): Unit = endpoint("delete project") {
-        projectFeatureService
+        extendedProjectService
             .require(projectId, account)
             .let { projectDomain ->
-                projectFeatureService.delete(projectDomain, account)
+                extendedProjectService.delete(projectDomain, account)
             }
     }
 }
