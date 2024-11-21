@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service
 @Service
 class FunctionServiceImpl : FunctionService {
     companion object {
-        const val PAGE_SIZE = 30
+        const val PAGE_SIZE = 50
     }
 
     override suspend fun exists(project: ProjectDomain, ids: List<Id>): Boolean = dbQuery {
@@ -61,7 +61,8 @@ class FunctionServiceImpl : FunctionService {
         globalSearch: String?,
         name: String?,
         features: List<Id>?,
-        tags: List<Id>?
+        tags: List<Id>?,
+        page: Long,
     ): List<FunctionDomain.Detailed> = dbQuery {
         coroutineScope {
             val totalEventsQuery = EventTable.id.count().alias("totalEvents")
@@ -73,9 +74,10 @@ class FunctionServiceImpl : FunctionService {
                     globalSearch = globalSearch,
                     name = name,
                     features = features,
-                    tags = tags
+                    tags = tags,
+                    limit = PAGE_SIZE,
+                    offset = page * PAGE_SIZE
                 )
-                .toList()
                 .map {
                     async {
                         val id = it[FunctionTable.id].value

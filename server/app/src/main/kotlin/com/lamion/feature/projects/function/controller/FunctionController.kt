@@ -76,7 +76,7 @@ class FunctionController(
             .require(projectId, account)
             .let { project ->
                 features?.let {
-                    if (featureService.exists(project, features)) {
+                    if (!featureService.exists(project, features)) {
                         throw InvalidArgumentsException("One or more feature was not found")
                     }
                 }
@@ -86,7 +86,8 @@ class FunctionController(
                     globalSearch = globalSearch,
                     name = name,
                     features = features,
-                    tags = tags
+                    tags = tags,
+                    page = page,
                 )
             }
             .map(FunctionDomain.Detailed::toDto)

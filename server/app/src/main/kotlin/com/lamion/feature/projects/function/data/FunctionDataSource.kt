@@ -73,12 +73,15 @@ object FunctionDataSource {
         globalSearch: String?,
         name: String?,
         features: List<Id>?,
-        tags: List<Id>?
+        tags: List<Id>?,
+        limit: Int,
+        offset: Long,
     ) = FunctionTable
         .leftJoin(EventTable)
         .leftJoin(FeatureFunctionRef)
         .leftJoin(FeatureTable)
         .leftJoin(FunctionTagRef)
+        .leftJoin(FunctionTagTable)
         .select(
             totalEventsQuery,
             *FunctionTable.columns.toTypedArray(),
@@ -88,14 +91,17 @@ object FunctionDataSource {
                 FunctionTable.project.eq(projectId),
                 globalSearch
                     ?.takeIf { it.isNotBlank() }
+                    ?.lowercase()
                     ?.let {
-                        FunctionTable.title.like("%$it%")
-                            .or(FeatureTable.title.like("%$it%"))
+                        FunctionTable.title.lowerCase().like("%$it%")
+                            .or(FeatureTable.title.lowerCase().like("%$it%"))
+                            .or(FunctionTagTable.title.lowerCase().like("%$it%"))
                     },
                 name
                     ?.takeIf { it.isNotBlank() }
+                    ?.lowercase()
                     ?.let {
-                        FunctionTable.title.like("%$it%")
+                        FunctionTable.title.lowerCase().like("%$it%")
                     },
                 features
                     ?.takeIf { it.isNotEmpty() }
@@ -109,7 +115,9 @@ object FunctionDataSource {
                     }
             )
         }
+        .limit(limit, offset)
         .groupBy(FunctionTable.id)
+        .toList()
 
     fun getFeatures(functionId: Id): List<ResultRow> =
         FeatureTable

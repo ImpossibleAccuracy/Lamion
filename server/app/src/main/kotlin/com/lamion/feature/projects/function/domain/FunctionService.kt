@@ -21,6 +21,7 @@ interface FunctionService {
         name: String?,
         features: List<Id>?,
         tags: List<Id>?,
+        page: Long,
     ): List<FunctionDomain.Detailed>
 
     suspend fun detachFunction(feature: FeatureDomain, functionId: Id)
