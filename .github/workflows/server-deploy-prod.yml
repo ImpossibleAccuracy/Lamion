@@ -36,6 +36,3 @@ jobs:
           service_id: ${{ secrets.PROD_SERVICE_ID }}
           api_key: ${{ secrets.PROD_API_KEY }}
           wait_deploy: true
-          github_deployment: true
-          deployment_environment: 'release'
-          github_token: ${{ secrets.GITHUB_TOKEN }}

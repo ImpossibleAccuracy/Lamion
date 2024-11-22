@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - "develop"
+      - "feature/ci-cd-*"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -36,6 +37,3 @@ jobs:
           service_id: ${{ secrets.DEV_SERVICE_ID }}
           api_key: ${{ secrets.DEV_API_KEY }}
           wait_deploy: true
-          github_deployment: true
-          deployment_environment: 'develop'
-          github_token: ${{ secrets.GITHUB_TOKEN }}
