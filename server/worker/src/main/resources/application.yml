@@ -1,5 +1,5 @@
 server:
-  port: ${WORKER_PORT}
+  port: ${PORT}
   servlet:
     contextPath: /v1
 
