@@ -1,5 +1,6 @@
 .gradle
 build/
+.kotlin
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
@@ -35,10 +36,9 @@ out/
 ### VS Code ###
 .vscode/
 
-### APP TEMP FILES ###
-/database/data/
-/database/logs/
-
 ### APP SECRETS ###
 .env
 .env.local
+
+### APP TEMP FILES ###
+TEMP_STORE

@@ -1,0 +1,7 @@
+logging:
+  level:
+    Exposed: DEBUG
+
+spring:
+  exposed:
+    show-sql: true

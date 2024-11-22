@@ -2,20 +2,23 @@ rootProject.name = "Lamion"
 
 pluginManagement {
     repositories {
-        google()
-        gradlePluginPortal()
         mavenCentral()
+        gradlePluginPortal()
+        google()
     }
 }
 
 dependencyResolutionManagement {
     @Suppress("UnstableApiUsage")
     repositories {
-        google()
-        gradlePluginPortal()
         mavenCentral()
+        gradlePluginPortal()
+        google()
     }
 }
 
-include(":server:app")
-include(":server:security")
+include(
+    ":server:shared",
+    ":server:worker",
+    ":server:app",
+)

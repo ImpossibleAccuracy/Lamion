@@ -1,7 +1,5 @@
 server:
-  port: ${PORT:8080}
-  servlet:
-    contextPath: /api
+  port: ${API_PORT:8080}
 
 spring:
   datasource:
@@ -9,24 +7,21 @@ spring:
     username: ${DATABASE_USER}
     password: ${DATABASE_PASSWORD}
     url: ${DATABASE_URL}
-  security:
-    filter:
-      order: 10
-  jpa:
-    show-sql: false
-    hibernate:
-      ddl-auto: none
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-    properties:
-      hibernate:
-        format_sql: false
-        dialect: org.hibernate.dialect.PostgreSQLDialect
 
 app:
   token:
-    secret: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-    issuer: http://localhost/
-    audience: http://localhost/
-    claimName: http://localhost/
-    ttl: 604800000
+    secret: ${JWT_SECRET}
+    issuer: ${JWT_ISSUER}
+    audience: ${JWT_AUDIENCE}
+    ttl: ${JWT_TTL}
+  resources:
+    resources-url: ${SERVER_URL}/account/avatar/
+  storage:
+    store-path: ${STORE_PATH}
+    file-name-pattern: "{FILE_HASH}_{TIMESTAMP}.{EXTENSION}"
+  oauth:
+    github:
+      client-id: ${GITHUB_CLIENT_ID}
+      client-secret: ${GITHUB_CLIENT_SECRET}
+  cors:
+    - ${WORKSPACE_URL}
