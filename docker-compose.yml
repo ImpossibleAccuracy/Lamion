@@ -1,7 +1,3 @@
-x-database-vars: &database-props
-  DATABASE_URL: "jdbc:postgresql://database:5432/$DATABASE_NAME"
-
-
 services:
   database:
     build:
@@ -39,7 +35,7 @@ services:
     env_file:
       - .env
     environment:
-      - *database-props
+      - DATABASE_URL=jdbc:postgresql://database:5432/$DATABASE_NAME
       - SERVER_URL=http://localhost:${API_PORT}/
     networks:
       - database
@@ -54,7 +50,8 @@ services:
       - "9000:${WORKER_PORT}"
     env_file:
       - .env
-    environment: *database-props
+    environment:
+      - DATABASE_URL=jdbc:postgresql://database:5432/$DATABASE_NAME
     networks:
       - database
 
