@@ -1,9 +1,9 @@
 server:
   port: ${PORT}
-  servlet:
-    contextPath: /v1
 
 spring:
+  webflux:
+    base-path: /v1
   datasource:
     driver-class-name: org.postgresql.Driver
     username: ${DATABASE_USER}
