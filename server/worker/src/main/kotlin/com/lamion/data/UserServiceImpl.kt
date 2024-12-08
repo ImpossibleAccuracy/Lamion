@@ -32,6 +32,7 @@ class UserServiceImpl : UserService {
                 .where(
                     AndOp(
                         listOfNotNull(
+                            UserTable.project.eq(projectId),
                             clientKey?.let { UserTable.clientKey.eq(it) },
                             deviceKey?.let { UserTable.identifyKey.eq(it) },
                         )
