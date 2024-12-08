@@ -5,7 +5,6 @@ import com.lamion.data.database.table.project.EventTable
 import com.lamion.data.database.table.project.FeatureTable
 import com.lamion.data.database.table.project.FunctionTable
 import com.lamion.data.database.table.refs.FeatureFunctionRef
-import com.lamion.domain.exception.InvalidArgumentsException
 import com.lamion.domain.model.Id
 import com.lamion.domain.model.IncomingError
 import com.lamion.domain.model.IncomingEvent
@@ -86,7 +85,8 @@ class EventServiceImpl : EventService {
         events: List<IncomingEvent>,
         projectId: Id,
     ) {
-        assertAllFeaturesExists(
+        createAllMissingFeatures(
+            projectId = projectId,
             features = events
                 .mapNotNull { it.feature }
                 .distinct()
@@ -116,18 +116,25 @@ class EventServiceImpl : EventService {
         }
     }
 
-    private fun assertAllFeaturesExists(
+    private fun createAllMissingFeatures(
         features: List<String>,
+        projectId: Id,
     ) = FeatureTable
-        .select(FeatureTable.id)
+        .select(FeatureTable.title)
         .where(
             FeatureTable.title.inList(features)
                 .and(FeatureTable.deleted.eq(false))
         )
-        .count()
-        .let { count ->
-            if (count != features.size.toLong()) {
-                throw InvalidArgumentsException("One or more feature not found")
+        .toList()
+        .let { list ->
+            if (list.size == features.size) return@let
+
+            val saved = list.map { it[FeatureTable.title] }.toSet()
+            val diff = features.minus(saved)
+
+            FeatureTable.batchInsert(data = diff) {
+                this[FeatureTable.title] = it
+                this[FeatureTable.project] = projectId
             }
         }
 
