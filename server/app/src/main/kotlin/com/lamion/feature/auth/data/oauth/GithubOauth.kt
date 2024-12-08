@@ -8,8 +8,11 @@ import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*
 import io.ktor.http.*
+import org.slf4j.LoggerFactory
 
 object GithubOauth {
+    private val logger = LoggerFactory.getLogger(GithubOauth::class.java)
+
     suspend fun getProfileInfo(
         httpClient: HttpClient,
         code: String,
@@ -23,6 +26,7 @@ object GithubOauth {
                     clientSecret = properties.clientSecret,
                 )
 
+                accept(ContentType.Application.Json)
                 contentType(ContentType.Application.Json)
                 setBody(accessTokenRequest)
             }
@@ -45,8 +49,7 @@ object GithubOauth {
             username = profileInfo.name,
         )
     } catch (t: Throwable) {
-        t.printStackTrace()
-        throw InvalidArgumentsException("Github verification failed")
+        throw InvalidArgumentsException("Github verification failed: ${t.message}")
     }
 
     data class ProfileInfo(
