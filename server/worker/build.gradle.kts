@@ -16,6 +16,7 @@ dependencies {
 
     // Spring
     implementation(libs.spring.starter.boot)
+    implementation(libs.spring.starter.security)
     implementation(libs.spring.starter.validation)
     implementation(libs.spring.starter.actuator)
     developmentOnly(libs.spring.devtools)
@@ -29,4 +30,8 @@ dependencies {
     // Swagger
     implementation(libs.spring.swagger.ui)
     implementation(libs.spring.swagger.api)
+
+    // Jackson
+    implementation(libs.jackson.kotlin)
+    implementation(libs.jackson.datatype)
 }

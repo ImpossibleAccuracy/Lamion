@@ -3,7 +3,6 @@ package com.lamion.feature.logger.payload
 import com.lamion.server.validation.NullOrNotBlank
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
-import java.time.LocalDateTime
 
 data class LogRequest(
     val events: List<Event>?,
@@ -23,13 +22,13 @@ data class LogRequest(
         @field:NullOrNotBlank
         val feature: String?,
 
-        val createdAt: LocalDateTime,
+        val createdAt: Long,
     )
 
     data class Error(
         @field:NotBlank
         val function: String?,
-        val createdAt: LocalDateTime,
+        val createdAt: Long,
         val text: String,
     )
 

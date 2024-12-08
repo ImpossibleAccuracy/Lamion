@@ -7,7 +7,6 @@ import org.springframework.web.reactive.config.EnableWebFlux
 
 const val BASE_PACKAGE = "com.lamion"
 
-// TODO: disable cors
 @SpringBootApplication(scanBasePackages = [BASE_PACKAGE])
 @ConfigurationPropertiesScan(BASE_PACKAGE)
 @EnableWebFlux

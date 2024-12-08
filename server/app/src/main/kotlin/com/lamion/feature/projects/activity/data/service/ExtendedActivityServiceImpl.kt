@@ -81,10 +81,6 @@ class ExtendedActivityServiceImpl(
             .asSequence()
             .plus(events.await())
             .plus(errors.await())
-            .also {
-                val data = it.toList()
-                println(data)
-            }
             .sortedBy { it.first }
             .groupBy { it.first }
             .map { (date, info) ->

@@ -8,10 +8,11 @@ import com.lamion.domain.service.EventService
 import com.lamion.domain.service.ProjectService
 import com.lamion.domain.service.UserService
 import com.lamion.feature.logger.payload.LogRequest
+import com.lamion.utils.fromEpochMilliseconds
 import jakarta.validation.Valid
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
-import kotlinx.datetime.toKotlinLocalDateTime
+import kotlinx.datetime.LocalDateTime
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
@@ -28,7 +29,7 @@ class LoggerController(
     suspend fun logEvents(
         @RequestHeader("Authorization", required = true) accessKey: String,
         @RequestBody @Valid body: LogRequest
-    ) = coroutineScope {
+    ): Unit = coroutineScope {
         if (body.events.isNullOrEmpty() && body.errors.isNullOrEmpty()) {
             throw InvalidArgumentsException("No data (events or errors) provided")
         }
@@ -66,7 +67,7 @@ class LoggerController(
                                     IncomingEvent(
                                         function = it.function,
                                         feature = it.feature,
-                                        createdAt = it.createdAt.toKotlinLocalDateTime(),
+                                        createdAt = LocalDateTime.fromEpochMilliseconds(it.createdAt),
                                     )
                                 }
                             )
@@ -84,7 +85,7 @@ class LoggerController(
                                 errors = body.errors.map {
                                     IncomingError(
                                         function = it.function,
-                                        createdAt = it.createdAt.toKotlinLocalDateTime(),
+                                        createdAt = LocalDateTime.fromEpochMilliseconds(it.createdAt),
                                         text = it.text
                                     )
                                 }
