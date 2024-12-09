@@ -16,7 +16,7 @@ data class UsersResponse(
     val activeUsers: ProgressDto<LocalDate, Long>,
 
     @JsonProperty("growth_rate")
-    val growthRate: ComparisonDto<Double>,
+    val growthRate: ComparisonDto<Double>?,
 
     @JsonProperty("user_activity_time")
     val userActivityTime: ChartDto<LocalTime, Long>,
