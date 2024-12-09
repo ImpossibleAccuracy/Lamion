@@ -91,7 +91,7 @@ class UsersController(
                         chart = activeUsers.await(),
                         comparison = activeUsersComparison.await(),
                     ),
-                    growthRate = growthRate.await().toDto(),
+                    growthRate = growthRate.await()?.toDto(),
                     userActivityTime = userActivity.await().toDateTimeDto(),
                     platforms = platforms.await().toDto(),
                     topDevices = topDevices.await().map { item ->

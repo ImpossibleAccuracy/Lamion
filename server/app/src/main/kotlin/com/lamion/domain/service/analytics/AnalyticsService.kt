@@ -8,5 +8,5 @@ interface AnalyticsService {
     suspend fun computeGrowthRate(
         project: ProjectDomain,
         timePeriod: TimePeriod,
-    ): ComparisonDomain<Double>
+    ): ComparisonDomain<Double>?
 }
